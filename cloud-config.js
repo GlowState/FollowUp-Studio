@@ -1,5 +1,5 @@
-// PUBLIC CONFIGURATION ONLY. Never enter a service_role/secret key here.
+// Public browser configuration. Never use a service-role or secret key here.
 window.FOLLOWUP_CLOUD_CONFIG = {
-  url: '', // e.g. https://yourproject.supabase.co
-  publishableKey: '' // Supabase publishable (sb_publishable_...) or legacy anon key, NEVER service_role
+  url: 'https://nazthxhqblyspjwqjtcb.supabase.co',
+  publishableKey: 'sb_publishable_9lC4jl59n0p9FcvvIpAlYw_NAelwLZA'
 };
