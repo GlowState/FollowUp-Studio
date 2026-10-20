@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#173d37">
-<title>FollowUp Studio — V3.9.4 Custom Home & Writing Styles</title>
+<title>FollowUp Studio — V3.9.5 Touch-Drag Home Tiles</title>
 <style>
 :root{--forest:#173d37;--forest2:#24594e;--teal:#2f806c;--bg:#f5f5f0;--paper:#fff;--ink:#25342f;--muted:#728078;--border:#e1e7df;--cream:#eee7d9;--gold:#c69e5b;--red:#aa4b47;--amber:#946514;--green:#22734f;--radius:18px}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:15px;line-height:1.5}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.48;cursor:not-allowed}input,select,textarea{width:100%;border:1px solid #cbd6cc;background:white;border-radius:12px;padding:12px 13px;color:var(--ink);outline-offset:2px}input:focus,select:focus,textarea:focus{outline:2px solid #83ae9c;outline-offset:0}textarea{resize:vertical;min-height:110px}label{display:block;font-weight:700;font-size:13px;margin-bottom:7px}.small{font-size:12px;color:var(--muted)}.muted{color:var(--muted)}.eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:850;color:var(--teal)}h1,h2,h3,p{margin-top:0}h1{font-size:31px;letter-spacing:-1.25px;margin-bottom:6px;line-height:1.16}h2{font-size:21px;letter-spacing:-.5px;margin-bottom:12px}h3{font-size:16px;margin-bottom:7px}p{margin-bottom:14px}.layout{min-height:100vh;display:flex}.sidebar{background:var(--forest);color:#fff;width:238px;flex:none;padding:27px 16px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column}.logo{display:flex;align-items:center;gap:10px;padding:3px 9px 25px}.logo-mark{width:37px;height:37px;border-radius:12px;display:grid;place-items:center;background:var(--gold);color:var(--forest);font-weight:1000;font-size:20px;box-shadow:inset 0 -3px 0 #0002}.logo-name{font-weight:900;letter-spacing:-.6px;line-height:1}.logo-name small{display:block;margin-top:5px;font-weight:650;letter-spacing:.1em;font-size:9px;color:#a8cabc}.nav{display:grid;gap:5px}.nav button{width:100%;border:none;text-align:left;background:transparent;color:#c9dbd5;border-radius:12px;padding:12px 13px;display:flex;align-items:center;gap:11px;font-weight:750}.nav button.active,.nav button:hover{background:#fff2;color: #fff}.nav svg{height:19px;width:19px}.sidebottom{margin-top:auto;padding:14px 11px;border-top:1px solid #ffffff21;color:#b4cdc2;font-size:12px}.demo-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#f1c174;margin-right:6px}.content{width:min(1150px,100%);padding:32px 38px 90px;margin:0 auto}.topline{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:26px}.headline{margin-top:3px}.pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;border-radius:999px;padding:5px 9px;background:#e7f2eb;color:var(--green)}.pill.amber{background:#fff1d9;color:var(--amber)}.pill.gray{background:#e9eee9;color:#66776a}.pill.red{background:#f8e9e6;color:var(--red)}.demoBanner{background:#faf0da;border:1px solid #ead5a7;border-radius:14px;color:#71592e;padding:12px 15px;font-size:13px;margin-bottom:21px}.view{display:none}.view.active{display:block}.btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;border:1px solid transparent;border-radius:12px;padding:11px 15px;font-weight:800;background:var(--forest);color:#fff;text-decoration:none;font-size:13px;white-space:nowrap}.btn:hover:not(:disabled){filter:brightness(1.09)}.btn.secondary{background:#fff;color:var(--forest);border-color:#cbd8cf}.btn.ghost{background:#eef3ee;color:var(--forest)}.btn.danger{background:#fff;color:var(--red);border-color:#e2c2be}.btn.sm{padding:8px 11px;font-size:12px}.btn-row{display:flex;gap:9px;flex-wrap:wrap}.card{border:1px solid var(--border);border-radius:var(--radius);background:var(--paper);padding:22px;box-shadow:0 5px 18px #243b2c06}.hero{background:linear-gradient(110deg,#214b40,#153a34 75%);color:#fff;border-radius:22px;padding:29px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:22px;margin-bottom:22px;overflow:hidden;position:relative}.hero:before{content:"";position:absolute;right:-46px;bottom:-115px;width:320px;height:320px;border-radius:50%;border:65px solid #ffffff0a}.hero p{max-width:460px;color:#d6e7db;margin-bottom:18px}.hero .btn{background:var(--gold);color:#243b2d}.hero .hero-icon{font-size:62px;position:relative;opacity:.93}.grid{display:grid;gap:15px}.metrics{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:22px}.metricLabel{font-size:12px;color:var(--muted);font-weight:650}.metricValue{font-size:30px;font-weight:850;letter-spacing:-1px;margin:6px 0 0}.metricFoot{font-size:11px;color:var(--muted)}.two-col{grid-template-columns:1.4fr 1fr}.subhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.subhead h2{margin:0}.list{display:grid;gap:10px}.jobrow{border:1px solid var(--border);border-radius:14px;padding:14px;display:flex;gap:12px;align-items:center;justify-content:space-between}.jobrow-main{min-width:0;flex:1}.jobrow strong{display:block;font-weight:800}.jobrow .meta{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis}.jobrow .right{display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:flex-end}.circle{height:39px;width:39px;display:grid;place-items:center;border-radius:12px;background:var(--cream);color:var(--forest);font-weight:850;flex:none}.searchtools{display:flex;gap:11px;margin:0 0 16px;flex-wrap:wrap}.searchtools input{flex:1;min-width:185px}.searchtools select{width:auto;min-width:150px}.sectionintro{display:flex;gap:14px;align-items:end;justify-content:space-between;margin-bottom:20px}.sectionintro p{margin:6px 0 0;color:var(--muted);max-width:620px}.empty{padding:24px;border-radius:14px;background:#f5f7f4;border:1px dashed #c7d5cb;color:var(--muted);font-size:13px;text-align:center}.stack{display:grid;gap:14px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-bottom:12px}.field input,.field textarea{margin:0}.checkline{display:flex;gap:9px;align-items:flex-start;font-weight:500;font-size:13px;line-height:1.5;margin:12px 0}.checkline input{height:17px;width:17px;flex:none;margin:2px 0 0;accent-color:var(--forest)}.surface{padding:13px 14px;background:#f5f8f4;border:1px solid var(--border);border-radius:12px}.example{white-space:pre-wrap;word-break:break-word;font-size:13px;line-height:1.7;color:#34443b}.note{font-size:12px;color:var(--muted);line-height:1.6}.actioncard{background:#f8faf7;border-radius:14px;padding:14px}.statline{display:flex;gap:12px;justify-content:space-between;border-bottom:1px solid var(--border);padding:11px 0;font-size:13px}.statline:last-child{border:0}.statline span:last-child{font-weight:800}.bottomnav{display:none}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#203d32;color:#fff;padding:12px 16px;font-size:13px;border-radius:12px;z-index:200;max-width:90vw;box-shadow:0 12px 30px #0003;display:none}.toast.show{display:block}.overlay{position:fixed;inset:0;background:#0e221b9c;z-index:90;display:none;align-items:center;justify-content:center;padding:20px}.overlay.open{display:flex}.dialog{width:min(600px,100%);max-height:90vh;overflow:auto;background:white;border-radius:20px;padding:22px;box-shadow:0 18px 70px #0004}.dialogHeader{display:flex;align-items:start;justify-content:space-between;gap:15px}.xbtn{border:0;background:#f0f3ef;border-radius:10px;width:35px;height:35px;font-size:22px;color:#506357;flex:none}.modalfooter{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}.divider{height:1px;background:var(--border);margin:19px 0}.detailgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tag{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--teal)}.flex{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.helper{color:var(--muted);font-size:12px;margin-top:7px}.exportBar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:15px}.desktopOnly{display:inline}.footer{color:var(--muted);font-size:11px;margin-top:30px}.keyboard{font-size:11px;color:var(--muted);font-weight:600}
@@ -508,13 +508,10 @@ textarea:focus::placeholder{color:transparent}
 .homeCustomizeBar .note{width:100%;text-align:center;margin:0}
 .homeTileGrid .homeTileShell{min-width:0;position:relative;aspect-ratio:1.2}
 .homeTileGrid .homeTileShell>.homeTile{height:100%;width:100%;aspect-ratio:auto}
-.tileReorderControls{display:none;position:absolute;left:6px;right:6px;bottom:5px;justify-content:space-between;gap:6px;z-index:2;pointer-events:auto}
-.tileReorderControls button{border:1px solid var(--border);background:var(--forest);color:#fff;border-radius:10px;font-size:19px;font-weight:800;min-height:33px;min-width:40%;cursor:pointer}
-.homeTileGrid.is-reordering .tileReorderControls{display:flex}
-.homeTileGrid.is-reordering .homeTile{cursor:grab;border:1px dashed var(--accent-text);padding-bottom:37px;touch-action:none}
+.homeTileGrid.is-reordering .homeTile{cursor:grab;border:1px dashed var(--accent-text);touch-action:pan-y}
 .homeTileGrid.is-reordering .homeTile:disabled{opacity:1;cursor:grab}
-.homeTileGrid.is-reordering .homeTileShell{touch-action:none;user-select:none;-webkit-user-select:none}
-.homeTileGrid .tileDragging{opacity:.62;transform:scale(.98)}
+.homeTileGrid.is-reordering .homeTileShell{user-select:none;-webkit-user-select:none}
+.homeTileGrid .tileDragging{opacity:.24;border-radius:18px;outline:2px dashed var(--accent-text);outline-offset:-3px}
 .homeTileGrid .tileDropTarget{outline:2px solid var(--accent-text);outline-offset:2px;border-radius:18px}
 .homeTileGrid .homeTileDetail{line-height:1.25}
 .postBuilderHeader{align-items:center;justify-content:flex-start}
@@ -546,10 +543,7 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
 }
 @media(max-width:700px){
  .homeTileGrid .homeTileShell{aspect-ratio:1}
- .homeTileGrid.is-reordering .homeTile{padding-bottom:32px}
- .tileReorderControls{left:4px;right:4px;bottom:4px;gap:4px}
- .tileReorderControls button{font-size:16px;min-height:29px;border-radius:8px}
- .todoForm{grid-template-columns:minmax(0,1fr)}
+    .todoForm{grid-template-columns:minmax(0,1fr)}
  .todoForm>button[type=submit]{width:100%;justify-self:stretch}
  .postStyleRow{align-items:stretch}
  .postStyleRow select{max-width:100%;width:100%}
@@ -591,10 +585,24 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
 .homeKeyboardEdit:focus-visible{position:relative!important;width:auto!important;height:auto!important;clip-path:none!important;padding:9px 12px!important;border:2px solid var(--accent-text)!important;border-radius:10px!important;display:block;margin:0 auto}
 .homeTileGrid.is-reordering .homeTileShell .homeTileIcon{animation:tileWiggle .29s ease-in-out infinite alternate;transform-origin:50% 50%}
 .homeTileGrid.is-reordering .homeTileShell:nth-child(2n) .homeTileIcon{animation-delay:-.15s;animation-direction:alternate-reverse}
-.homeTileGrid.is-reordering .tileDragging{opacity:.7;transform:scale(1.05);z-index:3}.homeTileGrid.is-reordering .tileDragging .homeTileIcon{animation:none}
+.homeTileGrid.is-reordering .tileDragging{opacity:.2;transform:none;z-index:auto}.homeTileGrid.is-reordering .tileDragging .homeTileIcon{animation:none}
 @keyframes tileWiggle{from{rotate:-.7deg}to{rotate:.7deg}}
 @media(max-width:520px){.profileEditTop{font-size:12px!important;padding:8px 10px!important}.profileHeading .profileIdentity h3{font-size:16px}.profileHeading .profileIdentity .small{font-size:11px}.profileHistoryToggle{padding:14px;font-size:16px}}
 @media(prefers-reduced-motion:reduce){.homeTileGrid.is-reordering .homeTileShell .homeTileIcon{animation:none}.profileHistoryChevron{transition:none}}
+
+/* V3.9.5: iPhone-style thumb dragging: the dragged tile follows the finger, no arrow buttons. */
+.homeCustomizeBar{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));right:14px;left:auto;transform:none;z-index:440;background:var(--paper);border:1px solid var(--border);border-radius:14px;padding:8px 10px;box-shadow:0 9px 26px #0005;margin:0!important;width:auto;max-width:calc(100vw - 28px)}
+.homeCustomizeBar .note{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)!important}
+.homeTileGrid .homeTileShell{transition:transform .15s ease, opacity .15s ease;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+.homeTileGrid .homeTile{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+.homeTileGrid.is-reordering .homeTile{padding-bottom:9px;cursor:grab;touch-action:pan-y}
+.homeTileGrid.is-reordering .homeTileShell{cursor:grab}
+.homeTileDragGhost{position:fixed!important;z-index:500!important;pointer-events:none!important;margin:0!important;box-sizing:border-box!important;aspect-ratio:auto!important;transform-origin:top left!important;transition:none!important;opacity:.98!important;box-shadow:0 18px 38px #0008!important;border:2px solid var(--accent-text)!important;cursor:grabbing!important;will-change:transform}
+.homeTileDragGhost .homeTileIcon{animation:none!important}
+.homeTileGrid.is-reordering .tileDragging>.homeTile{opacity:.25}
+.homeTileGrid.is-reordering .homeTileShell>.homeTile{padding-bottom:9px}
+.homeTileGrid .tileDropTarget{outline-offset:-2px}
+@media(max-width:700px){.homeTileGrid.is-reordering .homeTileShell>.homeTile{padding-bottom:8px}}
 </style>
 </head>
 <body>
@@ -628,19 +636,19 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
     <div class="demoBanner"><strong>Safe demonstration:</strong> Demo Mode uses fictional customers and stores data in this browser. In Cloud Mode, signed-in users can sync records to their private workspace. Text messaging opens your phone’s Messages app for you to review and send. Post templates work without subscriptions or API keys. No customer messages or Facebook posts are sent automatically. <span id="previewNote" style="font-weight:650">You can switch pages in file preview. For editing, customer buttons, and saving, use a full browser-hosted copy.</span></div>
     <section class="view active" id="view-home" aria-labelledby="hubHeading">
       <div class="homeWelcome"><div class="eyebrow">YOUR BUSINESS AT A GLANCE</div><h1 id="hubHeading">Welcome home.</h1><p>Everything you need to manage your business, right at your fingertips.</p></div>
-      <div class="homeCustomizeBar" id="homeCustomizeBar" hidden><button type="button" class="btn sm" id="homeCustomizeBtn" data-action="home-customize" aria-pressed="true">Done</button><button type="button" class="btn secondary sm" id="homeResetBtn" data-action="home-reset">Reset order</button><span id="homeCustomizeHint" class="note">Tiles are ready to move. Drag and drop them, or use the small arrows. Tap Done to finish.</span></div><button type="button" class="homeKeyboardEdit" data-action="home-customize">Rearrange Home tiles</button>
+      <div class="homeCustomizeBar" id="homeCustomizeBar" hidden><button type="button" class="btn sm" id="homeCustomizeBtn" data-action="home-customize" aria-pressed="true">Done</button><span id="homeCustomizeHint" class="note">Hold and drag tiles into place, then tap Done. Keyboard: Alt + arrow keys.</span></div><button type="button" class="homeKeyboardEdit" data-action="home-customize">Rearrange Home tiles</button>
       <div class="homeTileGrid" id="homeTileGrid" aria-label="Business tools. Press and hold a tile to rearrange." aria-describedby="homeTileHint">
-        <div class="homeTileShell" data-tile-id="snapshot"><button class="homeTile" type="button" data-route="dashboard" aria-label="Open Snapshot"><span class="homeTileIcon"><svg><use href="#i-chart"/></svg></span><strong>Snapshot</strong><span class="homeTileDetail">Overview</span></button><div class="tileReorderControls"><button type="button" data-action="home-move" data-id="snapshot" data-direction="-1" aria-label="Move Snapshot earlier">←</button><button type="button" data-action="home-move" data-id="snapshot" data-direction="1" aria-label="Move Snapshot later">→</button></div></div>
-        <div class="homeTileShell" data-tile-id="calendar"><button class="homeTile" type="button" data-route="calendar" aria-label="Open Calendar"><span class="homeTileIcon"><svg><use href="#i-calendar"/></svg></span><strong>Calendar</strong><span class="homeTileDetail" id="hubCalendar">Schedule</span></button><div class="tileReorderControls"><button type="button" data-action="home-move" data-id="calendar" data-direction="-1" aria-label="Move Calendar earlier">←</button><button type="button" data-action="home-move" data-id="calendar" data-direction="1" aria-label="Move Calendar later">→</button></div></div>
-        <div class="homeTileShell" data-tile-id="customers"><button class="homeTile" type="button" data-route="jobs" data-focus="customers" aria-label="Open Customers"><span class="homeTileIcon"><svg><use href="#i-users"/></svg></span><strong>Customers</strong><span class="homeTileDetail" id="hubCustomers">Profiles</span></button><div class="tileReorderControls"><button type="button" data-action="home-move" data-id="customers" data-direction="-1" aria-label="Move Customers earlier">←</button><button type="button" data-action="home-move" data-id="customers" data-direction="1" aria-label="Move Customers later">→</button></div></div>
-        <div class="homeTileShell" data-tile-id="jobs"><button class="homeTile" type="button" data-route="jobs" data-focus="jobs" aria-label="Open Jobs"><span class="homeTileIcon"><svg><use href="#i-briefcase"/></svg></span><strong>Jobs</strong><span class="homeTileDetail" id="hubJobs">Job history</span></button><div class="tileReorderControls"><button type="button" data-action="home-move" data-id="jobs" data-direction="-1" aria-label="Move Jobs earlier">←</button><button type="button" data-action="home-move" data-id="jobs" data-direction="1" aria-label="Move Jobs later">→</button></div></div>
-        <div class="homeTileShell" data-tile-id="followups"><button class="homeTile" type="button" data-route="followup" aria-label="Open Follow-Ups"><span class="homeTileIcon"><svg><use href="#i-checklist"/></svg></span><strong>Follow-Ups</strong><span class="homeTileDetail" id="hubFollowups">Stay connected</span></button><div class="tileReorderControls"><button type="button" data-action="home-move" data-id="followups" data-direction="-1" aria-label="Move Follow-Ups earlier">←</button><button type="button" data-action="home-move" data-id="followups" data-direction="1" aria-label="Move Follow-Ups later">→</button></div></div>
-        <div class="homeTileShell" data-tile-id="todo"><button class="homeTile" type="button" data-route="todo" aria-label="Open To-Do List"><span class="homeTileIcon"><svg><use href="#i-checklist"/></svg></span><strong>To-Do List</strong><span class="homeTileDetail" id="hubTodos">Tasks</span></button><div class="tileReorderControls"><button type="button" data-action="home-move" data-id="todo" data-direction="-1" aria-label="Move To-Do List earlier">←</button><button type="button" data-action="home-move" data-id="todo" data-direction="1" aria-label="Move To-Do List later">→</button></div></div>
-        <div class="homeTileShell" data-tile-id="post"><button class="homeTile" type="button" data-route="content" aria-label="Open Post Studio"><span class="homeTileIcon"><svg><use href="#i-spark"/></svg></span><strong>Post Studio</strong><span class="homeTileDetail">Templates</span></button><div class="tileReorderControls"><button type="button" data-action="home-move" data-id="post" data-direction="-1" aria-label="Move Post Studio earlier">←</button><button type="button" data-action="home-move" data-id="post" data-direction="1" aria-label="Move Post Studio later">→</button></div></div>
-        <div class="homeTileShell" data-tile-id="archive"><button class="homeTile" type="button" data-route="archive" aria-label="Open Archived Customers"><span class="homeTileIcon"><svg><use href="#i-archive"/></svg></span><strong>Archive</strong><span class="homeTileDetail" id="hubArchive">Stored safely</span></button><div class="tileReorderControls"><button type="button" data-action="home-move" data-id="archive" data-direction="-1" aria-label="Move Archive earlier">←</button><button type="button" data-action="home-move" data-id="archive" data-direction="1" aria-label="Move Archive later">→</button></div></div>
-        <div class="homeTileShell" data-tile-id="settings"><button class="homeTile" type="button" data-route="settings" aria-label="Open Settings"><span class="homeTileIcon"><svg><use href="#i-gear"/></svg></span><strong>Settings</strong><span class="homeTileDetail">Make it yours</span></button><div class="tileReorderControls"><button type="button" data-action="home-move" data-id="settings" data-direction="-1" aria-label="Move Settings earlier">←</button><button type="button" data-action="home-move" data-id="settings" data-direction="1" aria-label="Move Settings later">→</button></div></div>
+        <div class="homeTileShell" data-tile-id="snapshot"><button class="homeTile" type="button" data-route="dashboard" aria-label="Open Snapshot"><span class="homeTileIcon"><svg><use href="#i-chart"/></svg></span><strong>Snapshot</strong><span class="homeTileDetail">Overview</span></button></div>
+        <div class="homeTileShell" data-tile-id="calendar"><button class="homeTile" type="button" data-route="calendar" aria-label="Open Calendar"><span class="homeTileIcon"><svg><use href="#i-calendar"/></svg></span><strong>Calendar</strong><span class="homeTileDetail" id="hubCalendar">Schedule</span></button></div>
+        <div class="homeTileShell" data-tile-id="customers"><button class="homeTile" type="button" data-route="jobs" data-focus="customers" aria-label="Open Customers"><span class="homeTileIcon"><svg><use href="#i-users"/></svg></span><strong>Customers</strong><span class="homeTileDetail" id="hubCustomers">Profiles</span></button></div>
+        <div class="homeTileShell" data-tile-id="jobs"><button class="homeTile" type="button" data-route="jobs" data-focus="jobs" aria-label="Open Jobs"><span class="homeTileIcon"><svg><use href="#i-briefcase"/></svg></span><strong>Jobs</strong><span class="homeTileDetail" id="hubJobs">Job history</span></button></div>
+        <div class="homeTileShell" data-tile-id="followups"><button class="homeTile" type="button" data-route="followup" aria-label="Open Follow-Ups"><span class="homeTileIcon"><svg><use href="#i-checklist"/></svg></span><strong>Follow-Ups</strong><span class="homeTileDetail" id="hubFollowups">Stay connected</span></button></div>
+        <div class="homeTileShell" data-tile-id="todo"><button class="homeTile" type="button" data-route="todo" aria-label="Open To-Do List"><span class="homeTileIcon"><svg><use href="#i-checklist"/></svg></span><strong>To-Do List</strong><span class="homeTileDetail" id="hubTodos">Tasks</span></button></div>
+        <div class="homeTileShell" data-tile-id="post"><button class="homeTile" type="button" data-route="content" aria-label="Open Post Studio"><span class="homeTileIcon"><svg><use href="#i-spark"/></svg></span><strong>Post Studio</strong><span class="homeTileDetail">Templates</span></button></div>
+        <div class="homeTileShell" data-tile-id="archive"><button class="homeTile" type="button" data-route="archive" aria-label="Open Archived Customers"><span class="homeTileIcon"><svg><use href="#i-archive"/></svg></span><strong>Archive</strong><span class="homeTileDetail" id="hubArchive">Stored safely</span></button></div>
+        <div class="homeTileShell" data-tile-id="settings"><button class="homeTile" type="button" data-route="settings" aria-label="Open Settings"><span class="homeTileIcon"><svg><use href="#i-gear"/></svg></span><strong>Settings</strong><span class="homeTileDetail">Make it yours</span></button></div>
       </div>
-      <p class="homeHubFoot"><span id="homeTileHint">Tap a tile to open it. Press and hold any tile to rearrange your Home Screen.</span></p>
+      <p class="homeHubFoot"><span id="homeTileHint">Tap a tile to open it. Press and hold a tile, then drag to rearrange.</span></p>
     </section>
     <section class="view" id="view-dashboard">
       <div class="snapshotHeader"><div class="eyebrow">BUSINESS SNAPSHOT</div><h1>Business overview</h1><p>Latest job activity, review progress, and items needing attention.</p></div>
@@ -1491,7 +1499,7 @@ async function applyRestore(){
   currentAiDraftId=null;$('#searchJobs').value='';$('#statusFilter').value='all';smartFilter='all';closeModal();navigate('dashboard');renderBackupStatus();toast(cloud.user?'Backup loaded. Check cloud sync status.':'✓ Backup restored. All demo records replaced.');
  }catch(e){db=JSON.parse(before);toast('Restore failed. Original local records remain unchanged.','error')}
 }
-async function applyAction(e){const el=e.target.closest('[data-action]');if(!el)return;const op=el.dataset.action,id=el.dataset.id;if(op==='home-customize'){enableHomeCustomize();return}if(op==='home-move'){shiftHomeTile(id,Number(el.dataset.direction)||1);return}if(op==='home-reset'){resetHomeOrder();return}if(cloud.user&&!cloud.ready&&!op.startsWith('cloud-')){toast('Cloud workspace unavailable. Editing is paused.','error');return;}if(op.startsWith('cloud-')){await handleCloudAction(op);return;} if(op==='profile'&&!el.closest('.customerSwipeRow')?.dataset.justSwiped)openProfile(id);else if(op==='profile-edit'){const panel=$('#profileEditPanel'),button=$('#profileEditBtn');if(panel){panel.hidden=false;if(button){button.setAttribute('aria-expanded','true');button.hidden=true;}requestAnimationFrame(()=>panel.scrollIntoView({block:'nearest',behavior:'smooth'}))}}else if(op==='profile-edit-cancel')openProfile(id);else if(op==='profile-save')await saveProfile(id);else if(op==='profile-photo-remove'){pendingProfilePhoto='';const node=$('#cpPhotoPreview');if(node)node.innerHTML=safePhoto(db.businessLogo)?`<img alt="Business logo" src="${esc(db.businessLogo)}">`:'<span>Photo removed</span>';}else if(op==='profile-add-job')addCustomerJob(id);else if(op==='archive-view')archiveDirectory();else if(op==='archive-customer')await archiveCustomer(id);else if(op==='restore-customer')restoreCustomer(id);else if(op==='purge-customer')await purgeCustomer(id);else if(op==='clear-archive')await clearArchive();else if(op==='service-remove')await removeService(el.dataset.service);else if(op==='logo-remove'){if(await askUser('Remove the default business logo?','v38-logo-remove',{yes:'Remove logo',rememberable:false})){const old=db.businessLogo;db.businessLogo='';if(!save()){db.businessLogo=old;return}$('#brandLogoPreview').textContent='No logo uploaded.';toast('Default logo removed.')}}else if(op==='restore-open'){$('#restoreInput').value='';$('#restoreInput').click()}else if(op==='restore-apply')await applyRestore();else if(op==='restore-cancel'){pendingRestore=null;closeModal()}else if(op==='open-followup')navigate('followup');
+async function applyAction(e){const el=e.target.closest('[data-action]');if(!el)return;const op=el.dataset.action,id=el.dataset.id;if(op==='home-customize'){enableHomeCustomize();return}if(cloud.user&&!cloud.ready&&!op.startsWith('cloud-')){toast('Cloud workspace unavailable. Editing is paused.','error');return;}if(op.startsWith('cloud-')){await handleCloudAction(op);return;} if(op==='profile'&&!el.closest('.customerSwipeRow')?.dataset.justSwiped)openProfile(id);else if(op==='profile-edit'){const panel=$('#profileEditPanel'),button=$('#profileEditBtn');if(panel){panel.hidden=false;if(button){button.setAttribute('aria-expanded','true');button.hidden=true;}requestAnimationFrame(()=>panel.scrollIntoView({block:'nearest',behavior:'smooth'}))}}else if(op==='profile-edit-cancel')openProfile(id);else if(op==='profile-save')await saveProfile(id);else if(op==='profile-photo-remove'){pendingProfilePhoto='';const node=$('#cpPhotoPreview');if(node)node.innerHTML=safePhoto(db.businessLogo)?`<img alt="Business logo" src="${esc(db.businessLogo)}">`:'<span>Photo removed</span>';}else if(op==='profile-add-job')addCustomerJob(id);else if(op==='archive-view')archiveDirectory();else if(op==='archive-customer')await archiveCustomer(id);else if(op==='restore-customer')restoreCustomer(id);else if(op==='purge-customer')await purgeCustomer(id);else if(op==='clear-archive')await clearArchive();else if(op==='service-remove')await removeService(el.dataset.service);else if(op==='logo-remove'){if(await askUser('Remove the default business logo?','v38-logo-remove',{yes:'Remove logo',rememberable:false})){const old=db.businessLogo;db.businessLogo='';if(!save()){db.businessLogo=old;return}$('#brandLogoPreview').textContent='No logo uploaded.';toast('Default logo removed.')}}else if(op==='restore-open'){$('#restoreInput').value='';$('#restoreInput').click()}else if(op==='restore-apply')await applyRestore();else if(op==='restore-cancel'){pendingRestore=null;closeModal()}else if(op==='open-followup')navigate('followup');
  else if(op==='open-calendar')navigate('calendar');
  else if(op==='open-todos')navigate('todo');
  else if(op==='smart-filter'){smartFilter=el.dataset.filter||'all';navigate('followup');}
@@ -1641,53 +1649,122 @@ function bind(){
  $('#calendarGrid').addEventListener('touchstart',e=>{window.v38CalendarX=e.touches[0]?.clientX;window.v38CalendarY=e.touches[0]?.clientY},{passive:true});
  $('#calendarGrid').addEventListener('touchend',e=>{const x=e.changedTouches[0]?.clientX,y=e.changedTouches[0]?.clientY;if(typeof window.v38CalendarX!=='number'||typeof x!=='number')return;const delta=x-window.v38CalendarX;const dy=y-window.v38CalendarY;if(Math.abs(delta)>60&&Math.abs(delta)>Math.abs(dy)*1.3){calendarMonth.setMonth(calendarMonth.getMonth()+(delta<0?1:-1));renderCalendar();window.v38CalendarSwipe=Date.now()}} ,{passive:true});
  const homeGrid=$('#homeTileGrid');
- let tileDrag=null,homeHold=null;
- const clearHold=()=>{if(homeHold?.timer)clearTimeout(homeHold.timer);homeHold=null};
- homeGrid.addEventListener('pointerdown',e=>{
-  const shell=e.target.closest('.homeTileShell');
-  if(!shell||e.target.closest('.tileReorderControls')||(e.pointerType==='mouse'&&e.button!==0))return;
-  if(!homeEditMode){
-   clearHold();
-   const hold={source:shell,pointerId:e.pointerId,x:e.clientX,y:e.clientY,timer:null};
-   homeHold=hold;
-   hold.timer=setTimeout(()=>{
-    if(homeHold!==hold||currentRoute!=='home')return;
-    homeHold=null;
-    if(!enableHomeCustomize(true))return;
-    tileDrag={source:shell,id:shell.dataset.tileId,pointerId:e.pointerId,x:hold.x,y:hold.y,moved:false};
-    if(shell.setPointerCapture)try{shell.setPointerCapture(e.pointerId)}catch(_){}
-   },520);
-   return;
+ let tileDrag=null,homeHold=null,lastTileHoldAt=0;
+ const clearHomeHold=()=>{if(homeHold?.timer)clearTimeout(homeHold.timer);homeHold=null};
+ const startTileDrag=(shell,id,x,y)=>{
+  if(!shell||!homeEditMode||currentRoute!=='home')return false;
+  if(tileDrag)finishTileDrag(false);
+  const tile=shell.querySelector('.homeTile'),rect=tile.getBoundingClientRect();
+  const ghost=tile.cloneNode(true);
+  ghost.removeAttribute('data-route');ghost.removeAttribute('data-focus');ghost.disabled=true;
+  ghost.setAttribute('aria-hidden','true');ghost.classList.add('homeTileDragGhost');
+  ghost.style.left=rect.left+'px';ghost.style.top=rect.top+'px';
+  ghost.style.width=rect.width+'px';ghost.style.height=rect.height+'px';
+  document.body.append(ghost);
+  tileDrag={shell,id,ghost,left:rect.left,top:rect.top,offsetX:x-rect.left,offsetY:y-rect.top,lastX:x,lastY:y,scrollFrame:0,moved:false};
+  tileDrag.scrollFrame=requestAnimationFrame(scrollDraggedTile);
+  shell.classList.add('tileDragging');
+  positionTileGhost(x,y);
+  return true;
+ };
+ const positionTileGhost=(x,y)=>{
+  if(!tileDrag)return;
+  const drag=tileDrag;drag.lastX=x;drag.lastY=y;
+  drag.ghost.style.transform=`translate3d(${x-drag.offsetX-drag.left}px,${y-drag.offsetY-drag.top}px,0)`;
+  // Reorder the real cards underneath the finger, without waiting for release.
+  const target=document.elementFromPoint(x,y)?.closest('.homeTileShell');
+  if(target&&target!==drag.shell&&homeGrid.contains(target)){
+   const siblings=[...homeGrid.children],a=siblings.indexOf(drag.shell),b=siblings.indexOf(target);
+   if(a<b)target.after(drag.shell);else target.before(drag.shell);
+   drag.moved=true;
   }
-  tileDrag={source:shell,id:shell.dataset.tileId,pointerId:e.pointerId,x:e.clientX,y:e.clientY,moved:false};
-  if(shell.setPointerCapture)try{shell.setPointerCapture(e.pointerId)}catch(_){}
+ };
+ const scrollDraggedTile=()=>{
+  if(!tileDrag)return;
+  const drag=tileDrag,y=drag.lastY,h=window.innerHeight;
+  const step=y>h-85?Math.min(15,(y-(h-85))*.2+3):y<70?-Math.min(15,(70-y)*.2+3):0;
+  if(step){const oldY=window.scrollY;window.scrollBy(0,step);if(window.scrollY!==oldY)positionTileGhost(drag.lastX,drag.lastY)}
+  if(tileDrag===drag)drag.scrollFrame=requestAnimationFrame(scrollDraggedTile);
+ };
+ const finishTileDrag=(saveOrder=true)=>{
+  const drag=tileDrag;if(!drag)return;
+  tileDrag=null;cancelAnimationFrame(drag.scrollFrame);drag.ghost.remove();drag.shell.classList.remove('tileDragging');
+  lastTileHoldAt=Date.now();
+  if(saveOrder){
+   const order=[...homeGrid.children].map(el=>el.dataset.tileId).filter(Boolean);
+   if(order.join('|')!==currentHomeOrder().join('|'))commitHomeOrder(order);
+   else drawHomeOrder();
+  }else drawHomeOrder();
+ };
+ // Native vertical scrolling stays available for ordinary swipes. Only a sustained
+ // long press activates dragging and prevents the browser from scrolling the tile.
+ homeGrid.addEventListener('touchstart',e=>{
+  if(e.touches.length!==1)return;
+  const shell=e.target.closest('.homeTileShell');if(!shell)return;
+  const t=e.touches[0];clearHomeHold();
+  if(homeEditMode){startTileDrag(shell,t.clientX,t.clientY);return;}
+  const hold={source:shell,id:t.identifier,x:t.clientX,y:t.clientY,timer:null};homeHold=hold;
+  hold.timer=setTimeout(()=>{
+   if(homeHold!==hold||currentRoute!=='home')return;
+   homeHold=null;
+   if(enableHomeCustomize(true))startTileDrag(shell,hold.x,hold.y);
+  },470);
+ },{passive:true});
+ homeGrid.addEventListener('touchmove',e=>{
+  if(e.touches.length!==1)return;
+  const t=e.touches[0];
+  if(homeHold&&homeHold.id===t.identifier&&Math.hypot(t.clientX-homeHold.x,t.clientY-homeHold.y)>9)clearHomeHold();
+  if(tileDrag){e.preventDefault();positionTileGhost(t.clientX,t.clientY);}
+ },{passive:false});
+ homeGrid.addEventListener('touchend',e=>{
+  for(const t of e.changedTouches){if(homeHold?.id===t.identifier)clearHomeHold();if(tileDrag){finishTileDrag(true);break}}
+ },{passive:true});
+ homeGrid.addEventListener('touchcancel',()=>{clearHomeHold();finishTileDrag(false)},{passive:true});
+ // Mouse/pen dragging is also supported, with the same long-press entry behavior.
+ let mouseDown=null;
+ homeGrid.addEventListener('pointerdown',e=>{
+  if(e.pointerType==='touch'||(e.pointerType==='mouse'&&e.button!==0))return;
+  const shell=e.target.closest('.homeTileShell');if(!shell)return;
+  if(homeEditMode){mouseDown={id:e.pointerId,active:true};startTileDrag(shell,e.clientX,e.clientY);return;}
+  const hold={source:shell,id:e.pointerId,x:e.clientX,y:e.clientY,timer:null};homeHold=hold;
+  hold.timer=setTimeout(()=>{
+   if(homeHold!==hold||currentRoute!=='home')return;
+   homeHold=null;
+   if(enableHomeCustomize(true)){mouseDown={id:e.pointerId,active:true};startTileDrag(shell,hold.x,hold.y)}
+  },470);
  });
  homeGrid.addEventListener('pointermove',e=>{
-  if(homeHold&&homeHold.pointerId===e.pointerId&&Math.hypot(e.clientX-homeHold.x,e.clientY-homeHold.y)>12)clearHold();
-  if(!homeEditMode||!tileDrag||tileDrag.pointerId!==e.pointerId)return;
-  const dx=e.clientX-tileDrag.x,dy=e.clientY-tileDrag.y;
-  if(Math.hypot(dx,dy)<9&&!tileDrag.moved)return;
-  tileDrag.moved=true;
-  tileDrag.source.classList.add('tileDragging');
-  homeGrid.querySelectorAll('.tileDropTarget').forEach(x=>x.classList.remove('tileDropTarget'));
-  const target=document.elementFromPoint(e.clientX,e.clientY)?.closest('.homeTileShell');
-  if(target&&target!==tileDrag.source)target.classList.add('tileDropTarget');
+  if(e.pointerType==='touch')return;
+  if(homeHold?.id===e.pointerId&&Math.hypot(e.clientX-homeHold.x,e.clientY-homeHold.y)>9)clearHomeHold();
+  if(mouseDown?.id===e.pointerId&&tileDrag){e.preventDefault();positionTileGhost(e.clientX,e.clientY)}
  });
- const tileDragEnd=e=>{
-  if(homeHold?.pointerId===e.pointerId)clearHold();
-  if(!tileDrag||tileDrag.pointerId!==e.pointerId)return;
-  const drag=tileDrag;tileDrag=null;
-  drag.source.classList.remove('tileDragging');
-  const target=document.elementFromPoint(e.clientX,e.clientY)?.closest('.homeTileShell');
-  homeGrid.querySelectorAll('.tileDropTarget').forEach(x=>x.classList.remove('tileDropTarget'));
-  if(!homeEditMode||!drag.moved||!target||target===drag.source)return;
-  const order=currentHomeOrder(),from=order.indexOf(drag.id),to=order.indexOf(target.dataset.tileId);
-  if(from>=0&&to>=0){order.splice(from,1);order.splice(to,0,drag.id);commitHomeOrder(order)}
- };
- homeGrid.addEventListener('pointerup',tileDragEnd);
- homeGrid.addEventListener('pointercancel',e=>{if(homeHold?.pointerId===e.pointerId)clearHold();if(tileDrag?.pointerId===e.pointerId){tileDrag.source.classList.remove('tileDragging');tileDrag=null}homeGrid.querySelectorAll('.tileDropTarget').forEach(x=>x.classList.remove('tileDropTarget'))});
+ homeGrid.addEventListener('pointerup',e=>{
+  if(e.pointerType==='touch')return;
+  if(homeHold?.id===e.pointerId)clearHomeHold();
+  if(mouseDown?.id===e.pointerId){finishTileDrag(true);mouseDown=null}
+ });
+ homeGrid.addEventListener('pointercancel',e=>{
+  if(e.pointerType==='touch')return;
+  if(homeHold?.id===e.pointerId)clearHomeHold();
+  if(mouseDown?.id===e.pointerId){finishTileDrag(false);mouseDown=null}
+ });
+ // Suppress the synthetic tap emitted after a long press, including the one
+ // triggered on touchend. Normal taps in browsing mode still navigate.
+ homeGrid.addEventListener('click',e=>{
+  if((homeEditMode||Date.now()-lastTileHoldAt<800)&&e.target.closest('.homeTile')){
+   e.preventDefault();e.stopImmediatePropagation();
+  }
+ },true);
  homeGrid.addEventListener('contextmenu',e=>{if(!e.target.closest('.homeTileShell'))return;e.preventDefault();if(!homeEditMode)enableHomeCustomize(true)});
- homeGrid.addEventListener('keydown',e=>{if(e.key==='F10'&&e.shiftKey){e.preventDefault();enableHomeCustomize(true)}});
+ homeGrid.addEventListener('keydown',e=>{
+  if(e.key==='F10'&&e.shiftKey){e.preventDefault();enableHomeCustomize(true);return;}
+  const shell=e.target.closest('.homeTileShell');
+  if(homeEditMode&&shell&&e.altKey&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){
+   e.preventDefault();
+   const step=e.key==='ArrowLeft'?-1:e.key==='ArrowRight'?1:e.key==='ArrowUp'?-3:3;
+   shiftHomeTile(shell.dataset.tileId,step);shell.querySelector('.homeTile')?.focus();
+  }
+ });
  const directory=$('#customerDirectory');
  directory.addEventListener('touchstart',e=>{const row=e.target.closest('.customerSwipeRow');if(!row||e.touches.length!==1)return;const t=e.touches[0];row._swipe={x:t.clientX,y:t.clientY,base:row.classList.contains('swiped')?-94:0,active:false,delta:0};},{passive:true});
  directory.addEventListener('touchmove',e=>{const row=e.target.closest('.customerSwipeRow');const s=row?row._swipe:null;if(!s||e.touches.length!==1)return;const t=e.touches[0],dx=t.clientX-s.x,dy=t.clientY-s.y;
