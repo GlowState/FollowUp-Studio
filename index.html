@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#173d37">
-<title>FollowUp Studio — V3.6.1 Mobile Polish & Scroll Fix</title>
+<title>FollowUp Studio — V3.7 Secure Accounts & Cloud Sync</title>
 <style>
 :root{--forest:#173d37;--forest2:#24594e;--teal:#2f806c;--bg:#f5f5f0;--paper:#fff;--ink:#25342f;--muted:#728078;--border:#e1e7df;--cream:#eee7d9;--gold:#c69e5b;--red:#aa4b47;--amber:#946514;--green:#22734f;--radius:18px}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:15px;line-height:1.5}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.48;cursor:not-allowed}input,select,textarea{width:100%;border:1px solid #cbd6cc;background:white;border-radius:12px;padding:12px 13px;color:var(--ink);outline-offset:2px}input:focus,select:focus,textarea:focus{outline:2px solid #83ae9c;outline-offset:0}textarea{resize:vertical;min-height:110px}label{display:block;font-weight:700;font-size:13px;margin-bottom:7px}.small{font-size:12px;color:var(--muted)}.muted{color:var(--muted)}.eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:850;color:var(--teal)}h1,h2,h3,p{margin-top:0}h1{font-size:31px;letter-spacing:-1.25px;margin-bottom:6px;line-height:1.16}h2{font-size:21px;letter-spacing:-.5px;margin-bottom:12px}h3{font-size:16px;margin-bottom:7px}p{margin-bottom:14px}.layout{min-height:100vh;display:flex}.sidebar{background:var(--forest);color:#fff;width:238px;flex:none;padding:27px 16px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column}.logo{display:flex;align-items:center;gap:10px;padding:3px 9px 25px}.logo-mark{width:37px;height:37px;border-radius:12px;display:grid;place-items:center;background:var(--gold);color:var(--forest);font-weight:1000;font-size:20px;box-shadow:inset 0 -3px 0 #0002}.logo-name{font-weight:900;letter-spacing:-.6px;line-height:1}.logo-name small{display:block;margin-top:5px;font-weight:650;letter-spacing:.1em;font-size:9px;color:#a8cabc}.nav{display:grid;gap:5px}.nav button{width:100%;border:none;text-align:left;background:transparent;color:#c9dbd5;border-radius:12px;padding:12px 13px;display:flex;align-items:center;gap:11px;font-weight:750}.nav button.active,.nav button:hover{background:#fff2;color: #fff}.nav svg{height:19px;width:19px}.sidebottom{margin-top:auto;padding:14px 11px;border-top:1px solid #ffffff21;color:#b4cdc2;font-size:12px}.demo-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#f1c174;margin-right:6px}.content{width:min(1150px,100%);padding:32px 38px 90px;margin:0 auto}.topline{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:26px}.headline{margin-top:3px}.pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;border-radius:999px;padding:5px 9px;background:#e7f2eb;color:var(--green)}.pill.amber{background:#fff1d9;color:var(--amber)}.pill.gray{background:#e9eee9;color:#66776a}.pill.red{background:#f8e9e6;color:var(--red)}.demoBanner{background:#faf0da;border:1px solid #ead5a7;border-radius:14px;color:#71592e;padding:12px 15px;font-size:13px;margin-bottom:21px}.view{display:none}.view.active{display:block}.btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;border:1px solid transparent;border-radius:12px;padding:11px 15px;font-weight:800;background:var(--forest);color:#fff;text-decoration:none;font-size:13px;white-space:nowrap}.btn:hover:not(:disabled){filter:brightness(1.09)}.btn.secondary{background:#fff;color:var(--forest);border-color:#cbd8cf}.btn.ghost{background:#eef3ee;color:var(--forest)}.btn.danger{background:#fff;color:var(--red);border-color:#e2c2be}.btn.sm{padding:8px 11px;font-size:12px}.btn-row{display:flex;gap:9px;flex-wrap:wrap}.card{border:1px solid var(--border);border-radius:var(--radius);background:var(--paper);padding:22px;box-shadow:0 5px 18px #243b2c06}.hero{background:linear-gradient(110deg,#214b40,#153a34 75%);color:#fff;border-radius:22px;padding:29px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:22px;margin-bottom:22px;overflow:hidden;position:relative}.hero:before{content:"";position:absolute;right:-46px;bottom:-115px;width:320px;height:320px;border-radius:50%;border:65px solid #ffffff0a}.hero p{max-width:460px;color:#d6e7db;margin-bottom:18px}.hero .btn{background:var(--gold);color:#243b2d}.hero .hero-icon{font-size:62px;position:relative;opacity:.93}.grid{display:grid;gap:15px}.metrics{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:22px}.metricLabel{font-size:12px;color:var(--muted);font-weight:650}.metricValue{font-size:30px;font-weight:850;letter-spacing:-1px;margin:6px 0 0}.metricFoot{font-size:11px;color:var(--muted)}.two-col{grid-template-columns:1.4fr 1fr}.subhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.subhead h2{margin:0}.list{display:grid;gap:10px}.jobrow{border:1px solid var(--border);border-radius:14px;padding:14px;display:flex;gap:12px;align-items:center;justify-content:space-between}.jobrow-main{min-width:0;flex:1}.jobrow strong{display:block;font-weight:800}.jobrow .meta{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis}.jobrow .right{display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:flex-end}.circle{height:39px;width:39px;display:grid;place-items:center;border-radius:12px;background:var(--cream);color:var(--forest);font-weight:850;flex:none}.searchtools{display:flex;gap:11px;margin:0 0 16px;flex-wrap:wrap}.searchtools input{flex:1;min-width:185px}.searchtools select{width:auto;min-width:150px}.sectionintro{display:flex;gap:14px;align-items:end;justify-content:space-between;margin-bottom:20px}.sectionintro p{margin:6px 0 0;color:var(--muted);max-width:620px}.empty{padding:24px;border-radius:14px;background:#f5f7f4;border:1px dashed #c7d5cb;color:var(--muted);font-size:13px;text-align:center}.stack{display:grid;gap:14px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-bottom:12px}.field input,.field textarea{margin:0}.checkline{display:flex;gap:9px;align-items:flex-start;font-weight:500;font-size:13px;line-height:1.5;margin:12px 0}.checkline input{height:17px;width:17px;flex:none;margin:2px 0 0;accent-color:var(--forest)}.surface{padding:13px 14px;background:#f5f8f4;border:1px solid var(--border);border-radius:12px}.example{white-space:pre-wrap;word-break:break-word;font-size:13px;line-height:1.7;color:#34443b}.note{font-size:12px;color:var(--muted);line-height:1.6}.actioncard{background:#f8faf7;border-radius:14px;padding:14px}.statline{display:flex;gap:12px;justify-content:space-between;border-bottom:1px solid var(--border);padding:11px 0;font-size:13px}.statline:last-child{border:0}.statline span:last-child{font-weight:800}.bottomnav{display:none}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#203d32;color:#fff;padding:12px 16px;font-size:13px;border-radius:12px;z-index:200;max-width:90vw;box-shadow:0 12px 30px #0003;display:none}.toast.show{display:block}.overlay{position:fixed;inset:0;background:#0e221b9c;z-index:90;display:none;align-items:center;justify-content:center;padding:20px}.overlay.open{display:flex}.dialog{width:min(600px,100%);max-height:90vh;overflow:auto;background:white;border-radius:20px;padding:22px;box-shadow:0 18px 70px #0004}.dialogHeader{display:flex;align-items:start;justify-content:space-between;gap:15px}.xbtn{border:0;background:#f0f3ef;border-radius:10px;width:35px;height:35px;font-size:22px;color:#506357;flex:none}.modalfooter{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}.divider{height:1px;background:var(--border);margin:19px 0}.detailgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tag{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--teal)}.flex{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.helper{color:var(--muted);font-size:12px;margin-top:7px}.exportBar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:15px}.desktopOnly{display:inline}.footer{color:var(--muted);font-size:11px;margin-top:30px}.keyboard{font-size:11px;color:var(--muted);font-weight:600}
@@ -244,6 +244,18 @@ body.modal-scroll-locked{position:fixed!important;left:0;right:0;width:100%;over
  .dialog{padding-inline:13px}
  .profileRestoreStats{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+/* V3.7 account cards: fluid forms, never push the mobile viewport sideways. */
+.cloudCard{margin-bottom:16px;border:1px solid #c9dfd1;background:linear-gradient(125deg,#fff,#f3faf4)}
+.cloudAuthForm{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px}
+.cloudAuthForm .btn-row{grid-column:1/-1}
+.cloudDetails{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;min-width:0}
+.cloudDetails strong{overflow-wrap:anywhere}
+.cloudSyncBanner{margin-top:12px;padding:12px 14px;border:1px solid #d6e0d9;border-radius:10px;background:#f4f7f2;color:#355c45;font-size:13px;font-weight:700;overflow-wrap:anywhere}
+.cloudSyncBanner.pending{background:#fff3d8;border-color:#eecb86;color:#815a20}
+.cloudSyncBanner.error{background:#fff0ed;border-color:#edc2b9;color:#993a35}
+.cloudCard .btn-row .btn{white-space:normal}
+@media(max-width:700px){.cloudAuthForm{grid-template-columns:minmax(0,1fr)}.cloudCard .btn-row .btn{flex:1 1 auto}.topline{flex-wrap:wrap}}
 </style>
 </head>
 <body>
@@ -257,7 +269,7 @@ body.modal-scroll-locked{position:fixed!important;left:0;right:0;width:100%;over
 <input class="route-radio" type="radio" name="followup-page" id="page-settings" aria-label="Settings view">
 <div class="layout">
   <aside class="sidebar">
-    <div class="logo"><div class="logo-mark">↗</div><div class="logo-name">FollowUp<br>Studio<small>CLIENT DEMO • V3.6.1</small></div></div>
+    <div class="logo"><div class="logo-mark">↗</div><div class="logo-name">FollowUp<br>Studio<small>CLOUD BETA • V3.7</small></div></div>
     <nav class="nav" aria-label="Main navigation">
       <label class="navtab active" data-route="dashboard" for="page-dashboard" tabindex="0"><svg><use href="#i-grid"/></svg> Dashboard</label>
       <label class="navtab" data-route="followup" for="page-followup" tabindex="0"><svg><use href="#i-checklist"/></svg> Follow-Up Center</label>
@@ -267,11 +279,11 @@ body.modal-scroll-locked{position:fixed!important;left:0;right:0;width:100%;over
       <label class="navtab" data-route="todo" for="page-todo" tabindex="0"><svg><use href="#i-checklist"/></svg> To-Do List</label>
       <label class="navtab" data-route="settings" for="page-settings" tabindex="0"><svg><use href="#i-gear"/></svg> Settings</label>
     </nav>
-    <div class="sidebottom"><span class="demo-dot"></span>Browser-stored demo<br>Free post templates</div>
+    <div class="sidebottom"><span class="demo-dot"></span>Secure sign-in optional<br>Free post templates</div>
   </aside>
   <main class="content">
-    <div class="topline"><div><div class="eyebrow">SMALL BUSINESS FOLLOW-UP</div><div class="headline" style="font-weight:800" id="brandHeading">Demo Home Services</div></div><span class="pill amber">● DEMO MODE</span></div>
-    <div class="demoBanner"><strong>Safe demonstration:</strong> All example customers are fictional. This demo stores information only in this browser. Text messaging opens your phone’s Messages app for you to review and send. Post templates work without subscriptions or API keys. No customer messages or Facebook posts are sent automatically. <span id="previewNote" style="font-weight:650">You can switch pages in file preview. For editing, customer buttons, and saving, use a full browser-hosted copy.</span></div>
+    <div class="topline"><div><div class="eyebrow">SMALL BUSINESS FOLLOW-UP</div><div class="headline" style="font-weight:800" id="brandHeading">Demo Home Services</div></div><span id="cloudTopBadge" class="pill amber" role="status">● DEMO MODE</span></div>
+    <div class="demoBanner"><strong>Safe demonstration:</strong> Demo Mode uses fictional customers and stores data in this browser. In Cloud Mode, signed-in users can sync records to their private workspace. Text messaging opens your phone’s Messages app for you to review and send. Post templates work without subscriptions or API keys. No customer messages or Facebook posts are sent automatically. <span id="previewNote" style="font-weight:650">You can switch pages in file preview. For editing, customer buttons, and saving, use a full browser-hosted copy.</span></div>
     <section class="view active" id="view-dashboard">
       <div class="hero"><div><div class="eyebrow" style="color:#d1b179">WORK LESS. FOLLOW UP BETTER.</div><h1>Your customers, organized.</h1><p>Finish jobs with a guided checklist for review requests, photos, Facebook drafts, and follow-up reminders.</p><button class="btn" data-action="add">＋ Add a customer</button></div><div class="hero-icon" aria-hidden="true">✦</div></div>
       <div class="briefingHero" id="briefingHero">
@@ -290,7 +302,7 @@ body.modal-scroll-locked{position:fixed!important;left:0;right:0;width:100%;over
       </div>
     </section>
     <section class="view" id="view-followup">
-      <div class="sectionintro"><div><div class="eyebrow">SMART FOLLOW-UP CENTER · V3.6.1</div><h1>Know what to do next.</h1><p>A prioritized, local-only briefing based on saved jobs, sent review requests, scheduled appointments, and To-Do List due dates. Nothing is sent automatically.</p></div><button type="button" class="btn secondary" data-action="open-calendar">View calendar →</button></div>
+      <div class="sectionintro"><div><div class="eyebrow">SMART FOLLOW-UP CENTER · V3.7</div><h1>Know what to do next.</h1><p>A prioritized, local-only briefing based on saved jobs, sent review requests, scheduled appointments, and To-Do List due dates. Nothing is sent automatically.</p></div><button type="button" class="btn secondary" data-action="open-calendar">View calendar →</button></div>
       <div class="smartSummary" id="smartSummary" aria-label="Follow-up categories"></div>
       <div class="card" style="margin-bottom:14px"><div class="subhead"><h2 style="margin:0">Today's action list</h2><span class="pill gray" id="smartTotal">0 items</span></div>
         <div class="smartFilterBar" id="smartFilters" aria-label="Filter follow-up alerts">
@@ -319,7 +331,7 @@ body.modal-scroll-locked{position:fixed!important;left:0;right:0;width:100%;over
       <div class="card" style="margin-top:14px"><div class="subhead"><h2 id="calSelectedTitle">Scheduled jobs</h2><button class="btn secondary sm" data-action="schedule-selected">＋ Add here</button></div><div id="calendarDayList" class="list"></div></div>
     </section>
     <section class="view" id="view-content">
-      <div class="sectionintro"><div><div class="eyebrow">FACEBOOK POST TEMPLATES · V3.6.1</div><h1>Social posts, without a subscription.</h1><p>Choose a professional template, add approved job details, and create a ready-to-edit Facebook caption — right inside FollowUp Studio.</p></div><span class="pill">✓ Free templates</span></div>
+      <div class="sectionintro"><div><div class="eyebrow">FACEBOOK POST TEMPLATES · V3.7</div><h1>Social posts, without a subscription.</h1><p>Choose a professional template, add approved job details, and create a ready-to-edit Facebook caption — right inside FollowUp Studio.</p></div><span class="pill">✓ Free templates</span></div>
       <div class="ai-privacy">🔒 <strong>Works offline:</strong> No AI service, API key, paid account, or external text generation. Posts and drafts stay in this browser. Use only approved project details; never include private customer information or unapproved photos.</div>
       <div class="grid two-col">
         <div class="card"><div class="subhead"><h2>Build your Facebook post</h2><span class="pill gray">Professional style</span></div>
@@ -361,12 +373,31 @@ body.modal-scroll-locked{position:fixed!important;left:0;right:0;width:100%;over
     </section>
     <section class="view" id="view-settings">
       <div class="sectionintro"><div><div class="eyebrow">SETTINGS & DATA</div><h1>Make it yours.</h1><p>Configure the business details and review-request wording before demonstrating it.</p></div></div>
+      <section class="card cloudCard" id="cloudCard" aria-labelledby="cloudHeading">
+        <div class="subhead"><h2 id="cloudHeading">Account & Cloud Sync</h2><span id="cloudState" class="pill amber">Demo Mode</span></div>
+        <p class="note">Optional free-tier cloud sync keeps each signed-in account separate. Demo records stay on this device unless you explicitly import them. Automatic saves require an internet connection.</p>
+        <div id="cloudUnavailable" class="surface" hidden>Cloud setup is not configured yet. Work must deploy <code>cloud-config.js</code> with your Supabase Project URL and <strong>publishable</strong> key, and run the database migration. Demo Mode remains available.</div>
+        <div id="cloudLoggedOut">
+          <form id="cloudAuthForm" class="cloudAuthForm" autocomplete="on">
+            <div class="field"><label for="cloudEmail">Account email</label><input id="cloudEmail" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+            <div class="field"><label for="cloudPassword">Password</label><input id="cloudPassword" type="password" autocomplete="current-password" minlength="8" required placeholder="At least 8 characters"></div>
+            <div class="btn-row"><button class="btn" type="submit">Sign in</button><button type="button" class="btn secondary" data-action="cloud-signup">Create account</button></div>
+          </form>
+          <p class="note">Email verification may be required. If you sign up, check your inbox. Credentials are handled by Supabase Authentication, not stored in customer records.</p>
+        </div>
+        <div id="cloudLoggedIn" hidden>
+          <div class="cloudDetails"><div><strong id="cloudUserEmail"></strong><p class="note" style="margin:5px 0 0">Account-based workspace. Other user accounts cannot read this workspace under the database policies.</p></div><span class="pill gray" id="cloudRevision">Revision —</span></div>
+          <div id="cloudSyncBanner" class="cloudSyncBanner" role="status" aria-live="polite">Cloud status</div>
+          <div class="btn-row" style="margin-top:13px"><button class="btn secondary" type="button" data-action="cloud-refresh">↻ Refresh from cloud</button><button class="btn secondary" type="button" data-action="cloud-retry">↥ Retry pending save</button><button class="btn secondary" type="button" data-action="cloud-import-demo">↑ Import Demo Mode records</button><button class="btn secondary" type="button" data-action="cloud-save-backup">↓ Back up cloud data</button><button class="btn danger" type="button" data-action="cloud-signout">Sign out</button></div>
+          <p class="note" style="margin-top:13px">Use the import button once to move your existing browser records into this account. It replaces cloud data only after confirmation. A second device can sign in to the same account and reload the latest saved version. Simultaneous edits are not merged automatically.</p>
+        </div>
+      </section>
       <div class="grid two-col">
         <div class="card"><h2>Business details</h2><form id="settingsForm"><div class="field"><label for="businessName">Business name</label><input id="businessName" required maxlength="100"></div><div class="field"><label for="reviewUrl">Google review link</label><input id="reviewUrl" type="url" placeholder="Paste your real Google review link"></div><p class="note">Leave empty for a demo. You must enter a valid, approved link before using review requests with real customers.</p><div class="field"><label for="reviewTemplate">Review request template</label><textarea id="reviewTemplate" rows="6"></textarea><p class="small">Allowed placeholders: {firstName}, {business}, {service}, {reviewLink}.</p></div><button class="btn" type="submit">Save settings</button></form></div>
-        <div class="stack"><div class="card"><h2>Exports & testing</h2><p class="note">Your records are stored in this browser only. Export a complete JSON backup regularly and keep it in a private, secure location. JSON backups are <strong>not encrypted</strong> and can include customer details and compressed photo previews.</p><div class="btn-row"><button class="btn" data-action="backup">↓ Download full backup</button><button class="btn secondary" data-action="restore-open">↑ Restore from backup</button><button class="btn secondary" data-action="csv">Export jobs CSV</button><button class="btn secondary" data-action="reset">Reset sample data</button></div><input id="restoreInput" type="file" accept=".json,application/json" hidden aria-label="Choose backup JSON"><div class="backupStatus" id="backupStatus" role="status">No backup prepared this session.</div></div><div class="card"><h2>Dialog preferences</h2><p class="note">If you previously selected “Do not show me this message again,” you can turn those confirmations back on.</p><button type="button" class="btn secondary" data-action="restore-confirmations">Restore all confirmation messages</button></div><div class="card"><h2>Before selling this</h2><p class="note">A production system needs secure login, encrypted server-side storage, isolated business accounts, automated backups, an audit trail, approved messaging integrations, and clear consent. This prototype is for sales demonstrations and private testing, not live customer records.</p></div></div>
+        <div class="stack"><div class="card"><h2>Exports & testing</h2><p class="note">Demo Mode stores records in this browser. Cloud Mode stores a separate account workspace. Export a complete JSON backup regularly and keep it in a private, secure location. JSON backups are <strong>not encrypted</strong> and can include customer details and compressed photo previews.</p><div class="btn-row"><button class="btn" data-action="backup">↓ Download full backup</button><button class="btn secondary" data-action="restore-open">↑ Restore from backup</button><button class="btn secondary" data-action="csv">Export jobs CSV</button><button class="btn secondary" data-action="reset">Reset sample data</button></div><input id="restoreInput" type="file" accept=".json,application/json" hidden aria-label="Choose backup JSON"><div class="backupStatus" id="backupStatus" role="status">No backup prepared this session.</div></div><div class="card"><h2>Dialog preferences</h2><p class="note">If you previously selected “Do not show me this message again,” you can turn those confirmations back on.</p><button type="button" class="btn secondary" data-action="restore-confirmations">Restore all confirmation messages</button></div><div class="card"><h2>Before selling this</h2><p class="note">V3.7 adds account login, Supabase-managed encrypted transport/storage and account-level row security. It still needs independently reviewed policies, a private photo storage solution, automated server backups, audit logging, recovery tests, and a full privacy review before real customer use. Free projects may pause when idle.</p></div></div>
       </div>
     </section>
-    <div class="footer">FollowUp Studio V3.6 · Customer Profiles · Backup & Restore · Fictional data only</div>
+    <div class="footer">FollowUp Studio V3.7 · Cloud Beta · Private accounts · Demo data only until security review</div>
   </main>
 </div>
 <details class="floatingNav" id="mobileMenu">
@@ -394,6 +425,8 @@ body.modal-scroll-locked{position:fixed!important;left:0;right:0;width:100%;over
   <div class="confirmActions"><button type="button" class="confirmNo" id="confirmNo">Cancel</button><button type="button" class="confirmYes" id="confirmYes">Continue</button></div>
 </dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./cloud-config.js"></script>
 <script>
 (()=>{'use strict';
 const KEY='followup_studio_demo_v1';
@@ -412,6 +445,7 @@ const sample=()=>({business:'Demo Home Services',reviewUrl:'',template:DEFAULT_T
  {id:'j5',name:'Casey Bennett',phone:'',service:'Fence repair',town:'Republic',notes:'Example request not sent',permission:true,optOut:false,status:'completed',createdAt:ago(5),completedAt:ago(2),sentAt:null,followupAt:null,reviewAt:null}
 ]});
 function load(){try{const x=JSON.parse(localStorage.getItem(KEY));if(x&&Array.isArray(x.jobs)&&typeof x.business==='string')return x}catch(e){}return sample()}
+ let localDemoData=load();
  let db=load(),currentRoute='dashboard',selectedId=null,composeMode='review';
  if(!Array.isArray(db.todos))db.todos=[];
  if(!Array.isArray(db.aiDrafts))db.aiDrafts=[];
@@ -449,7 +483,7 @@ function profileJobGroups(c){
 const $=(q,root=document)=>root.querySelector(q);
 const $$=(q,root=document)=>Array.from(root.querySelectorAll(q));
 const esc=x=>String(x??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
- function save(){try{localStorage.setItem(KEY,JSON.stringify(db));return true}catch(e){toast('Unable to save browser data. Check available storage.','error');return false}}
+ function save(){if(cloud.user&&!cloud.ready){toast('Cloud workspace is not loaded. No changes saved.','error');return false}if(cloud.user){cloud.dirty=true;queueCloudSave();updateCloudUI();return true}try{localStorage.setItem(KEY,JSON.stringify(db));localDemoData=JSON.parse(JSON.stringify(db));return true}catch(e){toast('Unable to save browser data. Check available storage.','error');return false}}
  function toast(message,type='success'){const e=$('#toast');e.textContent=message;e.className='toast show '+(type==='error'?'error':'success');clearTimeout(toast.timer);toast.timer=setTimeout(()=>e.classList.remove('show'),3500)}
 const DIALOG_PREF_KEY='followup-studio-hidden-dialogs-v1';
 function hiddenDialogIds(){try{const list=JSON.parse(localStorage.getItem(DIALOG_PREF_KEY)||'[]');return Array.isArray(list)?list:[]}catch(e){return []}}
@@ -605,7 +639,7 @@ function renderSmartCenter(){
 }
 
 function renderSettings(){$('#businessName').value=db.business;$('#reviewUrl').value=db.reviewUrl||'';$('#reviewTemplate').value=db.template||DEFAULT_TEMPLATE}
-function render(){renderDashboard();renderJobs();renderCalendar();renderTodos();renderAiJobPicker();renderAiDrafts();renderSmartCenter();if(currentRoute==='settings')renderSettings();renderBackupStatus()}
+function render(){renderDashboard();renderJobs();renderCalendar();renderTodos();renderAiJobPicker();renderAiDrafts();renderSmartCenter();if(currentRoute==='settings')renderSettings();renderBackupStatus();updateCloudUI()}
 // Keep iOS Safari from rubber-banding the document underneath dialogs.
 // Multiple layers may be open together: preserve the lock until all close.
 const backgroundLocks=new Set();
@@ -947,22 +981,22 @@ async function chooseBackupFile(file){
   const source=await file.text();if(source.length>9*1024*1024)throw Error('Backup is too large.');
   const checked=restoreValidate(JSON.parse(source));pendingRestore=checked;
   const d=checked.db;
-  modal('Review backup before restoring',`<p class="note">You are about to <strong>replace all existing browser records</strong> on this device. Download a backup of the current records first. Nothing is uploaded to a server.</p><div class="profileRestoreStats"><div><strong>${d.customers.length}</strong><small>Customers</small></div><div><strong>${d.jobs.length}</strong><small>Jobs</small></div><div><strong>${d.todos.length}</strong><small>Tasks</small></div><div><strong>${d.aiDrafts.length}</strong><small>Drafts</small></div></div><p class="note">Business: <strong>${esc(d.business)}</strong>. The restored file may include unencrypted contact details and image previews.</p><label class="checkline"><input type="checkbox" id="restoreAcknowledge"> I understand that restoring replaces the current browser data.</label><div class="modalfooter"><button class="btn danger" type="button" data-action="restore-apply">Restore this backup</button><button class="btn secondary" type="button" data-action="restore-cancel">Cancel</button></div>`);
+  modal('Review backup before restoring',`<p class="note">You are about to <strong>replace the current workspace records</strong>. Download a backup of the current records first. In Cloud Mode, restored data is uploaded after confirmation; export an independent backup first.</p><div class="profileRestoreStats"><div><strong>${d.customers.length}</strong><small>Customers</small></div><div><strong>${d.jobs.length}</strong><small>Jobs</small></div><div><strong>${d.todos.length}</strong><small>Tasks</small></div><div><strong>${d.aiDrafts.length}</strong><small>Drafts</small></div></div><p class="note">Business: <strong>${esc(d.business)}</strong>. The restored file may include unencrypted contact details and image previews.</p><label class="checkline"><input type="checkbox" id="restoreAcknowledge"> I understand that restoring replaces this workspace data.</label><div class="modalfooter"><button class="btn danger" type="button" data-action="restore-apply">Restore this backup</button><button class="btn secondary" type="button" data-action="restore-cancel">Cancel</button></div>`);
  }catch(err){pendingRestore=null;toast('Backup rejected: '+(err?.message||'Unable to read file.'),'error')}
 }
 async function applyRestore(){
  if(!pendingRestore)return;
  if(!$('#restoreAcknowledge')?.checked){toast('Confirm that you understand this will replace browser data.','error');return}
- if(!(await askUser('Replace all current local customer, job, task and draft records with this backup?','restore-all-data',{yes:'Replace local records',danger:true,rememberable:false})))return;
+ if(!(await askUser('Replace all customer, job, task and draft records in this workspace with this backup?','restore-all-data',{yes:'Replace local records',danger:true,rememberable:false})))return;
  const before=JSON.stringify(db),restore=pendingRestore;
  try{
   const next=JSON.stringify(restore.db);
-  localStorage.setItem(KEY,next);db=restore.db;pendingRestore=null;
+  if(cloud.user){db=restore.db;cloud.dirty=true;queueCloudSave();}else{localStorage.setItem(KEY,next);db=restore.db;localDemoData=JSON.parse(next);}pendingRestore=null;
   if(restore.preferences){try{localStorage.setItem(DIALOG_PREF_KEY,JSON.stringify(restore.preferences))}catch(e){}}
-  currentAiDraftId=null;$('#searchJobs').value='';$('#statusFilter').value='all';smartFilter='all';closeModal();navigate('dashboard');renderBackupStatus();toast('✓ Backup restored. All local records replaced.');
+  currentAiDraftId=null;$('#searchJobs').value='';$('#statusFilter').value='all';smartFilter='all';closeModal();navigate('dashboard');renderBackupStatus();toast(cloud.user?'Backup loaded. Check cloud sync status.':'✓ Backup restored. All demo records replaced.');
  }catch(e){db=JSON.parse(before);toast('Restore failed. Original local records remain unchanged.','error')}
 }
-async function applyAction(e){const el=e.target.closest('[data-action]');if(!el)return;const op=el.dataset.action,id=el.dataset.id;if(op==='profile')openProfile(id);else if(op==='profile-save')saveProfile(id);else if(op==='profile-add-job')addCustomerJob(id);else if(op==='restore-open'){$('#restoreInput').value='';$('#restoreInput').click()}else if(op==='restore-apply')await applyRestore();else if(op==='restore-cancel'){pendingRestore=null;closeModal()}else if(op==='open-followup')navigate('followup');
+async function applyAction(e){const el=e.target.closest('[data-action]');if(!el)return;const op=el.dataset.action,id=el.dataset.id;if(cloud.user&&!cloud.ready&&!op.startsWith('cloud-')){toast('Cloud workspace unavailable. Editing is paused.','error');return;}if(op.startsWith('cloud-')){await handleCloudAction(op);return;} if(op==='profile')openProfile(id);else if(op==='profile-save')saveProfile(id);else if(op==='profile-add-job')addCustomerJob(id);else if(op==='restore-open'){$('#restoreInput').value='';$('#restoreInput').click()}else if(op==='restore-apply')await applyRestore();else if(op==='restore-cancel'){pendingRestore=null;closeModal()}else if(op==='open-followup')navigate('followup');
  else if(op==='open-calendar')navigate('calendar');
  else if(op==='open-todos')navigate('todo');
  else if(op==='smart-filter'){smartFilter=el.dataset.filter||'all';navigate('followup');}
@@ -970,10 +1004,140 @@ async function applyAction(e){const el=e.target.closest('[data-action]');if(!el)
  else if(op==='smart-task-done'){const task=db.todos.find(t=>t.id===id);if(task&&!task.done){task.done=true;if(save()){render();toast('✓ Task completed.')}}}
  else if(op==='smart-snooze'){const j=getJob(id);if(j&&['completed'].includes(j.status)&&!optedOut(j)){j.followupSnoozedUntil=ahead(3);if(save()){render();toast('✓ Reminder snoozed for 3 days.')}}}
  else if(op==='smart-unsnooze'){const j=getJob(id);if(j){j.followupSnoozedUntil=null;if(save()){render();toast('✓ Reminder restored.')}}}
- else if(op==='add')addModal();else if(op==='save-customer')saveCustomer();else if(op==='open-sms')openSMS(id);else if(op==='metric-filter'){$('#statusFilter').value=el.dataset.filter;$('#searchJobs').value='';navigate('jobs')}else if(op==='month-prev'){calendarMonth.setMonth(calendarMonth.getMonth()-1);renderCalendar()}else if(op==='month-next'){calendarMonth.setMonth(calendarMonth.getMonth()+1);renderCalendar()}else if(op==='calendar-day'){selectedDay=el.dataset.date;renderCalendar()}else if(op==='schedule-selected')addModal(selectedDay);else if(op==='delete-task'){if(await askUser('Delete this task?','delete-task',{yes:'Delete task',danger:true})){db.todos=db.todos.filter(t=>t.id!==id);if(save()){render();toast('✓ Task removed.')}}}else if(op==='close')closeModal();else if(op==='detail')detailModal(id);else if(op==='complete')openCompletion(id);else if(op==='completion-save')saveCompletion(id);else if(op==='completion-remove-photo'){if(completionPhotos&&['before','after'].includes(el.dataset.photo)){completionPhotos[el.dataset.photo]='';showCompletionPhoto(el.dataset.photo)}}else if(op==='completion-open-draft')completionOpenDraft(id);else if(op==='compose')compose(id,el.dataset.mode);else if(op==='marksent'){const j=getJob(id);if(j&&j.permission&&!optedOut(j)&&await askUser('Only confirm if you actually sent the review request outside this app. Continue?','mark-request-sent',{yes:'Mark as sent'}))update(id,j=>{j.sentAt=today();j.followupSnoozedUntil=null})}else if(op==='markfollow'){const j=getJob(id);if(j&&dueFollowup(j)&&j.permission&&await askUser('Only confirm if you actually sent this follow-up. Continue?','mark-followup-sent',{yes:'Mark as sent'}))update(id,j=>{j.followupAt=today();j.followupSnoozedUntil=null})}else if(op==='toggle-review'){const j=getJob(id);if(j&&await askUser(j.reviewAt?'Remove the review-received mark?':'Did you personally verify that this customer left a review?',j.reviewAt?'remove-review-record':'verify-review-record',{yes:j.reviewAt?'Remove mark':'Mark verified'}))update(id,j=>j.reviewAt=j.reviewAt?null:today())}else if(op==='save-detail'){const j=getJob(id);if(!j)return;update(id,j=>{j.notes=$('#dNotes').value.trim();j.phone=$('#dPhone').value.trim();const related=customerForJob(j);if(related){related.phone=j.phone;db.jobs.filter(x=>x.customerId===related.id).forEach(x=>x.phone=j.phone)}j.scheduledAt=$('#dDate').value||null;j.scheduledTime=$('#dTime').value||null;j.permission=$('#dPermission').checked;j.optOut=$('#dOptout').checked})}else if(op==='copy-message')copy($('#messageToCopy').value);else if(op==='template-create')templateCreate();else if(op==='ai-save-draft')aiSaveDraft();else if(op==='ai-copy-draft'){const t=$('#aiDraftEditor').value.trim();if(t)copy(t);else toast('Nothing to copy yet.','error')}else if(op==='ai-new-draft')aiNewDraft();else if(op==='template-clear'){$('#socialJob').value='';$('#socialService').value='';$('#socialDetails').value='';$('#socialArea').value='';$('#socialCta').value='message';toast('Post fields cleared.')}else if(op==='ai-load-draft')aiDraftLoad(id);else if(op==='ai-delete-draft'){if(await askUser('Delete this saved draft?','delete-draft',{yes:'Delete draft',danger:true})){db.aiDrafts=db.aiDrafts.filter(x=>x.id!==id);if(currentAiDraftId===id)aiNewDraft();if(save()){renderAiDrafts();toast('Draft deleted.')}}}else if(op==='restore-confirmations')restoreConfirmations();else if(op==='report')report();else if(op==='backup')exportFullBackup();else if(op==='csv')exportCSV();else if(op==='reset'){if(await askUser('Replace current local demo data with the original fictional customers?','reset-demo',{yes:'Reset data',danger:true,rememberable:false})){db=sample();migrateCustomers(db);save();render();toast('✓ Demo reset to sample customers.')}}}
-function bind(){document.addEventListener('click',e=>{if(e.target.closest('[data-action="close-mobile-menu"]')){const m=$('#mobileMenu');if(m)m.open=false;return;}const route=e.target.closest('[data-route]');if(route){navigate(route.dataset.route);return}applyAction(e)});$('#searchJobs').addEventListener('input',renderJobs);$('#statusFilter').addEventListener('change',renderJobs);$('#settingsForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#businessName').value.trim(),template=$('#reviewTemplate').value.trim(),reviewUrl=$('#reviewUrl').value.trim();if(!name||!template){toast('Business name and template cannot be blank.');return}if(reviewUrl){try{const u=new URL(reviewUrl);if(!['http:','https:'].includes(u.protocol))throw Error()}catch(e){toast('Enter a complete review link starting with https://');return}}db.business=name;db.reviewUrl=reviewUrl;db.template=template;if(save()){render();toast('✓ Business settings saved.')}});$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();const m=$('#mobileMenu');if(m)m.open=false}});document.addEventListener('submit',e=>{if(e.target.id==='customerForm'){e.preventDefault();saveCustomer()}});$('#todoForm').addEventListener('submit',addTask);$('#restoreInput').addEventListener('change',e=>{const f=e.target.files?.[0];if(f)chooseBackupFile(f);e.target.value=''});document.addEventListener('change',e=>{if(e.target?.matches?.('[data-completion-photo]'))handleCompletionPhoto(e.target)});document.addEventListener('change',e=>{const id=e.target?.dataset?.taskId;if(!id)return;const task=db.todos.find(x=>x.id===id);if(task){task.done=e.target.checked;if(save()){render();toast(task.done?'✓ Task completed.':'✓ Task reopened.')}}})}
-bind();render();initAi();
-const previewNote=$('#previewNote');if(previewNote)previewNote.textContent='Interactive demo is active. All post templates work without paid APIs. Drafts stay in this browser.';
+ else if(op==='add')addModal();else if(op==='save-customer')saveCustomer();else if(op==='open-sms')openSMS(id);else if(op==='metric-filter'){$('#statusFilter').value=el.dataset.filter;$('#searchJobs').value='';navigate('jobs')}else if(op==='month-prev'){calendarMonth.setMonth(calendarMonth.getMonth()-1);renderCalendar()}else if(op==='month-next'){calendarMonth.setMonth(calendarMonth.getMonth()+1);renderCalendar()}else if(op==='calendar-day'){selectedDay=el.dataset.date;renderCalendar()}else if(op==='schedule-selected')addModal(selectedDay);else if(op==='delete-task'){if(await askUser('Delete this task?','delete-task',{yes:'Delete task',danger:true})){db.todos=db.todos.filter(t=>t.id!==id);if(save()){render();toast('✓ Task removed.')}}}else if(op==='close')closeModal();else if(op==='detail')detailModal(id);else if(op==='complete')openCompletion(id);else if(op==='completion-save')saveCompletion(id);else if(op==='completion-remove-photo'){if(completionPhotos&&['before','after'].includes(el.dataset.photo)){completionPhotos[el.dataset.photo]='';showCompletionPhoto(el.dataset.photo)}}else if(op==='completion-open-draft')completionOpenDraft(id);else if(op==='compose')compose(id,el.dataset.mode);else if(op==='marksent'){const j=getJob(id);if(j&&j.permission&&!optedOut(j)&&await askUser('Only confirm if you actually sent the review request outside this app. Continue?','mark-request-sent',{yes:'Mark as sent'}))update(id,j=>{j.sentAt=today();j.followupSnoozedUntil=null})}else if(op==='markfollow'){const j=getJob(id);if(j&&dueFollowup(j)&&j.permission&&await askUser('Only confirm if you actually sent this follow-up. Continue?','mark-followup-sent',{yes:'Mark as sent'}))update(id,j=>{j.followupAt=today();j.followupSnoozedUntil=null})}else if(op==='toggle-review'){const j=getJob(id);if(j&&await askUser(j.reviewAt?'Remove the review-received mark?':'Did you personally verify that this customer left a review?',j.reviewAt?'remove-review-record':'verify-review-record',{yes:j.reviewAt?'Remove mark':'Mark verified'}))update(id,j=>j.reviewAt=j.reviewAt?null:today())}else if(op==='save-detail'){const j=getJob(id);if(!j)return;update(id,j=>{j.notes=$('#dNotes').value.trim();j.phone=$('#dPhone').value.trim();const related=customerForJob(j);if(related){related.phone=j.phone;db.jobs.filter(x=>x.customerId===related.id).forEach(x=>x.phone=j.phone)}j.scheduledAt=$('#dDate').value||null;j.scheduledTime=$('#dTime').value||null;j.permission=$('#dPermission').checked;j.optOut=$('#dOptout').checked})}else if(op==='copy-message')copy($('#messageToCopy').value);else if(op==='template-create')templateCreate();else if(op==='ai-save-draft')aiSaveDraft();else if(op==='ai-copy-draft'){const t=$('#aiDraftEditor').value.trim();if(t)copy(t);else toast('Nothing to copy yet.','error')}else if(op==='ai-new-draft')aiNewDraft();else if(op==='template-clear'){$('#socialJob').value='';$('#socialService').value='';$('#socialDetails').value='';$('#socialArea').value='';$('#socialCta').value='message';toast('Post fields cleared.')}else if(op==='ai-load-draft')aiDraftLoad(id);else if(op==='ai-delete-draft'){if(await askUser('Delete this saved draft?','delete-draft',{yes:'Delete draft',danger:true})){db.aiDrafts=db.aiDrafts.filter(x=>x.id!==id);if(currentAiDraftId===id)aiNewDraft();if(save()){renderAiDrafts();toast('Draft deleted.')}}}else if(op==='restore-confirmations')restoreConfirmations();else if(op==='report')report();else if(op==='backup')exportFullBackup();else if(op==='csv')exportCSV();else if(op==='reset'){if(cloud.user){toast('Reset is disabled in Cloud Mode. Sign out to reset demo data.','error');return;}if(await askUser('Replace current local demo data with the original fictional customers?','reset-demo',{yes:'Reset data',danger:true,rememberable:false})){db=sample();migrateCustomers(db);save();render();toast('✓ Demo reset to sample customers.')}}}
+// V3.7: user-isolated cloud workspace. No service-role key, passwords, or customer snapshots go into GitHub.
+const cloud={client:null,user:null,ready:false,revision:0,dirty:false,saving:false,conflict:false,timer:null,error:'',loading:false};
+const cloudSetup=window.FOLLOWUP_CLOUD_CONFIG||{};
+const cloudConfigured=()=>/^https:\/\/[a-z0-9-]+\.supabase\.co\/?$/.test(String(cloudSetup.url||''))&&/^[A-Za-z0-9_.-]{16,}$/.test(String(cloudSetup.publishableKey||''));
+function blankCloudWorkspace(){const d=sample();d.jobs=[];d.customers=[];d.todos=[];d.aiDrafts=[];return d}
+function refreshWorkspaceDisplay(){currentAiDraftId=null;$('#searchJobs').value='';$('#statusFilter').value='all';smartFilter='all';closeModal();navigate('dashboard');render()}
+function updateCloudUI(){
+ const enabled=cloudConfigured()&&!!cloud.client;
+ $('#cloudUnavailable').hidden=enabled;
+ $('#cloudLoggedOut').hidden=!!cloud.user;
+ $('#cloudLoggedIn').hidden=!cloud.user;
+ const badge=$('#cloudTopBadge');const state=$('#cloudState');
+ if(!enabled){badge.textContent='● DEMO MODE';state.textContent='Cloud not configured';}
+ else if(!cloud.user){badge.textContent='● DEMO MODE';state.textContent='Sign in available';}
+ else {badge.textContent=cloud.conflict?'● SYNC CONFLICT':cloud.dirty?'● UNSYNCED':cloud.error?'● CLOUD ERROR':!cloud.ready?'● LOADING CLOUD':'● CLOUD MODE';state.textContent=cloud.dirty?'Unsynced changes':cloud.error?'Sync error':'Account connected';}
+ badge.className='pill '+(cloud.user&&!cloud.dirty&&!cloud.conflict&&!cloud.error?'':'amber');
+ $('#cloudUserEmail').textContent=cloud.user?.email||'Signed-in account';
+ $('#cloudRevision').textContent=cloud.user?'Version '+cloud.revision:'Version —';
+ const banner=$('#cloudSyncBanner');
+ banner.className='cloudSyncBanner'+(cloud.conflict||cloud.error?' error':cloud.dirty?' pending':'');
+ banner.textContent=cloud.conflict?'Conflict: another device changed this workspace. Download a full JSON backup of your unsynced changes before pressing Refresh. Changes are NOT silently overwritten.':
+ cloud.error?'Cloud sync paused: '+cloud.error+' Save an independent backup before leaving this page.':!cloud.ready?'Loading private cloud workspace. Editing is disabled until loading succeeds.':
+ cloud.saving?'Saving to the cloud…':cloud.dirty?'Unsynced edits on this device. Keep the page open until cloud save completes.':
+ 'All changes synced to the private workspace. Export backups regularly.';
+ const banner2=$('.demoBanner');
+ if(banner2&&cloud.user){banner2.querySelector('strong').textContent='Private cloud beta:';}
+ else if(banner2){banner2.querySelector('strong').textContent='Safe demonstration:';}
+}
+function queueCloudSave(ms=650){
+ if(!cloud.user||cloud.conflict)return;
+ clearTimeout(cloud.timer);cloud.timer=setTimeout(()=>cloudFlush(),ms);
+}
+async function cloudFlush(){
+ if(!cloud.user||!cloud.ready||cloud.saving||cloud.conflict||!cloud.dirty)return;
+ const snapshot=JSON.stringify(db);
+ if(snapshot.length>7_000_000){cloud.error='Cloud snapshot exceeds 7 MB. Please reduce large photos and back up your data.';updateCloudUI();return;}
+ cloud.saving=true;cloud.error='';updateCloudUI();
+ const originalId=cloud.user.id;
+ try{
+  const {data,error}=await cloud.client.rpc('save_my_workspace',{p_expected_revision:cloud.revision,p_snapshot:JSON.parse(snapshot)});
+  if(error)throw error;
+  if(cloud.user?.id!==originalId)return;
+  const result=Array.isArray(data)?data[0]:data;
+  if(!result||result.saved!==true){cloud.conflict=true;cloud.error='A newer server version exists.';return;}
+  cloud.revision=Number(result.revision);
+  cloud.dirty=JSON.stringify(db)!==snapshot;
+ }catch(err){if(cloud.user?.id===originalId)cloud.error=safeText(err?.message||'Connection failed',220)}
+ finally{cloud.saving=false;updateCloudUI();if(cloud.dirty&&!cloud.conflict&&!cloud.error)queueCloudSave(300)}
+}
+async function cloudRead(){
+ const {data,error}=await cloud.client.from('followup_workspaces').select('snapshot,revision').eq('user_id',cloud.user.id).maybeSingle();
+ if(error)throw error;
+ return data;
+}
+async function cloudRefresh(silent=false){
+ if(!cloud.user||cloud.loading)return;
+ if(cloud.dirty&&!cloud.conflict){if(!silent)toast('You have unsynced edits. Wait for the cloud save or download a backup.','error');return;}
+ if(cloud.conflict){if(silent)return;const ok=await askUser('Discard this device’s unsynced edits and load the newer cloud version? Export a JSON backup first.','cloud-discard-conflict',{yes:'Discard local edits',danger:true,rememberable:false});if(!ok)return;}
+ cloud.loading=true;
+ try{
+  let record=await cloudRead();
+  if(!record){ // new users get an empty private workspace, not an automatic upload of browser demo records
+   const {data,error}=await cloud.client.rpc('save_my_workspace',{p_expected_revision:0,p_snapshot:blankCloudWorkspace()});
+   if(error)throw error;
+   record=await cloudRead();
+  }
+  if(!record)throw Error('Workspace creation failed. Check the SQL setup.');
+  const value=restoreValidate(record.snapshot).db;
+  db=value;cloud.ready=true;cloud.revision=Number(record.revision)||0;cloud.dirty=false;cloud.conflict=false;cloud.error='';
+  refreshWorkspaceDisplay();if(!silent)toast('✓ Latest cloud workspace loaded.');
+ }catch(err){cloud.error=safeText(err?.message||'Unable to read workspace',200);if(!silent)toast('Cloud load failed. Your demo data was not changed.','error')}
+ finally{cloud.loading=false;updateCloudUI()}
+}
+async function cloudSessionEnter(user){
+ if(!user||cloud.user?.id===user.id)return;
+ // Never upload local demo or other account's in-memory data without explicit consent.
+ cloud.user={id:user.id,email:user.email};cloud.ready=false;cloud.revision=0;cloud.conflict=false;cloud.dirty=false;cloud.error='';
+ db=blankCloudWorkspace();refreshWorkspaceDisplay();await cloudRefresh(false);
+}
+function cloudSessionLeave(){
+ clearTimeout(cloud.timer);cloud.user=null;cloud.ready=false;cloud.revision=0;cloud.dirty=false;cloud.conflict=false;cloud.error='';cloud.saving=false;
+ db=load();if(!Array.isArray(db.todos))db.todos=[];if(!Array.isArray(db.aiDrafts))db.aiDrafts=[];migrateCustomers(db);refreshWorkspaceDisplay();updateCloudUI();
+}
+async function cloudBoot(){
+ updateCloudUI();
+ if(!cloudConfigured()||!window.supabase?.createClient)return;
+ try{
+  cloud.client=window.supabase.createClient(cloudSetup.url,cloudSetup.publishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+  updateCloudUI();
+  const {data,error}=await cloud.client.auth.getSession();if(error)throw error;
+  if(data?.session?.user)await cloudSessionEnter(data.session.user);
+  cloud.client.auth.onAuthStateChange((event,session)=>{
+   if(event==='SIGNED_OUT'){cloudSessionLeave();return;}
+   if(event==='SIGNED_IN'&&session?.user&&cloud.user?.id!==session.user.id){setTimeout(()=>cloudSessionEnter(session.user),0);}
+  });
+ }catch(err){cloud.error=safeText(err?.message||'Cloud initialization failed',160);updateCloudUI();}
+}
+async function cloudLogin(create){
+ if(!cloud.client){toast('Cloud is not configured. Demo Mode remains available.','error');return}
+ const email=$('#cloudEmail').value.trim(),password=$('#cloudPassword').value;
+ if(!email||password.length<8){toast('Enter a valid email and password of at least 8 characters.','error');return}
+ try{
+  const result=create?await cloud.client.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}}):await cloud.client.auth.signInWithPassword({email,password});
+  if(result.error)throw result.error;
+  $('#cloudPassword').value='';
+  if(result.data?.session?.user){await cloudSessionEnter(result.data.session.user);toast(cloud.ready?'✓ Signed in. Private cloud workspace loaded.':'Signed in, but cloud loading failed. Check connection and SQL setup.',cloud.ready?'success':'error');}
+  else toast('Account created. Check your email to verify, then sign in.');
+ }catch(err){toast('Account action failed: '+safeText(err?.message||'Try again',140),'error')}
+}
+async function handleCloudAction(op){
+ if(op==='cloud-signup'){await cloudLogin(true);return}
+ if(op==='cloud-save-backup'){exportFullBackup();return}
+ if(!cloud.user){toast('Sign in first to manage a cloud workspace.','error');return}
+ if(op!=='cloud-signout'&&!cloud.ready){toast('Wait for the cloud workspace to load.','error');return}
+ if(op==='cloud-signout'){
+  if(cloud.dirty){await cloudFlush();if(cloud.dirty){toast('Unsynced changes remain. Export a backup and resolve sync before signing out.','error');return}}
+  const {error}=await cloud.client.auth.signOut();if(error)toast('Sign-out failed: '+safeText(error.message,120),'error');else cloudSessionLeave();return;
+ }
+ if(op==='cloud-retry'){cloud.error='';queueCloudSave(0);updateCloudUI();return}
+ if(op==='cloud-refresh'){await cloudRefresh(false);return}
+ if(op==='cloud-import-demo'){
+  if(cloud.dirty){toast('Wait for the current cloud save to complete before importing.','error');return}
+  const local=load();if(!local?.jobs){toast('No demo records to import.','error');return}
+  const ok=await askUser('Replace your signed-in cloud workspace with the browser’s Demo Mode records? Download a cloud backup first.','cloud-import-demo',{yes:'Import demo records',danger:true,rememberable:false});
+  if(!ok)return;
+  db=JSON.parse(JSON.stringify(local));if(!Array.isArray(db.todos))db.todos=[];if(!Array.isArray(db.aiDrafts))db.aiDrafts=[];migrateCustomers(db);
+  cloud.dirty=true;refreshWorkspaceDisplay();queueCloudSave(0);toast('Import queued. Wait until status says synced before leaving.');
+ }
+}
+
+function bind(){ $('#cloudAuthForm').addEventListener('submit',e=>{e.preventDefault();cloudLogin(false)});window.addEventListener('online',()=>{if(cloud.user&&cloud.dirty&&!cloud.conflict)queueCloudSave(0)});document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&cloud.user&&!cloud.dirty&&!cloud.saving)cloudRefresh(true)});window.addEventListener('beforeunload',e=>{if(cloud.user&&cloud.dirty){e.preventDefault();e.returnValue='';}});document.addEventListener('click',e=>{if(e.target.closest('[data-action="close-mobile-menu"]')){const m=$('#mobileMenu');if(m)m.open=false;return;}const route=e.target.closest('[data-route]');if(route){navigate(route.dataset.route);return}applyAction(e)});$('#searchJobs').addEventListener('input',renderJobs);$('#statusFilter').addEventListener('change',renderJobs);$('#settingsForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#businessName').value.trim(),template=$('#reviewTemplate').value.trim(),reviewUrl=$('#reviewUrl').value.trim();if(!name||!template){toast('Business name and template cannot be blank.');return}if(reviewUrl){try{const u=new URL(reviewUrl);if(!['http:','https:'].includes(u.protocol))throw Error()}catch(e){toast('Enter a complete review link starting with https://');return}}db.business=name;db.reviewUrl=reviewUrl;db.template=template;if(save()){render();toast('✓ Business settings saved.')}});$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();const m=$('#mobileMenu');if(m)m.open=false}});document.addEventListener('submit',e=>{if(e.target.id==='customerForm'){e.preventDefault();saveCustomer()}});$('#todoForm').addEventListener('submit',addTask);$('#restoreInput').addEventListener('change',e=>{const f=e.target.files?.[0];if(f)chooseBackupFile(f);e.target.value=''});document.addEventListener('change',e=>{if(e.target?.matches?.('[data-completion-photo]'))handleCompletionPhoto(e.target)});document.addEventListener('change',e=>{const id=e.target?.dataset?.taskId;if(!id)return;const task=db.todos.find(x=>x.id===id);if(task){task.done=e.target.checked;if(save()){render();toast(task.done?'✓ Task completed.':'✓ Task reopened.')}}})}
+bind();render();initAi();cloudBoot();
+const previewNote=$('#previewNote');if(previewNote)previewNote.textContent='Post templates work without paid APIs. Sign in under Settings to use an isolated cloud workspace; Demo Mode keeps data in this browser.';
 document.addEventListener('keydown',e=>{const nav=e.target.closest('[data-route]');if(nav&&nav.tagName==='LABEL'&&(e.key==='Enter'||e.key===' ')){e.preventDefault();navigate(nav.dataset.route)}});
 
 })();
