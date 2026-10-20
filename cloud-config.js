@@ -1,5 +1,5 @@
-// Public browser configuration. Never use a service-role or secret key here.
+// Public Supabase browser configuration. Authorization is enforced by database RLS.
 window.FOLLOWUP_CLOUD_CONFIG = {
-  url: 'https://nazthxhqblyspjwqjtcb.supabase.co',
-  publishableKey: 'sb_publishable_9lC4jl59n0p9FcvvIpAlYw_NAelwLZA'
+  url: 'https://ldzdmhbdytxkxblcnpyq.supabase.co',
+  publishableKey: 'sb_publishable_WxSc07ZG_r9foUlym1htjw_6MxTSd3N'
 };
