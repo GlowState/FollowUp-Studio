@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#151719">
-<title>FollowUp Studio — V3.9.10 Clients &amp; App Identity</title>
+<title>FollowUp Studio — V3.9.11 Modern Glow &amp; Calendar</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="FollowUp Studio">
@@ -701,10 +701,124 @@ textarea::placeholder,input::placeholder{color:var(--muted);opacity:.83}
 .existingJobCustomer p{margin:9px 0 0}
 @media(max-width:400px){.existingJobCustomerRow{flex-direction:column}.existingJobCustomerRow .btn{width:100%}}
 .jobDetailActions>.btn:last-child:nth-child(odd){grid-column:1/-1}
+
+/* V3.9.11 — Modern Glow: visual-only styling that preserves all account and workspace data. */
+:root.v38Dark{
+ --glow-blue:#88b6f1;--glow-teal:#75d3c1;--glow-violet:#bb9af7;
+ --glow-amber:#e6b779;--glow-cyan:#70c5e5;--glow-green:#91d4a3;
+ --glow-pink:#d79ac9;--glow-red:#d9919a;--glow-slate:#a9bbd4;
+ --accent-text:#a7c7ec;--accent-button:#355f8b;
+}
+/* Distinct soft glows around Home tiles. Keep all labels and interaction surfaces intact. */
+.homeTileShell[data-tile-id="snapshot"]{--tile-glow:#88b6f1}
+.homeTileShell[data-tile-id="calendar"]{--tile-glow:#75d3c1}
+.homeTileShell[data-tile-id="customers"]{--tile-glow:#bb9af7}
+.homeTileShell[data-tile-id="jobs"]{--tile-glow:#e6b779}
+.homeTileShell[data-tile-id="followups"]{--tile-glow:#70c5e5}
+.homeTileShell[data-tile-id="todo"]{--tile-glow:#91d4a3}
+.homeTileShell[data-tile-id="post"]{--tile-glow:#d79ac9}
+.homeTileShell[data-tile-id="archive"]{--tile-glow:#d9919a}
+.homeTileShell[data-tile-id="settings"]{--tile-glow:#a9bbd4}
+.homeTileGrid .homeTileShell{isolation:isolate}
+.homeTileGrid .homeTileShell::before{
+ content:"";pointer-events:none;position:absolute;inset:3px;border-radius:22px;z-index:-1;
+ background:color-mix(in srgb,var(--tile-glow) 27%,transparent);filter:blur(15px);opacity:.60;
+ transition:opacity .2s ease;
+}
+:root.v38Dark .homeTileGrid .homeTileShell>.homeTile{
+ position:relative;overflow:hidden;isolation:isolate;
+ background:linear-gradient(156deg,color-mix(in srgb,var(--tile-glow) 9%,#303337) 0%,#22262b 42%,#1b1e23 100%)!important;
+ border:1px solid color-mix(in srgb,var(--tile-glow) 53%,#333a42)!important;
+ box-shadow:0 0 16px color-mix(in srgb,var(--tile-glow) 19%,transparent),0 8px 21px #0507086b,inset 0 1px 0 #ffffff19!important;
+ transition:box-shadow .17s,border-color .17s,transform .17s;
+}
+.homeTileGrid .homeTileShell>.homeTile::after{
+ content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+ background:linear-gradient(149deg,#ffffff13 0%,#ffffff05 23%,transparent 54%);
+}
+:root.v38Dark .homeTileGrid .homeTileShell>.homeTile:hover{
+ box-shadow:0 0 24px color-mix(in srgb,var(--tile-glow) 27%,transparent),0 12px 24px #0008,inset 0 1px 0 #ffffff23!important;
+ border-color:color-mix(in srgb,var(--tile-glow) 70%,#222c32)!important;
+}
+:root.v38Dark .homeTileGrid .homeTileIcon{
+ background:color-mix(in srgb,var(--tile-glow) 15%,#292c33)!important;
+ color:var(--tile-glow)!important;
+ box-shadow:inset 0 1px 0 #ffffff13,0 0 15px color-mix(in srgb,var(--tile-glow) 12%,transparent);
+}
+:root.v38Dark .homeTile strong{color:#f2f5f8}
+:root.v38Dark .homeTileDetail{color:#c0c6ce}
+/* Dark glass surfaces and understated colored details throughout the app. */
+:root.v38Dark .view:not(#view-home) .card,
+:root.v38Dark .view:not(#view-home) .briefingHero,
+:root.v38Dark .dialog{
+ background:linear-gradient(156deg,#ffffff07 0%,transparent 37%),#22262b!important;
+ border-color:#3d4754!important;
+ box-shadow:0 6px 24px #00000036,inset 0 1px 0 #ffffff12!important;
+}
+:root.v38Dark .view:not(#view-home) h1,
+:root.v38Dark .view:not(#view-home) h2{letter-spacing:-.55px}
+:root.v38Dark .view:not(#view-home) .eyebrow,
+:root.v38Dark .briefingEyebrow,
+:root.v38Dark .metricValue{color:#9dbfeb!important}
+:root.v38Dark .view:not(#view-home) .card h2{border-left:2px solid #6e9cc9;padding-left:9px}
+:root.v38Dark .view:not(#view-home) .btn:not(.secondary):not(.ghost):not(.danger){
+ background:linear-gradient(145deg,#4275a5,#304e79)!important;
+ color:#f8fbff!important;box-shadow:inset 0 1px 0 #ffffff24,0 4px 12px #153d6450!important;
+ border-color:#6e91bb!important;
+}
+:root.v38Dark .btn.secondary{box-shadow:inset 0 1px 0 #ffffff0a!important}
+:root.v38Dark input:focus,:root.v38Dark textarea:focus,:root.v38Dark select:focus{outline-color:#8db8ec!important;border-color:#81a5d1!important}
+:root.v38Dark .smartTag.urgent{border-color:#da9b88;color:#ffe3ce}
+:root.v38Dark .smartCount strong{color:#9dbfeb}
+:root.v38Dark .pill:not(.amber):not(.red){border:1px solid #667b9850}
+/* Compact, perfectly square 7-column calendar with genuinely empty neighboring-month cells. */
+#view-calendar .calendarGrid{grid-template-columns:repeat(7,minmax(0,1fr));gap:clamp(4px,1.15vw,9px);max-width:590px;margin:0 auto}
+#view-calendar .calendarGrid .calday{
+ display:grid!important;place-items:center!important;
+ min-height:0!important;aspect-ratio:1/1!important;width:100%!important;
+ border-radius:clamp(7px,1.8vw,12px)!important;
+ padding:0!important;position:relative!important;
+}
+#view-calendar .calendarGrid .calBlank{aspect-ratio:1/1;display:block;pointer-events:none}
+#view-calendar .calendarGrid .calNumber{font-size:clamp(11px,2.7vw,15px)!important;font-variant-numeric:tabular-nums}
+#view-calendar .calendarGrid .weekday{font-size:clamp(10px,2.5vw,12px);padding:5px 0 6px}
+#view-calendar .calendarGrid .calIndicators{bottom:clamp(3px,.75vw,8px);gap:3px}
+#view-calendar .calendarGrid .calDot{width:clamp(4px,.9vw,6px);height:clamp(4px,.9vw,6px)}
+:root.v38Dark #view-calendar .calendarGrid .calday{
+ background:linear-gradient(155deg,#323940,#252a30)!important;
+ border:1px solid #475565!important;
+ box-shadow:inset 0 1px 0 #ffffff0d!important;
+}
+:root.v38Dark #view-calendar .calendarGrid .calday.selected{
+ background:linear-gradient(155deg,#4b6686,#36475a)!important;
+ border-color:#a4c9ec!important;
+ box-shadow:0 0 12px #729bc74b,inset 0 1px 0 #ffffff21!important;
+}
+:root.v38Dark #view-calendar .calendarGrid .calday.today:not(.selected){box-shadow:inset 0 0 0 2px #caa372!important}
+@media(max-width:480px){#view-calendar>.card{padding:14px!important}#view-calendar .calendarGrid{gap:4px}}
+/* No emoji: consistent vector alarm-clock mark for snooze. */
+.snoozeIcon{width:16px;height:16px;flex:none;display:inline-block;vertical-align:middle}
+/* Logo selector: custom button so iOS does not show the native 'No file selected' label. */
+.logoFileInput{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;overflow:hidden;clip-path:inset(50%);left:0;top:0}
+.logoUploadPicker{position:relative;display:inline-flex;align-items:center;max-width:100%}
+.logoUploadButton{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:10px 14px;margin:0;border-radius:11px;background:linear-gradient(145deg,#364452,#29353e);border:1px solid #60768a;color:#eff5fa;font-size:13px;font-weight:750;box-shadow:inset 0 1px 0 #ffffff18}
+.logoUploadPicker:focus-within .logoUploadButton{outline:2px solid #9dbfeb;outline-offset:2px}
+/* Compact charcoal glass Home shortcut with app-grid-in-a-rounded-square icon. */
+.floatingHomeButton,
+:root.v38Dark .floatingHomeButton{
+ width:49px!important;height:49px!important;border-radius:15px!important;
+ background:#24282edb!important;color:#ecf2f8!important;
+ border:1px solid #7182937a!important;box-shadow:0 7px 23px #0008,inset 0 1px 0 #ffffff19!important;
+ backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.floatingHomeButton svg{width:25px!important;height:25px!important;stroke-width:1.8!important}
+.floatingHome{width:58px!important}
+@media(prefers-reduced-motion:reduce){.homeTileGrid .homeTileShell::before,.homeTileGrid .homeTileShell>.homeTile{transition:none!important}}
+
 </style>
 </head>
 <body>
-<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="3" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="13" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="13" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M17 5a3 3 0 0 1 0 6M17 15a5 5 0 0 1 4 5" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2Z" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.5 2h5l.7 2.6 2 .9 2.4-1.1 3 4.2-1.8 2 .1 2.3 1.7 1.9-3 4.3-2.4-1.1-2 .8-.7 2.7h-5l-.7-2.7-2-.8-2.4 1.1-3-4.3 1.7-1.9.1-2.3-1.8-2 3-4.2L6.8 5.5l2-.9L9.5 2Z" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 2v6M17 2v6M3 11h18" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="i-checklist" viewBox="0 0 24 24"><path d="m3 6 2 2 4-4M12 6h9M3 15l2 2 4-4m3 2h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol><symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 20h18M6 16v-5M12 16V5M18 16V9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="i-archive" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="5" rx="1.4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 9v11h14V9M10 14h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol></svg>
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="3" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="13" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="13" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="i-message" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-8 8c-1.22 0-2.37-.27-3.38-.75L4 20l1.24-4.58A8 8 0 1 1 20 11.5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 11.5h7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M17 5a3 3 0 0 1 0 6M17 15a5 5 0 0 1 4 5" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2Z" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.5 2h5l.7 2.6 2 .9 2.4-1.1 3 4.2-1.8 2 .1 2.3 1.7 1.9-3 4.3-2.4-1.1-2 .8-.7 2.7h-5l-.7-2.7-2-.8-2.4 1.1-3-4.3 1.7-1.9.1-2.3-1.8-2 3-4.2L6.8 5.5l2-.9L9.5 2Z" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 2v6M17 2v6M3 11h18" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="i-checklist" viewBox="0 0 24 24"><path d="m3 6 2 2 4-4M12 6h9M3 15l2 2 4-4m3 2h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol><symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 20h18M6 16v-5M12 16V5M18 16V9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="i-archive" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="5" rx="1.4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 9v11h14V9M10 14h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol></svg>
 <input class="route-radio" type="radio" name="followup-page" id="page-home" checked aria-label="Home hub view">
 <input class="route-radio" type="radio" name="followup-page" id="page-dashboard" aria-label="Snapshot view">
 <input class="route-radio" type="radio" name="followup-page" id="page-archive" aria-label="Client archive view">
@@ -742,7 +856,7 @@ textarea::placeholder,input::placeholder{color:var(--muted);opacity:.83}
         <div class="homeTileShell" data-tile-id="calendar"><button class="homeTile" type="button" data-route="calendar" aria-label="Open Calendar"><span class="homeTileIcon"><svg><use href="#i-calendar"/></svg></span><strong>Calendar</strong><span class="homeTileDetail" id="hubCalendar">Schedule</span></button></div>
         <div class="homeTileShell" data-tile-id="customers"><button class="homeTile" type="button" data-route="customers" aria-label="Open Clients"><span class="homeTileIcon"><svg><use href="#i-users"/></svg></span><strong>Clients</strong><span class="homeTileDetail" id="hubCustomers">Profiles</span></button></div>
         <div class="homeTileShell" data-tile-id="jobs"><button class="homeTile" type="button" data-route="jobs" aria-label="Open Jobs"><span class="homeTileIcon"><svg><use href="#i-briefcase"/></svg></span><strong>Jobs</strong><span class="homeTileDetail" id="hubJobs">Job history</span></button></div>
-        <div class="homeTileShell" data-tile-id="followups"><button class="homeTile" type="button" data-route="followup" aria-label="Open Follow-Ups"><span class="homeTileIcon"><svg><use href="#i-checklist"/></svg></span><strong>Follow-Ups</strong><span class="homeTileDetail" id="hubFollowups">Stay connected</span></button></div>
+        <div class="homeTileShell" data-tile-id="followups"><button class="homeTile" type="button" data-route="followup" aria-label="Open Follow-Ups"><span class="homeTileIcon"><svg><use href="#i-message"/></svg></span><strong>Follow-Ups</strong><span class="homeTileDetail" id="hubFollowups">Stay connected</span></button></div>
         <div class="homeTileShell" data-tile-id="todo"><button class="homeTile" type="button" data-route="todo" aria-label="Open To-Do List"><span class="homeTileIcon"><svg><use href="#i-checklist"/></svg></span><strong>To-Do List</strong><span class="homeTileDetail" id="hubTodos">Tasks</span></button></div>
         <div class="homeTileShell" data-tile-id="post"><button class="homeTile" type="button" data-route="content" aria-label="Open Social Studio"><span class="homeTileIcon"><svg><use href="#i-spark"/></svg></span><strong>Social Studio</strong><span class="homeTileDetail">Templates</span></button></div>
         <div class="homeTileShell" data-tile-id="archive"><button class="homeTile" type="button" data-route="archive" aria-label="Open Archived Clients"><span class="homeTileIcon"><svg><use href="#i-archive"/></svg></span><strong>Archive</strong><span class="homeTileDetail" id="hubArchive">Stored safely</span></button></div>
@@ -872,16 +986,16 @@ textarea::placeholder,input::placeholder{color:var(--muted);opacity:.83}
          <div id="servicesSavedList" class="servicesSavedList" aria-live="polite"></div>
        </section>
        <div class="grid two-col">
-        <div class="card"><h2>Business details</h2><form id="settingsForm"><div class="field"><label for="businessName">Business name</label><input id="businessName" required maxlength="100"></div><div class="field"><label for="reviewUrl">Google review link</label><input id="reviewUrl" type="url" required placeholder="Paste your Google review link"></div><p class="note">Business name and Google review link are required when saving business settings.</p><div class="field"><label for="businessLogoInput">Default business logo</label><input id="businessLogoInput" type="file" accept="image/*" aria-label="Upload the default business logo"><div class="brandLogoPreview" id="brandLogoPreview"></div><p class="small">Used when a client has no profile image. Small compressed preview stored in your workspace.</p><button type="button" class="btn secondary sm" data-action="logo-remove">Remove logo</button></div><div class="field"><label for="reviewTemplate">Review request template</label><textarea id="reviewTemplate" rows="6"></textarea><p class="small">Allowed placeholders: {firstName}, {clientName}, {business}, {service}, {city}, {reviewLink}. The app automatically fills these in for the selected client and job.</p></div><button class="btn" type="submit">Save settings</button></form></div>
+        <div class="card"><h2>Business details</h2><form id="settingsForm"><div class="field"><label for="businessName">Business name</label><input id="businessName" required maxlength="100"></div><div class="field"><label for="reviewUrl">Google review link</label><input id="reviewUrl" type="url" required placeholder="Paste your Google review link"></div><p class="note">Business name and Google review link are required when saving business settings.</p><div class="field"><label for="businessLogoInput">Default business logo</label><div class="logoUploadPicker"><label for="businessLogoInput" class="logoUploadButton">Choose logo image</label><input id="businessLogoInput" type="file" accept="image/*" class="logoFileInput" aria-label="Upload the default business logo"></div><div class="brandLogoPreview" id="brandLogoPreview"></div><p class="small">Used when a client has no profile image. Small compressed preview stored in your workspace.</p><button type="button" class="btn secondary sm" data-action="logo-remove">Remove logo</button></div><div class="field"><label for="reviewTemplate">Review request template</label><textarea id="reviewTemplate" rows="6"></textarea><p class="small">Allowed placeholders: {firstName}, {clientName}, {business}, {service}, {city}, {reviewLink}. The app automatically fills these in for the selected client and job.</p></div><button class="btn" type="submit">Save settings</button></form></div>
         <div class="stack"><div class="card"><h2>Exports & testing</h2><p class="note">Demo Mode stores records in this browser. Cloud Mode stores a separate account workspace. Export a complete JSON backup regularly and keep it in a private, secure location. JSON backups are <strong>not encrypted</strong> and can include client details and compressed photo previews.</p><div class="btn-row"><button class="btn" data-action="backup">↓ Download full backup</button><button class="btn secondary" data-action="restore-open">↑ Restore from backup</button><button class="btn secondary" data-action="csv">Export jobs CSV</button><button class="btn secondary" data-action="reset">Reset sample data</button></div><input id="restoreInput" type="file" accept=".json,application/json" hidden aria-label="Choose backup JSON"><div class="backupStatus" id="backupStatus" role="status">No backup prepared this session.</div></div><div class="card"><h2>Dialog preferences</h2><p class="note">If you previously selected “Do not show me this message again,” you can turn those confirmations back on.</p><button type="button" class="btn secondary" data-action="restore-confirmations">Restore all confirmation messages</button></div><div class="card"><h2>Before selling this</h2><p class="note">V3.9.7 builds on account login, Supabase-managed encrypted transport/storage and account-level row security. It still needs independently reviewed policies, a private photo storage solution, automated server backups, audit logging, recovery tests, and a full privacy review before real client use. Free projects may pause when idle.</p></div></div>
       </div>
     </section>
-    <div class="footer">FollowUp Studio V3.9.9 · Cloud Beta · Private accounts · Demo data only until security review</div>
+    <div class="footer">FollowUp Studio V3.9.11 · Cloud Beta · Private accounts · Demo data only until security review</div>
   </main>
 </div>
 <div class="floatingNav floatingHome" id="mobileHomeControl">
   <button type="button" class="floatingHomeButton" data-route="home" aria-label="Go to Home" title="Home">
-    <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="m3 10 9-7 9 7"/><path d="M5.2 9v11h13.6V9"/><path d="M9.3 20v-6.5h5.4V20"/></svg>
+    <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><rect x="3.1" y="3.1" width="17.8" height="17.8" rx="5"/><rect x="7.1" y="7.1" width="4.2" height="4.2" rx="1.25"/><rect x="12.8" y="7.1" width="4.2" height="4.2" rx="1.25"/><rect x="7.1" y="12.8" width="4.2" height="4.2" rx="1.25"/><rect x="12.8" y="12.8" width="4.2" height="4.2" rx="1.25"/></svg>
   </button>
 </div>
 <div class="overlay" id="modal" role="presentation"><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="dialogHeader"><div id="modalTitle"></div><button class="xbtn" type="button" data-action="close" aria-label="Close">×</button></div><div id="modalBody"></div></div></div>
@@ -1186,12 +1300,13 @@ function smartItems(){
  }
  return items.sort((a,b)=>Number(a.snoozed)-Number(b.snoozed)||a.priority-b.priority||(a.job?.completedAt||a.job?.scheduledAt||a.task?.due||'').localeCompare(b.job?.completedAt||b.job?.scheduledAt||b.task?.due||'')||a.key.localeCompare(b.key));
 }
+const snoozeClockIcon='<svg class="snoozeIcon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M4.7 3.5 2.5 6M19.3 3.5 21.5 6"/></svg>';
 function smartRow(x){
  const isJob=!!x.job,id=isJob?x.job.id:x.task.id;
  let actions='';
  if(x.snoozed){actions=`<button class="btn secondary sm" data-action="smart-unsnooze" data-id="${esc(id)}">Restore reminder</button><button class="btn secondary sm" data-action="detail" data-id="${esc(id)}">Open job</button>`;}
- else if(x.kind==='review'&&!optedOut(x.job)){actions=`<button class="btn sm" data-action="compose" data-mode="review" data-id="${esc(id)}">Prepare request</button><button class="btn secondary sm" data-action="detail" data-id="${esc(id)}">Open job</button><button class="btn secondary sm" data-action="smart-snooze" data-id="${esc(id)}">⏰ Snooze</button>`;}
- else if(x.kind==='followup'){actions=`<button class="btn sm" data-action="compose" data-mode="followup" data-id="${esc(id)}">Prepare follow-up</button><button class="btn secondary sm" data-action="detail" data-id="${esc(id)}">Open job</button><button class="btn secondary sm" data-action="smart-snooze" data-id="${esc(id)}">⏰ Snooze</button>`;}
+ else if(x.kind==='review'&&!optedOut(x.job)){actions=`<button class="btn sm" data-action="compose" data-mode="review" data-id="${esc(id)}">Prepare request</button><button class="btn secondary sm" data-action="detail" data-id="${esc(id)}">Open job</button><button class="btn secondary sm" data-action="smart-snooze" data-id="${esc(id)}">${snoozeClockIcon} Snooze</button>`;}
+ else if(x.kind==='followup'){actions=`<button class="btn sm" data-action="compose" data-mode="followup" data-id="${esc(id)}">Prepare follow-up</button><button class="btn secondary sm" data-action="detail" data-id="${esc(id)}">Open job</button><button class="btn secondary sm" data-action="smart-snooze" data-id="${esc(id)}">${snoozeClockIcon} Snooze</button>`;}
  else if(x.kind==='review'){actions=`<button class="btn secondary sm" data-action="detail" data-id="${esc(id)}">Open job</button>`;}
  else if(x.kind==='schedule'){actions=`<button class="btn sm" data-action="detail" data-id="${esc(id)}">Open job</button><button class="btn secondary sm" data-action="smart-calendar" data-date="${esc(x.job.scheduledAt)}">View date</button>`;}
  else {actions=`<button class="btn sm" data-action="smart-task-done" data-id="${esc(id)}">✓ Complete task</button><button class="btn secondary sm" data-action="open-todos">Open To-Do List</button>`;}
@@ -1562,7 +1677,29 @@ function initAi(){
 }
 
  function openSMS(id){const j=getJob(id);if(!j)return;if(optedOut(j)){toast('Do Not Contact is enabled for this client.','error');return}if(!configuredLink()){toast('Add a valid Google review link in Settings first.','error');return}const phone=(j.phone||'').replace(/[^\d+]/g,'');if(phone.length<7){toast('This client needs a demo phone number first.','error');return}const message=$('#messageToCopy')?.value||reviewText(j,composeMode==='followup');const sep=/iPad|iPhone|iPod/.test(navigator.userAgent)?'&':'?';const uri='sms:'+encodeURIComponent(phone)+sep+'body='+encodeURIComponent(message);toast('Opening Messages. You must review and press Send yourself.');window.location.href=uri}
- function renderCalendar(){const grid=$('#calendarGrid');if(!grid)return;$('#calendarTitle').textContent=calendarMonth.toLocaleDateString('en-US',{month:'long',year:'numeric'});const year=calendarMonth.getFullYear(),month=calendarMonth.getMonth();let start=new Date(year,month,1);start.setDate(1-start.getDay());let cells=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(x=>'<div class="weekday">'+x+'</div>');for(let i=0;i<42;i++){const d=new Date(start.getFullYear(),start.getMonth(),start.getDate()+i);const iso=`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;const jobs=visibleJobs().filter(j=>j.scheduledAt===iso);const classes=['calday',d.getMonth()!==month?'outside':'',iso===today()?'today':'',iso===selectedDay?'selected':''].filter(Boolean).join(' ');cells.push(`<button type="button" class="${classes}" data-action="calendar-day" data-date="${iso}" aria-label="${esc(day(iso))}, ${jobs.length} jobs"><span class="calNumber">${d.getDate()}</span>${jobs.length||db.todos.some(t=>t.due===iso&&!t.done)?`<span class="calIndicators" aria-hidden="true">${jobs.length?'<i class="calDot calJobDot"></i>':''}${db.todos.some(t=>t.due===iso&&!t.done)?'<i class="calDot calTaskDot"></i>':''}</span>`:''}</button>`)}grid.innerHTML=cells.join('');$('#calSelectedTitle').textContent='Scheduled for '+day(selectedDay);const matches=visibleJobs().filter(j=>j.scheduledAt===selectedDay).sort((a,b)=>(a.scheduledTime||'').localeCompare(b.scheduledTime||''));$('#calendarDayList').innerHTML=matches.length?matches.map(jobrow).join(''):'<div class="empty">No jobs scheduled for this day. Tap the + button to create one.</div>'}
+ function renderCalendar(){
+  const grid=$('#calendarGrid');if(!grid)return;
+  $('#calendarTitle').textContent=calendarMonth.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+  const year=calendarMonth.getFullYear(),month=calendarMonth.getMonth();
+  const firstWeekday=new Date(year,month,1).getDay();
+  const daysInMonth=new Date(year,month+1,0).getDate();
+  const weeks=Math.ceil((firstWeekday+daysInMonth)/7);
+  const cells=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(x=>'<div class="weekday">'+x+'</div>');
+  for(let cell=0;cell<weeks*7;cell++){
+   const num=cell-firstWeekday+1;
+   if(num<1||num>daysInMonth){cells.push('<span class="calBlank" aria-hidden="true"></span>');continue;}
+   const iso=`${year}-${pad(month+1)}-${pad(num)}`;
+   const jobs=visibleJobs().filter(j=>j.scheduledAt===iso);
+   const taskDue=db.todos.some(t=>t.due===iso&&!t.done);
+   const classes=['calday',iso===today()?'today':'',iso===selectedDay?'selected':''].filter(Boolean).join(' ');
+   cells.push(`<button type="button" class="${classes}" data-action="calendar-day" data-date="${iso}" aria-label="${esc(day(iso))}, ${jobs.length} jobs"><span class="calNumber">${num}</span>${jobs.length||taskDue?`<span class="calIndicators" aria-hidden="true">${jobs.length?'<i class="calDot calJobDot"></i>':''}${taskDue?'<i class="calDot calTaskDot"></i>':''}</span>`:''}</button>`);
+  }
+  grid.innerHTML=cells.join('');
+  $('#calSelectedTitle').textContent='Scheduled for '+day(selectedDay);
+  const matches=visibleJobs().filter(j=>j.scheduledAt===selectedDay).sort((a,b)=>(a.scheduledTime||'').localeCompare(b.scheduledTime||''));
+  $('#calendarDayList').innerHTML=matches.length?matches.map(jobrow).join(''):'<div class="empty">No jobs scheduled for this day. Tap the + button to create one.</div>';
+ }
+
  function renderTodos(){const target=$('#todoList');if(!target)return;const items=[...db.todos].sort((a,b)=>Number(a.done)-Number(b.done)||(a.due||'9999').localeCompare(b.due||'9999'));$('#todoCount').textContent=db.todos.filter(x=>!x.done).length+' open';target.innerHTML=items.length?items.map(x=>`<div class="todoRow ${x.done?'done':''}"><input type="checkbox" data-task-id="${esc(x.id)}" aria-label="Mark task complete" ${x.done?'checked':''}><div class="todoText"><strong>${esc(x.title)}</strong><small>${x.due?'Due '+day(x.due):'No due date'}</small></div><button type="button" class="btn secondary sm" data-action="delete-task" data-id="${esc(x.id)}" aria-label="Delete task">×</button></div>`).join(''):'<div class="empty">No tasks yet. Add one above.</div>';const followups=visibleJobs().filter(j=>!optedOut(j)&&!isSnoozed(j)&&(needsRequest(j)||dueFollowup(j)));$('#autoTasks').innerHTML=followups.length?followups.map(jobrow).join(''):'<div class="empty">All job follow-ups are caught up.</div>'}
  function addTask(e){if(e)e.preventDefault();const title=$('#todoTitle').value.trim(),due=$('#todoDue').value;if(!title){toast('Enter a task first.','error');$('#todoTitle').focus();return}db.todos.push({id:'t'+Date.now()+Math.floor(Math.random()*10000),title,due,done:false});if(save()){document.getElementById('todoForm').reset();render();toast('✓ Task saved.')}}
  function report(){const m=metrics(),prefix=today().slice(0,7),completedMonth=visibleJobs().filter(j=>j.completedAt?.startsWith(prefix)).length,sentMonth=visibleJobs().filter(j=>j.sentAt?.startsWith(prefix)).length,reviewsMonth=visibleJobs().filter(j=>j.reviewAt?.startsWith(prefix)).length;const msg=`DEMO REPORT — ${db.business}\nMonth: ${new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'})}\nCompleted jobs recorded: ${completedMonth}\nReview requests confirmed sent: ${sentMonth}\nReviews manually marked received: ${reviewsMonth}\nRequests still awaiting action: ${m.pending}\nFollow-ups due: ${m.follow}\n\nNote: Counts reflect manually entered records, not verified Google review data. This is a demo using fictional clients.`;copy(msg)}
