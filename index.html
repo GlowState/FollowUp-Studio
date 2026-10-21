@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#173d37">
-<title>FollowUp Studio — V3.9.6 iPhone-Style Home Editing</title>
+<title>FollowUp Studio — V3.9.7 Social Studio &amp; Home Position Fix</title>
 <style>
 :root{--forest:#173d37;--forest2:#24594e;--teal:#2f806c;--bg:#f5f5f0;--paper:#fff;--ink:#25342f;--muted:#728078;--border:#e1e7df;--cream:#eee7d9;--gold:#c69e5b;--red:#aa4b47;--amber:#946514;--green:#22734f;--radius:18px}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:15px;line-height:1.5}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.48;cursor:not-allowed}input,select,textarea{width:100%;border:1px solid #cbd6cc;background:white;border-radius:12px;padding:12px 13px;color:var(--ink);outline-offset:2px}input:focus,select:focus,textarea:focus{outline:2px solid #83ae9c;outline-offset:0}textarea{resize:vertical;min-height:110px}label{display:block;font-weight:700;font-size:13px;margin-bottom:7px}.small{font-size:12px;color:var(--muted)}.muted{color:var(--muted)}.eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:850;color:var(--teal)}h1,h2,h3,p{margin-top:0}h1{font-size:31px;letter-spacing:-1.25px;margin-bottom:6px;line-height:1.16}h2{font-size:21px;letter-spacing:-.5px;margin-bottom:12px}h3{font-size:16px;margin-bottom:7px}p{margin-bottom:14px}.layout{min-height:100vh;display:flex}.sidebar{background:var(--forest);color:#fff;width:238px;flex:none;padding:27px 16px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column}.logo{display:flex;align-items:center;gap:10px;padding:3px 9px 25px}.logo-mark{width:37px;height:37px;border-radius:12px;display:grid;place-items:center;background:var(--gold);color:var(--forest);font-weight:1000;font-size:20px;box-shadow:inset 0 -3px 0 #0002}.logo-name{font-weight:900;letter-spacing:-.6px;line-height:1}.logo-name small{display:block;margin-top:5px;font-weight:650;letter-spacing:.1em;font-size:9px;color:#a8cabc}.nav{display:grid;gap:5px}.nav button{width:100%;border:none;text-align:left;background:transparent;color:#c9dbd5;border-radius:12px;padding:12px 13px;display:flex;align-items:center;gap:11px;font-weight:750}.nav button.active,.nav button:hover{background:#fff2;color: #fff}.nav svg{height:19px;width:19px}.sidebottom{margin-top:auto;padding:14px 11px;border-top:1px solid #ffffff21;color:#b4cdc2;font-size:12px}.demo-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#f1c174;margin-right:6px}.content{width:min(1150px,100%);padding:32px 38px 90px;margin:0 auto}.topline{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:26px}.headline{margin-top:3px}.pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;border-radius:999px;padding:5px 9px;background:#e7f2eb;color:var(--green)}.pill.amber{background:#fff1d9;color:var(--amber)}.pill.gray{background:#e9eee9;color:#66776a}.pill.red{background:#f8e9e6;color:var(--red)}.demoBanner{background:#faf0da;border:1px solid #ead5a7;border-radius:14px;color:#71592e;padding:12px 15px;font-size:13px;margin-bottom:21px}.view{display:none}.view.active{display:block}.btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;border:1px solid transparent;border-radius:12px;padding:11px 15px;font-weight:800;background:var(--forest);color:#fff;text-decoration:none;font-size:13px;white-space:nowrap}.btn:hover:not(:disabled){filter:brightness(1.09)}.btn.secondary{background:#fff;color:var(--forest);border-color:#cbd8cf}.btn.ghost{background:#eef3ee;color:var(--forest)}.btn.danger{background:#fff;color:var(--red);border-color:#e2c2be}.btn.sm{padding:8px 11px;font-size:12px}.btn-row{display:flex;gap:9px;flex-wrap:wrap}.card{border:1px solid var(--border);border-radius:var(--radius);background:var(--paper);padding:22px;box-shadow:0 5px 18px #243b2c06}.hero{background:linear-gradient(110deg,#214b40,#153a34 75%);color:#fff;border-radius:22px;padding:29px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:22px;margin-bottom:22px;overflow:hidden;position:relative}.hero:before{content:"";position:absolute;right:-46px;bottom:-115px;width:320px;height:320px;border-radius:50%;border:65px solid #ffffff0a}.hero p{max-width:460px;color:#d6e7db;margin-bottom:18px}.hero .btn{background:var(--gold);color:#243b2d}.hero .hero-icon{font-size:62px;position:relative;opacity:.93}.grid{display:grid;gap:15px}.metrics{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:22px}.metricLabel{font-size:12px;color:var(--muted);font-weight:650}.metricValue{font-size:30px;font-weight:850;letter-spacing:-1px;margin:6px 0 0}.metricFoot{font-size:11px;color:var(--muted)}.two-col{grid-template-columns:1.4fr 1fr}.subhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.subhead h2{margin:0}.list{display:grid;gap:10px}.jobrow{border:1px solid var(--border);border-radius:14px;padding:14px;display:flex;gap:12px;align-items:center;justify-content:space-between}.jobrow-main{min-width:0;flex:1}.jobrow strong{display:block;font-weight:800}.jobrow .meta{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis}.jobrow .right{display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:flex-end}.circle{height:39px;width:39px;display:grid;place-items:center;border-radius:12px;background:var(--cream);color:var(--forest);font-weight:850;flex:none}.searchtools{display:flex;gap:11px;margin:0 0 16px;flex-wrap:wrap}.searchtools input{flex:1;min-width:185px}.searchtools select{width:auto;min-width:150px}.sectionintro{display:flex;gap:14px;align-items:end;justify-content:space-between;margin-bottom:20px}.sectionintro p{margin:6px 0 0;color:var(--muted);max-width:620px}.empty{padding:24px;border-radius:14px;background:#f5f7f4;border:1px dashed #c7d5cb;color:var(--muted);font-size:13px;text-align:center}.stack{display:grid;gap:14px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-bottom:12px}.field input,.field textarea{margin:0}.checkline{display:flex;gap:9px;align-items:flex-start;font-weight:500;font-size:13px;line-height:1.5;margin:12px 0}.checkline input{height:17px;width:17px;flex:none;margin:2px 0 0;accent-color:var(--forest)}.surface{padding:13px 14px;background:#f5f8f4;border:1px solid var(--border);border-radius:12px}.example{white-space:pre-wrap;word-break:break-word;font-size:13px;line-height:1.7;color:#34443b}.note{font-size:12px;color:var(--muted);line-height:1.6}.actioncard{background:#f8faf7;border-radius:14px;padding:14px}.statline{display:flex;gap:12px;justify-content:space-between;border-bottom:1px solid var(--border);padding:11px 0;font-size:13px}.statline:last-child{border:0}.statline span:last-child{font-weight:800}.bottomnav{display:none}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#203d32;color:#fff;padding:12px 16px;font-size:13px;border-radius:12px;z-index:200;max-width:90vw;box-shadow:0 12px 30px #0003;display:none}.toast.show{display:block}.overlay{position:fixed;inset:0;background:#0e221b9c;z-index:90;display:none;align-items:center;justify-content:center;padding:20px}.overlay.open{display:flex}.dialog{width:min(600px,100%);max-height:90vh;overflow:auto;background:white;border-radius:20px;padding:22px;box-shadow:0 18px 70px #0004}.dialogHeader{display:flex;align-items:start;justify-content:space-between;gap:15px}.xbtn{border:0;background:#f0f3ef;border-radius:10px;width:35px;height:35px;font-size:22px;color:#506357;flex:none}.modalfooter{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}.divider{height:1px;background:var(--border);margin:19px 0}.detailgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tag{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--teal)}.flex{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.helper{color:var(--muted);font-size:12px;margin-top:7px}.exportBar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:15px}.desktopOnly{display:inline}.footer{color:var(--muted);font-size:11px;margin-top:30px}.keyboard{font-size:11px;color:var(--muted);font-weight:600}
@@ -502,7 +502,7 @@ textarea:focus::placeholder{color:transparent}
 @media(max-width:440px){.serviceAddRow{flex-wrap:wrap}.serviceAddRow .btn{width:100%}}
 
 
-/* V3.9.4: consistent alignment and customizable navigation */
+/* V3.9.7: consistent alignment and customizable navigation */
 .homeCustomizeBar [hidden]{display:none!important}
 .homeCustomizeBar{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:12px 0 16px}
 .homeCustomizeBar .note{width:100%;text-align:center;margin:0}
@@ -534,13 +534,24 @@ input[type=file]::file-selector-button{font:inherit;font-weight:700;border:1px s
 .cloudCard .subhead{flex-wrap:wrap;align-items:center;gap:8px}
 .cloudCard .subhead h2{margin:0;font-size:clamp(17px,5vw,21px)}
 .cloudCard .subhead>.pill{max-width:100%;white-space:nowrap}
-/* Floating Home stays accessible without covering the text currently being edited. */
-body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:has(select:focus) .floatingHome,body:has(.overlay.open) .floatingHome{display:none!important}
-@media(max-width:700px){
- body:has(#page-content:checked) .floatingHome,body:has(#page-todo:checked) .floatingHome,body:has(#page-settings:checked) .floatingHome{left:auto!important;right:calc(11px + env(safe-area-inset-right,0px))!important;transform:none!important;width:50px!important;bottom:calc(12px + env(safe-area-inset-bottom,0px))!important}
- body:has(#page-content:checked) .floatingHomeButton,body:has(#page-todo:checked) .floatingHomeButton,body:has(#page-settings:checked) .floatingHomeButton{width:48px;height:48px}
- body:has(#page-content:checked) .floatingHomeButton svg,body:has(#page-todo:checked) .floatingHomeButton svg,body:has(#page-settings:checked) .floatingHomeButton svg{height:23px;width:23px}
+/* V3.9.7: One consistent bottom-center Home button on all pages except Home itself.
+   Keep it out of modal dialogs, where it would cover dialog actions. */
+.floatingHome{
+ display:block!important;
+ position:fixed!important;
+ left:50%!important;
+ right:auto!important;
+ bottom:calc(14px + env(safe-area-inset-bottom,0px))!important;
+ transform:translateX(-50%)!important;
+ width:72px!important;
+ z-index:85!important;
+ pointer-events:none!important;
+ text-align:center!important;
 }
+.floatingHomeButton{width:62px!important;height:62px!important;margin:0 auto!important;pointer-events:auto!important}
+.floatingHomeButton svg{height:27px!important;width:27px!important}
+#page-home:checked ~ .floatingHome{display:none!important}
+body:has(.overlay.open) .floatingHome,body:has(dialog[open]) .floatingHome{display:none!important}
 @media(max-width:700px){
  .homeTileGrid .homeTileShell{aspect-ratio:1}
     .todoForm{grid-template-columns:minmax(0,1fr)}
@@ -557,7 +568,7 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
 @media(prefers-reduced-motion:reduce){.homeTileGrid .homeTileShell{transition:none}}
 
 
-/* V3.9.4 — read-only customer profile and iPhone-style Home editing */
+/* V3.9.7 — read-only customer profile and iPhone-style Home editing */
 .profileHeading{align-items:center;gap:12px}
 .profileHeading .profileIdentity{flex:1;min-width:0}
 .profileEditTop{margin-left:auto;flex:none;white-space:nowrap!important;min-height:38px}
@@ -590,7 +601,7 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
 @media(max-width:520px){.profileEditTop{font-size:12px!important;padding:8px 10px!important}.profileHeading .profileIdentity h3{font-size:16px}.profileHeading .profileIdentity .small{font-size:11px}.profileHistoryToggle{padding:14px;font-size:16px}}
 @media(prefers-reduced-motion:reduce){.homeTileGrid.is-reordering .homeTileShell .homeTileIcon{animation:none}.profileHistoryChevron{transition:none}}
 
-/* V3.9.6: iPhone-style thumb dragging: the dragged tile follows the finger, no arrow buttons. */
+/* V3.9.7: iPhone-style thumb dragging: the dragged tile follows the finger, no arrow buttons. */
 .homeCustomizeBar{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));right:14px;left:auto;transform:none;z-index:440;background:var(--paper);border:1px solid var(--border);border-radius:14px;padding:8px 10px;box-shadow:0 9px 26px #0005;margin:0!important;width:auto;max-width:calc(100vw - 28px)}
 .homeCustomizeBar .note{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)!important}
 .homeTileGrid .homeTileShell{transition:transform .15s ease, opacity .15s ease;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
@@ -604,7 +615,7 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
 .homeTileGrid .tileDropTarget{outline-offset:-2px}
 @media(max-width:700px){.homeTileGrid.is-reordering .homeTileShell>.homeTile{padding-bottom:8px}}
 
-/* V3.9.6: genuine iPhone-like Home editing: jiggle the whole tile, not just its icon.
+/* V3.9.7: genuine iPhone-like Home editing: jiggle the whole tile, not just its icon.
    Adjacent tiles glide into their new positions while dragging; no Done button. */
 .homeTileGrid.is-reordering .homeTileShell:not(.tileDragging) > .homeTile{
   animation:homeIconJiggle .24s ease-in-out infinite alternate;
@@ -619,6 +630,12 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
 .homeTileGrid.is-reordering .homeTileShell:not(.tileDragging){will-change:transform}
 .homeTileGrid.is-reordering .tileDragging>.homeTile{animation:none!important}
 @media(prefers-reduced-motion:reduce){.homeTileGrid.is-reordering .homeTileShell>.homeTile{animation:none!important}.homeTileGrid .homeTileShell{transition:none!important}}
+/* V3.9.7 Social Studio: writing style is a full-width field under its label. */
+.postStyleRow{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:8px!important;margin:12px 0 20px!important}
+.postStyleRow label{display:block!important;margin:0!important;font-weight:750}
+.postStyleRow select{display:block!important;flex:none!important;width:100%!important;max-width:none!important;min-height:46px!important}
+/* Prevent bottom Home button from overlapping the final on-page action. */
+.content{padding-bottom:max(116px,calc(106px + env(safe-area-inset-bottom,0px)))!important}
 </style>
 </head>
 <body>
@@ -630,18 +647,18 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
 <input class="route-radio" type="radio" name="followup-page" id="page-jobs" aria-label="Customers and jobs view">
 <input class="route-radio" type="radio" name="followup-page" id="page-calendar" aria-label="Calendar view">
 <input class="route-radio" type="radio" name="followup-page" id="page-todo" aria-label="To-do list view">
-<input class="route-radio" type="radio" name="followup-page" id="page-content" aria-label="AI content view">
+<input class="route-radio" type="radio" name="followup-page" id="page-content" aria-label="Social Studio view">
 <input class="route-radio" type="radio" name="followup-page" id="page-settings" aria-label="Settings view">
 <div class="layout">
   <aside class="sidebar">
-    <div class="logo"><div class="logo-mark">↗</div><div class="logo-name">FollowUp<br>Studio<small>CLOUD BETA • V3.9.4</small></div></div>
+    <div class="logo"><div class="logo-mark">↗</div><div class="logo-name">FollowUp<br>Studio<small>CLOUD BETA • V3.9.7</small></div></div>
     <nav class="nav" aria-label="Main navigation">
       <label class="navtab active" data-route="home" for="page-home" tabindex="0"><svg><use href="#i-grid"/></svg> Home</label>
       <label class="navtab" data-route="dashboard" for="page-dashboard" tabindex="0"><svg><use href="#i-chart"/></svg> Snapshot</label>
       <label class="navtab" data-route="followup" for="page-followup" tabindex="0"><svg><use href="#i-checklist"/></svg> Follow-Up Center</label>
       <label class="navtab" data-route="jobs" for="page-jobs" tabindex="0"><svg><use href="#i-users"/></svg> Customers &amp; Jobs</label>
       <label class="navtab" data-route="calendar" for="page-calendar" tabindex="0"><svg><use href="#i-calendar"/></svg> Calendar</label>
-      <label class="navtab" data-route="content" for="page-content" tabindex="0"><svg><use href="#i-spark"/></svg> Post Templates</label>
+      <label class="navtab" data-route="content" for="page-content" tabindex="0"><svg><use href="#i-spark"/></svg> Social Studio</label>
       <label class="navtab" data-route="todo" for="page-todo" tabindex="0"><svg><use href="#i-checklist"/></svg> To-Do List</label>
       <label class="navtab" data-route="settings" for="page-settings" tabindex="0"><svg><use href="#i-gear"/></svg> Settings</label>
     </nav>
@@ -649,7 +666,7 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
   </aside>
   <main class="content">
     <div class="topline"><div><div class="eyebrow">SMALL BUSINESS FOLLOW-UP</div><div class="headline" style="font-weight:800" id="brandHeading">Demo Home Services</div></div><span id="cloudTopBadge" class="pill amber" role="status">● DEMO MODE</span></div>
-    <div class="demoBanner"><strong>Safe demonstration:</strong> Demo Mode uses fictional customers and stores data in this browser. In Cloud Mode, signed-in users can sync records to their private workspace. Text messaging opens your phone’s Messages app for you to review and send. Post templates work without subscriptions or API keys. No customer messages or Facebook posts are sent automatically. <span id="previewNote" style="font-weight:650">You can switch pages in file preview. For editing, customer buttons, and saving, use a full browser-hosted copy.</span></div>
+    <div class="demoBanner"><strong>Safe demonstration:</strong> Demo Mode uses fictional customers and stores data in this browser. In Cloud Mode, signed-in users can sync records to their private workspace. Text messaging opens your phone’s Messages app for you to review and send. Post templates work without subscriptions or API keys. No customer messages or social posts are sent automatically. <span id="previewNote" style="font-weight:650">You can switch pages in file preview. For editing, customer buttons, and saving, use a full browser-hosted copy.</span></div>
     <section class="view active" id="view-home" aria-labelledby="hubHeading">
       <div class="homeWelcome"><div class="eyebrow">YOUR BUSINESS AT A GLANCE</div><h1 id="hubHeading">Welcome home.</h1><p>Everything you need to manage your business, right at your fingertips.</p></div>
       <button type="button" class="homeKeyboardEdit" data-action="home-customize">Rearrange Home tiles (keyboard users: Alt + arrow keys, Escape to finish)</button>
@@ -660,7 +677,7 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
         <div class="homeTileShell" data-tile-id="jobs"><button class="homeTile" type="button" data-route="jobs" data-focus="jobs" aria-label="Open Jobs"><span class="homeTileIcon"><svg><use href="#i-briefcase"/></svg></span><strong>Jobs</strong><span class="homeTileDetail" id="hubJobs">Job history</span></button></div>
         <div class="homeTileShell" data-tile-id="followups"><button class="homeTile" type="button" data-route="followup" aria-label="Open Follow-Ups"><span class="homeTileIcon"><svg><use href="#i-checklist"/></svg></span><strong>Follow-Ups</strong><span class="homeTileDetail" id="hubFollowups">Stay connected</span></button></div>
         <div class="homeTileShell" data-tile-id="todo"><button class="homeTile" type="button" data-route="todo" aria-label="Open To-Do List"><span class="homeTileIcon"><svg><use href="#i-checklist"/></svg></span><strong>To-Do List</strong><span class="homeTileDetail" id="hubTodos">Tasks</span></button></div>
-        <div class="homeTileShell" data-tile-id="post"><button class="homeTile" type="button" data-route="content" aria-label="Open Post Studio"><span class="homeTileIcon"><svg><use href="#i-spark"/></svg></span><strong>Post Studio</strong><span class="homeTileDetail">Templates</span></button></div>
+        <div class="homeTileShell" data-tile-id="post"><button class="homeTile" type="button" data-route="content" aria-label="Open Social Studio"><span class="homeTileIcon"><svg><use href="#i-spark"/></svg></span><strong>Social Studio</strong><span class="homeTileDetail">Templates</span></button></div>
         <div class="homeTileShell" data-tile-id="archive"><button class="homeTile" type="button" data-route="archive" aria-label="Open Archived Customers"><span class="homeTileIcon"><svg><use href="#i-archive"/></svg></span><strong>Archive</strong><span class="homeTileDetail" id="hubArchive">Stored safely</span></button></div>
         <div class="homeTileShell" data-tile-id="settings"><button class="homeTile" type="button" data-route="settings" aria-label="Open Settings"><span class="homeTileIcon"><svg><use href="#i-gear"/></svg></span><strong>Settings</strong><span class="homeTileDetail">Make it yours</span></button></div>
       </div>
@@ -668,7 +685,7 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
     </section>
     <section class="view" id="view-dashboard">
       <div class="snapshotHeader"><div class="eyebrow">BUSINESS SNAPSHOT</div><h1>Business overview</h1><p>Latest job activity, review progress, and items needing attention.</p></div>
-      <div class="hero"><div><div class="eyebrow" style="color:#d1b179">WORK LESS. FOLLOW UP BETTER.</div><h1>Your customers, organized.</h1><p>Finish jobs with a guided checklist for review requests, photos, Facebook drafts, and follow-up reminders.</p><button class="btn" data-action="add">＋ Add a customer</button></div><div class="hero-icon" aria-hidden="true">✦</div></div>
+      <div class="hero"><div><div class="eyebrow" style="color:#d1b179">WORK LESS. FOLLOW UP BETTER.</div><h1>Your customers, organized.</h1><p>Finish jobs with a guided checklist for review requests, photos, social drafts, and follow-up reminders.</p><button class="btn" data-action="add">＋ Add a customer</button></div><div class="hero-icon" aria-hidden="true">✦</div></div>
       <div class="briefingHero" id="briefingHero">
         <div><div class="briefingEyebrow">YOUR DAILY BRIEFING</div><h2 id="briefingHeadline">Your follow-ups, in one place</h2><p id="briefingSubtitle">Review requests, upcoming jobs, and due tasks appear here automatically.</p></div>
         <button type="button" class="btn" data-action="open-followup">Open Follow-Up Center →</button>
@@ -718,10 +735,10 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
       <div class="card" style="margin-top:14px"><div class="subhead"><h2 id="calSelectedTitle">Scheduled jobs</h2><button class="calendarAdd" data-action="schedule-selected" aria-label="Add job on selected day" title="Add job">+</button></div><div id="calendarDayList" class="list"></div></div>
     </section>
     <section class="view" id="view-content">
-      <div class="sectionintro"><div><div class="eyebrow">FACEBOOK POST STUDIO</div><h1>Social posts, without a subscription.</h1><p>Choose a professional template, add approved job details, and create a ready-to-edit Facebook caption — right inside FollowUp Studio.</p></div><span class="pill">✓ Free templates</span></div>
+      <div class="sectionintro"><div><div class="eyebrow">SOCIAL STUDIO</div><h1>Social posts, without a subscription.</h1><p>Choose a professional template, add approved job details, and create a ready-to-edit social caption — right inside FollowUp Studio.</p></div><span class="pill">✓ Free templates</span></div>
       <div class="ai-privacy">🔒 <strong>Works offline:</strong> No AI service, API key, paid account, or external text generation. Drafts stay in your workspace (or this browser in Demo Mode). Use only approved project details; never include private customer information or unapproved photos.</div>
       <div class="grid two-col">
-        <div class="card"><div class="subhead postBuilderHeader"><h2>Build your Facebook post</h2></div><div class="postStyleRow"><label for="socialStyle">Writing style</label><select id="socialStyle" aria-label="Facebook post writing style"><option value="professional">Professional</option><option value="casual">Casual</option><option value="friendly">Friendly</option><option value="short">Short &amp; direct</option></select></div>
+        <div class="card"><div class="subhead postBuilderHeader"><h2>Build your social post</h2></div><div class="postStyleRow"><label for="socialStyle">Writing Style</label><select id="socialStyle" aria-label="Social post writing style"><option value="professional">Professional</option><option value="casual">Casual</option><option value="friendly">Friendly</option><option value="short">Short &amp; direct</option></select></div>
           <div class="field"><label for="socialTemplate">Choose a post template</label><select id="socialTemplate">
             <option value="spotlight">Completed Job Spotlight</option>
             <option value="beforeafter">Before &amp; After Project</option>
@@ -736,21 +753,21 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
           </select><p class="small" id="templateDescription" style="margin-top:6px">Share the results of a recently completed project.</p></div>
           <div class="field"><label for="socialJob">Use a completed job (optional)</label><select id="socialJob"><option value="">Enter job details manually</option></select><div class="small" style="margin-top:5px">Only the job's service is copied, never its customer's name, notes, phone, or address.</div></div>
           <div class="field"><label for="socialService">Work or service *</label><input id="socialService" maxlength="160" autocomplete="off" placeholder="e.g., Retractable patio awning installation" value="Retractable patio awning installation"></div>
-          <div class="field"><label for="socialDetails">Approved project highlights or helpful tip</label><textarea id="socialDetails" maxlength="800" rows="5" placeholder="e.g., Installed adjustable shade using neutral fabric; helped make the patio more comfortable">Installed adjustable shade over the patio using neutral-colored fabric.</textarea></div>
+          <div class="field"><label for="socialDetails">Approved project highlights or helpful tip</label><textarea id="socialDetails" maxlength="800" rows="5" placeholder="*Example: Installed a retractable awning for more patio shade.&#10;*Example: Replaced worn gutters to improve drainage."></textarea></div>
           <div class="field"><label for="socialArea">General service area (optional)</label><input id="socialArea" maxlength="80" autocomplete="off" placeholder="e.g., Springfield, Missouri"></div>
-          <div class="field"><label for="socialCta">Ending / call to action</label><select id="socialCta"><option value="message">Invite people to message the business</option><option value="quote">Invite people to request a quote</option><option value="learn">Invite people to learn more</option><option value="none">No promotional ending</option></select></div>
-          <div class="btn-row"><button class="btn ai-generate" type="button" data-action="template-create" id="templateCreateBtn">✦ Create Facebook Post</button><button class="btn secondary" type="button" data-action="template-clear">Clear fields</button></div>
+          <div class="field"><label for="socialCta">Message Ending</label><select id="socialCta"><option value="message">Invite people to message the business</option><option value="quote">Invite people to request a quote</option><option value="learn">Invite people to learn more</option><option value="none">No promotional ending</option></select></div>
+          <div class="btn-row"><button class="btn ai-generate" type="button" data-action="template-create" id="templateCreateBtn">✦ Create Social Post</button><button class="btn secondary" type="button" data-action="template-clear">Clear fields</button></div>
           <p class="note" id="templateStatus" role="status" aria-live="polite" style="margin-top:12px">Choose any template and create an editable caption instantly. No internet service is contacted.</p>
         </div>
         <div class="card"><div class="subhead"><h2>Your editable post</h2><span class="pill gray" id="aiDraftFlag">New draft</span></div>
-          <div class="field"><label for="aiDraftEditor">Facebook caption</label><textarea id="aiDraftEditor" rows="11" maxlength="2500" placeholder="Select a template and press Create Facebook Post, or type your own caption here."></textarea></div>
+          <div class="field"><label for="aiDraftEditor">Social Caption</label><textarea id="aiDraftEditor" rows="11" maxlength="2500" placeholder="Select a template and press Create Social Post, or type your own caption here."></textarea></div>
           <div class="btn-row"><button class="btn" type="button" data-action="ai-save-draft">✓ Save Draft</button><button class="btn secondary" type="button" data-action="ai-copy-draft">Copy Caption</button><button class="btn secondary" type="button" data-action="ai-new-draft">New Draft</button></div>
-          <p class="note" style="margin-top:12px">Review the wording for accuracy. Nothing is published automatically; copy your completed caption into Facebook when ready.</p>
+          <p class="note" style="margin-top:12px">Review the wording for accuracy. Nothing is published automatically; copy your completed caption into your preferred platform when ready.</p>
         </div>
       </div>
       <div class="grid two-col" style="margin-top:16px">
         <div class="card"><div class="subhead"><h2>Saved drafts</h2><span class="pill gray" id="aiDraftCount">0 saved</span></div><div id="aiDraftLibrary" class="list"><div class="empty">No saved drafts yet.</div></div></div>
-        <div class="card"><h2>Included templates</h2><div class="templateCategories"><span>Completed Job</span><span>Before &amp; After</span><span>Service Feature</span><span>Helpful Tip</span><span>Seasonal</span><span>Behind the Scenes</span><span>FAQ</span><span>Customer Thanks</span><span>Local Business</span><span>Free Quote</span></div><p class="note" style="margin-top:15px">Every template uses prewritten professional copy. They are intentionally not AI-generated. For photo posts, add business-approved images manually when publishing on Facebook.</p></div>
+        <div class="card"><h2>Included templates</h2><div class="templateCategories"><span>Completed Job</span><span>Before &amp; After</span><span>Service Feature</span><span>Helpful Tip</span><span>Seasonal</span><span>Behind the Scenes</span><span>FAQ</span><span>Customer Thanks</span><span>Local Business</span><span>Free Quote</span></div><p class="note" style="margin-top:15px">Every template uses prewritten professional copy. They are intentionally not AI-generated. For photo posts, add business-approved images manually when publishing on your chosen platform.</p></div>
       </div>
     </section>
     <section class="view" id="view-todo">
@@ -787,10 +804,10 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
        </section>
        <div class="grid two-col">
         <div class="card"><h2>Business details</h2><form id="settingsForm"><div class="field"><label for="businessName">Business name</label><input id="businessName" required maxlength="100"></div><div class="field"><label for="reviewUrl">Google review link</label><input id="reviewUrl" type="url" required placeholder="Paste your Google review link"></div><p class="note">Business name and Google review link are required when saving business settings.</p><div class="field"><label for="businessLogoInput">Default business logo</label><input id="businessLogoInput" type="file" accept="image/*" aria-label="Upload the default business logo"><div class="brandLogoPreview" id="brandLogoPreview"></div><p class="small">Used when a customer has no profile image. Small compressed preview stored in your workspace.</p><button type="button" class="btn secondary sm" data-action="logo-remove">Remove logo</button></div><div class="field"><label for="reviewTemplate">Review request template</label><textarea id="reviewTemplate" rows="6"></textarea><p class="small">Allowed placeholders: {firstName}, {customerName}, {business}, {service}, {city}, {reviewLink}. The app automatically fills these in for the selected customer and job.</p></div><button class="btn" type="submit">Save settings</button></form></div>
-        <div class="stack"><div class="card"><h2>Exports & testing</h2><p class="note">Demo Mode stores records in this browser. Cloud Mode stores a separate account workspace. Export a complete JSON backup regularly and keep it in a private, secure location. JSON backups are <strong>not encrypted</strong> and can include customer details and compressed photo previews.</p><div class="btn-row"><button class="btn" data-action="backup">↓ Download full backup</button><button class="btn secondary" data-action="restore-open">↑ Restore from backup</button><button class="btn secondary" data-action="csv">Export jobs CSV</button><button class="btn secondary" data-action="reset">Reset sample data</button></div><input id="restoreInput" type="file" accept=".json,application/json" hidden aria-label="Choose backup JSON"><div class="backupStatus" id="backupStatus" role="status">No backup prepared this session.</div></div><div class="card"><h2>Dialog preferences</h2><p class="note">If you previously selected “Do not show me this message again,” you can turn those confirmations back on.</p><button type="button" class="btn secondary" data-action="restore-confirmations">Restore all confirmation messages</button></div><div class="card"><h2>Before selling this</h2><p class="note">V3.9.4 builds on account login, Supabase-managed encrypted transport/storage and account-level row security. It still needs independently reviewed policies, a private photo storage solution, automated server backups, audit logging, recovery tests, and a full privacy review before real customer use. Free projects may pause when idle.</p></div></div>
+        <div class="stack"><div class="card"><h2>Exports & testing</h2><p class="note">Demo Mode stores records in this browser. Cloud Mode stores a separate account workspace. Export a complete JSON backup regularly and keep it in a private, secure location. JSON backups are <strong>not encrypted</strong> and can include customer details and compressed photo previews.</p><div class="btn-row"><button class="btn" data-action="backup">↓ Download full backup</button><button class="btn secondary" data-action="restore-open">↑ Restore from backup</button><button class="btn secondary" data-action="csv">Export jobs CSV</button><button class="btn secondary" data-action="reset">Reset sample data</button></div><input id="restoreInput" type="file" accept=".json,application/json" hidden aria-label="Choose backup JSON"><div class="backupStatus" id="backupStatus" role="status">No backup prepared this session.</div></div><div class="card"><h2>Dialog preferences</h2><p class="note">If you previously selected “Do not show me this message again,” you can turn those confirmations back on.</p><button type="button" class="btn secondary" data-action="restore-confirmations">Restore all confirmation messages</button></div><div class="card"><h2>Before selling this</h2><p class="note">V3.9.7 builds on account login, Supabase-managed encrypted transport/storage and account-level row security. It still needs independently reviewed policies, a private photo storage solution, automated server backups, audit logging, recovery tests, and a full privacy review before real customer use. Free projects may pause when idle.</p></div></div>
       </div>
     </section>
-    <div class="footer">FollowUp Studio V3.9.4 · Cloud Beta · Private accounts · Demo data only until security review</div>
+    <div class="footer">FollowUp Studio V3.9.7 · Cloud Beta · Private accounts · Demo data only until security review</div>
   </main>
 </div>
 <div class="floatingNav floatingHome" id="mobileHomeControl">
@@ -1207,7 +1224,7 @@ let actions='';if(j.status==='active'){actions=`<button class="btn" data-action=
  modal(j.name,`<div class="flex"><button class="btn secondary sm" data-action="profile" data-id="${esc(j.customerId)}">← Customer profile</button></div><div class="flex" style="margin:10px 0 16px">${badge(j)}<span class="small">${esc(j.service)}</span>${j.town?`<span class="small">· ${esc(j.town)}</span>`:''}</div>${history}${renderCompletionPhotos(j)}<div class="divider"></div><div class="flex">${actions}</div>${disabled?`<p class="note" style="margin-top:12px;color:var(--red)">${esc(reason)}</p>`:''}<div class="divider"></div><div class="field"><label for="dPhone">Contact phone (demo only)</label><input id="dPhone" type="tel" maxlength="30" value="${esc(j.phone||'')}" placeholder="Optional SMS demo number"></div><div class="formgrid"><div class="field"><label for="dDate">Scheduled date</label><input id="dDate" type="date" value="${esc(j.scheduledAt||'')}"></div><div class="field"><label for="dTime">Scheduled time</label><input id="dTime" type="time" value="${esc(j.scheduledTime||'')}"></div></div><div class="field"><label for="dNotes">Internal notes</label><textarea id="dNotes" maxlength="500" placeholder="e.g., Confirm measurements, preferred appointment time, materials to bring">${esc(j.notes)}</textarea></div><label class="checkline"><input id="dOptout" type="checkbox" ${j.optOut?'checked':''}> Do not contact</label><div class="modalfooter"><button class="btn secondary" data-action="save-detail" data-id="${esc(id)}">Save changes</button><button class="btn secondary" data-action="close">Close</button></div><div class="helper">Changes to Do Not Contact settings take effect when you save.</div>`)
 }
 
-/* Guided completion runs locally. No review, text, or Facebook post is sent. */
+/* Guided completion runs locally. No review, text, or social post is sent. */
 let completionPhotos=null, completionJobId=null, completionBusy=false;
 const safePhoto=v=>typeof v==='string'&&/^data:image\/jpeg;base64,[A-Za-z0-9+/=]+$/.test(v)&&v.length<230000;
 function renderCompletionPhotos(j){
@@ -1235,7 +1252,7 @@ function openCompletion(id){
  <div class="formgrid"><div class="field"><label for="completionDate">Completion date</label><input id="completionDate" type="date" max="${today()}" value="${esc(fallbackDate)}"></div><div class="field"><label for="completionTime">Completion time</label><input id="completionTime" type="time" value="${esc(j.completedTime||completionClock())}"></div></div>
  <div class="completion-grid">
  <div class="completion-step"><label class="completion-stephead"><input type="checkbox" id="completionReview" ${canReview&&!j.sentAt?'checked':''} ${!canReview||!!j.sentAt?'disabled':''}> Prepare a review request</label><p>${j.sentAt?'Review request already recorded as sent.':canReview?'The request opens as an editable draft after completion. You must send it yourself.':'Customer is marked Do Not Contact.'}</p></div>
- <div class="completion-step"><label class="completion-stephead"><input type="checkbox" id="completionPost" ${draftExists?'':'checked'}> Create a Facebook post draft</label><p>${draftExists?'A completion draft already exists; open it after saving. A duplicate will not be created.':'Uses a free professional template and the approved details below. Nothing is published.'}</p><div class="field"><label for="completionHighlights">Approved project highlights (optional)</label><textarea id="completionHighlights" maxlength="400" rows="2" placeholder="e.g., Replaced worn boards and installed a new handrail"></textarea></div></div>
+ <div class="completion-step"><label class="completion-stephead"><input type="checkbox" id="completionPost" ${draftExists?'':'checked'}> Create a social post draft</label><p>${draftExists?'A completion draft already exists; open it after saving. A duplicate will not be created.':'Uses a free professional template and the approved details below. Nothing is published.'}</p><div class="field"><label for="completionHighlights">Approved project highlights (optional)</label><textarea id="completionHighlights" maxlength="400" rows="2" placeholder="e.g., Replaced worn boards and installed a new handrail"></textarea></div></div>
  <div class="completion-step"><label class="completion-stephead"><input type="checkbox" id="completionTask" ${alreadyTask?'disabled':'checked'}> Add a follow-up task</label><p>${alreadyTask?'This job already has a completion reminder; no duplicate will be added.':'Creates a task in your To-Do List. No messages will be sent automatically.'}</p><div class="field"><label for="completionDue">Task due date</label><input id="completionDue" type="date" min="${esc(fallbackDate)}" value="${esc(ahead(7))}" ${alreadyTask?'disabled':''}></div></div>
  <div class="completion-step"><div class="completion-stephead">▧ &nbsp; Save before-and-after previews (optional)</div><p>Small compressed previews only. Not a permanent photo archive. Use fictional or approved demo photos.</p><div class="completion-photos">${completionPhotoBox('before')}${completionPhotoBox('after')}</div></div>
  </div><div class="completion-warning">Demo mode: information is saved in this browser only. Back up the app before clearing browser data or changing devices. No customers are contacted automatically.</div>
@@ -1270,12 +1287,12 @@ function completionResult(id,results){
  const j=getJob(id);if(!j)return;
  const actions=[];
  if(results.review)actions.push(`<button type="button" class="btn" data-action="compose" data-id="${esc(id)}" data-mode="review">Prepare review request →</button>`);
- if(results.draft)actions.push(`<button type="button" class="btn secondary" data-action="completion-open-draft" data-id="${esc(j.completionDraftId)}">Edit Facebook draft →</button>`);
+ if(results.draft)actions.push(`<button type="button" class="btn secondary" data-action="completion-open-draft" data-id="${esc(j.completionDraftId)}">Edit social draft →</button>`);
  if(results.task)actions.push('<button type="button" class="btn secondary" data-action="open-todos">Open To-Do List →</button>');
  actions.push(`<button type="button" class="btn secondary" data-action="detail" data-id="${esc(id)}">View job</button>`);
- modal('Job completion saved',`<div class="completion-intro"><strong>✓ ${esc(j.service||'Job')} completed</strong><p>Your chosen steps have been saved. No review request or Facebook post was sent.</p></div><div class="completion-summary">
+ modal('Job completion saved',`<div class="completion-intro"><strong>✓ ${esc(j.service||'Job')} completed</strong><p>Your chosen steps have been saved. No review request or social post was sent.</p></div><div class="completion-summary">
  <div class="surface"><strong>Review request</strong><div class="small">${results.review?'Ready to prepare as an editable message.':j.sentAt?'Already recorded as sent.':'No request prepared.'}</div></div>
- <div class="surface"><strong>Facebook post</strong><div class="small">${results.draft?'Editable caption saved to your draft library.':'No new draft created.'}</div></div>
+ <div class="surface"><strong>Social post</strong><div class="small">${results.draft?'Editable caption saved to your draft library.':'No new draft created.'}</div></div>
  <div class="surface"><strong>To-Do List</strong><div class="small">${results.task?'Follow-up task available in your To-Do List.':'No new task created.'}</div></div>
  <div class="surface"><strong>Photos</strong><div class="small">${results.photos?'Compressed project preview(s) saved locally.':'No new photo previews.'}</div></div></div>
  <div class="modalfooter">${actions.join('')}</div>`);
@@ -1322,7 +1339,7 @@ async function copy(text){try{if(navigator.clipboard&&window.isSecureContext){aw
 
 const POST_TEMPLATES={
   spotlight:{name:'Completed Job Spotlight',help:'Share the results of a recently completed project.'},
-  beforeafter:{name:'Before & After Project',help:'Highlight a real improvement. Add approved photos separately on Facebook.'},
+  beforeafter:{name:'Before & After Project',help:'Highlight a real improvement. Add approved photos separately on your chosen platform.'},
   service:{name:'Service Highlight',help:'Explain the kind of work the business offers.'},
   tip:{name:'Helpful Customer Tip',help:'Turn one verified, useful tip into a short educational post.'},
   seasonal:{name:'Seasonal Planning',help:'Encourage planning ahead without making weather or availability claims.'},
@@ -1346,7 +1363,7 @@ function renderAiDrafts(){
  const list=$('#aiDraftLibrary');if(!list)return;
  $('#aiDraftCount').textContent=db.aiDrafts.length+' saved';
  const items=[...db.aiDrafts].sort((a,b)=>(b.updatedAt||'').localeCompare(a.updatedAt||''));
- list.innerHTML=items.length?items.map(x=>`<div class="ai-draft-row"><div class="ai-draft-summary"><strong>${esc(x.templateName||x.service||'Facebook draft')}</strong><small>${esc(x.updatedAt||'Saved')} · ${esc(String(x.text||'').slice(0,70))}${String(x.text||'').length>70?'…':''}</small></div><button class="btn secondary sm" type="button" data-action="ai-load-draft" data-id="${esc(x.id)}">Edit</button><button class="btn danger sm" type="button" data-action="ai-delete-draft" data-id="${esc(x.id)}" aria-label="Delete draft">×</button></div>`).join(''):'<div class="empty">No saved posts yet. Create one from a template, or write your own, then press Save Draft.</div>';
+ list.innerHTML=items.length?items.map(x=>`<div class="ai-draft-row"><div class="ai-draft-summary"><strong>${esc(x.templateName||x.service||'social draft')}</strong><small>${esc(x.updatedAt||'Saved')} · ${esc(String(x.text||'').slice(0,70))}${String(x.text||'').length>70?'…':''}</small></div><button class="btn secondary sm" type="button" data-action="ai-load-draft" data-id="${esc(x.id)}">Edit</button><button class="btn danger sm" type="button" data-action="ai-delete-draft" data-id="${esc(x.id)}" aria-label="Delete draft">×</button></div>`).join(''):'<div class="empty">No saved posts yet. Create one from a template, or write your own, then press Save Draft.</div>';
 }
 function aiDraftLoad(id){
  const draft=db.aiDrafts.find(x=>x.id===id);if(!draft)return;
@@ -1368,9 +1385,9 @@ function aiSaveDraft(){
  const fields={text:content,service:$('#socialService').value.trim(),details:$('#socialDetails').value.trim(),area:$('#socialArea').value.trim(),template:$('#socialTemplate').value,cta:$('#socialCta').value,style:$('#socialStyle').value,templateName:(POST_TEMPLATES[$('#socialTemplate').value]||POST_TEMPLATES.spotlight).name,updatedAt:timestamp};
  if(draft)Object.assign(draft,fields);
  else{draft={id:'ai'+Date.now()+Math.floor(Math.random()*10000),createdAt:timestamp,platform:'facebook',...fields};db.aiDrafts.push(draft);currentAiDraftId=draft.id;}
- if(save()){renderAiDrafts();$('#aiDraftFlag').textContent='Saved draft';toast('✓ Facebook draft saved.');}
+ if(save()){renderAiDrafts();$('#aiDraftFlag').textContent='Saved draft';toast('✓ social draft saved.');}
 }
-function aiNewDraft(){currentAiDraftId=null;$('#aiDraftEditor').value='';$('#aiDraftFlag').textContent='New draft';$('#templateStatus').textContent='Ready to create another Facebook post.';}
+function aiNewDraft(){currentAiDraftId=null;$('#aiDraftEditor').value='';$('#aiDraftFlag').textContent='New draft';$('#templateStatus').textContent='Ready to create another social post.';}
 const endSentence=text=>{const cleaned=String(text||'').trim();return cleaned?(/[.!?]$/.test(cleaned)?cleaned:cleaned+'.'):''};
 async function templateCreate(){
  const template=$('#socialTemplate').value;
@@ -1428,8 +1445,8 @@ async function templateCreate(){
  $('#aiDraftEditor').value=result;
  currentAiDraftId=null;
  $('#aiDraftFlag').textContent='Template post · Unsaved';
- $('#templateStatus').textContent='Post created from the '+POST_TEMPLATES[template].name+' template. Edit and save it, or copy it into Facebook.';
- toast('✓ Facebook post created. Review it, then save.');
+ $('#templateStatus').textContent='Post created from the '+POST_TEMPLATES[template].name+' template. Edit and save it, or copy it to your chosen platform.';
+ toast('✓ Social post created. Review it, then save.');
 }
 function initAi(){
  const style=$('#socialStyle');if(style){style.value=['professional','casual','friendly','short'].includes(db.postStyle)?db.postStyle:'professional';style.addEventListener('change',e=>{db.postStyle=e.target.value;if(save())toast('Writing style saved.');});}
