@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#173d37">
-<title>FollowUp Studio — V3.9.5 Touch-Drag Home Tiles</title>
+<title>FollowUp Studio — V3.9.6 iPhone-Style Home Editing</title>
 <style>
 :root{--forest:#173d37;--forest2:#24594e;--teal:#2f806c;--bg:#f5f5f0;--paper:#fff;--ink:#25342f;--muted:#728078;--border:#e1e7df;--cream:#eee7d9;--gold:#c69e5b;--red:#aa4b47;--amber:#946514;--green:#22734f;--radius:18px}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:15px;line-height:1.5}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.48;cursor:not-allowed}input,select,textarea{width:100%;border:1px solid #cbd6cc;background:white;border-radius:12px;padding:12px 13px;color:var(--ink);outline-offset:2px}input:focus,select:focus,textarea:focus{outline:2px solid #83ae9c;outline-offset:0}textarea{resize:vertical;min-height:110px}label{display:block;font-weight:700;font-size:13px;margin-bottom:7px}.small{font-size:12px;color:var(--muted)}.muted{color:var(--muted)}.eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:850;color:var(--teal)}h1,h2,h3,p{margin-top:0}h1{font-size:31px;letter-spacing:-1.25px;margin-bottom:6px;line-height:1.16}h2{font-size:21px;letter-spacing:-.5px;margin-bottom:12px}h3{font-size:16px;margin-bottom:7px}p{margin-bottom:14px}.layout{min-height:100vh;display:flex}.sidebar{background:var(--forest);color:#fff;width:238px;flex:none;padding:27px 16px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column}.logo{display:flex;align-items:center;gap:10px;padding:3px 9px 25px}.logo-mark{width:37px;height:37px;border-radius:12px;display:grid;place-items:center;background:var(--gold);color:var(--forest);font-weight:1000;font-size:20px;box-shadow:inset 0 -3px 0 #0002}.logo-name{font-weight:900;letter-spacing:-.6px;line-height:1}.logo-name small{display:block;margin-top:5px;font-weight:650;letter-spacing:.1em;font-size:9px;color:#a8cabc}.nav{display:grid;gap:5px}.nav button{width:100%;border:none;text-align:left;background:transparent;color:#c9dbd5;border-radius:12px;padding:12px 13px;display:flex;align-items:center;gap:11px;font-weight:750}.nav button.active,.nav button:hover{background:#fff2;color: #fff}.nav svg{height:19px;width:19px}.sidebottom{margin-top:auto;padding:14px 11px;border-top:1px solid #ffffff21;color:#b4cdc2;font-size:12px}.demo-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#f1c174;margin-right:6px}.content{width:min(1150px,100%);padding:32px 38px 90px;margin:0 auto}.topline{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:26px}.headline{margin-top:3px}.pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;border-radius:999px;padding:5px 9px;background:#e7f2eb;color:var(--green)}.pill.amber{background:#fff1d9;color:var(--amber)}.pill.gray{background:#e9eee9;color:#66776a}.pill.red{background:#f8e9e6;color:var(--red)}.demoBanner{background:#faf0da;border:1px solid #ead5a7;border-radius:14px;color:#71592e;padding:12px 15px;font-size:13px;margin-bottom:21px}.view{display:none}.view.active{display:block}.btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;border:1px solid transparent;border-radius:12px;padding:11px 15px;font-weight:800;background:var(--forest);color:#fff;text-decoration:none;font-size:13px;white-space:nowrap}.btn:hover:not(:disabled){filter:brightness(1.09)}.btn.secondary{background:#fff;color:var(--forest);border-color:#cbd8cf}.btn.ghost{background:#eef3ee;color:var(--forest)}.btn.danger{background:#fff;color:var(--red);border-color:#e2c2be}.btn.sm{padding:8px 11px;font-size:12px}.btn-row{display:flex;gap:9px;flex-wrap:wrap}.card{border:1px solid var(--border);border-radius:var(--radius);background:var(--paper);padding:22px;box-shadow:0 5px 18px #243b2c06}.hero{background:linear-gradient(110deg,#214b40,#153a34 75%);color:#fff;border-radius:22px;padding:29px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:22px;margin-bottom:22px;overflow:hidden;position:relative}.hero:before{content:"";position:absolute;right:-46px;bottom:-115px;width:320px;height:320px;border-radius:50%;border:65px solid #ffffff0a}.hero p{max-width:460px;color:#d6e7db;margin-bottom:18px}.hero .btn{background:var(--gold);color:#243b2d}.hero .hero-icon{font-size:62px;position:relative;opacity:.93}.grid{display:grid;gap:15px}.metrics{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:22px}.metricLabel{font-size:12px;color:var(--muted);font-weight:650}.metricValue{font-size:30px;font-weight:850;letter-spacing:-1px;margin:6px 0 0}.metricFoot{font-size:11px;color:var(--muted)}.two-col{grid-template-columns:1.4fr 1fr}.subhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.subhead h2{margin:0}.list{display:grid;gap:10px}.jobrow{border:1px solid var(--border);border-radius:14px;padding:14px;display:flex;gap:12px;align-items:center;justify-content:space-between}.jobrow-main{min-width:0;flex:1}.jobrow strong{display:block;font-weight:800}.jobrow .meta{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis}.jobrow .right{display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:flex-end}.circle{height:39px;width:39px;display:grid;place-items:center;border-radius:12px;background:var(--cream);color:var(--forest);font-weight:850;flex:none}.searchtools{display:flex;gap:11px;margin:0 0 16px;flex-wrap:wrap}.searchtools input{flex:1;min-width:185px}.searchtools select{width:auto;min-width:150px}.sectionintro{display:flex;gap:14px;align-items:end;justify-content:space-between;margin-bottom:20px}.sectionintro p{margin:6px 0 0;color:var(--muted);max-width:620px}.empty{padding:24px;border-radius:14px;background:#f5f7f4;border:1px dashed #c7d5cb;color:var(--muted);font-size:13px;text-align:center}.stack{display:grid;gap:14px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-bottom:12px}.field input,.field textarea{margin:0}.checkline{display:flex;gap:9px;align-items:flex-start;font-weight:500;font-size:13px;line-height:1.5;margin:12px 0}.checkline input{height:17px;width:17px;flex:none;margin:2px 0 0;accent-color:var(--forest)}.surface{padding:13px 14px;background:#f5f8f4;border:1px solid var(--border);border-radius:12px}.example{white-space:pre-wrap;word-break:break-word;font-size:13px;line-height:1.7;color:#34443b}.note{font-size:12px;color:var(--muted);line-height:1.6}.actioncard{background:#f8faf7;border-radius:14px;padding:14px}.statline{display:flex;gap:12px;justify-content:space-between;border-bottom:1px solid var(--border);padding:11px 0;font-size:13px}.statline:last-child{border:0}.statline span:last-child{font-weight:800}.bottomnav{display:none}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#203d32;color:#fff;padding:12px 16px;font-size:13px;border-radius:12px;z-index:200;max-width:90vw;box-shadow:0 12px 30px #0003;display:none}.toast.show{display:block}.overlay{position:fixed;inset:0;background:#0e221b9c;z-index:90;display:none;align-items:center;justify-content:center;padding:20px}.overlay.open{display:flex}.dialog{width:min(600px,100%);max-height:90vh;overflow:auto;background:white;border-radius:20px;padding:22px;box-shadow:0 18px 70px #0004}.dialogHeader{display:flex;align-items:start;justify-content:space-between;gap:15px}.xbtn{border:0;background:#f0f3ef;border-radius:10px;width:35px;height:35px;font-size:22px;color:#506357;flex:none}.modalfooter{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}.divider{height:1px;background:var(--border);margin:19px 0}.detailgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tag{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--teal)}.flex{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.helper{color:var(--muted);font-size:12px;margin-top:7px}.exportBar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:15px}.desktopOnly{display:inline}.footer{color:var(--muted);font-size:11px;margin-top:30px}.keyboard{font-size:11px;color:var(--muted);font-weight:600}
@@ -590,7 +590,7 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
 @media(max-width:520px){.profileEditTop{font-size:12px!important;padding:8px 10px!important}.profileHeading .profileIdentity h3{font-size:16px}.profileHeading .profileIdentity .small{font-size:11px}.profileHistoryToggle{padding:14px;font-size:16px}}
 @media(prefers-reduced-motion:reduce){.homeTileGrid.is-reordering .homeTileShell .homeTileIcon{animation:none}.profileHistoryChevron{transition:none}}
 
-/* V3.9.5: iPhone-style thumb dragging: the dragged tile follows the finger, no arrow buttons. */
+/* V3.9.6: iPhone-style thumb dragging: the dragged tile follows the finger, no arrow buttons. */
 .homeCustomizeBar{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));right:14px;left:auto;transform:none;z-index:440;background:var(--paper);border:1px solid var(--border);border-radius:14px;padding:8px 10px;box-shadow:0 9px 26px #0005;margin:0!important;width:auto;max-width:calc(100vw - 28px)}
 .homeCustomizeBar .note{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)!important}
 .homeTileGrid .homeTileShell{transition:transform .15s ease, opacity .15s ease;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
@@ -603,6 +603,22 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
 .homeTileGrid.is-reordering .homeTileShell>.homeTile{padding-bottom:9px}
 .homeTileGrid .tileDropTarget{outline-offset:-2px}
 @media(max-width:700px){.homeTileGrid.is-reordering .homeTileShell>.homeTile{padding-bottom:8px}}
+
+/* V3.9.6: genuine iPhone-like Home editing: jiggle the whole tile, not just its icon.
+   Adjacent tiles glide into their new positions while dragging; no Done button. */
+.homeTileGrid.is-reordering .homeTileShell:not(.tileDragging) > .homeTile{
+  animation:homeIconJiggle .24s ease-in-out infinite alternate;
+  transform-origin:50% 50%;
+}
+.homeTileGrid.is-reordering .homeTileShell:nth-child(2n):not(.tileDragging) > .homeTile{
+  animation-delay:-.12s;animation-direction:alternate-reverse;
+}
+.homeTileGrid.is-reordering .homeTileShell .homeTileIcon{animation:none!important}
+@keyframes homeIconJiggle{0%{transform:rotate(-.85deg) translateY(.3px)}100%{transform:rotate(.85deg) translateY(-.3px)}}
+.homeTileGrid.is-reordering .homeTileShell,.homeTileGrid.is-reordering .homeTile{touch-action:none!important}
+.homeTileGrid.is-reordering .homeTileShell:not(.tileDragging){will-change:transform}
+.homeTileGrid.is-reordering .tileDragging>.homeTile{animation:none!important}
+@media(prefers-reduced-motion:reduce){.homeTileGrid.is-reordering .homeTileShell>.homeTile{animation:none!important}.homeTileGrid .homeTileShell{transition:none!important}}
 </style>
 </head>
 <body>
@@ -636,7 +652,7 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
     <div class="demoBanner"><strong>Safe demonstration:</strong> Demo Mode uses fictional customers and stores data in this browser. In Cloud Mode, signed-in users can sync records to their private workspace. Text messaging opens your phone’s Messages app for you to review and send. Post templates work without subscriptions or API keys. No customer messages or Facebook posts are sent automatically. <span id="previewNote" style="font-weight:650">You can switch pages in file preview. For editing, customer buttons, and saving, use a full browser-hosted copy.</span></div>
     <section class="view active" id="view-home" aria-labelledby="hubHeading">
       <div class="homeWelcome"><div class="eyebrow">YOUR BUSINESS AT A GLANCE</div><h1 id="hubHeading">Welcome home.</h1><p>Everything you need to manage your business, right at your fingertips.</p></div>
-      <div class="homeCustomizeBar" id="homeCustomizeBar" hidden><button type="button" class="btn sm" id="homeCustomizeBtn" data-action="home-customize" aria-pressed="true">Done</button><span id="homeCustomizeHint" class="note">Hold and drag tiles into place, then tap Done. Keyboard: Alt + arrow keys.</span></div><button type="button" class="homeKeyboardEdit" data-action="home-customize">Rearrange Home tiles</button>
+      <button type="button" class="homeKeyboardEdit" data-action="home-customize">Rearrange Home tiles (keyboard users: Alt + arrow keys, Escape to finish)</button>
       <div class="homeTileGrid" id="homeTileGrid" aria-label="Business tools. Press and hold a tile to rearrange." aria-describedby="homeTileHint">
         <div class="homeTileShell" data-tile-id="snapshot"><button class="homeTile" type="button" data-route="dashboard" aria-label="Open Snapshot"><span class="homeTileIcon"><svg><use href="#i-chart"/></svg></span><strong>Snapshot</strong><span class="homeTileDetail">Overview</span></button></div>
         <div class="homeTileShell" data-tile-id="calendar"><button class="homeTile" type="button" data-route="calendar" aria-label="Open Calendar"><span class="homeTileIcon"><svg><use href="#i-calendar"/></svg></span><strong>Calendar</strong><span class="homeTileDetail" id="hubCalendar">Schedule</span></button></div>
@@ -648,7 +664,7 @@ body:has(input:focus) .floatingHome,body:has(textarea:focus) .floatingHome,body:
         <div class="homeTileShell" data-tile-id="archive"><button class="homeTile" type="button" data-route="archive" aria-label="Open Archived Customers"><span class="homeTileIcon"><svg><use href="#i-archive"/></svg></span><strong>Archive</strong><span class="homeTileDetail" id="hubArchive">Stored safely</span></button></div>
         <div class="homeTileShell" data-tile-id="settings"><button class="homeTile" type="button" data-route="settings" aria-label="Open Settings"><span class="homeTileIcon"><svg><use href="#i-gear"/></svg></span><strong>Settings</strong><span class="homeTileDetail">Make it yours</span></button></div>
       </div>
-      <p class="homeHubFoot"><span id="homeTileHint">Tap a tile to open it. Press and hold a tile, then drag to rearrange.</span></p>
+      <p class="homeHubFoot"><span id="homeTileHint">Tap a tile to open it. Press and hold to rearrange; tap outside the tiles when finished.</span></p>
     </section>
     <section class="view" id="view-dashboard">
       <div class="snapshotHeader"><div class="eyebrow">BUSINESS SNAPSHOT</div><h1>Business overview</h1><p>Latest job activity, review progress, and items needing attention.</p></div>
@@ -914,8 +930,7 @@ function drawHomeOrder(){
  for(const id of currentHomeOrder()){const tile=grid.querySelector(`[data-tile-id="${id}"]`);if(tile)grid.appendChild(tile)}
  grid.classList.toggle('is-reordering',homeEditMode);
  grid.querySelectorAll('.homeTile').forEach(b=>{b.setAttribute('aria-disabled',homeEditMode?'true':'false')});
- const bar=$('#homeCustomizeBar');if(bar)bar.hidden=!homeEditMode;
- const b=$('#homeCustomizeBtn');if(b){b.textContent='Done';b.setAttribute('aria-pressed',String(homeEditMode))}
+ const hint=$('#homeTileHint');if(hint)hint.textContent=homeEditMode?'Drag tiles into place. Tap outside the tiles to finish.':'Tap a tile to open it. Press and hold to rearrange; tap outside the tiles when finished.';
  const sr=$('.homeKeyboardEdit');if(sr)sr.setAttribute('aria-label',homeEditMode?'Finish rearranging Home tiles':'Rearrange Home tiles');
 }
 function commitHomeOrder(order){
@@ -1651,7 +1666,8 @@ function bind(){
  const homeGrid=$('#homeTileGrid');
  let tileDrag=null,homeHold=null,lastTileHoldAt=0;
  const clearHomeHold=()=>{if(homeHold?.timer)clearTimeout(homeHold.timer);homeHold=null};
- const startTileDrag=(shell,id,x,y)=>{
+ const startTileDrag=(shell,x,y)=>{
+  const id=shell?.dataset.tileId;
   if(!shell||!homeEditMode||currentRoute!=='home')return false;
   if(tileDrag)finishTileDrag(false);
   const tile=shell.querySelector('.homeTile'),rect=tile.getBoundingClientRect();
@@ -1675,7 +1691,28 @@ function bind(){
   const target=document.elementFromPoint(x,y)?.closest('.homeTileShell');
   if(target&&target!==drag.shell&&homeGrid.contains(target)){
    const siblings=[...homeGrid.children],a=siblings.indexOf(drag.shell),b=siblings.indexOf(target);
+   // FLIP layout animation: move the real tiles to their new slots and
+   // animate the displaced tiles from their visible old positions.
+   const startRects=new Map(siblings.map(el=>[el,el.getBoundingClientRect()]));
    if(a<b)target.after(drag.shell);else target.before(drag.shell);
+   const others=[...homeGrid.children].filter(el=>el!==drag.shell);
+   for(const el of others){
+    if(el._homeFlipFrame)cancelAnimationFrame(el._homeFlipFrame);
+    el.style.transition='none';el.style.transform='none';
+   }
+   for(const el of others){
+    const first=startRects.get(el),last=el.getBoundingClientRect();
+    if(!first)continue;
+    const dx=first.left-last.left,dy=first.top-last.top;
+    if(Math.abs(dx)+Math.abs(dy)>1){el.style.transform=`translate3d(${dx}px,${dy}px,0)`;}
+   }
+   homeGrid.getBoundingClientRect(); // Commit all first frames before animating.
+   for(const el of others){
+    el._homeFlipFrame=requestAnimationFrame(()=>{
+     el.style.transition='transform 200ms cubic-bezier(.22,1,.36,1)';
+     el.style.transform='';el._homeFlipFrame=null;
+    });
+   }
    drag.moved=true;
   }
  };
@@ -1748,6 +1785,17 @@ function bind(){
   if(homeHold?.id===e.pointerId)clearHomeHold();
   if(mouseDown?.id===e.pointerId){finishTileDrag(false);mouseDown=null}
  });
+ // iPhone-style dismissal: tap anywhere outside the tile grid to stop jiggling.
+ // Pointer capture makes this work before a surrounding button navigates.
+ document.addEventListener('pointerdown',e=>{
+  if(homeEditMode&&currentRoute==='home'&&!tileDrag&&!e.target.closest('#homeTileGrid')&&!e.target.closest('.homeKeyboardEdit')){
+   enableHomeCustomize(false);lastTileHoldAt=0;
+  }
+ },true);
+ // Touch-only fallback for browsers without Pointer Events.
+ if(!window.PointerEvent)document.addEventListener('touchstart',e=>{
+  if(homeEditMode&&currentRoute==='home'&&!tileDrag&&!e.target.closest('#homeTileGrid')){enableHomeCustomize(false);lastTileHoldAt=0;}
+ },{capture:true,passive:true});
  // Suppress the synthetic tap emitted after a long press, including the one
  // triggered on touchend. Normal taps in browsing mode still navigate.
  homeGrid.addEventListener('click',e=>{
@@ -1757,6 +1805,7 @@ function bind(){
  },true);
  homeGrid.addEventListener('contextmenu',e=>{if(!e.target.closest('.homeTileShell'))return;e.preventDefault();if(!homeEditMode)enableHomeCustomize(true)});
  homeGrid.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&homeEditMode){e.preventDefault();enableHomeCustomize(false);return;}
   if(e.key==='F10'&&e.shiftKey){e.preventDefault();enableHomeCustomize(true);return;}
   const shell=e.target.closest('.homeTileShell');
   if(homeEditMode&&shell&&e.altKey&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){
@@ -1774,7 +1823,7 @@ function bind(){
  const endDirectorySwipe=(e,cancel=false)=>{const row=e.target.closest('.customerSwipeRow');const s=row?row._swipe:null;if(!s)return;delete row._swipe;if(!s.active)return;const end=s.base+s.delta;const opened=!cancel&&(s.delta<-32||(s.base<0&&s.delta<32&&end<-44));row.classList.toggle('swiped',opened);row.style.removeProperty('--swipeX');row.querySelector('.customerCard').style.transition='';row.dataset.justSwiped='1';setTimeout(()=>{delete row.dataset.justSwiped},520)};
  directory.addEventListener('touchend',e=>endDirectorySwipe(e),{passive:true});
  directory.addEventListener('touchcancel',e=>endDirectorySwipe(e,true),{passive:true});
- $('#cloudAuthForm').addEventListener('submit',e=>{e.preventDefault();cloudLogin(false)});window.addEventListener('online',()=>{if(cloud.user&&cloud.dirty&&!cloud.conflict)queueCloudSave(0)});document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&cloud.user&&!cloud.dirty&&!cloud.saving)cloudRefresh(true)});window.addEventListener('beforeunload',e=>{if(cloud.user&&cloud.dirty){e.preventDefault();e.returnValue='';}});document.addEventListener('click',e=>{const route=e.target.closest('[data-route]');if(route){if(homeEditMode&&route.classList.contains('homeTile'))return;navigate(route.dataset.route);if(route.dataset.focus){const target=route.dataset.focus==='customers'?'customerDirectorySection':'jobListSection';requestAnimationFrame(()=>document.getElementById(target)?.scrollIntoView({block:'start',behavior:'instant'}));}return}applyAction(e)});$('#searchJobs').addEventListener('input',renderJobs);$('#statusFilter').addEventListener('change',renderJobs);$('#settingsForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#businessName').value.trim(),template=$('#reviewTemplate').value.trim(),reviewUrl=$('#reviewUrl').value.trim();if(!name||!template||!reviewUrl){toast('Business name, Google review link, and template are required.','error');return}try{const u=new URL(reviewUrl);if(u.protocol!=='https:')throw Error()}catch(e){toast('Enter a complete Google review link starting with https://','error');return}db.business=name;db.reviewUrl=reviewUrl;db.template=template;if(save()){render();toast('✓ Business settings saved.')}});$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal()}});document.addEventListener('submit',e=>{if(e.target.id==='customerForm'){e.preventDefault();saveCustomer()}});$('#todoForm').addEventListener('submit',addTask);$('#restoreInput').addEventListener('change',e=>{const f=e.target.files?.[0];if(f)chooseBackupFile(f);e.target.value=''});document.addEventListener('change',e=>{if(e.target?.matches?.('[data-completion-photo]'))handleCompletionPhoto(e.target)});document.addEventListener('change',e=>{const id=e.target?.dataset?.taskId;if(!id)return;const task=db.todos.find(x=>x.id===id);if(task){task.done=e.target.checked;if(save()){render();toast(task.done?'✓ Task completed.':'✓ Task reopened.')}}})}
+ $('#cloudAuthForm').addEventListener('submit',e=>{e.preventDefault();cloudLogin(false)});window.addEventListener('online',()=>{if(cloud.user&&cloud.dirty&&!cloud.conflict)queueCloudSave(0)});document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&cloud.user&&!cloud.dirty&&!cloud.saving)cloudRefresh(true)});window.addEventListener('beforeunload',e=>{if(cloud.user&&cloud.dirty){e.preventDefault();e.returnValue='';}});document.addEventListener('click',e=>{const route=e.target.closest('[data-route]');if(route){if(homeEditMode&&route.classList.contains('homeTile'))return;navigate(route.dataset.route);if(route.dataset.focus){const target=route.dataset.focus==='customers'?'customerDirectorySection':'jobListSection';requestAnimationFrame(()=>document.getElementById(target)?.scrollIntoView({block:'start',behavior:'instant'}));}return}applyAction(e)});$('#searchJobs').addEventListener('input',renderJobs);$('#statusFilter').addEventListener('change',renderJobs);$('#settingsForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#businessName').value.trim(),template=$('#reviewTemplate').value.trim(),reviewUrl=$('#reviewUrl').value.trim();if(!name||!template||!reviewUrl){toast('Business name, Google review link, and template are required.','error');return}try{const u=new URL(reviewUrl);if(u.protocol!=='https:')throw Error()}catch(e){toast('Enter a complete Google review link starting with https://','error');return}db.business=name;db.reviewUrl=reviewUrl;db.template=template;if(save()){render();toast('✓ Business settings saved.')}});$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(homeEditMode)enableHomeCustomize(false);closeModal()}});document.addEventListener('submit',e=>{if(e.target.id==='customerForm'){e.preventDefault();saveCustomer()}});$('#todoForm').addEventListener('submit',addTask);$('#restoreInput').addEventListener('change',e=>{const f=e.target.files?.[0];if(f)chooseBackupFile(f);e.target.value=''});document.addEventListener('change',e=>{if(e.target?.matches?.('[data-completion-photo]'))handleCompletionPhoto(e.target)});document.addEventListener('change',e=>{const id=e.target?.dataset?.taskId;if(!id)return;const task=db.todos.find(x=>x.id===id);if(task){task.done=e.target.checked;if(save()){render();toast(task.done?'✓ Task completed.':'✓ Task reopened.')}}})}
 bind();render();initAi();cloudBoot();
 const previewNote=$('#previewNote');if(previewNote)previewNote.textContent='Post templates work without paid APIs. Sign in under Settings to use an isolated cloud workspace; Demo Mode keeps data in this browser.';
 document.addEventListener('keydown',e=>{const nav=e.target.closest('[data-route]');if(nav&&nav.tagName==='LABEL'&&(e.key==='Enter'||e.key===' ')){e.preventDefault();navigate(nav.dataset.route)}});
