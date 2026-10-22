@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#151719">
-<title>FollowUp Studio — V4.0.4 Secure Welcome & Automatic Drafts</title>
+<title>FollowUp Studio — V4.0.6 Login & Home Polish</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="FollowUp Studio">
@@ -1000,17 +1000,32 @@ body.workspaceLocked:not(.loadingWorkspace) #entryGate{display:flex}
 .entryError{min-height:19px;font-size:12px;color:#ffaaa7;margin-top:9px;text-align:center}
 .entryFoot{font-size:11px;color:#91a3a9;text-align:center;line-height:1.6;margin:16px 0 0}
 .entryCard form button:disabled{opacity:.55}
+.entryCard [hidden]{display:none!important}
+/* Compact, icon-only cloud indicator and tighter Home header. */
+#cloudTopBadge.cloudIconStatus{flex:none;display:grid;place-items:center;width:36px;height:36px;margin-left:auto;padding:0;border:1px solid #58636a;border-radius:11px;background:#232b30;color:#d9e5ed;box-shadow:0 2px 8px #0002;cursor:pointer}
+#cloudTopBadge.cloudIconStatus svg{width:21px;height:21px}
+#cloudTopBadge[data-sync="ready"]{color:#8ce0b7;border-color:#35785e}
+#cloudTopBadge[data-sync="pending"]{color:#eac882;border-color:#7b6b47}
+#cloudTopBadge[data-sync="error"],#cloudTopBadge[data-sync="offline"]{color:#ef9b9b;border-color:#905858}
+#workspaceTopline{flex-wrap:nowrap;align-items:center}
+#workspaceTopline>div{min-width:0}
+#brandHeading{overflow-wrap:anywhere}
+body[data-current-view="home"] #workspaceTopline{margin-bottom:4px}
+#view-home .homeWelcome{padding-top:0!important;padding-bottom:2px!important}
+#view-home .homeWelcome h1{margin:0 0 2px!important}
+#view-home .homeWelcome p{margin:0 0 5px!important}
+@media(max-width:700px){body[data-current-view="home"] #workspaceTopline{margin-bottom:2px}#view-home .homeWelcome{padding-bottom:0!important}}
 /* The signed-in product has no example-data chrome. */
 body.accountWorkspace .demoBanner,body.accountWorkspace [data-action="cloud-import-demo"],body.accountWorkspace [data-action="reset"],body.accountWorkspace .cloudDemoOnly,body.accountWorkspace .demoHowto{display:none!important}
 
 </style>
 </head>
-<body class="workspaceLocked">
+<body class="workspaceLocked" data-current-view="home">
 <div id="entryGate" role="region" aria-label="Sign in to FollowUp Studio">
  <div class="entryCard"><div class="entryBrand" aria-hidden="true">F</div><h1>FollowUp Studio</h1>
  <p class="entryTagline">Your business workspace, all in one place.</p>
  <form id="entryAuthForm" autocomplete="on"><div class="field"><label for="entryEmail">Email Address</label><input id="entryEmail" type="email" name="username" autocomplete="username" inputmode="email" autocapitalize="none" spellcheck="false" required placeholder="you@company.com"></div>
- <div class="field"><label for="entryPassword">Password</label><input id="entryPassword" name="password" type="password" autocomplete="current-password" minlength="8" required placeholder="Your account password"></div>
+ <div class="field"><label for="entryPassword">Password</label><input id="entryPassword" name="password" type="password" autocomplete="current-password" required placeholder="Your account password"></div>
  <button id="entrySignIn" class="btn entryPrimary" type="submit">Sign In</button><button id="entryRetry" type="button" class="entrySignup" hidden>Retry Loading Workspace</button>
  <div class="entryError" id="entryError" role="alert" aria-live="polite"></div>
  </form><div style="text-align:center"><button class="entrySignup" type="button" id="entrySignUp">Create an Account</button></div>
@@ -1031,7 +1046,7 @@ body.accountWorkspace .demoBanner,body.accountWorkspace [data-action="cloud-impo
 <input class="route-radio" type="radio" name="followup-page" id="page-howto" aria-label="How To guide view">
 <div class="layout">
   <aside class="sidebar">
-    <div class="logo"><div class="logo-mark">↗</div><div class="logo-name">FollowUp<br>Studio<small>CLOUD • V4.0.4</small></div></div>
+    <div class="logo"><div class="logo-mark">↗</div><div class="logo-name">FollowUp<br>Studio<small>CLOUD • V4.0.6</small></div></div>
     <nav class="nav" aria-label="Main navigation">
       <label class="navtab active" data-route="home" for="page-home" tabindex="0"><svg><use href="#i-grid"/></svg> Home</label>
       <label class="navtab" data-route="dashboard" for="page-dashboard" tabindex="0"><svg><use href="#i-chart"/></svg> Snapshot</label>
@@ -1046,7 +1061,7 @@ body.accountWorkspace .demoBanner,body.accountWorkspace [data-action="cloud-impo
     <div class="sidebottom"><span class="demo-dot"></span>Private account workspace<br>Free post templates</div>
   </aside>
   <main class="content">
-    <div class="topline"><div><div class="eyebrow">SMALL BUSINESS FOLLOW-UP</div><div class="headline" style="font-weight:800" id="brandHeading">Demo Home Services</div></div><span id="cloudTopBadge" class="pill amber" role="status">● DEMO MODE</span></div>
+    <div class="topline" id="workspaceTopline"><div><div class="headline" style="font-weight:800" id="brandHeading">Demo Home Services</div></div><button id="cloudTopBadge" type="button" data-route="settings" aria-label="Cloud sync status — open Settings" title="Cloud sync status" class="cloudIconStatus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 16.6a4.2 4.2 0 0 0-2.6-7.4 6.4 6.4 0 0 0-12.2 2.3A4 4 0 0 0 6 19h12a4 4 0 0 0 2-2.4Z"/></svg></button></div>
     <section class="view active" id="view-home" aria-labelledby="hubHeading">
       <div class="homeWelcome"><h1 id="hubHeading">Welcome home.</h1><p>Everything you need to manage your business, right at your fingertips.</p></div>
       <button type="button" class="homeKeyboardEdit" data-action="home-customize">Rearrange Home tiles (keyboard users: Alt + arrow keys, Escape to finish)</button>
@@ -1242,7 +1257,7 @@ body.accountWorkspace .demoBanner,body.accountWorkspace [data-action="cloud-impo
         <div class="stack"><div class="card"><h2>Exports & Backups</h2><p class="note">Export a complete JSON backup regularly and keep it in a private, secure location. JSON backups are <strong>not encrypted</strong> and can include client details and compressed photo previews.</p><div class="btn-row"><button class="btn" data-action="backup">↓ Download full backup</button><button class="btn secondary" data-action="restore-open">↑ Restore from backup</button><button class="btn secondary" data-action="csv">Export jobs CSV</button><button class="btn secondary" data-action="reset">Reset sample data</button></div><input id="restoreInput" type="file" accept=".json,application/json" hidden aria-label="Choose backup JSON"><div class="backupStatus" id="backupStatus" role="status">No backup prepared this session.</div></div><div class="card"><h2>Dialog preferences</h2><p class="note">If you previously selected “Do not show me this message again,” you can turn those confirmations back on.</p><button type="button" class="btn secondary" data-action="restore-confirmations">Restore all confirmation messages</button></div><div class="card"><h2>Before selling this</h2><p class="note">Cloud accounts and recovery are in beta. Before commercial use, verify real cross-account isolation, independent backups, server-side recovery, privacy practices, and secure photo storage. Temporary recovery data in this tab is not encrypted. Free projects may pause when idle.</p></div></div>
       </div>
     </section>
-    <div class="footer">FollowUp Studio V4.0.4 · Private Workspace · Automatic Drafts</div>
+    <div class="footer">FollowUp Studio V4.0.6 · Private Workspace · Automatic Drafts</div>
   </main>
 </div>
 <div class="floatingNav floatingHome" id="mobileHomeControl">
@@ -1264,7 +1279,7 @@ body.accountWorkspace .demoBanner,body.accountWorkspace [data-action="cloud-impo
 <dialog id="contactConfirm" class="glassConfirm v38Confirm" aria-labelledby="contactConfirmTitle"><h2 id="contactConfirmTitle">Confirm contact changes</h2><p class="note">Please verify the following updates before saving:</p><div id="contactChangeList" class="contactChangeList"></div><label class="checkline"><input type="checkbox" id="contactChangeAcknowledge"> I reviewed these changes and confirm they are correct.</label><div class="confirmActions"><button type="button" class="confirmNo" id="contactChangeCancel">Go back</button><button type="button" class="confirmYes" id="contactChangeSave">Confirm &amp; save</button></div></dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="./cloud-config.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>(()=>{'use strict';
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0"></script><script>(()=>{'use strict';
 const KEY='followup_studio_demo_v1';
 const BACKUP_STATUS_KEY='followup_studio_backup_prepared_v1';
 let pendingRestore=null;
@@ -1379,7 +1394,7 @@ const dueFollowup=j=>j.status==='completed'&&j.sentAt&&!j.reviewAt&&!j.followupA
 const status=j=>j.status==='active'?['Active','gray']:j.reviewAt?['Review recorded','']:!j.sentAt?['Request not sent','amber']:j.followupAt?['Follow-up recorded','gray']:dueFollowup(j)?['Follow-up due','amber']:['Request sent',''];
 const badge=j=>{const [a,b]=status(j);return `<span class="pill ${b}">${esc(a)}</span>`};
 function metrics(){const active=visibleJobs().filter(j=>j.status==='active').length,completed=visibleJobs().filter(j=>j.status==='completed').length,sent=visibleJobs().filter(j=>j.sentAt).length,reviews=visibleJobs().filter(j=>j.reviewAt).length;return{active,completed,sent,reviews,pending:visibleJobs().filter(j=>needsRequest(j)&&!optedOut(j)).length,follow:visibleJobs().filter(dueFollowup).length}}
-function navigate(route){ if(!['home','dashboard','archive','followup','customers','jobs','calendar','content','todo','settings','howto'].includes(route))return;if(route==='followup'&&currentRoute!=='followup'){smartFilter='all';const actionList=$('#smartActionList');if(actionList)actionList.style.minHeight='';}if(route!=='content'&&$('#completionStudioBack'))$('#completionStudioBack').hidden=true;if(route!=='home'&&homeEditMode){homeEditMode=false;drawHomeOrder()} const radio=$('#page-'+route);if(radio)radio.checked=true;currentRoute=route;try{sessionStorage.setItem('followup_last_route_v402',route)}catch(e){}$$('[data-route]').forEach(b=>{const yes=b.dataset.route===route;b.classList.toggle('active',yes);b.setAttribute('aria-current',yes?'page':'false')});$$('.view').forEach(x=>x.classList.toggle('active',x.id==='view-'+route));render();try{window.scrollTo(0,0)}catch(e){}}
+function navigate(route){ if(!['home','dashboard','archive','followup','customers','jobs','calendar','content','todo','settings','howto'].includes(route))return;if(route==='followup'&&currentRoute!=='followup'){smartFilter='all';const actionList=$('#smartActionList');if(actionList)actionList.style.minHeight='';}if(route!=='content'&&$('#completionStudioBack'))$('#completionStudioBack').hidden=true;if(route!=='home'&&homeEditMode){homeEditMode=false;drawHomeOrder()} const radio=$('#page-'+route);if(radio)radio.checked=true;currentRoute=route;document.body.dataset.currentView=route;$$('[data-route]').forEach(b=>{const yes=b.dataset.route===route;b.classList.toggle('active',yes);b.setAttribute('aria-current',yes?'page':'false')});$$('.view').forEach(x=>x.classList.toggle('active',x.id==='view-'+route));render();try{window.scrollTo(0,0)}catch(e){}}
 const HOME_TILE_DEFAULT=['snapshot','calendar','customers','jobs','followups','todo','post','archive','settings'];
 let homeEditMode=false;
 function currentHomeOrder(){
@@ -1414,7 +1429,8 @@ function renderHomeHub(){
  fill('hubCalendar',upcoming?`${upcoming} upcoming`:'');
  // Keep the Clients tile clean; its count remains available on the Clients page.
  fill('hubCustomers','');
- fill('hubJobs',`${jobs.length} ${jobs.length===1?'job':'jobs'}`);
+ const draftCount=draftLibraryItems().length;
+ fill('hubJobs',draftCount?`${jobs.length} ${jobs.length===1?'job':'jobs'} · ${draftCount} ${draftCount===1?'draft':'drafts'}`:`${jobs.length} ${jobs.length===1?'job':'jobs'}`);
  fill('hubFollowups',m.pending+m.follow?`${m.pending+m.follow} to review`:'All caught up');
  fill('hubTodos',pending?`${pending} to do`:'Caught up');
  fill('hubArchive',archived?`${archived} archived`:'Empty');
@@ -1680,7 +1696,7 @@ function updateServiceChooser(){const choice=$('#fServicePick'),custom=$('#fServ
 /* New client draft persists on this device, isolated by signed-in user ID. Local browser storage is not encrypted. */
 const CLIENT_DRAFT_KEY='followup_new_client_draft_v401_';
 const CLIENT_DRAFT_FIELDS=['newFirst','newLast','newCompany','newPhone','newEmail','newStreet','newCity','newState','newPostal','newNotes','newOptOut','newAddJob','newJobServicePick','newJobService','newJobRememberService','newJobDate','newJobTime','newJobNotes'];
-let clientDraftAccount=null,clientDraftRestoreShownAccount=null,clientDraftStorageError=false,clientDraftSkipCloseSave=false;
+let clientDraftAccount=null,clientDraftStorageError=false,clientDraftSkipCloseSave=false;
 function currentDraftAccount(){return cloud.user?.id||'guest'}
 function clientDraftKey(account){return CLIENT_DRAFT_KEY+String(account||'guest')}
 function clientDraftHasContent(values){
@@ -1777,6 +1793,7 @@ function renderDraftBadges(){
  const n=draftLibraryItems().length;
  const c=$('#jobDraftCount');if(c)c.textContent=`(${n})`;
  document.querySelectorAll('.clientDraftCountInline').forEach(el=>el.textContent=`(${n})`);
+ const hj=$('#hubJobs');if(hj){const count=visibleJobs().length;hj.textContent=n?`${count} ${count===1?'job':'jobs'} · ${n} ${n===1?'draft':'drafts'}`:`${count} ${count===1?'job':'jobs'}`;}
 }
 function archiveActiveClientDraft(){
  const account=currentDraftAccount(),active=getClientDraft(account);
@@ -1840,15 +1857,6 @@ function loadClientDraftIntoForm(){
  const phone=$('#newPhone');if(phone)phone.value=formatPhone(phone.value);
  const status=$('#clientDraftStatus');if(status)status.textContent='Draft recovered from this device · Not yet saved as a client';
  return true;
-}
-function maybeResumeClientDraftOnLaunch(){
- const account=currentDraftAccount();
- if($('#modal').classList.contains('open'))return;
- if(clientDraftRestoreShownAccount===account)return;
- if(!getClientDraft(account)&&!readJobEntryDraft(account))return;
- clientDraftRestoreShownAccount=account;
- if(getClientDraft(account)){navigate('customers');addCustomerOnlyModal();}
- else{navigate('jobs');resumeJobEntryDraft();}
 }
 async function discardClientDraft(){
  if(!await askUser('Discard this unfinished client and any job details saved with it?','discard-client-draft-v401',{yes:'Discard draft',danger:true,rememberable:false}))return;
@@ -1937,7 +1945,7 @@ async function importPhoneContact(){
 function addCustomerOnlyModal(fresh=false){
  const services=savedServices();
  const jobFields=`<label class="newClientJobChoice"><input id="newAddJob" type="checkbox" aria-controls="newClientJobPanel"><span><strong>＋ Add a Job Now</strong><small>Optional · Create this client's first job at the same time</small></span></label><section class="newClientJobPanel" id="newClientJobPanel" hidden><h3>Job Details</h3><div class="field"><label for="newJobServicePick">Service *</label><select id="newJobServicePick"><option value="">Choose a service…</option>${services.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('')}<option value="__custom__">＋ Enter a New Service</option></select></div><div id="newJobServiceManual" class="newClientJobManual" hidden><div class="field"><label for="newJobService">Service Name *</label><input id="newJobService" disabled maxlength="120" placeholder="e.g., Awning installation" autocomplete="off"></div><label class="checkline"><input type="checkbox" id="newJobRememberService"> Save this Service for Next Time</label></div><div class="formgrid"><div class="field"><label for="newJobDate">Scheduled Date (Optional)</label><input id="newJobDate" type="date"></div><div class="field"><label for="newJobTime">Scheduled Time (Optional)</label><input id="newJobTime" type="time"></div></div><div class="field"><label for="newJobNotes">Job Notes (Optional)</label><textarea id="newJobNotes" rows="3" maxlength="500" placeholder="e.g., Confirm measurements before installation"></textarea></div><p class="note" style="margin:0">The job will start as Active and be linked to this client.</p></section>`;
- modal('Add client',`<form id="customerOnlyForm" novalidate><p class="note">Add a client on its own, or create their first job at the same time.</p><div class="clientDraftNote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg><span><strong>Auto-Saved Draft</strong><br>Your unfinished client and job entries are saved on this device as you type. Reopen the app to continue. This draft is not cloud-synced or encrypted.</span></div><div class="clientContactImport"><button class="btn secondary sm" type="button" id="clientPhoneContactsBtn" data-action="client-contact-picker" hidden>Import From Phone Contacts</button><button class="btn secondary sm" type="button" data-action="client-contact-file">Import Contact (.vcf)</button><input type="file" id="contactVcardInput" accept=".vcf,text/vcard,text/x-vcard" aria-label="Select a contact card file"><p>Only the contact you select is imported. On iPhone, open Contacts → Share Contact → Save to Files, then import the .vcf file here.</p></div><div class="formgrid"><div class="field"><label for="newFirst">First Name *</label><input id="newFirst" maxlength="70" autocomplete="given-name" placeholder="First name" required></div><div class="field"><label for="newLast">Last Name</label><input id="newLast" maxlength="70" autocomplete="family-name" placeholder="Last name"></div><div class="field"><label for="newCompany">Company (Optional)</label><input id="newCompany" maxlength="120" autocomplete="organization" placeholder="Company Name"></div><div class="field"><label for="newPhone">Phone (Optional)</label><input id="newPhone" type="tel" inputmode="tel" maxlength="18" placeholder="(555) 123-4567"></div></div><div class="field"><label for="newEmail">Email (Optional)</label><input id="newEmail" type="email" maxlength="160" autocomplete="off" placeholder="name@example.com" aria-describedby="newEmailSuggestions"><div class="emailDomainSuggestions" id="newEmailSuggestions" aria-label="Email domain suggestions" hidden></div></div><fieldset class="addressCreateFields"><legend>Address (optional)</legend><div class="field"><label for="newStreet">Street Address</label><input id="newStreet" autocomplete="street-address" maxlength="150" placeholder="123 Main Street"></div><div class="formgrid"><div class="field"><label for="newCity">City</label><input id="newCity" autocomplete="address-level2" maxlength="90"></div><div class="field"><label for="newState">State</label><input id="newState" autocomplete="address-level1" maxlength="35" placeholder="MO"></div><div class="field"><label for="newPostal">ZIP Code</label><input id="newPostal" autocomplete="postal-code" inputmode="numeric" maxlength="20" placeholder="65802"></div></div></fieldset><div class="field"><label for="newNotes">Client notes (optional)</label><textarea id="newNotes" maxlength="900" rows="3" placeholder="*Example: Prefers afternoon appointments"></textarea></div><label class="checkline"><input id="newOptOut" type="checkbox">Do Not Contact</label>${jobFields}<div class="formError" id="newCustomerError" role="alert"></div><p id="clientDraftStatus" class="clientDraftStatus" aria-live="polite">Your entries will be saved automatically as you type</p><div class="modalfooter"><button type="button" id="saveCustomerOnlyBtn" class="btn" data-action="save-customer-only">Save Client</button><button type="button" class="btn secondary" data-action="close">Keep Draft & Close</button><button type="button" class="btn secondary" data-action="client-draft-discard">Discard Draft</button></div></form>`);
+ modal('Add client',`<form id="customerOnlyForm" novalidate><p class="note">Add a client on its own, or create their first job at the same time.</p><div class="clientDraftNote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg><span><strong>Auto-Saved Draft</strong><br>Your unfinished client and job entries are saved on this device as you type. After reopening the app, go to Jobs → View Drafts to continue. This draft is not cloud-synced or encrypted.</span></div><div class="clientContactImport"><button class="btn secondary sm" type="button" id="clientPhoneContactsBtn" data-action="client-contact-picker" hidden>Import From Phone Contacts</button><button class="btn secondary sm" type="button" data-action="client-contact-file">Import Contact (.vcf)</button><input type="file" id="contactVcardInput" accept=".vcf,text/vcard,text/x-vcard" aria-label="Select a contact card file"><p>Only the contact you select is imported. On iPhone, open Contacts → Share Contact → Save to Files, then import the .vcf file here.</p></div><div class="formgrid"><div class="field"><label for="newFirst">First Name *</label><input id="newFirst" maxlength="70" autocomplete="given-name" placeholder="First name" required></div><div class="field"><label for="newLast">Last Name</label><input id="newLast" maxlength="70" autocomplete="family-name" placeholder="Last name"></div><div class="field"><label for="newCompany">Company (Optional)</label><input id="newCompany" maxlength="120" autocomplete="organization" placeholder="Company Name"></div><div class="field"><label for="newPhone">Phone (Optional)</label><input id="newPhone" type="tel" inputmode="tel" maxlength="18" placeholder="(555) 123-4567"></div></div><div class="field"><label for="newEmail">Email (Optional)</label><input id="newEmail" type="email" maxlength="160" autocomplete="off" placeholder="name@example.com" aria-describedby="newEmailSuggestions"><div class="emailDomainSuggestions" id="newEmailSuggestions" aria-label="Email domain suggestions" hidden></div></div><fieldset class="addressCreateFields"><legend>Address (optional)</legend><div class="field"><label for="newStreet">Street Address</label><input id="newStreet" autocomplete="street-address" maxlength="150" placeholder="123 Main Street"></div><div class="formgrid"><div class="field"><label for="newCity">City</label><input id="newCity" autocomplete="address-level2" maxlength="90"></div><div class="field"><label for="newState">State</label><input id="newState" autocomplete="address-level1" maxlength="35" placeholder="MO"></div><div class="field"><label for="newPostal">ZIP Code</label><input id="newPostal" autocomplete="postal-code" inputmode="numeric" maxlength="20" placeholder="65802"></div></div></fieldset><div class="field"><label for="newNotes">Client notes (optional)</label><textarea id="newNotes" maxlength="900" rows="3" placeholder="*Example: Prefers afternoon appointments"></textarea></div><label class="checkline"><input id="newOptOut" type="checkbox">Do Not Contact</label>${jobFields}<div class="formError" id="newCustomerError" role="alert"></div><p id="clientDraftStatus" class="clientDraftStatus" aria-live="polite">Your entries will be saved automatically as you type</p><div class="modalfooter"><button type="button" id="saveCustomerOnlyBtn" class="btn" data-action="save-customer-only">Save Client</button><button type="button" class="btn secondary" data-action="close">Keep Draft & Close</button><button type="button" class="btn secondary" data-action="client-draft-discard">Discard Draft</button></div></form>`);
  clientDraftAccount=currentDraftAccount();
  const picker=$('#clientPhoneContactsBtn');if(picker)picker.hidden=!(navigator.contacts&&typeof navigator.contacts.select==='function');
  if(!fresh)loadClientDraftIntoForm();
@@ -2349,9 +2357,23 @@ async function applyAction(e){const el=e.target.closest('[data-action]');if(!el)
  else if(op==='smart-unsnooze'){const j=getJob(id);if(j){j.followupSnoozedUntil=null;if(save()){render();toast('✓ Reminder restored.')}}}else if(op==='job-options')openJobOptions(id);else if(op==='show-completed-jobs'){$('#statusFilter').value='completed';$('#searchJobs').value='';renderJobs();$('#jobListSection')?.scrollIntoView({block:'start',behavior:'smooth'});}else if(op==='email-fill-domain'){const input=document.getElementById(id),domain=el.dataset.domain;if(input&&['gmail.com','yahoo.com','outlook.com'].includes(domain)){const user=input.value.split('@')[0].trim();if(user){input.value=user+'@'+domain;updateEmailSuggestions(input);input.focus()}}}else if(op==='completion-post-studio')showCompletionSocialStudio(id);else if(op==='completion-back')returnToCompletion(id||completionFlowBackId);else if(op==='completion-exit'){closeModal();navigate(completionReturnRoute||'jobs')}else if(op==='job-pin')pinJob(id);else if(op==='job-delete')await deleteJob(id);else if(op==='job-filter-open')jobFilterDialog();else if(op==='job-filter-apply')applyJobFilters();else if(op==='job-filter-clear')applyJobFilters(true);
  else if(op==='add'){if(currentRoute==='customers')addCustomerOnlyModal();else addModal();}else if(op==='save-customer-only')saveCustomerOnly();else if(op==='client-draft-discard')await discardClientDraft();else if(op==='job-drafts-list')showJobDraftLibrary();else if(op==='job-draft-open')openSavedJobDraft(id);else if(op==='job-draft-delete')await deleteSavedJobDraft(id);else if(op==='client-contact-picker')importPhoneContact();else if(op==='client-contact-file')$('#contactVcardInput')?.click();else if(op==='job-use-existing'){const customerId=$('#jobExistingCustomer')?.value;if(customerId&&customerById(customerId)&&!isArchived(customerById(customerId)))addModal('',customerId);else toast('Choose an existing client first.','error')}else if(op==='save-customer')saveCustomer();else if(op==='open-sms')openSMS(id);else if(op==='metric-filter'){$('#statusFilter').value=el.dataset.filter;$('#searchJobs').value='';navigate('jobs')}else if(op==='calendar-jump')calendarJumpPicker();else if(op==='calendar-jump-apply'){const y=Number($('#jumpYear')?.value),m=Number($('#jumpMonth')?.value);if(!Number.isInteger(y)||y<1900||y>2100||!Number.isInteger(m)||m<0||m>11){toast('Choose a valid month and year.','error');return}calendarMonth=new Date(y,m,1);selectedDay=`${y}-${pad(m+1)}-01`;closeModal();renderCalendar();}else if(op==='month-prev'){calendarMonth.setMonth(calendarMonth.getMonth()-1);renderCalendar()}else if(op==='month-next'){calendarMonth.setMonth(calendarMonth.getMonth()+1);renderCalendar()}else if(op==='calendar-day'){if(Date.now()-Number(window.v38CalendarSwipe||0)>450){selectedDay=el.dataset.date;renderCalendar()}}else if(op==='schedule-selected')addModal(selectedDay);else if(op==='delete-task'){if(await askUser('Delete this task?','delete-task',{yes:'Delete task',danger:true})){db.todos=db.todos.filter(t=>t.id!==id);if(save()){render();toast('✓ Task removed.')}}}else if(op==='close')closeModal();else if(op==='detail'){if(el.closest('.profileHistoryContent')&&currentRoute==='customers'){closeModal();navigate('jobs')}detailModal(id);}else if(op==='complete')openCompletion(id);else if(op==='completion-save')saveCompletion(id);else if(op==='completion-remove-photo'){if(completionPhotos&&['before','after'].includes(el.dataset.photo)){completionPhotos[el.dataset.photo]='';showCompletionPhoto(el.dataset.photo)}}else if(op==='completion-open-draft'){const j=db.jobs.find(j=>j.completionDraftId===id);if(j&&lastCompletionOptions?.id===j.id)showCompletionSocialStudio(j.id);else completionOpenDraft(id);}else if(op==='compose')compose(id,el.dataset.mode);else if(op==='marksent'){const j=getJob(id);if(j&&!optedOut(j)&&await askUser('Only confirm if you actually sent the review request outside this app. Continue?','mark-request-sent',{yes:'Mark as sent'}))update(id,j=>{j.sentAt=today();j.followupSnoozedUntil=null})}else if(op==='markfollow'){const j=getJob(id);if(j&&dueFollowup(j)&&!optedOut(j)&&await askUser('Only confirm if you actually sent this follow-up. Continue?','mark-followup-sent',{yes:'Mark as sent'}))update(id,j=>{j.followupAt=today();j.followupSnoozedUntil=null})}else if(op==='toggle-review'){const j=getJob(id);if(j&&await askUser(j.reviewAt?'Remove the review-received mark?':'Did you personally verify that this client left a review?',j.reviewAt?'remove-review-record':'verify-review-record',{yes:j.reviewAt?'Remove mark':'Mark verified'}))update(id,j=>j.reviewAt=j.reviewAt?null:today())}else if(op==='save-detail'){await saveJobDetail(id)}else if(op==='copy-message')copy($('#messageToCopy').value);else if(op==='template-create')templateCreate();else if(op==='ai-save-draft')aiSaveDraft();else if(op==='ai-copy-draft'){const t=$('#aiDraftEditor').value.trim();if(t)copy(t);else toast('Nothing to copy yet.','error')}else if(op==='ai-new-draft')aiNewDraft();else if(op==='template-clear'){$('#socialJob').value='';$('#socialService').value='';$('#socialDetails').value='';$('#socialArea').value='';$('#socialCta').value='message';toast('Post fields cleared.')}else if(op==='ai-load-draft')aiDraftLoad(id);else if(op==='ai-delete-draft'){if(await askUser('Delete this saved draft?','delete-draft',{yes:'Delete draft',danger:true})){db.aiDrafts=db.aiDrafts.filter(x=>x.id!==id);if(currentAiDraftId===id)aiNewDraft();if(save()){renderAiDrafts();toast('Draft deleted.')}}}else if(op==='restore-confirmations')restoreConfirmations();else if(op==='report')report();else if(op==='backup')exportFullBackup();else if(op==='csv')exportCSV();else if(op==='reset'){if(cloud.user){toast('Reset is disabled in Cloud Mode. Sign out to reset demo data.','error');return;}if(await askUser('Replace current local demo data with the original fictional clients?','reset-demo',{yes:'Reset data',danger:true,rememberable:false})){db=sample();migrateCustomers(db);save();render();toast('✓ Demo reset to sample clients.')}}}
 // V3.7: user-isolated cloud workspace. No service-role key, passwords, or customer snapshots go into GitHub.
-const cloud={client:null,user:null,ready:false,revision:0,dirty:false,saving:false,conflict:false,timer:null,error:'',loading:false,recovery:null,recoveryFailed:false,checkMessage:''};
+const cloud={client:null,user:null,ready:false,revision:0,dirty:false,saving:false,conflict:false,timer:null,error:'',loading:false,recovery:null,recoveryFailed:false,checkMessage:'',booting:false,authBusy:false,subscription:null,generation:0};
 const cloudSetup=window.FOLLOWUP_CLOUD_CONFIG||{};
 const cloudConfigured=()=>/^https:\/\/[a-z0-9-]+\.supabase\.co\/?$/.test(String(cloudSetup.url||''))&&/^[A-Za-z0-9_.-]{16,}$/.test(String(cloudSetup.publishableKey||''));
+/* Bound network waits so a lost connection returns to a usable retry screen. */
+async function cloudFetch(url,options={}){
+ const controller=new AbortController(),original=options.signal;
+ const abort=()=>controller.abort();let timedOut=false;
+ if(original?.aborted)abort();else original?.addEventListener('abort',abort,{once:true});
+ const timer=setTimeout(()=>{timedOut=true;abort()},15000);
+ try{return await fetch(url,{...options,signal:controller.signal})}
+ catch(err){if(timedOut)throw Error('Connection timed out. Check your internet connection and retry.');throw err}
+ finally{clearTimeout(timer);original?.removeEventListener('abort',abort)}
+}
+function accountCheck(promise){
+ let timer;
+ return Promise.race([promise,new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('Sign-in check timed out. Retry your connection.')),20000)})]).finally(()=>clearTimeout(timer));
+}
 function businessDisplayName(){return cloud.user&&db.business==='Demo Home Services'?'Your Business':db.business}
 function blankCloudWorkspace(){const d=sample();d.jobs=[];d.customers=[];d.todos=[];d.aiDrafts=[];d.business='Your Business';d.reviewUrl='';return d}
 /* V4: Per-account, same-tab emergency snapshots. Not encryption or permanent offline storage. */
@@ -2427,10 +2449,10 @@ function updateCloudUI(){
  $('#cloudLoggedOut').hidden=!!cloud.user;
  $('#cloudLoggedIn').hidden=!cloud.user;
  const badge=$('#cloudTopBadge');const state=$('#cloudState');
- if(!enabled){badge.textContent='● OFFLINE';state.textContent='Cloud unavailable';}
- else if(!cloud.user){badge.textContent='● SIGN IN';state.textContent='Sign-in required';}
- else {badge.textContent=cloud.conflict?'● SYNC CONFLICT':cloud.dirty?'● UNSYNCED':cloud.error?'● CLOUD ERROR':!cloud.ready?'● LOADING CLOUD':'● CLOUD MODE';state.textContent=cloud.dirty?'Unsynced changes':cloud.error?'Sync error':'Account connected';}
- badge.className='pill '+(cloud.user&&!cloud.dirty&&!cloud.conflict&&!cloud.error?'':'amber');
+ if(!enabled){badge.dataset.sync='offline';state.textContent='Cloud unavailable';}
+ else if(!cloud.user){badge.dataset.sync='offline';state.textContent='Sign-in required';}
+ else {badge.dataset.sync=cloud.conflict||cloud.error?'error':cloud.dirty||!cloud.ready?'pending':'ready';state.textContent=cloud.dirty?'Unsynced changes':cloud.error?'Sync error':'Account connected';}
+ badge.setAttribute('aria-label','Cloud sync: '+state.textContent+'. Open Settings');badge.title=badge.getAttribute('aria-label');
  $('#cloudUserEmail').textContent=cloud.user?.email||'Signed-in account';
  $('#cloudRevision').textContent=cloud.user?'Version '+cloud.revision:'Version —';
  const banner=$('#cloudSyncBanner');
@@ -2468,8 +2490,9 @@ async function cloudFlush(){
  }catch(err){if(cloud.user?.id===originalId)cloud.error=safeText(err?.message||'Connection failed',220)}
  finally{cloud.saving=false;updateCloudUI();if(cloud.dirty&&!cloud.conflict&&!cloud.error)queueCloudSave(300)}
 }
-async function cloudRead(){
- const {data,error}=await cloud.client.from('followup_workspaces').select('snapshot,revision').eq('user_id',cloud.user.id).maybeSingle();
+async function cloudRead(userId=cloud.user?.id){
+ if(!userId)throw Error('Sign in to load your workspace.');
+ const {data,error}=await cloud.client.from('followup_workspaces').select('snapshot,revision').eq('user_id',userId).maybeSingle();
  if(error)throw error;
  return data;
 }
@@ -2478,12 +2501,15 @@ async function cloudRefresh(silent=false){
  if(cloud.dirty&&!cloud.conflict){if(!silent)toast('You have unsynced edits. Wait for the cloud save or download a backup.','error');return;}
  if(cloud.conflict){if(silent)return;const ok=await askUser('Discard this device’s unsynced edits and load the newer cloud version? Export a JSON backup first.','cloud-discard-conflict',{yes:'Discard local edits',danger:true,rememberable:false});if(!ok)return;clearPendingRecovery(cloud.user.id);}
  cloud.loading=true;
+ const userId=cloud.user.id,generation=cloud.generation;
+ const stillCurrent=()=>cloud.user?.id===userId&&cloud.generation===generation;
  try{
-  let record=await cloudRead();
+  let record=await cloudRead(userId);if(!stillCurrent())return;
   if(!record){ // new users get an empty private workspace, not an automatic upload of browser demo records
    const {data,error}=await cloud.client.rpc('save_my_workspace',{p_expected_revision:0,p_snapshot:blankCloudWorkspace()});
+   if(!stillCurrent())return;
    if(error)throw error;
-   record=await cloudRead();
+   record=await cloudRead(userId);if(!stillCurrent())return;
   }
   if(!record)throw Error('Workspace creation failed. Check the SQL setup.');
   const freshRevision=Number(record.revision)||0;
@@ -2492,21 +2518,24 @@ async function cloudRefresh(silent=false){
   db=value;cloud.ready=true;cloud.revision=freshRevision;cloud.dirty=false;cloud.conflict=false;cloud.error='';
   cloud.recovery=readPendingRecovery(cloud.user.id);
   refreshWorkspaceDisplay();if(!silent)toast(cloud.recovery?'Cloud loaded. Unsynced edits may be available to recover in Settings.':'✓ Latest cloud workspace loaded.');
- }catch(err){cloud.error=safeText(err?.message||'Unable to read workspace',200);if(!silent)toast('Cloud load failed. Your demo data was not changed.','error')}
- finally{cloud.loading=false;updateCloudUI()}
+ }catch(err){if(stillCurrent()){cloud.error=safeText(err?.message||'Unable to read workspace',200);if(!silent)toast('Cloud load failed. Use Retry to load your workspace.','error')}}
+ finally{if(stillCurrent()){cloud.loading=false;updateCloudUI()}}
 }
 
 function showWelcome(message=''){
+ document.body.classList.remove('accountWorkspace');
  document.body.classList.add('workspaceLocked');document.body.classList.remove('loadingWorkspace','appBooting');
  $('#entryError').textContent=message;
- $('#entryRetry').hidden=!(cloud.user&&!cloud.ready);
+ $('#entryRetry').hidden=!(cloud.error||cloud.user&&!cloud.ready);
+ $('#entryRetry').textContent=cloud.user?'Retry Loading Workspace':'Retry Connection';
  $('#entrySignIn').hidden=!!cloud.user;
  $('#entrySignUp').hidden=!!cloud.user;
  $$('#entryAuthForm .field').forEach(field=>field.hidden=!!cloud.user);
- $('#entrySignIn').disabled=!cloud.client;
- $('#entrySignUp').disabled=!cloud.client;
+ $('#entrySignIn').disabled=!cloud.client||cloud.authBusy||cloud.booting;
+ $('#entrySignUp').disabled=!cloud.client||cloud.authBusy||cloud.booting;
 }
 function showWorkspaceLoading(text='Loading your private workspace…'){
+ document.body.classList.remove('accountWorkspace');
  document.body.classList.add('workspaceLocked','loadingWorkspace','appBooting');
  const note=$('#appBootScreen .bootNote');if(note)note.textContent=text;
 }
@@ -2515,55 +2544,65 @@ function revealWorkspace(){
  document.body.classList.remove('appBooting','loadingWorkspace','workspaceLocked');
  document.body.classList.add('accountWorkspace');
 }
-function restoreWorkspaceRoute(){
- try{const last=sessionStorage.getItem('followup_last_route_v402');if(last&&['home','dashboard','archive','followup','customers','jobs','calendar','content','todo','settings','howto'].includes(last))navigate(last)}catch(e){}
+/* A fresh document load begins on Home. If iOS merely suspends the current page,
+   this initializer does not run again, so the current route and typed form stay open.
+   Saved client/job drafts remain accessible via Jobs > View Drafts. */
+function startWorkspaceAtHome(){
+ try{sessionStorage.removeItem('followup_last_route_v402')}catch(e){}
+ navigate('home');
 }
 
 async function cloudSessionEnter(user){
- if(!user||cloud.user?.id===user.id)return;
+ if(!user)return;
+ if(cloud.user?.id===user.id){if(cloud.ready)revealWorkspace();return;}
+ // Save any open forms under the departing account before changing identity.
+ closeModal();clearTimeout(cloud.timer);cloud.generation++;cloud.loading=false;
+ const generation=cloud.generation;
  // Never upload local demo or other account's in-memory data without explicit consent.
  cloud.user={id:user.id,email:user.email};cloud.ready=false;cloud.revision=0;cloud.conflict=false;cloud.dirty=false;cloud.error='';cloud.recovery=null;cloud.recoveryFailed=false;
- if($('#customerOnlyForm')){saveClientDraftOnDevice();closeModal();}
  showWorkspaceLoading();
  db=blankCloudWorkspace();refreshWorkspaceDisplay();await cloudRefresh(true);
- if(cloud.ready){restoreWorkspaceRoute();maybeResumeClientDraftOnLaunch();revealWorkspace();}
+ if(cloud.generation!==generation||cloud.user?.id!==user.id)return;
+ if(cloud.ready){startWorkspaceAtHome();revealWorkspace();}
  else showWelcome('Could not open your workspace. Check your internet connection and use Retry below.');
 }
 function cloudSessionLeave(){
- clearTimeout(cloud.timer);cloud.user=null;cloud.ready=false;cloud.revision=0;cloud.dirty=false;cloud.conflict=false;cloud.error='';cloud.saving=false;cloud.recovery=null;cloud.recoveryFailed=false;
+ closeModal();clearTimeout(cloud.timer);cloud.generation++;cloud.loading=false;cloud.user=null;cloud.ready=false;cloud.revision=0;cloud.dirty=false;cloud.conflict=false;cloud.error='';cloud.saving=false;cloud.recovery=null;cloud.recoveryFailed=false;
  db=load();if(!Array.isArray(db.todos))db.todos=[];if(!Array.isArray(db.aiDrafts))db.aiDrafts=[];migrateCustomers(db);refreshWorkspaceDisplay();updateCloudUI();showWelcome();
 }
 async function cloudBoot(){
- showWelcome();
- updateCloudUI();
- if(!cloudConfigured()||!window.supabase?.createClient){showWelcome('Cloud connection is unavailable. Please reload when connected.');return;}
+ if(cloud.booting)return;
+ cloud.booting=true;showWorkspaceLoading('Checking your sign-in…');
  try{
-  cloud.client=window.supabase.createClient(cloudSetup.url,cloudSetup.publishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
-  const {data,error}=await cloud.client.auth.getSession();if(error)throw error;
-  cloud.client.auth.onAuthStateChange((event,session)=>{
+  if(!cloudConfigured()||!window.supabase?.createClient)throw Error('Cloud connection is unavailable. Reload when connected.');
+  if(!cloud.client)cloud.client=window.supabase.createClient(cloudSetup.url,cloudSetup.publishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true},global:{fetch:cloudFetch}});
+  if(!cloud.subscription)cloud.subscription=cloud.client.auth.onAuthStateChange((event,session)=>{
    if(event==='SIGNED_OUT'){cloudSessionLeave();return;}
    if(event==='SIGNED_IN'&&session?.user&&cloud.user?.id!==session.user.id){setTimeout(()=>cloudSessionEnter(session.user),0);}
-  });
+  }).data.subscription;
+  const {data,error}=await accountCheck(cloud.client.auth.getSession());if(error)throw error;
   if(data?.session?.user)await cloudSessionEnter(data.session.user);
   else showWelcome();
- }catch(err){cloud.error=safeText(err?.message||'Unable to check account',160);showWelcome('Unable to check sign-in. Please reload.');}
- updateCloudUI();
+ }catch(err){cloud.error=safeText(err?.message||'Unable to check account',160);showWelcome(cloud.error);}
+ finally{cloud.booting=false;$('#entrySignIn').disabled=!cloud.client||cloud.authBusy;$('#entrySignUp').disabled=!cloud.client||cloud.authBusy;updateCloudUI()}
 }
 async function cloudLogin(create){
+ if(cloud.authBusy||cloud.booting)return;
  const input=$('#entryPassword');input.setAttribute('autocomplete',create?'new-password':'current-password');
  if(!cloud.client){showWelcome('Cloud connection unavailable. Please reload.');return}
+ if(!$('#entryAuthForm').reportValidity())return;
  const email=$('#entryEmail').value.trim(),password=input.value;
- if(!email||password.length<8){$('#entryError').textContent='Enter a valid email and a password of at least 8 characters.';return;}
- const button=$('#entrySignIn'),signup=$('#entrySignUp');button.disabled=true;signup.disabled=true;
+ if(create&&password.length<8){$('#entryError').textContent='Choose a password of at least 8 characters for your new account.';return;}
+ const button=$('#entrySignIn'),signup=$('#entrySignUp');cloud.authBusy=true;button.disabled=true;signup.disabled=true;button.textContent=create?'Creating account…':'Signing in…';$('#entryAuthForm').setAttribute('aria-busy','true');
  $('#entryError').textContent='';
  try{
   const result=create?await cloud.client.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}}):await cloud.client.auth.signInWithPassword({email,password});
   if(result.error)throw result.error;
   input.value='';
   if(result.data?.session?.user){if(!cloud.user||cloud.user.id!==result.data.session.user.id)await cloudSessionEnter(result.data.session.user);}
-  else{$('#entryError').textContent='Check your email for verification, then sign in.';}
+  else{$('#entryError').textContent='Check your email for verification, then sign in.';input.setAttribute('autocomplete','current-password');}
  }catch(err){showWelcome(safeText(err?.message||'Sign-in failed. Please retry.',150))}
- finally{button.disabled=false;signup.disabled=false;}
+ finally{cloud.authBusy=false;button.disabled=false;signup.disabled=false;button.textContent='Sign In';$('#entryAuthForm').removeAttribute('aria-busy');}
 }
 async function handleCloudAction(op){
  if(op==='cloud-signup'){await cloudLogin(true);return}
@@ -2791,7 +2830,7 @@ function bind(){
  const endDirectorySwipe=(e,cancel=false)=>{const row=e.target.closest('.customerSwipeRow');const s=row?row._swipe:null;if(!s)return;delete row._swipe;if(!s.active)return;row.classList.remove('is-swiping');const end=s.base+s.delta;const opened=!cancel&&(s.delta<-32||(s.base<0&&s.delta<32&&end<-44));row.classList.toggle('swiped',opened);row.style.removeProperty('--swipeX');row.querySelector('.customerCard').style.transition='';row.dataset.justSwiped='1';setTimeout(()=>{delete row.dataset.justSwiped},520)};
  directory.addEventListener('touchend',e=>endDirectorySwipe(e),{passive:true});
  directory.addEventListener('touchcancel',e=>endDirectorySwipe(e,true),{passive:true});
- $('#entryAuthForm').addEventListener('submit',e=>{e.preventDefault();cloudLogin(false)});$('#entrySignUp').addEventListener('click',()=>cloudLogin(true));$('#entryRetry').addEventListener('click',async()=>{if(!cloud.user){await cloudBoot();return}showWorkspaceLoading();await cloudRefresh(true);if(cloud.ready){restoreWorkspaceRoute();maybeResumeClientDraftOnLaunch();revealWorkspace()}else showWelcome('Still unable to load your workspace. Check your connection and try again.');});window.addEventListener('online',()=>{if(cloud.user&&cloud.dirty&&!cloud.conflict)queueCloudSave(0)});/* Backgrounding must never replace the active screen. Cloud Refresh stays user initiated. */window.addEventListener('beforeunload',e=>{if(cloud.user&&cloud.dirty){e.preventDefault();e.returnValue='';}});document.addEventListener('click',e=>{const route=e.target.closest('[data-route]');if(route){if(homeEditMode&&route.classList.contains('homeTile'))return;navigate(route.dataset.route);return}applyAction(e)});$('#searchJobs').addEventListener('input',renderJobs);$('#searchCustomers').addEventListener('input',renderCustomerDirectory);$('#statusFilter').addEventListener('change',renderJobs);$('#settingsForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#businessName').value.trim(),template=$('#reviewTemplate').value.trim(),reviewUrl=$('#reviewUrl').value.trim();if(!name||!template||!reviewUrl){toast('Business name, Google review link, and template are required.','error');return}try{const u=new URL(reviewUrl);if(u.protocol!=='https:')throw Error()}catch(e){toast('Enter a complete Google review link starting with https://','error');return}db.business=name;db.reviewUrl=reviewUrl;db.template=template;if(save()){render();toast('✓ Business settings saved.')}});$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(homeEditMode)enableHomeCustomize(false);closeModal()}});document.addEventListener('submit',e=>{if(e.target.id==='customerForm'){e.preventDefault();saveCustomer()}});$('#todoForm').addEventListener('submit',addTask);$('#restoreInput').addEventListener('change',e=>{const f=e.target.files?.[0];if(f)chooseBackupFile(f);e.target.value=''});document.addEventListener('change',e=>{if(e.target?.matches?.('[data-completion-photo]'))handleCompletionPhoto(e.target)});document.addEventListener('change',e=>{const id=e.target?.dataset?.taskId;if(!id)return;const task=db.todos.find(x=>x.id===id);if(task){task.done=e.target.checked;if(save()){render();toast(task.done?'✓ Task completed.':'✓ Task reopened.')}}})}
+ $('#entryAuthForm').addEventListener('submit',e=>{e.preventDefault();cloudLogin(false)});$('#entrySignUp').addEventListener('click',()=>cloudLogin(true));$('#entryRetry').addEventListener('click',async()=>{if(!cloud.user){await cloudBoot();return}showWorkspaceLoading();await cloudRefresh(true);if(cloud.ready){startWorkspaceAtHome();revealWorkspace()}else showWelcome('Still unable to load your workspace. Check your connection and try again.');});window.addEventListener('online',()=>{if(cloud.user&&cloud.dirty&&!cloud.conflict)queueCloudSave(0)});/* Backgrounding must never replace the active screen. Cloud Refresh stays user initiated. */window.addEventListener('beforeunload',e=>{if(cloud.user&&cloud.dirty){e.preventDefault();e.returnValue='';}});document.addEventListener('click',e=>{const route=e.target.closest('[data-route]');if(route){if(homeEditMode&&route.classList.contains('homeTile'))return;navigate(route.dataset.route);return}applyAction(e)});$('#searchJobs').addEventListener('input',renderJobs);$('#searchCustomers').addEventListener('input',renderCustomerDirectory);$('#statusFilter').addEventListener('change',renderJobs);$('#settingsForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#businessName').value.trim(),template=$('#reviewTemplate').value.trim(),reviewUrl=$('#reviewUrl').value.trim();if(!name||!template||!reviewUrl){toast('Business name, Google review link, and template are required.','error');return}try{const u=new URL(reviewUrl);if(u.protocol!=='https:')throw Error()}catch(e){toast('Enter a complete Google review link starting with https://','error');return}db.business=name;db.reviewUrl=reviewUrl;db.template=template;if(save()){render();toast('✓ Business settings saved.')}});$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(homeEditMode)enableHomeCustomize(false);closeModal()}});document.addEventListener('submit',e=>{if(e.target.id==='customerForm'){e.preventDefault();saveCustomer()}});$('#todoForm').addEventListener('submit',addTask);$('#restoreInput').addEventListener('change',e=>{const f=e.target.files?.[0];if(f)chooseBackupFile(f);e.target.value=''});document.addEventListener('change',e=>{if(e.target?.matches?.('[data-completion-photo]'))handleCompletionPhoto(e.target)});document.addEventListener('change',e=>{const id=e.target?.dataset?.taskId;if(!id)return;const task=db.todos.find(x=>x.id===id);if(task){task.done=e.target.checked;if(save()){render();toast(task.done?'✓ Task completed.':'✓ Task reopened.')}}})}
 bind();render();initAi();
 cloudBoot();
 // General feature and privacy tips now live in Settings → How To.
