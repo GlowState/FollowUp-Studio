@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#101216">
-<title>FollowUp Studio — V4.2.2 Premium Workspace</title>
+<title>FollowUp Studio — V4.3.0 Premium Workspace</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="FollowUp Studio">
-<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
-<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
-<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png?v=430">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=430">
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png?v=430">
+<link rel="manifest" href="./manifest.webmanifest?v=430">
 
 <style>/* V3.9.10: render dark immediately before JavaScript starts. */
 html,body{background-color:#101216;color-scheme:dark}
@@ -1838,7 +1838,7 @@ html.v38Dark #premiumApp .cloudSyncBanner.error{background:#362329!important;col
 <style id="launch-loading-v421">
 /* A quiet branded launch, with a real indeterminate activity indicator. */
 #premiumApp .launchScreen{position:fixed;inset:0;z-index:5000;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 42%,#1b263a55,transparent 60%),#101216;color:#edf3ff;padding:28px;opacity:1;transition:opacity 180ms ease;overflow:hidden}
-#premiumApp .launchScreen[data-phase="leaving"]{opacity:0;pointer-events:none}
+#premiumApp .launchScreen[data-phase="leaving"]{opacity:0;pointer-events:auto}
 #premiumApp .launchIdentity{display:flex;flex-direction:column;align-items:center;text-align:center;transform:translateY(-13px)}
 #premiumApp .launchMark{position:relative;display:grid;place-items:center;width:74px;height:78px;border-radius:21px;border:1px solid #50617c;background:linear-gradient(145deg,#2b3a52,#1c2637);box-shadow:0 0 0 7px #8db5ff04,0 14px 45px #0004;color:#d9e7ff;font:700 39px/1 Manrope,Inter,sans-serif;letter-spacing:-1px;animation:launchBreath 2.4s ease-in-out infinite}
 #premiumApp .launchName{font:650 25px/1.3 Manrope,Inter,sans-serif;letter-spacing:-.8px;margin:25px 0 9px;color:#f0f4fc}
@@ -1893,17 +1893,47 @@ html.v38Dark #premiumApp .entryCard,html.v38Dark #premiumApp .contextHelpDialog,
 }
 
 </style>
+<style id="login-focus-v423">
+/* Keep a remembered address readable without increasing the account row. */
+#premiumApp .entryAccount>div:last-child{flex:1 1 0;min-width:0;overflow:hidden}
+#premiumApp #entrySavedEmail{display:block;width:100%;max-width:100%;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;overflow-wrap:normal;word-break:normal}
+</style>
+<style id="home-v430">
+#premiumApp .studioMarkImage{display:block;width:100%;height:100%;object-fit:contain;border-radius:inherit}
+#premiumApp .premiumBrandMark,#premiumApp .entryBrand,#premiumApp .launchMark,#premiumApp .logo-mark{padding:0;overflow:hidden;background:transparent!important;border:0!important;box-shadow:none!important}
+#premiumApp #workspaceTopline{padding:13px 15px;border:1px solid #d5e3f127;border-top-color:#e9f2ff54;border-radius:17px;background:linear-gradient(120deg,#d8e7ff1c,#bacade0b 55%,#e0e9f913);box-shadow:inset 0 1px 0 #ffffff0c,0 10px 30px #00000014;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);margin-bottom:0!important}
+#premiumApp .premiumBrandMark{width:36px;height:36px;border-radius:10px}
+#premiumApp .premiumProductName{font-family:var(--premium-heading);font-size:16px;line-height:1.3;letter-spacing:-.4px;font-weight:700;color:#edf2fa}
+#premiumApp #cloudTopBadge.cloudIconStatus{width:32px;height:36px;min-width:32px}
+#premiumApp .businessIdentity{padding:22px 2px 18px;border-bottom:1px solid #ffffff0a;margin-bottom:22px}
+#premiumApp #brandHeading{font-family:var(--premium-heading);font-size:23px!important;font-weight:700!important;letter-spacing:-.6px;line-height:1.3;color:#f5f7fb}
+#premiumApp .homeWelcome{margin-bottom:19px}
+#premiumApp .homeWelcome h1{font-size:17px!important;letter-spacing:-.35px;color:#aab6c8;font-weight:500;margin:0}
+#premiumApp .homeTileGrid{gap:14px}
+#premiumApp .homeTileGrid .homeTileShell{width:100%;min-width:0;aspect-ratio:1.12;min-height:132px}
+html.v38Dark #premiumApp .homeTileGrid .homeTileShell>.homeTile{position:relative;gap:12px;padding:20px 6px 16px;justify-content:center}
+html.v38Dark #premiumApp .homeTileGrid .homeTileIcon{width:58px;height:58px;min-width:58px;min-height:58px;border-radius:16px;display:grid;place-items:center}
+#premiumApp .homeTileGrid .homeTileIcon svg{width:35px;height:35px;margin:0}
+#premiumApp .homeTileGrid strong{font-size:13px;line-height:1.35;white-space:nowrap}
+#premiumApp .homeCountBadge{position:absolute;top:9px;right:9px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#49d992;color:#09271b;font-size:11px;font-weight:800;line-height:1;border:2px solid #243343;box-shadow:0 2px 7px #0004;pointer-events:none}
+#premiumApp .homeCountBadge[hidden]{display:none!important}
+#premiumApp .homeCountBadge.archiveNotice{background:#f3ce69;color:#382900;font-size:15px}
+#startupRecovery{position:fixed;inset:0;z-index:30000;display:grid;place-items:center;padding:28px;background:#101216;color:#eff4fc;text-align:center;font-family:Inter,system-ui,sans-serif}
+#startupRecovery[hidden]{display:none!important}
+.startupRecoveryCard{max-width:340px}.startupRecoveryCard img{width:72px;height:72px;border-radius:19px;margin:0 auto 25px}.startupRecoveryCard h1{font-size:23px;line-height:1.3;letter-spacing:-.6px}.startupRecoveryCard p{color:#aab6c8;font-size:14px;line-height:1.65}.startupRetry{background:#c5daf7;color:#142236;border:0;border-radius:12px;font-weight:700;padding:13px 28px;font-size:14px;margin-top:10px}
+@media(max-width:540px){#premiumApp #workspaceTopline{padding:10px 12px;border-radius:14px}#premiumApp .premiumProductName{font-size:15px}#premiumApp .businessIdentity{padding:20px 2px 17px;margin-bottom:18px}#premiumApp #brandHeading{font-size:22px!important}#premiumApp .homeTileGrid{gap:10px}#premiumApp .homeTileGrid .homeTileShell{aspect-ratio:1;min-height:110px}html.v38Dark #premiumApp .homeTileGrid .homeTileShell>.homeTile{padding:15px 3px 12px;gap:10px}html.v38Dark #premiumApp .homeTileGrid .homeTileIcon{width:48px;height:48px;min-width:48px;min-height:48px;border-radius:13px}#premiumApp .homeTileGrid .homeTileIcon svg{width:31px;height:31px}#premiumApp .homeTileGrid strong{font-size:11px}#premiumApp .homeCountBadge{top:6px;right:6px;width:22px;height:22px;font-size:10px}#premiumApp .homeCountBadge.archiveNotice{font-size:14px}}
+</style>
 </head>
 <body id="premiumApp" class="workspaceLocked launchLoading" data-current-view="home">
 <script>window.__followupLaunchStarted=performance.now();</script>
 <div id="launchScreen" class="launchScreen" role="status" aria-live="polite" aria-atomic="true" aria-label="Loading FollowUp Studio" data-phase="loading">
- <div class="launchIdentity"><div class="launchMark" aria-hidden="true">F</div><div class="launchName">FollowUp Studio</div><p class="launchCaption" id="launchCaption">Preparing your workspace…</p><div class="launchTrack" aria-hidden="true"></div></div>
+ <div class="launchIdentity"><div class="launchMark" aria-hidden="true"><img class="studioMarkImage" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4Mj0iLjgiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjNDI1MzZiIi8+PHN0b3Agb2Zmc2V0PSIuNDgiIHN0b3AtY29sb3I9IiMyMDJjM2UiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxMTE5MjUiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0ic2lsdmVyIiB4Mj0iLjciIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYTZjNWViIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMTIiIGZpbGw9InVybCgjYmcpIi8+PHJlY3QgeD0iMTUiIHk9IjE1IiB3aWR0aD0iNDgyIiBoZWlnaHQ9IjQ4MiIgcng9Ijk5IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZmRlZjUiIHN0cm9rZS1vcGFjaXR5PSIuMjUiIHN0cm9rZS13aWR0aD0iMyIvPjxwYXRoIGQ9Ik0zMzYgMzI3YTExNSAxMTUgMCAxIDEtNi0xNTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNzaWx2ZXIpIiBzdHJva2Utd2lkdGg9IjM1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJtMTkxIDI1OSA1NSA1NCAxMjMtMTQ1bS03OCAwaDc4djc4IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjc2lsdmVyKSIgc3Ryb2tlLXdpZHRoPSIzNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+" alt="" draggable="false"></div><div class="launchName">FollowUp Studio</div><p class="launchCaption" id="launchCaption">Preparing your workspace…</p><div class="launchTrack" aria-hidden="true"></div></div>
 </div>
-<div id="entryGate" hidden inert aria-hidden="true" role="region" aria-labelledby="entryTitle" data-entry-state="checking">
+<div id="entryGate" hidden aria-hidden="true" role="region" aria-labelledby="entryTitle" data-entry-state="checking">
  <div class="entryShell">
-  <aside class="entryStory" aria-label="FollowUp Studio"><div class="entryWordmark"><div class="entryBrand" aria-hidden="true">F</div><span>FollowUp Studio</span></div><h2>Good work deserves<br><span>a follow-up.</span></h2><p>Your clients, your jobs, and a clear view of what comes next.</p><div class="entryFeatures"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-users"/></svg>Clients</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-briefcase"/></svg>Jobs</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-message"/></svg>Follow-ups</span></div></aside>
+  <aside class="entryStory" aria-label="FollowUp Studio"><div class="entryWordmark"><div class="entryBrand" aria-hidden="true"><img class="studioMarkImage" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4Mj0iLjgiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjNDI1MzZiIi8+PHN0b3Agb2Zmc2V0PSIuNDgiIHN0b3AtY29sb3I9IiMyMDJjM2UiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxMTE5MjUiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0ic2lsdmVyIiB4Mj0iLjciIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYTZjNWViIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMTIiIGZpbGw9InVybCgjYmcpIi8+PHJlY3QgeD0iMTUiIHk9IjE1IiB3aWR0aD0iNDgyIiBoZWlnaHQ9IjQ4MiIgcng9Ijk5IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZmRlZjUiIHN0cm9rZS1vcGFjaXR5PSIuMjUiIHN0cm9rZS13aWR0aD0iMyIvPjxwYXRoIGQ9Ik0zMzYgMzI3YTExNSAxMTUgMCAxIDEtNi0xNTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNzaWx2ZXIpIiBzdHJva2Utd2lkdGg9IjM1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJtMTkxIDI1OSA1NSA1NCAxMjMtMTQ1bS03OCAwaDc4djc4IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjc2lsdmVyKSIgc3Ryb2tlLXdpZHRoPSIzNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+" alt="" draggable="false"></div><span>FollowUp Studio</span></div><h2>Good work deserves<br><span>a follow-up.</span></h2><p>Your clients, your jobs, and a clear view of what comes next.</p><div class="entryFeatures"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-users"/></svg>Clients</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-briefcase"/></svg>Jobs</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-message"/></svg>Follow-ups</span></div></aside>
   <div class="entryCard" id="entryCard" aria-busy="true">
-   <div class="entryMobileBrand"><div class="entryWordmark"><div class="entryBrand" aria-hidden="true">F</div><span>FollowUp Studio</span></div></div>
+   <div class="entryMobileBrand"><div class="entryWordmark"><div class="entryBrand" aria-hidden="true"><img class="studioMarkImage" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4Mj0iLjgiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjNDI1MzZiIi8+PHN0b3Agb2Zmc2V0PSIuNDgiIHN0b3AtY29sb3I9IiMyMDJjM2UiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxMTE5MjUiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0ic2lsdmVyIiB4Mj0iLjciIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYTZjNWViIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMTIiIGZpbGw9InVybCgjYmcpIi8+PHJlY3QgeD0iMTUiIHk9IjE1IiB3aWR0aD0iNDgyIiBoZWlnaHQ9IjQ4MiIgcng9Ijk5IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZmRlZjUiIHN0cm9rZS1vcGFjaXR5PSIuMjUiIHN0cm9rZS13aWR0aD0iMyIvPjxwYXRoIGQ9Ik0zMzYgMzI3YTExNSAxMTUgMCAxIDEtNi0xNTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNzaWx2ZXIpIiBzdHJva2Utd2lkdGg9IjM1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJtMTkxIDI1OSA1NSA1NCAxMjMtMTQ1bS03OCAwaDc4djc4IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjc2lsdmVyKSIgc3Ryb2tlLXdpZHRoPSIzNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+" alt="" draggable="false"></div><span>FollowUp Studio</span></div></div>
    <p class="entryEyebrow">YOUR BUSINESS WORKSPACE</p><h1 id="entryTitle">Welcome back.</h1><p class="entryTagline" id="entryTagline">Sign in to your business workspace.</p>
    <div class="entryChecking" id="entryChecking" role="status"><span class="entrySpinner" aria-hidden="true"></span><span id="entryLoadingText">Preparing your sign-in…</span></div>
    <div id="entryReturning" hidden><div class="entryAccount"><div class="entryAvatar" id="entryAvatar" aria-hidden="true">F</div><div><small>YOUR SAVED ACCOUNT</small><strong id="entrySavedEmail"></strong></div></div><button type="button" class="btn entryPrimary" id="entryContinue">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button></div>
@@ -1935,7 +1965,7 @@ html.v38Dark #premiumApp .entryCard,html.v38Dark #premiumApp .contextHelpDialog,
 <input class="route-radio" type="radio" name="followup-page" id="page-howto" aria-label="How To guide view">
 <div class="layout" inert aria-hidden="true">
   <aside class="sidebar">
-    <div class="logo"><div class="logo-mark">F</div><div class="logo-name">FollowUp<br>Studio<small>CLOUD • V4.2.2</small></div></div>
+    <div class="logo"><div class="logo-mark"><img class="studioMarkImage" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4Mj0iLjgiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjNDI1MzZiIi8+PHN0b3Agb2Zmc2V0PSIuNDgiIHN0b3AtY29sb3I9IiMyMDJjM2UiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxMTE5MjUiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0ic2lsdmVyIiB4Mj0iLjciIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYTZjNWViIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMTIiIGZpbGw9InVybCgjYmcpIi8+PHJlY3QgeD0iMTUiIHk9IjE1IiB3aWR0aD0iNDgyIiBoZWlnaHQ9IjQ4MiIgcng9Ijk5IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZmRlZjUiIHN0cm9rZS1vcGFjaXR5PSIuMjUiIHN0cm9rZS13aWR0aD0iMyIvPjxwYXRoIGQ9Ik0zMzYgMzI3YTExNSAxMTUgMCAxIDEtNi0xNTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNzaWx2ZXIpIiBzdHJva2Utd2lkdGg9IjM1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJtMTkxIDI1OSA1NSA1NCAxMjMtMTQ1bS03OCAwaDc4djc4IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjc2lsdmVyKSIgc3Ryb2tlLXdpZHRoPSIzNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+" alt="" draggable="false"></div><div class="logo-name">FollowUp<br>Studio<small>CLOUD • V4.3.0</small></div></div>
     <nav class="nav" aria-label="Main navigation">
       <label class="navtab active" data-route="home" for="page-home" tabindex="0"><svg><use href="#i-grid"/></svg> Home</label>
       <label class="navtab" data-route="dashboard" for="page-dashboard" tabindex="0"><svg><use href="#i-chart"/></svg> Snapshot</label>
@@ -1950,20 +1980,21 @@ html.v38Dark #premiumApp .entryCard,html.v38Dark #premiumApp .contextHelpDialog,
     <div class="sidebottom"><span class="demo-dot"></span>Private account workspace<br>Free post templates</div>
   </aside>
   <main class="content">
-    <div class="topline" id="workspaceTopline"><div class="premiumBrand"><span class="premiumBrandMark" aria-hidden="true">F</span><div class="premiumBrandText"><span class="premiumProductName">FollowUp Studio</span><div class="headline" id="brandHeading">Your Business</div></div></div><button id="cloudTopBadge" type="button" data-route="settings" aria-label="Cloud sync status — open Settings" title="Cloud sync status" class="cloudIconStatus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 16.6a4.2 4.2 0 0 0-2.6-7.4 6.4 6.4 0 0 0-12.2 2.3A4 4 0 0 0 6 19h12a4 4 0 0 0 2-2.4Z"/></svg></button></div>
+    <div class="topline" id="workspaceTopline"><div class="premiumBrand"><span class="premiumBrandMark" aria-hidden="true"><img class="studioMarkImage" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4Mj0iLjgiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjNDI1MzZiIi8+PHN0b3Agb2Zmc2V0PSIuNDgiIHN0b3AtY29sb3I9IiMyMDJjM2UiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxMTE5MjUiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0ic2lsdmVyIiB4Mj0iLjciIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYTZjNWViIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMTIiIGZpbGw9InVybCgjYmcpIi8+PHJlY3QgeD0iMTUiIHk9IjE1IiB3aWR0aD0iNDgyIiBoZWlnaHQ9IjQ4MiIgcng9Ijk5IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZmRlZjUiIHN0cm9rZS1vcGFjaXR5PSIuMjUiIHN0cm9rZS13aWR0aD0iMyIvPjxwYXRoIGQ9Ik0zMzYgMzI3YTExNSAxMTUgMCAxIDEtNi0xNTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNzaWx2ZXIpIiBzdHJva2Utd2lkdGg9IjM1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJtMTkxIDI1OSA1NSA1NCAxMjMtMTQ1bS03OCAwaDc4djc4IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjc2lsdmVyKSIgc3Ryb2tlLXdpZHRoPSIzNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+" alt="" draggable="false"></span><div class="premiumBrandText"><span class="premiumProductName">FollowUp Studio</span></div></div><button id="cloudTopBadge" type="button" data-route="settings" aria-label="Cloud sync status — open Settings" title="Cloud sync status" class="cloudIconStatus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 16.6a4.2 4.2 0 0 0-2.6-7.4 6.4 6.4 0 0 0-12.2 2.3A4 4 0 0 0 6 19h12a4 4 0 0 0 2-2.4Z"/></svg></button></div>
+    <div class="businessIdentity"><div class="headline" id="brandHeading">Your Business</div></div>
     <section class="view active" id="view-home" aria-labelledby="hubHeading">
-      <div class="homeWelcome"><h1 id="hubHeading">Welcome home.</h1><p>Your tools, all in one place.</p></div>
+      <div class="homeWelcome"><h1 id="hubHeading">Welcome home.</h1></div>
       <button type="button" class="homeKeyboardEdit" data-action="home-customize">Rearrange Home tiles (keyboard users: Alt + arrow keys, Escape to finish)</button>
       <div class="homeTileGrid" id="homeTileGrid" aria-label="Business tools. Press and hold a tile to rearrange.">
-        <div class="homeTileShell" data-tile-id="snapshot"><button class="homeTile" type="button" data-route="dashboard" aria-label="Open Snapshot"><span class="homeTileIcon"><svg><use href="#i-chart"/></svg></span><strong>Snapshot</strong><span class="homeTileDetail">Overview</span></button></div>
-        <div class="homeTileShell" data-tile-id="calendar"><button class="homeTile" type="button" data-route="calendar" aria-label="Open Calendar"><span class="homeTileIcon"><svg><use href="#i-calendar"/></svg></span><strong>Calendar</strong><span class="homeTileDetail" id="hubCalendar">Schedule</span></button></div>
-        <div class="homeTileShell" data-tile-id="customers"><button class="homeTile" type="button" data-route="customers" aria-label="Open Clients"><span class="homeTileIcon"><svg><use href="#i-users"/></svg></span><strong>Clients</strong><span class="homeTileDetail" id="hubCustomers" hidden></span></button></div>
-        <div class="homeTileShell" data-tile-id="jobs"><button class="homeTile" type="button" data-route="jobs" aria-label="Open Jobs"><span class="homeTileIcon"><svg><use href="#i-briefcase"/></svg></span><strong>Jobs</strong><span class="homeTileDetail" id="hubJobs">Job history</span></button></div>
-        <div class="homeTileShell" data-tile-id="followups"><button class="homeTile" type="button" data-route="followup" aria-label="Open Follow-Ups"><span class="homeTileIcon"><svg><use href="#i-message"/></svg></span><strong>Follow-Ups</strong><span class="homeTileDetail" id="hubFollowups">Stay connected</span></button></div>
-        <div class="homeTileShell" data-tile-id="todo"><button class="homeTile" type="button" data-route="todo" aria-label="Open To-Do List"><span class="homeTileIcon"><svg><use href="#i-checklist"/></svg></span><strong>To-Do List</strong><span class="homeTileDetail" id="hubTodos">Tasks</span></button></div>
-        <div class="homeTileShell" data-tile-id="post"><button class="homeTile" type="button" data-route="content" aria-label="Open Social Studio"><span class="homeTileIcon"><svg><use href="#i-spark"/></svg></span><strong>Social Studio</strong><span class="homeTileDetail">Templates</span></button></div>
-        <div class="homeTileShell" data-tile-id="archive"><button class="homeTile" type="button" data-route="archive" aria-label="Open Archived Clients"><span class="homeTileIcon"><svg><use href="#i-archive"/></svg></span><strong>Archive</strong><span class="homeTileDetail" id="hubArchive">Stored safely</span></button></div>
-        <div class="homeTileShell" data-tile-id="settings"><button class="homeTile" type="button" data-route="settings" aria-label="Open Settings"><span class="homeTileIcon"><svg><use href="#i-gear"/></svg></span><strong>Settings</strong></button></div>
+        <div class="homeTileShell" data-tile-id="snapshot"><button class="homeTile" type="button" data-route="dashboard" aria-label="Open Snapshot"><span class="homeCountBadge" hidden aria-hidden="true"></span><span class="homeTileIcon"><svg><use href="#i-chart"/></svg></span><strong>Snapshot</strong></button></div>
+        <div class="homeTileShell" data-tile-id="calendar"><button class="homeTile" type="button" data-route="calendar" aria-label="Open Calendar"><span class="homeCountBadge" hidden aria-hidden="true"></span><span class="homeTileIcon"><svg><use href="#i-calendar"/></svg></span><strong>Calendar</strong></button></div>
+        <div class="homeTileShell" data-tile-id="customers"><button class="homeTile" type="button" data-route="customers" aria-label="Open Clients"><span class="homeCountBadge" hidden aria-hidden="true"></span><span class="homeTileIcon"><svg><use href="#i-users"/></svg></span><strong>Clients</strong></button></div>
+        <div class="homeTileShell" data-tile-id="jobs"><button class="homeTile" type="button" data-route="jobs" aria-label="Open Jobs"><span class="homeCountBadge" hidden aria-hidden="true"></span><span class="homeTileIcon"><svg><use href="#i-briefcase"/></svg></span><strong>Jobs</strong></button></div>
+        <div class="homeTileShell" data-tile-id="followups"><button class="homeTile" type="button" data-route="followup" aria-label="Open Follow-Ups"><span class="homeCountBadge" hidden aria-hidden="true"></span><span class="homeTileIcon"><svg><use href="#i-message"/></svg></span><strong>Follow-Ups</strong></button></div>
+        <div class="homeTileShell" data-tile-id="todo"><button class="homeTile" type="button" data-route="todo" aria-label="Open To-Do List"><span class="homeCountBadge" hidden aria-hidden="true"></span><span class="homeTileIcon"><svg><use href="#i-checklist"/></svg></span><strong>To-Do List</strong></button></div>
+        <div class="homeTileShell" data-tile-id="post"><button class="homeTile" type="button" data-route="content" aria-label="Open Social Studio"><span class="homeCountBadge" hidden aria-hidden="true"></span><span class="homeTileIcon"><svg><use href="#i-spark"/></svg></span><strong>Social Studio</strong></button></div>
+        <div class="homeTileShell" data-tile-id="archive"><button class="homeTile" type="button" data-route="archive" aria-label="Open Archived Clients"><span class="homeCountBadge" hidden aria-hidden="true"></span><span class="homeTileIcon"><svg><use href="#i-archive"/></svg></span><strong>Archive</strong></button></div>
+        <div class="homeTileShell" data-tile-id="settings"><button class="homeTile" type="button" data-route="settings" aria-label="Open Settings"><span class="homeCountBadge" hidden aria-hidden="true"></span><span class="homeTileIcon"><svg><use href="#i-gear"/></svg></span><strong>Settings</strong></button></div>
       </div>
     </section>
     <section class="view" id="view-dashboard">
@@ -2160,7 +2191,7 @@ html.v38Dark #premiumApp .entryCard,html.v38Dark #premiumApp .contextHelpDialog,
         <div class="stack"><div class="card"><h2>Exports & Backups<button type="button" class="contextHelpButton" data-help="backups" aria-label="Help: Exports &amp; Backups" aria-haspopup="dialog" aria-controls="contextHelpDialog" aria-expanded="false"><span aria-hidden="true">?</span></button></h2><div class="btn-row"><button class="btn" data-action="backup">↓ Download full backup</button><button class="btn secondary" data-action="restore-open">↑ Restore from backup</button><button class="btn secondary" data-action="csv">Export jobs CSV</button><button class="btn secondary" data-action="reset">Reset sample data</button></div><input id="restoreInput" type="file" accept=".json,application/json" hidden aria-label="Choose backup JSON"><div class="backupStatus" id="backupStatus" role="status">No backup prepared this session.</div></div><div class="card"><h2>Dialog preferences<button type="button" class="contextHelpButton" data-help="confirmations" aria-label="Help: Dialog preferences" aria-haspopup="dialog" aria-controls="contextHelpDialog" aria-expanded="false"><span aria-hidden="true">?</span></button></h2><button type="button" class="btn secondary" data-action="restore-confirmations">Restore all confirmation messages</button></div></div>
       </div>
     </section>
-    <div class="footer">FollowUp Studio V4.2.2 · Private workspace</div>
+    <div class="footer">FollowUp Studio V4.3.0 · Private workspace</div>
   </main>
 </div>
 <div class="floatingNav floatingHome" id="mobileHomeControl" inert aria-hidden="true">
@@ -2185,8 +2216,25 @@ html.v38Dark #premiumApp .entryCard,html.v38Dark #premiumApp .contextHelpDialog,
   <div id="contextHelpBody"></div>
 </dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="./cloud-config.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0"></script><script>(()=>{'use strict';
+<div id="startupRecovery" hidden role="alert"><div class="startupRecoveryCard"><img class="studioMarkImage" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4Mj0iLjgiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjNDI1MzZiIi8+PHN0b3Agb2Zmc2V0PSIuNDgiIHN0b3AtY29sb3I9IiMyMDJjM2UiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxMTE5MjUiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0ic2lsdmVyIiB4Mj0iLjciIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYTZjNWViIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMTIiIGZpbGw9InVybCgjYmcpIi8+PHJlY3QgeD0iMTUiIHk9IjE1IiB3aWR0aD0iNDgyIiBoZWlnaHQ9IjQ4MiIgcng9Ijk5IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZmRlZjUiIHN0cm9rZS1vcGFjaXR5PSIuMjUiIHN0cm9rZS13aWR0aD0iMyIvPjxwYXRoIGQ9Ik0zMzYgMzI3YTExNSAxMTUgMCAxIDEtNi0xNTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNzaWx2ZXIpIiBzdHJva2Utd2lkdGg9IjM1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJtMTkxIDI1OSA1NSA1NCAxMjMtMTQ1bS03OCAwaDc4djc4IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjc2lsdmVyKSIgc3Ryb2tlLXdpZHRoPSIzNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+" alt="" draggable="false"><h1>Let’s get you connected.</h1><p>FollowUp Studio couldn’t finish opening. Check your connection, then try again.</p><button class="startupRetry" type="button" onclick="location.reload()">Try again</button></div></div>
+<script>
+(()=>{
+ let pending=true;
+ const fail=()=>{if(!pending)return;pending=false;clearTimeout(timer);document.getElementById('startupRecovery').hidden=false;document.getElementById('launchScreen')?.setAttribute('aria-hidden','true')};
+ const timer=setTimeout(fail,30000);
+ window.__followupStartupFailed=fail;
+ window.__followupStartupReady=()=>{pending=false;clearTimeout(timer)};
+ window.addEventListener('error',e=>{if(pending&&e.error)fail()});
+ window.addEventListener('unhandledrejection',()=>{if(pending)fail()});
+ window.__followupLoadDependencies=()=>Promise.all(['./cloud-config.js','https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0'].map(src=>new Promise((resolve,reject)=>{
+  const script=document.createElement('script');let settled=false;
+  const done=ok=>{if(settled)return;settled=true;clearTimeout(timeout);if(ok)resolve();else{script.remove();reject(Error('Startup dependency unavailable'))}};
+  const timeout=setTimeout(()=>done(false),12000);script.src=src;script.async=true;script.onload=()=>done(true);script.onerror=()=>done(false);document.head.append(script);
+ })));
+})();
+</script>
+<script>(async()=>{'use strict';
+await window.__followupLoadDependencies();
 const KEY='followup_studio_demo_v1';
 const BACKUP_STATUS_KEY='followup_studio_backup_prepared_v1';
 let pendingRestore=null;
@@ -2327,21 +2375,15 @@ function enableHomeCustomize(force){if(cloud.user&&!cloud.ready){toast('Wait for
 function resetHomeOrder(){commitHomeOrder([...HOME_TILE_DEFAULT]);toast('Original Home order restored.')}
 function renderHomeHub(){
  drawHomeOrder();
- const fill=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value};
- const jobs=visibleJobs(), m=metrics();
- const upcoming=jobs.filter(j=>j.scheduledAt&&j.scheduledAt>=today()).length;
- const activeCustomers=db.customers.filter(c=>!isArchived(c)).length;
- const archived=db.customers.filter(isArchived).length;
- const pending=db.todos.filter(t=>!t.done).length;
- fill('hubCalendar',upcoming?`${upcoming} upcoming`:'');
- // Keep the Clients tile clean; its count remains available on the Clients page.
- fill('hubCustomers','');
- const draftCount=draftLibraryItems().length;
- fill('hubJobs',draftCount?`${jobs.length} ${jobs.length===1?'job':'jobs'} · ${draftCount} ${draftCount===1?'draft':'drafts'}`:`${jobs.length} ${jobs.length===1?'job':'jobs'}`);
- fill('hubFollowups',m.pending+m.follow?`${m.pending+m.follow} to review`:'All caught up');
- fill('hubTodos',pending?`${pending} to do`:'Caught up');
- fill('hubArchive',archived?`${archived} archived`:'Empty');
+ const jobs=visibleJobs();
+ const counts={calendar:jobs.filter(j=>j.status==='active'&&j.scheduledAt&&j.scheduledAt>=today()).length,customers:db.customers.filter(c=>!isArchived(c)).length,jobs:jobs.length,followups:smartItems().filter(x=>!x.snoozed).length,todo:db.todos.filter(t=>!t.done).length,post:db.aiDrafts.length,archive:db.customers.filter(isArchived).length};
+ for(const shell of document.querySelectorAll('.homeTileShell')){
+  const id=shell.dataset.tileId,button=shell.querySelector('.homeTile'),badge=shell.querySelector('.homeCountBadge'),n=counts[id]||0,title=button.querySelector('strong').textContent;
+  badge.hidden=!n;badge.classList.toggle('archiveNotice',id==='archive');badge.textContent=id==='archive'?'!':n>99?'99+':String(n);
+  button.setAttribute('aria-label','Open '+title+(n?' — '+n+(id==='archive'?' archived clients':id==='calendar'?' upcoming jobs':id==='post'?' saved drafts':id==='followups'?' actions':id==='todo'?' open tasks':' items'):''));
+ }
 }
+
 const JOB_PIN_SVG='<svg viewBox="0 0 24 24" width="19" height="19" stroke="currentColor" fill="currentColor" aria-hidden="true"><path d="M15.5 3.5 20.5 8.5 18 10.3V15l2 2v1H13l-1 4-1-4H4v-1l2-2v-4.7L3.5 8.5l5-5 2.3 2.5h2.4z"/></svg>';
 function jobStatusBadges(j){
  if(j.status==='active')return '<span class="jobStatusPill jobStatusActive">Active</span>';
@@ -2754,7 +2796,7 @@ function renderDraftBadges(){
  const n=draftLibraryItems().length;
  const c=$('#jobDraftCount');if(c)c.textContent=`(${n})`;
  document.querySelectorAll('.clientDraftCountInline').forEach(el=>el.textContent=`(${n})`);
- const hj=$('#hubJobs');if(hj){const count=visibleJobs().length;hj.textContent=n?`${count} ${count===1?'job':'jobs'} · ${n} ${n===1?'draft':'drafts'}`:`${count} ${count===1?'job':'jobs'}`;}
+
 }
 function archiveActiveClientDraft(){
  const account=currentDraftAccount(),active=getClientDraft(account);
@@ -3593,13 +3635,13 @@ function startLaunchLoading(text='Opening your workspace…'){
  lockEntry(document.body.classList.contains('workspaceLocked'));
 }
 function finishLaunchLoading(){
+ window.__followupStartupReady?.();
  if(!launch.active)return;
  clearTimeout(launch.holdTimer);clearTimeout(launch.fadeTimer);
  const sequence=++launch.sequence;
  launch.holdTimer=setTimeout(()=>{
   if(sequence!==launch.sequence)return;
   $('#launchScreen').dataset.phase='leaving';document.body.classList.add('launchRevealing');
-  lockEntry(document.body.classList.contains('workspaceLocked'));
   const fade=window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:180;
   launch.fadeTimer=setTimeout(()=>{
    if(sequence!==launch.sequence)return;
@@ -3614,26 +3656,27 @@ const entry={user:null,mode:'signin',opening:false};
 function lockEntry(locked){
  document.body.classList.toggle('workspaceLocked',locked);
  document.body.classList.remove('appBooting','loadingWorkspace');
- const blocking=launch.active&&$('#launchScreen').dataset.phase!=='leaving';
+ const blocking=launch.active;
  for(const el of $$('.layout,.floatingNav')){el.inert=locked||blocking;if(locked||blocking)el.setAttribute('aria-hidden','true');else el.removeAttribute('aria-hidden')}
- const gate=$('#entryGate');gate.inert=!locked||blocking;gate.hidden=!locked||blocking;gate.setAttribute('aria-hidden',String(!locked||blocking));
+ const gate=$('#entryGate');setEntryHidden('entryGate',!locked||blocking);gate.setAttribute('aria-hidden',String(!locked||blocking));
 }
+function setEntryHidden(id,hidden){const element=$('#'+id);if(element.hidden!==hidden)element.hidden=hidden}
 function syncEntry(){
  const user=entry.user||cloud.user;
  const phase=cloud.booting?'checking':entry.opening?'opening':user?'returning':'password';
  $('#entryGate').dataset.entryState=phase;
  $('#entryCard').dataset.busy=String(cloud.authBusy||entry.opening);
  $('#entryCard').setAttribute('aria-busy',String(cloud.booting||cloud.authBusy||entry.opening));
- $('#entryChecking').hidden=!['checking','opening'].includes(phase);
- $('#entryAuthForm').hidden=phase!=='password';
- $('#entryReturning').hidden=phase!=='returning';
- $('#entryModeRow').hidden=phase!=='password';
- $('#entrySwitchRow').hidden=phase!=='returning';
+ setEntryHidden('entryChecking',!['checking','opening'].includes(phase));
+ setEntryHidden('entryAuthForm',phase!=='password');
+ setEntryHidden('entryReturning',phase!=='returning');
+ setEntryHidden('entryModeRow',phase!=='password');
+ setEntryHidden('entrySwitchRow',phase!=='returning');
  $('#entryTitle').textContent=entry.mode==='signup'&&phase==='password'?'Create your account.':'Welcome back.';
  $('#entryTagline').textContent=phase==='returning'?'Continue to your business workspace.':entry.mode==='signup'&&phase==='password'?'A clear place for your clients, jobs, and next steps.':'Sign in to your business workspace.';
- if(user){$('#entrySavedEmail').textContent=user.email||'Your saved account';$('#entryAvatar').textContent=(user.email||'F').slice(0,1).toUpperCase()}
- $('#entryContinue').hidden=!!cloud.error&&!!cloud.user&&!cloud.ready;
- $('#entryRetry').hidden=!(cloud.error||cloud.user&&!cloud.ready)||phase==='checking'||phase==='opening';
+ if(user){$('#entrySavedEmail').textContent=user.email||'Your saved account';$('#entrySavedEmail').title=user.email||'Your saved account';$('#entryAvatar').textContent=(user.email||'F').slice(0,1).toUpperCase()}
+ setEntryHidden('entryContinue',!!cloud.error&&!!cloud.user&&!cloud.ready);
+ setEntryHidden('entryRetry',!(cloud.error||cloud.user&&!cloud.ready)||phase==='checking'||phase==='opening');
  $('#entryRetry').textContent=cloud.user?'Retry opening workspace':'Retry connection';
  const busy=cloud.authBusy||cloud.booting||entry.opening;
  for(const id of ['entrySignIn','entrySignUp','entryContinue','entrySwitchAccount','entryPasskey'])$('#'+id).disabled=!cloud.client||busy;
@@ -3641,8 +3684,8 @@ function syncEntry(){
  $('#entrySignIn').textContent=cloud.authBusy?(entry.mode==='signup'?'Creating account…':'Signing in…'):entry.mode==='signup'?'Create account':'Sign in';
  $('#entryModePrompt').textContent=entry.mode==='signup'?'Already have an account?':'New to FollowUp Studio?';
  $('#entrySignUp').textContent=entry.mode==='signup'?'Sign in':'Create an account';
- $('#entryPassword').autocomplete=entry.mode==='signup'?'new-password':'current-password';
- $('#entryPasskeyArea').hidden=!['password','returning'].includes(phase)||entry.mode==='signup'||passkeys.enabled!==true||!passkeyBrowserSupported();
+ const passwordAutocomplete=entry.mode==='signup'?'new-password':'current-password';if($('#entryPassword').autocomplete!==passwordAutocomplete)$('#entryPassword').autocomplete=passwordAutocomplete;
+ setEntryHidden('entryPasskeyArea',!['password','returning'].includes(phase)||entry.mode==='signup'||passkeys.enabled!==true||!passkeyBrowserSupported());
 }
 function showWelcome(message=''){
  document.body.classList.remove('accountWorkspace');entry.opening=false;lockEntry(true);
@@ -3735,6 +3778,7 @@ async function switchEntryAccount(){
  finally{cloud.authBusy=false;syncEntry()}
 }
 function bindEntryGateway(){
+ $('#entryEmail').addEventListener('click',e=>{e.currentTarget.focus()});
  $('#entryContinue').addEventListener('click',continueSavedSession);
  $('#entrySwitchAccount').addEventListener('click',switchEntryAccount);
  $('#entryPasskey').addEventListener('click',signInWithPasskey);
@@ -3975,7 +4019,7 @@ cloudBoot();
 // General feature and privacy tips now live in Settings → How To.
 document.addEventListener('keydown',e=>{const nav=e.target.closest('[data-route]');if(nav&&nav.tagName==='LABEL'&&(e.key==='Enter'||e.key===' ')){e.preventDefault();navigate(nav.dataset.route)}});
 
-})();
+})().catch(window.__followupStartupFailed);
 </script>
 </body>
 </html>
