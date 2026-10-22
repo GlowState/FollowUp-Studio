@@ -582,7 +582,14 @@ body:has(.overlay.open) .floatingHome,body:has(dialog[open]) .floatingHome{displ
 .profileHeading{align-items:center;gap:12px}
 .profileHeading .profileIdentity{flex:1;min-width:0}
 .profileEditTop{margin-left:auto;flex:none;white-space:nowrap!important;min-height:38px}
+.profileHeaderEdit{display:grid;place-items:center;width:36px;height:36px;min-height:0;padding:0!important;border-radius:11px}
+.profileHeaderEdit svg{width:16px;height:16px;display:block}
 .profileEditor[hidden],.homeCustomizeBar[hidden],.profileEditTop[hidden]{display:none!important}
+#modal[data-variant="profile"] .dialogHeader{position:relative;display:flex;align-items:center;justify-content:center;min-height:44px;margin-bottom:4px}
+#modal[data-variant="profile"] #modalTitle{width:100%;text-align:center;padding:0 96px 0 52px}
+#modal[data-variant="profile"] #modalTitle h2{text-align:center}
+#modal[data-variant="profile"] .xbtn{position:absolute;right:0;top:50%;transform:translateY(-50%)}
+#modal[data-variant="profile"] .profileHeaderEdit{position:absolute;right:48px;top:50%;transform:translateY(-50%)}
 .profileEditor{margin:14px 0 18px}
 .profileContactSummary{margin-top:8px;margin-bottom:16px;gap:8px;line-height:1.55}
 .profileContactSummary .profileReadNotes{white-space:pre-wrap}
@@ -608,7 +615,7 @@ body:has(.overlay.open) .floatingHome,body:has(dialog[open]) .floatingHome{displ
 .homeTileGrid.is-reordering .homeTileShell:nth-child(2n) .homeTileIcon{animation-delay:-.15s;animation-direction:alternate-reverse}
 .homeTileGrid.is-reordering .tileDragging{opacity:.2;transform:none;z-index:auto}.homeTileGrid.is-reordering .tileDragging .homeTileIcon{animation:none}
 @keyframes tileWiggle{from{rotate:-.7deg}to{rotate:.7deg}}
-@media(max-width:520px){.profileEditTop{font-size:12px!important;padding:8px 10px!important}.profileHeading .profileIdentity h3{font-size:16px}.profileHeading .profileIdentity .small{font-size:11px}.profileHistoryToggle{padding:14px;font-size:16px}}
+@media(max-width:520px){.profileEditTop{font-size:12px!important;padding:8px 10px!important}.profileHeading .profileIdentity h3{font-size:16px}.profileHeading .profileIdentity .small{font-size:11px}.profileHistoryToggle{padding:14px;font-size:16px}#modal[data-variant="profile"] #modalTitle{padding:0 84px 0 48px}#modal[data-variant="profile"] .profileHeaderEdit{right:44px;width:34px;height:34px}}
 @media(prefers-reduced-motion:reduce){.homeTileGrid.is-reordering .homeTileShell .homeTileIcon{animation:none}.profileHistoryChevron{transition:none}}
 
 /* V3.9.7: iPhone-style thumb dragging: the dragged tile follows the finger, no arrow buttons. */
@@ -1373,7 +1380,7 @@ function openProfile(id){
  const groups=profileJobGroups(c);
  const all=groups.past.length+groups.present.length+groups.future.length;
  const section=(label,items,empty)=>`<section class="profile-job-section"><h3>${label} <span class="pill gray">${items.length}</span></h3>${items.length?items.sort((a,b)=>(b.scheduledAt||b.completedAt||b.createdAt||'').localeCompare(a.scheduledAt||a.completedAt||a.createdAt||'')).map(j=>`<button type="button" class="profile-job" data-action="detail" data-id="${esc(j.id)}"><span><strong>${esc(j.service||'Untitled job')}</strong><small>${j.status==='completed'?'Completed '+day(j.completedAt)+(j.completedTime?' · '+prettyClock(j.completedTime):''):j.scheduledAt?'Scheduled '+day(j.scheduledAt):'Open since '+day(j.createdAt)}</small></span>${badge(j)}<span aria-hidden="true">→</span></button>`).join(''):`<p class="small">${empty}</p>`}</section>`;
- modal('Client profile',`<div class="profileHeading">${avatarHTML(c)}<div class="profileIdentity"><h3>${esc(c.name||'Unnamed client')}</h3><p class="small">${all} total ${all===1?'job':'jobs'}${c.optOut?' · Do Not Contact':''}</p></div>${isArchived(c)?'':`<button class="btn secondary sm profileEditTop" type="button" id="profileEditBtn" data-action="profile-edit" data-id="${esc(c.id)}" aria-controls="profileEditPanel" aria-expanded="false">✎ Edit</button>`}</div>
+ modal('Client profile',`<div class="profileHeading">${avatarHTML(c)}<div class="profileIdentity"><h3>${esc(c.name||'Unnamed client')}</h3><p class="small">${all} total ${all===1?'job':'jobs'}${c.optOut?' · Do Not Contact':''}</p></div></div>
  <div class="profileContactSummary">${c.company?`<span><strong>Company:</strong> ${esc(c.company)}</span>`:''}<span><strong>Phone:</strong> ${esc(formatPhone(c.phone)||'Not provided')}</span><span><strong>Email:</strong> ${esc(c.email||'Not provided')}</span><span><strong>Address:</strong> ${esc([c.street,c.city,c.state,c.postal].filter(Boolean).join(', ')||'Not provided')}</span>${c.notes?`<span class="profileReadNotes"><strong>Notes:</strong> ${esc(c.notes)}</span>`:''}</div>
  ${isArchived(c)?'':`<div class="profileEditor" id="profileEditPanel" hidden><form id="profileForm" novalidate><div class="field"><label for="cpPhoto">Client profile image (optional)</label><div class="customerPhotoPicker"><div class="profilePhotoPreview" id="cpPhotoPreview">${missingPhotoPreview(c)}</div><div><input id="cpPhoto" type="file" accept="image/*"><button class="btn secondary sm" type="button" data-action="profile-photo-remove">Use business logo instead</button><p class="small">Small compressed photo. Defaults to the business logo if no photo is set.</p></div></div></div><div class="formgrid">
  <div class="field"><label for="cpFirst">First Name *</label><input id="cpFirst" maxlength="70" autocomplete="given-name" required value="${esc(customerNameParts(c).first)}"></div>
@@ -1393,7 +1400,14 @@ function openProfile(id){
  <div class="profileQuickActions"><button class="btn secondary sm" type="button" data-action="profile-add-job" data-id="${esc(c.id)}" ${isArchived(c)?'disabled':''}>＋ Add job for this client</button></div>
  <details class="profileHistory"><summary class="profileHistoryToggle"><span class="profileHistoryTitle">Job history <span class="pill gray">${all}</span></span><span class="profileHistoryChevron" aria-hidden="true">⌄</span></summary><div class="profileHistoryContent">${section('Upcoming jobs',groups.future,'No future jobs scheduled.')}${section('Current jobs',groups.present,'No active jobs.')}${section('Past jobs',groups.past,'No past jobs recorded.')}<p class="note">Tap any job to open its schedule, status, review history, and photos.</p></div></details>
  ${isArchived(c)?'':`<div class="profileArchiveZone"><button type="button" class="btn danger" data-action="archive-customer" data-id="${esc(c.id)}">Archive client</button><p class="note">Archiving hides this client and linked jobs from active views. You can restore them from Archive.</p></div>`}`);
+ const modalEl=$('#modal');
+ modalEl.dataset.variant='profile';
+ if(!isArchived(c)){
+  const closeBtn=modalEl.querySelector('.xbtn');
+  if(closeBtn&&!modalEl.querySelector('.profileHeaderEdit'))closeBtn.insertAdjacentHTML('beforebegin',`<button class="btn secondary sm profileHeaderEdit" type="button" id="profileEditBtn" data-action="profile-edit" data-id="${esc(c.id)}" aria-controls="profileEditPanel" aria-expanded="false" aria-label="Edit client profile"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z"/></svg></button>`);
+ }
 }
+
 async function confirmContactChanges(changes){
  const dlg=$('#contactConfirm');const holder=$('#contactChangeList');
  holder.innerHTML=changes.map(c=>`<div><strong>${esc(c[0])}</strong><span>${esc(c[1]||'Not set')} → ${esc(c[2]||'Not set')}</span></div>`).join('');
@@ -1543,16 +1557,22 @@ document.addEventListener('touchmove',e=>{
  if(scrollArea.scrollHeight<=scrollArea.clientHeight||atTop&&deltaY>0||atBottom&&deltaY<0)e.preventDefault();
 },{passive:false});
 function modal(title,body){
+ const modalEl=$('#modal');
+ modalEl.dataset.variant='';
+ modalEl.querySelectorAll('.profileHeaderEdit').forEach(n=>n.remove());
  $('#modalTitle').innerHTML=`<h2 style="margin:0">${esc(title)}</h2>`;
  $('#modalBody').innerHTML=body;
  lockBackground('modal');
- $('#modal').classList.add('open');
+ modalEl.classList.add('open');
  $('#modal .dialog').scrollTop=0;
  const first=$('#modalBody input');
  if(first)setTimeout(()=>{if($('#modal').classList.contains('open'))first.focus({preventScroll:true})},20);
 }
 function closeModal(){
- $('#modal').classList.remove('open');
+ const modalEl=$('#modal');
+ modalEl.classList.remove('open');
+ modalEl.dataset.variant='';
+ modalEl.querySelectorAll('.profileHeaderEdit').forEach(n=>n.remove());
  unlockBackground('modal');
 }
 function completionClock(){const d=new Date();return `${pad(d.getHours())}:${pad(d.getMinutes())}`}
