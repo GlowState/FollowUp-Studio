@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#151719">
-<title>FollowUp Studio — V4.0 Cloud Recovery Beta</title>
+<title>FollowUp Studio — V4.0.1 Client & Job Drafts</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="FollowUp Studio">
@@ -932,6 +932,28 @@ html.v38Dark body #view-jobs #jobsList .jobManageRow>.right>button.btn.quickComp
 .completion-flow-back{display:block;margin-bottom:14px;background:transparent;border:1px solid #53616f;color:#dce6f4;padding:9px 12px;border-radius:11px;font-size:13px;font-weight:750}
 #completionStudioBack{margin-bottom:14px}
 @media(max-width:480px){.jobManageRow{grid-template-columns:38px minmax(0,1fr) auto;gap:10px 8px}.jobStatusPill{padding:4px 7px;font-size:10px}.jobStatusSecondary{font-size:9px}.jobManageRow>.right{justify-content:stretch!important}.jobManageRow>.right>.quickComplete{flex:1 1 100%}.jobManageRow>.right>.btn.secondary{flex:1 1 auto}.jobManageRow>.right>.jobMoreButton{flex:0 0 46px}}
+
+/* V4.0.1: create first job while adding a client */
+.newClientJobChoice{display:flex;align-items:center;gap:13px;padding:14px 15px;border:1px solid var(--border);border-radius:14px;background:var(--paper);cursor:pointer;margin:17px 0 10px;min-height:65px}
+.newClientJobChoice input{flex:none;width:20px;height:20px;margin:0;accent-color:#43bb83}
+.newClientJobChoice span{display:grid;gap:2px;flex:1;min-width:0}
+.newClientJobChoice strong{font-size:14px;font-weight:850;color:var(--ink)}
+.newClientJobChoice small{font-size:12px;font-weight:450;color:var(--muted);line-height:1.4}
+.newClientJobPanel{margin:0 0 16px;padding:15px;border:1px solid #36795c;border-radius:14px;background:color-mix(in srgb,var(--paper) 91%,#2abb7c 9%)}
+.newClientJobPanel[hidden],.newClientJobManual[hidden]{display:none!important}
+.newClientJobPanel h3{font-size:15px;margin:0 0 13px;color:var(--ink)}
+.newClientJobPanel .field:last-child{margin-bottom:0}
+.newClientJobPanel .checkline{align-items:center}
+.newClientJobPanel .checkline input{margin:0}
+@media(max-width:520px){.newClientJobPanel{padding:13px}.newClientJobChoice{padding:12px}}
+
+/* V4.0.1: Resumable client creation. Store only explicit form values; not a live client. */
+.clientDraftNote{display:flex;gap:8px;align-items:start;margin:8px 0 14px;padding:10px 12px;border:1px solid var(--border);border-radius:11px;color:var(--muted);background:var(--paper);font-size:12px;line-height:1.55}
+.clientDraftNote svg{flex:none;width:17px;height:17px;margin-top:1px;color:#59c18f}
+.clientDraftNote strong{color:var(--ink)}
+.clientDraftActions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0 4px}
+.clientDraftActions .btn{font-size:12px}
+.clientDraftStatus{font-size:12px;color:var(--muted);margin:0 0 8px;min-height:15px}
 </style>
 </head>
 <body>
@@ -1167,7 +1189,7 @@ html.v38Dark body #view-jobs #jobsList .jobManageRow>.right>button.btn.quickComp
         <div class="stack"><div class="card"><h2>Exports & testing</h2><p class="note">Demo Mode stores records in this browser. Cloud Mode stores a separate account workspace. Export a complete JSON backup regularly and keep it in a private, secure location. JSON backups are <strong>not encrypted</strong> and can include client details and compressed photo previews.</p><div class="btn-row"><button class="btn" data-action="backup">↓ Download full backup</button><button class="btn secondary" data-action="restore-open">↑ Restore from backup</button><button class="btn secondary" data-action="csv">Export jobs CSV</button><button class="btn secondary" data-action="reset">Reset sample data</button></div><input id="restoreInput" type="file" accept=".json,application/json" hidden aria-label="Choose backup JSON"><div class="backupStatus" id="backupStatus" role="status">No backup prepared this session.</div></div><div class="card"><h2>Dialog preferences</h2><p class="note">If you previously selected “Do not show me this message again,” you can turn those confirmations back on.</p><button type="button" class="btn secondary" data-action="restore-confirmations">Restore all confirmation messages</button></div><div class="card"><h2>Before selling this</h2><p class="note">Cloud accounts and recovery are in beta. Before commercial use, verify real cross-account isolation, independent backups, server-side recovery, privacy practices, and secure photo storage. Temporary recovery data in this tab is not encrypted. Free projects may pause when idle.</p></div></div>
       </div>
     </section>
-    <div class="footer">FollowUp Studio V4.0 · Cloud Recovery Beta · Private accounts · Demo data only until security review</div>
+    <div class="footer">FollowUp Studio V4.0.1 · Client & Job Drafts · Private accounts · Demo data only until security review</div>
   </main>
 </div>
 <div class="floatingNav floatingHome" id="mobileHomeControl">
@@ -1586,6 +1608,8 @@ function modal(title,body){
  if(first)setTimeout(()=>{if($('#modal').classList.contains('open'))first.focus({preventScroll:true})},20);
 }
 function closeModal(){
+ if($('#customerOnlyForm')&&!clientDraftSkipCloseSave)saveClientDraftOnDevice();
+ clientDraftSkipCloseSave=false;
  const modalEl=$('#modal');
  modalEl.classList.remove('open');
  modalEl.dataset.variant='';
@@ -1599,21 +1623,124 @@ function renderSavedServices(){const target=$('#servicesSavedList');if(!target)r
 function storeService(name){name=String(name||'').trim().replace(/\s+/g,' ');if(!name){toast('Enter a service name first.','error');return false}if(name.length>120){toast('Service name must be 120 characters or fewer.','error');return false}if(savedServices().some(s=>s.toLocaleLowerCase()===name.toLocaleLowerCase())){toast('This service is already saved.','error');return false}if(savedServices().length>=250){toast('The service list is full. Remove an old service first.','error');return false}const previous=JSON.stringify(db);db.services=[...(db.services||[]),name];if(!save()){db=JSON.parse(previous);return false}renderSavedServices();return true}
 async function removeService(name){if(!savedServices().includes(name))return;const ok=await askUser(`Remove “${name}” from the saved service list? Existing jobs will keep their services.`,'remove-service',{yes:'Remove service',rememberable:false});if(!ok)return;const previous=JSON.stringify(db);db.services=db.services.filter(s=>s!==name);if(!save()){db=JSON.parse(previous);return}renderSavedServices();toast('Service removed from your saved list.')}
 function updateServiceChooser(){const choice=$('#fServicePick'),custom=$('#fServiceCustom'),input=$('#fService'),remember=$('#fRememberService');if(!choice||!custom||!input)return;const manual=choice.value==='__custom__';custom.hidden=!manual;input.disabled=!manual;if(!manual)input.value=choice.value;if(remember)remember.checked=false;}
+/* New client draft persists on this device, isolated by signed-in user ID. Local browser storage is not encrypted. */
+const CLIENT_DRAFT_KEY='followup_new_client_draft_v401_';
+const CLIENT_DRAFT_FIELDS=['newFirst','newLast','newCompany','newPhone','newEmail','newStreet','newCity','newState','newPostal','newNotes','newOptOut','newAddJob','newJobServicePick','newJobService','newJobRememberService','newJobDate','newJobTime','newJobNotes'];
+let clientDraftAccount=null,clientDraftRestoreShownAccount=null,clientDraftStorageError=false,clientDraftSkipCloseSave=false;
+function currentDraftAccount(){return cloud.user?.id||'guest'}
+function clientDraftKey(account){return CLIENT_DRAFT_KEY+String(account||'guest')}
+function clientDraftHasContent(values){return Object.values(values).some(v=>v===true||typeof v==='string'&&v.trim()!==''&&v!=='false')}
+function getClientDraft(account=currentDraftAccount()){
+ try{
+  const raw=localStorage.getItem(clientDraftKey(account));if(!raw)return null;
+  const d=JSON.parse(raw);
+  if(d?.version!==1||d.account!==account||!d.values||typeof d.values!=='object'||Array.isArray(d.values))return null;
+  if(!clientDraftHasContent(d.values))return null;
+  return d;
+ }catch(e){return null}
+}
+function saveClientDraftOnDevice(){
+ const form=$('#customerOnlyForm');if(!form)return;
+ const account=clientDraftAccount||currentDraftAccount();
+ const values={};
+ for(const id of CLIENT_DRAFT_FIELDS){const el=document.getElementById(id);if(el)values[id]=el.type==='checkbox'?el.checked:el.value.slice(0,1000)}
+ try{
+  if(clientDraftHasContent(values))localStorage.setItem(clientDraftKey(account),JSON.stringify({version:1,account,savedAt:new Date().toISOString(),values}));
+  else localStorage.removeItem(clientDraftKey(account));
+  clientDraftStorageError=false;
+  const status=$('#clientDraftStatus');if(status)status.textContent=clientDraftHasContent(values)?'Draft saved on this device · Not yet a client record':'Your entries will be saved automatically as you type';
+ }catch(err){
+  if(!clientDraftStorageError){toast('Draft could not be stored on this device. Keep this page open or save the client.','error');clientDraftStorageError=true}
+  const status=$('#clientDraftStatus');if(status)status.textContent='Cannot store draft on this device — do not close this page';
+ }
+}
+function clearClientDraft(){
+ const account=clientDraftAccount||currentDraftAccount();
+ try{localStorage.removeItem(clientDraftKey(account))}catch(e){}
+ clientDraftAccount=null;
+}
+function loadClientDraftIntoForm(){
+ const form=$('#customerOnlyForm');if(!form)return false;
+ const account=clientDraftAccount||currentDraftAccount();
+ const draft=getClientDraft(account);if(!draft)return false;
+ for(const id of CLIENT_DRAFT_FIELDS){
+  const el=document.getElementById(id),value=draft.values[id];if(!el||value===undefined)continue;
+  if(el.type==='checkbox')el.checked=value===true;
+  else if(el.tagName==='SELECT'){
+   if([...el.options].some(opt=>opt.value===value))el.value=value;
+   else if(value){el.value='__custom__';const custom=$('#newJobService');if(custom&&!draft.values.newJobService)custom.value=String(value).slice(0,120)}
+  }else el.value=String(value).slice(0,el.maxLength>0?el.maxLength:1000);
+ }
+ updateNewClientJobPanel();updateNewClientJobService();
+ const phone=$('#newPhone');if(phone)phone.value=formatPhone(phone.value);
+ const status=$('#clientDraftStatus');if(status)status.textContent='Draft recovered from this device · Not yet saved as a client';
+ return true;
+}
+function maybeResumeClientDraftOnLaunch(){
+ const account=currentDraftAccount();
+ if(clientDraftRestoreShownAccount===account||$('#modal').classList.contains('open'))return;
+ if(!getClientDraft(account))return;
+ clientDraftRestoreShownAccount=account;
+ navigate('customers');addCustomerOnlyModal();
+}
+async function discardClientDraft(){
+ if(!await askUser('Discard this unfinished client and any job details saved with it?','discard-client-draft-v401',{yes:'Discard draft',danger:true,rememberable:false}))return;
+ clientDraftSkipCloseSave=true;clearClientDraft();closeModal();toast('Client draft discarded.');
+}
+function updateNewClientJobPanel(){
+ const toggle=$('#newAddJob'),panel=$('#newClientJobPanel'),saveButton=$('#saveCustomerOnlyBtn');
+ if(!toggle||!panel)return;
+ panel.hidden=!toggle.checked;
+ if(saveButton)saveButton.textContent=toggle.checked?'Save Client & Job':'Save Client';
+ if(toggle.checked)updateNewClientJobService();
+}
+function updateNewClientJobService(){
+ const picker=$('#newJobServicePick'),custom=$('#newJobServiceManual'),input=$('#newJobService');
+ if(!picker||!custom||!input)return;
+ const manual=picker.value==='__custom__';
+ custom.hidden=!manual;
+ input.disabled=!manual;
+ if(!manual)input.value='';
+}
 function addCustomerOnlyModal(){
- modal('Add client',`<form id="customerOnlyForm" novalidate><p class="note">Create a client profile now. Add jobs from the profile whenever you need them.</p><div class="formgrid"><div class="field"><label for="newFirst">First Name *</label><input id="newFirst" maxlength="70" autocomplete="given-name" placeholder="First name" required></div><div class="field"><label for="newLast">Last Name</label><input id="newLast" maxlength="70" autocomplete="family-name" placeholder="Last name"></div><div class="field"><label for="newCompany">Company (Optional)</label><input id="newCompany" maxlength="120" autocomplete="organization" placeholder="Company Name"></div><div class="field"><label for="newPhone">Phone (Optional)</label><input id="newPhone" type="tel" inputmode="tel" maxlength="18" placeholder="(555) 123-4567"></div></div><div class="field"><label for="newEmail">Email (Optional)</label><input id="newEmail" type="email" maxlength="160" autocomplete="off" placeholder="name@example.com" aria-describedby="newEmailSuggestions"><div class="emailDomainSuggestions" id="newEmailSuggestions" aria-label="Email domain suggestions" hidden></div></div><fieldset class="addressCreateFields"><legend>Address (optional)</legend><div class="field"><label for="newStreet">Street Address</label><input id="newStreet" autocomplete="street-address" maxlength="150" placeholder="123 Main Street"></div><div class="formgrid"><div class="field"><label for="newCity">City</label><input id="newCity" autocomplete="address-level2" maxlength="90"></div><div class="field"><label for="newState">State</label><input id="newState" autocomplete="address-level1" maxlength="35" placeholder="MO"></div><div class="field"><label for="newPostal">ZIP Code</label><input id="newPostal" autocomplete="postal-code" inputmode="numeric" maxlength="20" placeholder="65802"></div></div></fieldset><div class="field"><label for="newNotes">Client notes (optional)</label><textarea id="newNotes" maxlength="900" rows="3" placeholder="*Example: Prefers afternoon appointments"></textarea></div><label class="checkline"><input id="newOptOut" type="checkbox">Do Not Contact</label><div class="formError" id="newCustomerError" role="alert"></div><div class="modalfooter"><button type="button" class="btn" data-action="save-customer-only">Save ✔️</button><button type="button" class="btn secondary" data-action="close">Cancel</button></div></form>`);
+ const services=savedServices();
+ const jobFields=`<label class="newClientJobChoice"><input id="newAddJob" type="checkbox" aria-controls="newClientJobPanel"><span><strong>＋ Add a Job Now</strong><small>Optional · Create this client's first job at the same time</small></span></label><section class="newClientJobPanel" id="newClientJobPanel" hidden><h3>Job Details</h3><div class="field"><label for="newJobServicePick">Service *</label><select id="newJobServicePick"><option value="">Choose a service…</option>${services.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('')}<option value="__custom__">＋ Enter a New Service</option></select></div><div id="newJobServiceManual" class="newClientJobManual" hidden><div class="field"><label for="newJobService">Service Name *</label><input id="newJobService" disabled maxlength="120" placeholder="e.g., Awning installation" autocomplete="off"></div><label class="checkline"><input type="checkbox" id="newJobRememberService"> Save this Service for Next Time</label></div><div class="formgrid"><div class="field"><label for="newJobDate">Scheduled Date (Optional)</label><input id="newJobDate" type="date"></div><div class="field"><label for="newJobTime">Scheduled Time (Optional)</label><input id="newJobTime" type="time"></div></div><div class="field"><label for="newJobNotes">Job Notes (Optional)</label><textarea id="newJobNotes" rows="3" maxlength="500" placeholder="e.g., Confirm measurements before installation"></textarea></div><p class="note" style="margin:0">The job will start as Active and be linked to this client.</p></section>`;
+ modal('Add client',`<form id="customerOnlyForm" novalidate><p class="note">Add a client on its own, or create their first job at the same time.</p><div class="clientDraftNote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg><span><strong>Auto-Saved Draft</strong><br>Your unfinished client and job entries are saved on this device as you type. Reopen the app to continue. This draft is not cloud-synced or encrypted.</span></div><div class="formgrid"><div class="field"><label for="newFirst">First Name *</label><input id="newFirst" maxlength="70" autocomplete="given-name" placeholder="First name" required></div><div class="field"><label for="newLast">Last Name</label><input id="newLast" maxlength="70" autocomplete="family-name" placeholder="Last name"></div><div class="field"><label for="newCompany">Company (Optional)</label><input id="newCompany" maxlength="120" autocomplete="organization" placeholder="Company Name"></div><div class="field"><label for="newPhone">Phone (Optional)</label><input id="newPhone" type="tel" inputmode="tel" maxlength="18" placeholder="(555) 123-4567"></div></div><div class="field"><label for="newEmail">Email (Optional)</label><input id="newEmail" type="email" maxlength="160" autocomplete="off" placeholder="name@example.com" aria-describedby="newEmailSuggestions"><div class="emailDomainSuggestions" id="newEmailSuggestions" aria-label="Email domain suggestions" hidden></div></div><fieldset class="addressCreateFields"><legend>Address (optional)</legend><div class="field"><label for="newStreet">Street Address</label><input id="newStreet" autocomplete="street-address" maxlength="150" placeholder="123 Main Street"></div><div class="formgrid"><div class="field"><label for="newCity">City</label><input id="newCity" autocomplete="address-level2" maxlength="90"></div><div class="field"><label for="newState">State</label><input id="newState" autocomplete="address-level1" maxlength="35" placeholder="MO"></div><div class="field"><label for="newPostal">ZIP Code</label><input id="newPostal" autocomplete="postal-code" inputmode="numeric" maxlength="20" placeholder="65802"></div></div></fieldset><div class="field"><label for="newNotes">Client notes (optional)</label><textarea id="newNotes" maxlength="900" rows="3" placeholder="*Example: Prefers afternoon appointments"></textarea></div><label class="checkline"><input id="newOptOut" type="checkbox">Do Not Contact</label>${jobFields}<div class="formError" id="newCustomerError" role="alert"></div><p id="clientDraftStatus" class="clientDraftStatus" aria-live="polite">Your entries will be saved automatically as you type</p><div class="modalfooter"><button type="button" id="saveCustomerOnlyBtn" class="btn" data-action="save-customer-only">Save Client</button><button type="button" class="btn secondary" data-action="close">Keep Draft & Close</button><button type="button" class="btn secondary" data-action="client-draft-discard">Discard Draft</button></div></form>`);
+ clientDraftAccount=currentDraftAccount();
+ loadClientDraftIntoForm();
 }
 function saveCustomerOnly(){
  const first=$('#newFirst')?.value.trim()||'',last=$('#newLast')?.value.trim()||'',full=[first,last].filter(Boolean).join(' '),phone=formatPhone($('#newPhone')?.value||''),email=$('#newEmail')?.value.trim()||'',postal=$('#newPostal')?.value.trim()||'';
- const invalid=(message,field)=>{const e=$('#newCustomerError');if(e){e.textContent=message;e.classList.add('visible')}$(field)?.focus();toast(message,'error')};
+ const invalid=(message,field)=>{const e=$('#newCustomerError');if(e){e.textContent=message;e.classList.add('visible')}if(field){const node=$(field);if(node){if($('#newClientJobPanel')?.contains(node))$('#newClientJobPanel').hidden=false;node.focus();}}toast(message,'error')};
  if(!first)return invalid('Enter a first name.','#newFirst');
  if(full.length>100)return invalid('Client name is too long.','#newFirst');
  if(normPhone(phone)&&normPhone(phone).length!==10)return invalid('Enter a complete 10-digit US phone number.','#newPhone');
  if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return invalid('Enter a valid email address.','#newEmail');
  if(postal&&!/^\d{5}(?:-\d{4})?$/.test(postal))return invalid('Enter a valid ZIP code.','#newPostal');
+ const addJob=!!$('#newAddJob')?.checked;
+ let service='',remember=false;
+ if(addJob){
+  const selection=$('#newJobServicePick')?.value||'',manual=selection==='__custom__';
+  service=(manual?$('#newJobService')?.value:selection||'').trim();
+  if(!service)return invalid('Choose or enter a service for this job.',manual?'#newJobService':'#newJobServicePick');
+  if(service.length>120)return invalid('The service name must be 120 characters or fewer.','#newJobService');
+  remember=manual&&!!$('#newJobRememberService')?.checked&&!savedServices().some(s=>s.toLocaleLowerCase()===service.toLocaleLowerCase());
+  if(remember&&savedServices().length>=250)return invalid('Your saved service list is full. Uncheck Save this Service for Next Time to continue.','#newJobRememberService');
+ }
+ const original=JSON.stringify(db);
  const c={id:newCustomerId(),name:full,firstName:first,lastName:last,company:$('#newCompany')?.value.trim()||'',phone,email,street:$('#newStreet')?.value.trim()||'',city:$('#newCity')?.value.trim()||'',state:$('#newState')?.value.trim()||'',postal,notes:$('#newNotes')?.value.trim()||'',optOut:!!$('#newOptOut')?.checked,createdAt:today()};
- db.customers.push(c);if(!save()){db.customers=db.customers.filter(x=>x.id!==c.id);return}
- closeModal();navigate('customers');openProfile(c.id);toast('✓ Client saved. You can add a job from the profile.');
+ db.customers.push(c);
+ if(addJob){
+  db.jobs.unshift({id:'j'+Date.now()+Math.floor(Math.random()*10000),customerId:c.id,name:c.name,phone:c.phone,service,town:c.city||'',notes:$('#newJobNotes')?.value.trim()||'',permission:false,optOut:c.optOut,status:'active',createdAt:today(),scheduledAt:$('#newJobDate')?.value||null,scheduledTime:$('#newJobTime')?.value||null,completedAt:null,sentAt:null,followupAt:null,reviewAt:null});
+  if(remember)db.services=[...(db.services||[]),service];
+ }
+ if(!save()){db=JSON.parse(original);return}
+ clientDraftSkipCloseSave=true;clearClientDraft();
+ closeModal();navigate('customers');openProfile(c.id);
+ if(addJob){const history=$('#modalBody .profileHistory');if(history)history.open=true;}
+ toast(addJob?'✓ Client and job saved successfully.':'✓ Client saved. You can add a job from the profile.','success');
 }
+
  function addModal(date='',customerId=''){
  selectedId=null;
  const c=customerById(customerId),services=savedServices();
@@ -1984,7 +2111,7 @@ async function applyAction(e){const el=e.target.closest('[data-action]');if(!el)
  else if(op==='smart-task-done'){const task=db.todos.find(t=>t.id===id);if(task&&!task.done){task.done=true;if(save()){render();toast('✓ Task completed.')}}}
  else if(op==='smart-snooze')openSnoozePicker(id);else if(op==='smart-snooze-save')saveSnooze(id);
  else if(op==='smart-unsnooze'){const j=getJob(id);if(j){j.followupSnoozedUntil=null;if(save()){render();toast('✓ Reminder restored.')}}}else if(op==='job-options')openJobOptions(id);else if(op==='show-completed-jobs'){$('#statusFilter').value='completed';$('#searchJobs').value='';renderJobs();$('#jobListSection')?.scrollIntoView({block:'start',behavior:'smooth'});}else if(op==='email-fill-domain'){const input=document.getElementById(id),domain=el.dataset.domain;if(input&&['gmail.com','yahoo.com','outlook.com'].includes(domain)){const user=input.value.split('@')[0].trim();if(user){input.value=user+'@'+domain;updateEmailSuggestions(input);input.focus()}}}else if(op==='completion-post-studio')showCompletionSocialStudio(id);else if(op==='completion-back')returnToCompletion(id||completionFlowBackId);else if(op==='completion-exit'){closeModal();navigate(completionReturnRoute||'jobs')}else if(op==='job-pin')pinJob(id);else if(op==='job-delete')await deleteJob(id);else if(op==='job-filter-open')jobFilterDialog();else if(op==='job-filter-apply')applyJobFilters();else if(op==='job-filter-clear')applyJobFilters(true);
- else if(op==='add'){if(currentRoute==='customers')addCustomerOnlyModal();else addModal();}else if(op==='save-customer-only')saveCustomerOnly();else if(op==='job-use-existing'){const customerId=$('#jobExistingCustomer')?.value;if(customerId&&customerById(customerId)&&!isArchived(customerById(customerId)))addModal('',customerId);else toast('Choose an existing client first.','error')}else if(op==='save-customer')saveCustomer();else if(op==='open-sms')openSMS(id);else if(op==='metric-filter'){$('#statusFilter').value=el.dataset.filter;$('#searchJobs').value='';navigate('jobs')}else if(op==='calendar-jump')calendarJumpPicker();else if(op==='calendar-jump-apply'){const y=Number($('#jumpYear')?.value),m=Number($('#jumpMonth')?.value);if(!Number.isInteger(y)||y<1900||y>2100||!Number.isInteger(m)||m<0||m>11){toast('Choose a valid month and year.','error');return}calendarMonth=new Date(y,m,1);selectedDay=`${y}-${pad(m+1)}-01`;closeModal();renderCalendar();}else if(op==='month-prev'){calendarMonth.setMonth(calendarMonth.getMonth()-1);renderCalendar()}else if(op==='month-next'){calendarMonth.setMonth(calendarMonth.getMonth()+1);renderCalendar()}else if(op==='calendar-day'){if(Date.now()-Number(window.v38CalendarSwipe||0)>450){selectedDay=el.dataset.date;renderCalendar()}}else if(op==='schedule-selected')addModal(selectedDay);else if(op==='delete-task'){if(await askUser('Delete this task?','delete-task',{yes:'Delete task',danger:true})){db.todos=db.todos.filter(t=>t.id!==id);if(save()){render();toast('✓ Task removed.')}}}else if(op==='close')closeModal();else if(op==='detail'){if(el.closest('.profileHistoryContent')&&currentRoute==='customers'){closeModal();navigate('jobs')}detailModal(id);}else if(op==='complete')openCompletion(id);else if(op==='completion-save')saveCompletion(id);else if(op==='completion-remove-photo'){if(completionPhotos&&['before','after'].includes(el.dataset.photo)){completionPhotos[el.dataset.photo]='';showCompletionPhoto(el.dataset.photo)}}else if(op==='completion-open-draft'){const j=db.jobs.find(j=>j.completionDraftId===id);if(j&&lastCompletionOptions?.id===j.id)showCompletionSocialStudio(j.id);else completionOpenDraft(id);}else if(op==='compose')compose(id,el.dataset.mode);else if(op==='marksent'){const j=getJob(id);if(j&&!optedOut(j)&&await askUser('Only confirm if you actually sent the review request outside this app. Continue?','mark-request-sent',{yes:'Mark as sent'}))update(id,j=>{j.sentAt=today();j.followupSnoozedUntil=null})}else if(op==='markfollow'){const j=getJob(id);if(j&&dueFollowup(j)&&!optedOut(j)&&await askUser('Only confirm if you actually sent this follow-up. Continue?','mark-followup-sent',{yes:'Mark as sent'}))update(id,j=>{j.followupAt=today();j.followupSnoozedUntil=null})}else if(op==='toggle-review'){const j=getJob(id);if(j&&await askUser(j.reviewAt?'Remove the review-received mark?':'Did you personally verify that this client left a review?',j.reviewAt?'remove-review-record':'verify-review-record',{yes:j.reviewAt?'Remove mark':'Mark verified'}))update(id,j=>j.reviewAt=j.reviewAt?null:today())}else if(op==='save-detail'){await saveJobDetail(id)}else if(op==='copy-message')copy($('#messageToCopy').value);else if(op==='template-create')templateCreate();else if(op==='ai-save-draft')aiSaveDraft();else if(op==='ai-copy-draft'){const t=$('#aiDraftEditor').value.trim();if(t)copy(t);else toast('Nothing to copy yet.','error')}else if(op==='ai-new-draft')aiNewDraft();else if(op==='template-clear'){$('#socialJob').value='';$('#socialService').value='';$('#socialDetails').value='';$('#socialArea').value='';$('#socialCta').value='message';toast('Post fields cleared.')}else if(op==='ai-load-draft')aiDraftLoad(id);else if(op==='ai-delete-draft'){if(await askUser('Delete this saved draft?','delete-draft',{yes:'Delete draft',danger:true})){db.aiDrafts=db.aiDrafts.filter(x=>x.id!==id);if(currentAiDraftId===id)aiNewDraft();if(save()){renderAiDrafts();toast('Draft deleted.')}}}else if(op==='restore-confirmations')restoreConfirmations();else if(op==='report')report();else if(op==='backup')exportFullBackup();else if(op==='csv')exportCSV();else if(op==='reset'){if(cloud.user){toast('Reset is disabled in Cloud Mode. Sign out to reset demo data.','error');return;}if(await askUser('Replace current local demo data with the original fictional clients?','reset-demo',{yes:'Reset data',danger:true,rememberable:false})){db=sample();migrateCustomers(db);save();render();toast('✓ Demo reset to sample clients.')}}}
+ else if(op==='add'){if(currentRoute==='customers')addCustomerOnlyModal();else addModal();}else if(op==='save-customer-only')saveCustomerOnly();else if(op==='client-draft-discard')await discardClientDraft();else if(op==='job-use-existing'){const customerId=$('#jobExistingCustomer')?.value;if(customerId&&customerById(customerId)&&!isArchived(customerById(customerId)))addModal('',customerId);else toast('Choose an existing client first.','error')}else if(op==='save-customer')saveCustomer();else if(op==='open-sms')openSMS(id);else if(op==='metric-filter'){$('#statusFilter').value=el.dataset.filter;$('#searchJobs').value='';navigate('jobs')}else if(op==='calendar-jump')calendarJumpPicker();else if(op==='calendar-jump-apply'){const y=Number($('#jumpYear')?.value),m=Number($('#jumpMonth')?.value);if(!Number.isInteger(y)||y<1900||y>2100||!Number.isInteger(m)||m<0||m>11){toast('Choose a valid month and year.','error');return}calendarMonth=new Date(y,m,1);selectedDay=`${y}-${pad(m+1)}-01`;closeModal();renderCalendar();}else if(op==='month-prev'){calendarMonth.setMonth(calendarMonth.getMonth()-1);renderCalendar()}else if(op==='month-next'){calendarMonth.setMonth(calendarMonth.getMonth()+1);renderCalendar()}else if(op==='calendar-day'){if(Date.now()-Number(window.v38CalendarSwipe||0)>450){selectedDay=el.dataset.date;renderCalendar()}}else if(op==='schedule-selected')addModal(selectedDay);else if(op==='delete-task'){if(await askUser('Delete this task?','delete-task',{yes:'Delete task',danger:true})){db.todos=db.todos.filter(t=>t.id!==id);if(save()){render();toast('✓ Task removed.')}}}else if(op==='close')closeModal();else if(op==='detail'){if(el.closest('.profileHistoryContent')&&currentRoute==='customers'){closeModal();navigate('jobs')}detailModal(id);}else if(op==='complete')openCompletion(id);else if(op==='completion-save')saveCompletion(id);else if(op==='completion-remove-photo'){if(completionPhotos&&['before','after'].includes(el.dataset.photo)){completionPhotos[el.dataset.photo]='';showCompletionPhoto(el.dataset.photo)}}else if(op==='completion-open-draft'){const j=db.jobs.find(j=>j.completionDraftId===id);if(j&&lastCompletionOptions?.id===j.id)showCompletionSocialStudio(j.id);else completionOpenDraft(id);}else if(op==='compose')compose(id,el.dataset.mode);else if(op==='marksent'){const j=getJob(id);if(j&&!optedOut(j)&&await askUser('Only confirm if you actually sent the review request outside this app. Continue?','mark-request-sent',{yes:'Mark as sent'}))update(id,j=>{j.sentAt=today();j.followupSnoozedUntil=null})}else if(op==='markfollow'){const j=getJob(id);if(j&&dueFollowup(j)&&!optedOut(j)&&await askUser('Only confirm if you actually sent this follow-up. Continue?','mark-followup-sent',{yes:'Mark as sent'}))update(id,j=>{j.followupAt=today();j.followupSnoozedUntil=null})}else if(op==='toggle-review'){const j=getJob(id);if(j&&await askUser(j.reviewAt?'Remove the review-received mark?':'Did you personally verify that this client left a review?',j.reviewAt?'remove-review-record':'verify-review-record',{yes:j.reviewAt?'Remove mark':'Mark verified'}))update(id,j=>j.reviewAt=j.reviewAt?null:today())}else if(op==='save-detail'){await saveJobDetail(id)}else if(op==='copy-message')copy($('#messageToCopy').value);else if(op==='template-create')templateCreate();else if(op==='ai-save-draft')aiSaveDraft();else if(op==='ai-copy-draft'){const t=$('#aiDraftEditor').value.trim();if(t)copy(t);else toast('Nothing to copy yet.','error')}else if(op==='ai-new-draft')aiNewDraft();else if(op==='template-clear'){$('#socialJob').value='';$('#socialService').value='';$('#socialDetails').value='';$('#socialArea').value='';$('#socialCta').value='message';toast('Post fields cleared.')}else if(op==='ai-load-draft')aiDraftLoad(id);else if(op==='ai-delete-draft'){if(await askUser('Delete this saved draft?','delete-draft',{yes:'Delete draft',danger:true})){db.aiDrafts=db.aiDrafts.filter(x=>x.id!==id);if(currentAiDraftId===id)aiNewDraft();if(save()){renderAiDrafts();toast('Draft deleted.')}}}else if(op==='restore-confirmations')restoreConfirmations();else if(op==='report')report();else if(op==='backup')exportFullBackup();else if(op==='csv')exportCSV();else if(op==='reset'){if(cloud.user){toast('Reset is disabled in Cloud Mode. Sign out to reset demo data.','error');return;}if(await askUser('Replace current local demo data with the original fictional clients?','reset-demo',{yes:'Reset data',danger:true,rememberable:false})){db=sample();migrateCustomers(db);save();render();toast('✓ Demo reset to sample clients.')}}}
 // V3.7: user-isolated cloud workspace. No service-role key, passwords, or customer snapshots go into GitHub.
 const cloud={client:null,user:null,ready:false,revision:0,dirty:false,saving:false,conflict:false,timer:null,error:'',loading:false,recovery:null,recoveryFailed:false,checkMessage:''};
 const cloudSetup=window.FOLLOWUP_CLOUD_CONFIG||{};
@@ -2134,7 +2261,9 @@ async function cloudSessionEnter(user){
  if(!user||cloud.user?.id===user.id)return;
  // Never upload local demo or other account's in-memory data without explicit consent.
  cloud.user={id:user.id,email:user.email};cloud.ready=false;cloud.revision=0;cloud.conflict=false;cloud.dirty=false;cloud.error='';cloud.recovery=null;cloud.recoveryFailed=false;
+ if($('#customerOnlyForm')){saveClientDraftOnDevice();closeModal();}
  db=blankCloudWorkspace();refreshWorkspaceDisplay();await cloudRefresh(false);
+ maybeResumeClientDraftOnLaunch();
 }
 function cloudSessionLeave(){
  clearTimeout(cloud.timer);cloud.user=null;cloud.ready=false;cloud.revision=0;cloud.dirty=false;cloud.conflict=false;cloud.error='';cloud.saving=false;cloud.recovery=null;cloud.recoveryFailed=false;
@@ -2214,7 +2343,10 @@ function showCompletionSocialStudio(id){
 }
 function bind(){
  $('#serviceListForm').addEventListener('submit',e=>{e.preventDefault();if(storeService($('#newServiceName').value)){$('#newServiceName').value='';toast('Service added to saved list.')}});
- document.addEventListener('change',e=>{if(e.target?.id==='fServicePick')updateServiceChooser()});
+ document.addEventListener('change',e=>{if(e.target?.id==='fServicePick')updateServiceChooser();if(e.target?.id==='newAddJob')updateNewClientJobPanel();if(e.target?.id==='newJobServicePick')updateNewClientJobService();if(e.target?.closest?.('#customerOnlyForm'))saveClientDraftOnDevice()});
+ document.addEventListener('input',e=>{if(e.target?.closest?.('#customerOnlyForm'))saveClientDraftOnDevice()});
+ window.addEventListener('pagehide',saveClientDraftOnDevice);
+ document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')saveClientDraftOnDevice()});
  $('#jobCityFilter').addEventListener('change',renderJobs);
  $('#smartCategory').addEventListener('change',e=>changeSmartFilter(e.target.value||'all'));
  const jobsList=$('#jobsList');let jobHoldTimer=null,jobHoldStart=null,lastJobLongPress=0;
@@ -2390,7 +2522,7 @@ function bind(){
  directory.addEventListener('touchend',e=>endDirectorySwipe(e),{passive:true});
  directory.addEventListener('touchcancel',e=>endDirectorySwipe(e,true),{passive:true});
  $('#cloudAuthForm').addEventListener('submit',e=>{e.preventDefault();cloudLogin(false)});window.addEventListener('online',()=>{if(cloud.user&&cloud.dirty&&!cloud.conflict)queueCloudSave(0)});document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&cloud.user&&!cloud.dirty&&!cloud.saving)cloudRefresh(true)});window.addEventListener('beforeunload',e=>{if(cloud.user&&cloud.dirty){e.preventDefault();e.returnValue='';}});document.addEventListener('click',e=>{const route=e.target.closest('[data-route]');if(route){if(homeEditMode&&route.classList.contains('homeTile'))return;navigate(route.dataset.route);return}applyAction(e)});$('#searchJobs').addEventListener('input',renderJobs);$('#searchCustomers').addEventListener('input',renderCustomerDirectory);$('#statusFilter').addEventListener('change',renderJobs);$('#settingsForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#businessName').value.trim(),template=$('#reviewTemplate').value.trim(),reviewUrl=$('#reviewUrl').value.trim();if(!name||!template||!reviewUrl){toast('Business name, Google review link, and template are required.','error');return}try{const u=new URL(reviewUrl);if(u.protocol!=='https:')throw Error()}catch(e){toast('Enter a complete Google review link starting with https://','error');return}db.business=name;db.reviewUrl=reviewUrl;db.template=template;if(save()){render();toast('✓ Business settings saved.')}});$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(homeEditMode)enableHomeCustomize(false);closeModal()}});document.addEventListener('submit',e=>{if(e.target.id==='customerForm'){e.preventDefault();saveCustomer()}});$('#todoForm').addEventListener('submit',addTask);$('#restoreInput').addEventListener('change',e=>{const f=e.target.files?.[0];if(f)chooseBackupFile(f);e.target.value=''});document.addEventListener('change',e=>{if(e.target?.matches?.('[data-completion-photo]'))handleCompletionPhoto(e.target)});document.addEventListener('change',e=>{const id=e.target?.dataset?.taskId;if(!id)return;const task=db.todos.find(x=>x.id===id);if(task){task.done=e.target.checked;if(save()){render();toast(task.done?'✓ Task completed.':'✓ Task reopened.')}}})}
-bind();render();initAi();cloudBoot();
+bind();render();initAi();cloudBoot().finally(()=>maybeResumeClientDraftOnLaunch());
 // General feature and privacy tips now live in Settings → How To.
 document.addEventListener('keydown',e=>{const nav=e.target.closest('[data-route]');if(nav&&nav.tagName==='LABEL'&&(e.key==='Enter'||e.key===' ')){e.preventDefault();navigate(nav.dataset.route)}});
 
