@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#151719">
-<title>FollowUp Studio — V4.0.3 Password AutoFill & Job Drafts</title>
+<title>FollowUp Studio — V4.0.4 Secure Welcome & Automatic Drafts</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="FollowUp Studio">
@@ -984,9 +984,38 @@ body.appBooting #appBootScreen{position:fixed;inset:0;z-index:2000;background:#1
 .draftLibraryActions .btn.danger{padding:8px 10px}
 .draftLibraryNote{font-size:12px;color:var(--muted)}
 @media(max-width:520px){.jobDraftEntry{flex-wrap:wrap}.jobDraftEntry .btn{width:100%}.draftLibraryRow{flex-wrap:wrap}.draftLibraryActions{width:100%}.draftLibraryActions .btn:first-child{flex:1}}
+/* V4.0.4 — Dedicated sign-in gateway. Auth is validated by Supabase; RLS protects records. */
+body.appBooting > :not(#appBootScreen):not(#entryGate){visibility:hidden!important;pointer-events:none!important}
+#entryGate{display:none;position:fixed;inset:0;z-index:3200;align-items:center;justify-content:center;padding:24px;background:radial-gradient(ellipse at 50% 20%,#26363b 0%,#15191c 55%,#101315 100%);color:#f1f6f8;overflow-y:auto}
+body.workspaceLocked:not(.loadingWorkspace) #entryGate{display:flex}
+.entryCard{width:min(420px,100%);padding:34px 26px;border:1px solid #3c4a50;border-radius:24px;background:linear-gradient(155deg,#282e32,#1d2226);box-shadow:0 28px 75px #0007}
+.entryBrand{margin:auto auto 15px;width:57px;height:57px;border-radius:17px;background:linear-gradient(135deg,#32464e,#161b1e);border:1px solid #668394;display:grid;place-items:center;font-weight:900;font-size:26px;color:#dff7ff}
+.entryCard h1{text-align:center;color:#f5f7f8;margin:0 0 6px;font-size:27px}
+.entryCard .entryTagline{text-align:center;color:#acb9be;font-size:13px;margin:0 0 28px}
+.entryCard .field label{color:#dae3e6;font-size:13px}
+.entryCard .field input{background:#10171a;border:1px solid #4b595d;color:#fff;min-height:49px}
+.entryCard .field input::placeholder{color:#87979d}
+.entryPrimary{width:100%;min-height:48px;margin-top:8px;background:linear-gradient(115deg,#2675a6,#3691ba)!important;color:white!important;border:1px solid #64b6d9!important}
+.entrySignup{border:0;background:none;color:#a6d8f0;font-size:13px;text-decoration:underline;text-underline-offset:3px;padding:12px;cursor:pointer}
+.entryError{min-height:19px;font-size:12px;color:#ffaaa7;margin-top:9px;text-align:center}
+.entryFoot{font-size:11px;color:#91a3a9;text-align:center;line-height:1.6;margin:16px 0 0}
+.entryCard form button:disabled{opacity:.55}
+/* The signed-in product has no example-data chrome. */
+body.accountWorkspace .demoBanner,body.accountWorkspace [data-action="cloud-import-demo"],body.accountWorkspace [data-action="reset"],body.accountWorkspace .cloudDemoOnly,body.accountWorkspace .demoHowto{display:none!important}
+
 </style>
 </head>
-<body class="appBooting">
+<body class="workspaceLocked">
+<div id="entryGate" role="region" aria-label="Sign in to FollowUp Studio">
+ <div class="entryCard"><div class="entryBrand" aria-hidden="true">F</div><h1>FollowUp Studio</h1>
+ <p class="entryTagline">Your business workspace, all in one place.</p>
+ <form id="entryAuthForm" autocomplete="on"><div class="field"><label for="entryEmail">Email Address</label><input id="entryEmail" type="email" name="username" autocomplete="username" inputmode="email" autocapitalize="none" spellcheck="false" required placeholder="you@company.com"></div>
+ <div class="field"><label for="entryPassword">Password</label><input id="entryPassword" name="password" type="password" autocomplete="current-password" minlength="8" required placeholder="Your account password"></div>
+ <button id="entrySignIn" class="btn entryPrimary" type="submit">Sign In</button><button id="entryRetry" type="button" class="entrySignup" hidden>Retry Loading Workspace</button>
+ <div class="entryError" id="entryError" role="alert" aria-live="polite"></div>
+ </form><div style="text-align:center"><button class="entrySignup" type="button" id="entrySignUp">Create an Account</button></div>
+ <p class="entryFoot">Sign in securely. Your iPhone can fill credentials from Passwords.</p></div>
+</div>
 <div id="appBootScreen" role="status" aria-label="Opening FollowUp Studio"><div class="bootLogo" aria-hidden="true">F</div><div class="bootTitle">FollowUp Studio</div><div class="bootNote">Opening your workspace…</div></div>
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="3" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="13" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="13" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="i-message" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-8 8c-1.22 0-2.37-.27-3.38-.75L4 20l1.24-4.58A8 8 0 1 1 20 11.5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 11.5h7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M17 5a3 3 0 0 1 0 6M17 15a5 5 0 0 1 4 5" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2Z" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.5 2h5l.7 2.6 2 .9 2.4-1.1 3 4.2-1.8 2 .1 2.3 1.7 1.9-3 4.3-2.4-1.1-2 .8-.7 2.7h-5l-.7-2.7-2-.8-2.4 1.1-3-4.3 1.7-1.9.1-2.3-1.8-2 3-4.2L6.8 5.5l2-.9L9.5 2Z" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 2v6M17 2v6M3 11h18" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="i-checklist" viewBox="0 0 24 24"><path d="m3 6 2 2 4-4M12 6h9M3 15l2 2 4-4m3 2h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol><symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 20h18M6 16v-5M12 16V5M18 16V9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="i-archive" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="5" rx="1.4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 9v11h14V9M10 14h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol></svg>
 <input class="route-radio" type="radio" name="followup-page" id="page-home" checked aria-label="Home hub view">
@@ -1002,7 +1031,7 @@ body.appBooting #appBootScreen{position:fixed;inset:0;z-index:2000;background:#1
 <input class="route-radio" type="radio" name="followup-page" id="page-howto" aria-label="How To guide view">
 <div class="layout">
   <aside class="sidebar">
-    <div class="logo"><div class="logo-mark">↗</div><div class="logo-name">FollowUp<br>Studio<small>CLOUD BETA • V3.9.12</small></div></div>
+    <div class="logo"><div class="logo-mark">↗</div><div class="logo-name">FollowUp<br>Studio<small>CLOUD • V4.0.4</small></div></div>
     <nav class="nav" aria-label="Main navigation">
       <label class="navtab active" data-route="home" for="page-home" tabindex="0"><svg><use href="#i-grid"/></svg> Home</label>
       <label class="navtab" data-route="dashboard" for="page-dashboard" tabindex="0"><svg><use href="#i-chart"/></svg> Snapshot</label>
@@ -1014,7 +1043,7 @@ body.appBooting #appBootScreen{position:fixed;inset:0;z-index:2000;background:#1
       <label class="navtab" data-route="todo" for="page-todo" tabindex="0"><svg><use href="#i-checklist"/></svg> To-Do List</label>
       <label class="navtab" data-route="settings" for="page-settings" tabindex="0"><svg><use href="#i-gear"/></svg> Settings</label>
     </nav>
-    <div class="sidebottom"><span class="demo-dot"></span>Secure sign-in optional<br>Free post templates</div>
+    <div class="sidebottom"><span class="demo-dot"></span>Private account workspace<br>Free post templates</div>
   </aside>
   <main class="content">
     <div class="topline"><div><div class="eyebrow">SMALL BUSINESS FOLLOW-UP</div><div class="headline" style="font-weight:800" id="brandHeading">Demo Home Services</div></div><span id="cloudTopBadge" class="pill amber" role="status">● DEMO MODE</span></div>
@@ -1088,7 +1117,7 @@ body.appBooting #appBootScreen{position:fixed;inset:0;z-index:2000;background:#1
     </section>
     <section class="view" id="view-content"><button type="button" id="completionStudioBack" class="completion-flow-back" data-action="completion-back" hidden>← Back to Job Completion</button>
       <div class="sectionintro"><div><div class="eyebrow">SOCIAL STUDIO</div><h1>Social posts, without a subscription.</h1><p>Choose a professional template, add approved job details, and create a ready-to-edit social caption — right inside FollowUp Studio.</p></div><span class="pill">✓ Free templates</span></div>
-      <div class="ai-privacy">🔒 <strong>Works offline:</strong> No AI service, API key, paid account, or external text generation. Drafts stay in your workspace (or this browser in Demo Mode). Use only approved project details; never include private client information or unapproved photos.</div>
+      <div class="ai-privacy">🔒 <strong>Works offline:</strong> No AI service, API key, paid account, or external text generation. Drafts stay in your workspace. Use only approved project details and images.</div>
       <div class="grid two-col">
         <div class="card"><div class="subhead postBuilderHeader"><h2>Build your social post</h2></div><div class="postStyleRow"><label for="socialStyle">Writing Style</label><select id="socialStyle" aria-label="Social post writing style"><option value="professional">Professional</option><option value="casual">Casual</option><option value="friendly">Friendly</option><option value="short">Short &amp; direct</option></select></div>
           <div class="field"><label for="socialTemplate">Choose a post template</label><select id="socialTemplate">
@@ -1149,9 +1178,9 @@ body.appBooting #appBootScreen{position:fixed;inset:0;z-index:2000;background:#1
           <p>Tap a Home tile to open its page. <strong>Press and hold</strong> any tile to enter rearrange mode, then drag it into position. Tap outside the tile grid to finish; your tile order is saved with the workspace.</p>
           <p>The floating Home button returns you to Home from other pages. Keyboard users can open the rearrangement control and use Alt + arrow keys; press Escape to finish.</p>
         </div></details>
-        <details class="card howtoTopic"><summary>Demo Mode &amp; Cloud Mode</summary><div class="howtoText">
+        <details class="card howtoTopic demoHowto"><summary>Account modes</summary><div class="howtoText">
           <p><strong>Safe demonstration:</strong> Demo Mode includes fictional clients and stores information in this browser only. Clearing browser data or switching devices may remove those records unless you export a backup.</p>
-          <p>In Cloud Mode, you can sign in under Settings to access a private account workspace. Demo records are <strong>not</strong> automatically uploaded. Use the explicit Import Demo Mode action if you intend to replace your cloud workspace with local demo records.</p>
+          <p>Sign in from the welcome screen to access your private account workspace. Demo records are <strong>not</strong> automatically uploaded. Use the explicit Import Demo Mode action if you intend to replace your cloud workspace with local demo records.</p>
           <p>Cloud changes require an internet connection. Wait until the app reports that changes are synced before closing it. If an upload fails, this browser tab attempts to hold a temporary unencrypted recovery copy; a successful cloud save clears it. On reload, you can explicitly recover, download, or discard pending edits. If another device already changed the cloud workspace, download the recovery copy and resolve manually instead of overwriting. This is not a substitute for an independent backup; closing the tab may erase it. Simultaneous edits do not merge automatically.</p>
         </div></details>
         <details class="card howtoTopic"><summary>Clients, jobs &amp; archiving</summary><div class="howtoText">
@@ -1178,23 +1207,16 @@ body.appBooting #appBootScreen{position:fixed;inset:0;z-index:2000;background:#1
       </div>
     </section>
     <section class="view" id="view-settings">
-      <div class="sectionintro"><div><div class="eyebrow">SETTINGS & DATA</div><h1>Make it yours.</h1><p>Configure the business details and review-request wording before demonstrating it.</p></div></div>
+      <div class="sectionintro"><div><div class="eyebrow">SETTINGS & DATA</div><h1>Make it yours.</h1><p>Configure your business details and review-request wording.</p></div></div>
       <section class="card howtoSettingsCard" aria-labelledby="howtoSettingsHeading">
-        <div class="howtoSettingsCopy"><span class="howtoBadge" aria-hidden="true">?</span><div><h2 id="howtoSettingsHeading">How To</h2><p class="note">Tips, features, Demo &amp; Cloud Mode, client records, backups, and getting started—all in one guide.</p></div></div>
+        <div class="howtoSettingsCopy"><span class="howtoBadge" aria-hidden="true">?</span><div><h2 id="howtoSettingsHeading">How To</h2><p class="note">Tips for accounts, client records, backups, and getting started—all in one guide.</p></div></div>
         <button type="button" class="btn secondary howtoOpen" data-route="howto">Open How To →</button>
       </section>
       <section class="card cloudCard" id="cloudCard" aria-labelledby="cloudHeading">
         <div class="subhead"><h2 id="cloudHeading">Account & Cloud Sync</h2><span id="cloudState" class="pill amber">Demo Mode</span></div>
-        <p class="note">Optional free-tier cloud sync keeps each signed-in account separate. Demo records stay on this device unless you explicitly import them. Automatic saves require an internet connection.</p>
+        <p class="note">Your private account workspace synchronizes changes across signed-in devices. Automatic cloud saves require an internet connection.</p>
         <div id="cloudUnavailable" class="surface" hidden>Cloud setup is not configured yet. Work must deploy <code>cloud-config.js</code> with your Supabase Project URL and <strong>publishable</strong> key, and run the database migration. Demo Mode remains available.</div>
-        <div id="cloudLoggedOut">
-          <form id="cloudAuthForm" class="cloudAuthForm" autocomplete="on">
-            <div class="field"><label for="cloudEmail">Account email</label><input id="cloudEmail" type="email" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required placeholder="you@example.com"></div>
-            <div class="field"><label for="cloudPassword">Password</label><input id="cloudPassword" name="password" type="password" autocomplete="current-password" minlength="8" required placeholder="At least 8 characters"></div>
-            <div class="btn-row"><button class="btn" type="submit">Sign in</button><button type="button" class="btn secondary" data-action="cloud-signup">Create account</button></div>
-          </form>
-          <p class="note"><strong>iPhone Passwords:</strong> Tap your saved account above the keyboard to fill your login. When signing in or creating an account, iOS may offer to save it in Passwords. You can also add this website manually in the iPhone Passwords app. FollowUp Studio never stores your password.</p><p class="note">Email verification may be required. If you sign up, check your inbox. Credentials are handled by Supabase Authentication.</p>
-        </div>
+        <div id="cloudLoggedOut" hidden><p class="note">Sign in from the welcome screen to access your workspace.</p></div>
         <div id="cloudLoggedIn" hidden>
           <div class="cloudDetails"><div><strong id="cloudUserEmail"></strong><p class="note" style="margin:5px 0 0">Account-based workspace. Other user accounts cannot read this workspace under the database policies.</p></div><span class="pill gray" id="cloudRevision">Revision —</span></div>
           <div id="cloudSyncBanner" class="cloudSyncBanner" role="status" aria-live="polite">Cloud status</div>
@@ -1206,7 +1228,7 @@ body.appBooting #appBootScreen{position:fixed;inset:0;z-index:2000;background:#1
           <p class="note cloudSafetyNote">While this tab stays open, FollowUp Studio temporarily keeps a recovery copy of unsynced changes in this browser's session storage. It may include unencrypted client information. A successful cloud save clears the copy. Export your own JSON backups regularly; a closed tab or cleared browser data may erase temporary recovery.</p>
           <div class="btn-row"><button class="btn secondary" type="button" data-action="cloud-check">Check cloud connection</button><span id="cloudCheckResult" class="cloudCheckResult" role="status"></span></div>
           <div class="btn-row" style="margin-top:13px"><button class="btn secondary" type="button" data-action="cloud-refresh">↻ Refresh from cloud</button><button class="btn secondary" type="button" data-action="cloud-retry">↥ Retry pending save</button><button class="btn secondary" type="button" data-action="cloud-import-demo">↑ Import Demo Mode records</button><button class="btn secondary" type="button" data-action="cloud-save-backup">↓ Back up cloud data</button><button class="btn danger" type="button" data-action="cloud-signout">Sign out</button></div>
-          <p class="note" style="margin-top:13px">Use the import button once to move your existing browser records into this account. It replaces cloud data only after confirmation. A second device can sign in to the same account and reload the latest saved version. Simultaneous edits are not merged automatically.</p>
+          <p class="note" style="margin-top:13px">A second device can sign in to the same account and reload the latest saved version. Simultaneous edits are not merged automatically.</p>
         </div>
       </section>
        <section class="card servicesPanel" id="servicesPanel" style="margin-bottom:16px">
@@ -1217,10 +1239,10 @@ body.appBooting #appBootScreen{position:fixed;inset:0;z-index:2000;background:#1
        </section>
        <div class="grid two-col">
         <div class="card"><h2>Business details</h2><form id="settingsForm"><div class="field"><label for="businessName">Business name</label><input id="businessName" required maxlength="100"></div><div class="field"><label for="reviewUrl">Google review link</label><input id="reviewUrl" type="url" required placeholder="Paste your Google review link"></div><p class="note">Business name and Google review link are required when saving business settings.</p><div class="field"><label for="businessLogoInput">Default business logo</label><div class="logoUploadPicker"><label for="businessLogoInput" class="logoUploadButton">Choose logo image</label><input id="businessLogoInput" type="file" accept="image/*" class="logoFileInput" aria-label="Upload the default business logo"></div><div class="brandLogoPreview" id="brandLogoPreview"></div><p class="small">Used when a client has no profile image. Small compressed preview stored in your workspace.</p><button type="button" class="btn secondary sm" data-action="logo-remove">Remove logo</button></div><div class="field"><label for="reviewTemplate">Review request template</label><textarea id="reviewTemplate" rows="6"></textarea><p class="small">Allowed placeholders: {firstName}, {clientName}, {business}, {service}, {city}, {reviewLink}. The app automatically fills these in for the selected client and job.</p></div><button class="btn" type="submit">Save settings</button></form></div>
-        <div class="stack"><div class="card"><h2>Exports & testing</h2><p class="note">Demo Mode stores records in this browser. Cloud Mode stores a separate account workspace. Export a complete JSON backup regularly and keep it in a private, secure location. JSON backups are <strong>not encrypted</strong> and can include client details and compressed photo previews.</p><div class="btn-row"><button class="btn" data-action="backup">↓ Download full backup</button><button class="btn secondary" data-action="restore-open">↑ Restore from backup</button><button class="btn secondary" data-action="csv">Export jobs CSV</button><button class="btn secondary" data-action="reset">Reset sample data</button></div><input id="restoreInput" type="file" accept=".json,application/json" hidden aria-label="Choose backup JSON"><div class="backupStatus" id="backupStatus" role="status">No backup prepared this session.</div></div><div class="card"><h2>Dialog preferences</h2><p class="note">If you previously selected “Do not show me this message again,” you can turn those confirmations back on.</p><button type="button" class="btn secondary" data-action="restore-confirmations">Restore all confirmation messages</button></div><div class="card"><h2>Before selling this</h2><p class="note">Cloud accounts and recovery are in beta. Before commercial use, verify real cross-account isolation, independent backups, server-side recovery, privacy practices, and secure photo storage. Temporary recovery data in this tab is not encrypted. Free projects may pause when idle.</p></div></div>
+        <div class="stack"><div class="card"><h2>Exports & Backups</h2><p class="note">Export a complete JSON backup regularly and keep it in a private, secure location. JSON backups are <strong>not encrypted</strong> and can include client details and compressed photo previews.</p><div class="btn-row"><button class="btn" data-action="backup">↓ Download full backup</button><button class="btn secondary" data-action="restore-open">↑ Restore from backup</button><button class="btn secondary" data-action="csv">Export jobs CSV</button><button class="btn secondary" data-action="reset">Reset sample data</button></div><input id="restoreInput" type="file" accept=".json,application/json" hidden aria-label="Choose backup JSON"><div class="backupStatus" id="backupStatus" role="status">No backup prepared this session.</div></div><div class="card"><h2>Dialog preferences</h2><p class="note">If you previously selected “Do not show me this message again,” you can turn those confirmations back on.</p><button type="button" class="btn secondary" data-action="restore-confirmations">Restore all confirmation messages</button></div><div class="card"><h2>Before selling this</h2><p class="note">Cloud accounts and recovery are in beta. Before commercial use, verify real cross-account isolation, independent backups, server-side recovery, privacy practices, and secure photo storage. Temporary recovery data in this tab is not encrypted. Free projects may pause when idle.</p></div></div>
       </div>
     </section>
-    <div class="footer">FollowUp Studio V4.0.3 · Password AutoFill & Job Drafts · Private accounts · Demo data only until security review</div>
+    <div class="footer">FollowUp Studio V4.0.4 · Private Workspace · Automatic Drafts</div>
   </main>
 </div>
 <div class="floatingNav floatingHome" id="mobileHomeControl">
@@ -1408,7 +1430,7 @@ function jobrow(j){return `<div class="jobrow jobManageRow" data-job-id="${esc(j
 function openJobOptions(id){const j=getJob(id);if(!j)return;modal('Job options',`<p class="note"><strong>${esc(j.name)}</strong> · ${esc(j.service||'Job')}</p><div class="jobOptionsGrid"><button type="button" class="btn secondary" data-action="job-pin" data-id="${esc(id)}">${j.pinned?'Unpin job':'${JOB_PIN_SVG} Pin to Top'}</button><button type="button" class="btn danger" data-action="job-delete" data-id="${esc(id)}">Delete job</button><button type="button" class="btn secondary" data-action="close">Cancel</button></div><p class="note">Deleting a job is permanent unless you restore a backup. The client profile is not deleted.</p>`)}
 function pinJob(id){const j=getJob(id);if(!j)return;const before=!!j.pinned;j.pinned=!before;if(!save()){j.pinned=before;return}closeModal();renderJobs();toast(j.pinned?'Job pinned to top.':'Job unpinned.')}
 async function deleteJob(id){const j=getJob(id);if(!j)return;closeModal();const linked=db.todos.filter(t=>t.jobId===id);const ok=await askUser(`Permanently delete ${j.service||'this job'} for ${j.name}${linked.length?' and '+linked.length+' linked task(s)':''}? The client profile will remain. Restore from a backup to recover deleted information.`,'delete-job-permanent',{yes:'Delete job permanently',danger:true,rememberable:false});if(!ok)return;const before=JSON.stringify(db);db.jobs=db.jobs.filter(x=>x.id!==id);db.todos=db.todos.filter(t=>t.jobId!==id);if(!save()){db=JSON.parse(before);return}render();toast('Job deleted. Client preserved.')}
-function renderDashboard(){const m=metrics();$('#brandHeading').textContent=db.business;$('#metrics').innerHTML=[['Active jobs',m.active,'Currently in progress','active'],['Completed jobs',m.completed,'Total recorded','completed'],['Requests sent',m.sent,'Manually confirmed','sent'],['Reviews recorded',m.reviews,'Manually confirmed','review']].map(v=>`<button type="button" class="card metricLink" data-action="metric-filter" data-filter="${v[3]}" aria-label="View ${esc(v[0])}"><div class="metricLabel">${v[0]}</div><div class="metricValue">${v[1]}</div><div class="metricFoot">${v[2]}</div></button>`).join('');
+function renderDashboard(){const m=metrics();$('#brandHeading').textContent=businessDisplayName();$('#metrics').innerHTML=[['Active jobs',m.active,'Currently in progress','active'],['Completed jobs',m.completed,'Total recorded','completed'],['Requests sent',m.sent,'Manually confirmed','sent'],['Reviews recorded',m.reviews,'Manually confirmed','review']].map(v=>`<button type="button" class="card metricLink" data-action="metric-filter" data-filter="${v[3]}" aria-label="View ${esc(v[0])}"><div class="metricLabel">${v[0]}</div><div class="metricValue">${v[1]}</div><div class="metricFoot">${v[2]}</div></button>`).join('');
  const todo=visibleJobs().filter(j=>!optedOut(j)&&!isSnoozed(j)&&(needsRequest(j)||(dueFollowup(j)))).sort((a,b)=>Number(needsRequest(b))-Number(needsRequest(a)));$('#attention').innerHTML=todo.length?todo.map(jobrow).join(''):'<div class="empty">Nothing needs attention right now. Finish a job to create a review request.</div>';
  const prefix=today().slice(0,7),completedMonth=visibleJobs().filter(j=>j.completedAt?.startsWith(prefix)).length,sentMonth=visibleJobs().filter(j=>j.sentAt?.startsWith(prefix)).length,reviewsMonth=visibleJobs().filter(j=>j.reviewAt?.startsWith(prefix)).length;
  $('#activity').innerHTML=[['Jobs finished this month',completedMonth],['Requests recorded as sent',sentMonth],['Reviews recorded',reviewsMonth],['Requests awaiting action',m.pending],['Follow-ups due',m.follow]].map(v=>`<div class="statline"><span>${v[0]}</span><span>${v[1]}</span></div>`).join('');
@@ -1581,7 +1603,7 @@ const PALETTES={evergreen:['#173d37','#2f806c','#eee7d9','#ffffff'],midnight:['#
 function appearance(){return {palette:'monochrome',mode:'dark'}}
 const mediaDark=window.matchMedia?.('(prefers-color-scheme: dark)');
 function applyAppearance(){const a=appearance(),d=a.mode==='dark'||(a.mode==='auto'&&!!mediaDark?.matches);document.documentElement.dataset.palette=a.palette;document.documentElement.classList.toggle('v38Dark',d);document.querySelector('meta[name="theme-color"]')?.setAttribute('content',d?'#151719':PALETTES[a.palette][0]);const swatches=$$('.themeSwatches span');if(swatches.length){PALETTES[a.palette].forEach((v,i)=>swatches[i].style.background=v)}}
-function renderSettings(){$('#businessName').value=db.business;$('#reviewUrl').value=db.reviewUrl||'';$('#reviewTemplate').value=db.template||DEFAULT_TEMPLATE;renderSavedServices();const preview=$('#brandLogoPreview');if(preview)preview.innerHTML=safePhoto(db.businessLogo)?`<img alt="Current business logo" src="${esc(db.businessLogo)}">`:'No logo uploaded.';applyAppearance()}
+function renderSettings(){$('#businessName').value=cloud.user&&db.business==='Demo Home Services'?'':db.business;$('#reviewUrl').value=db.reviewUrl||'';$('#reviewTemplate').value=db.template||DEFAULT_TEMPLATE;renderSavedServices();const preview=$('#brandLogoPreview');if(preview)preview.innerHTML=safePhoto(db.businessLogo)?`<img alt="Current business logo" src="${esc(db.businessLogo)}">`:'No logo uploaded.';applyAppearance()}
 function render(){applyAppearance();const style=$('#socialStyle');if(style&&document.activeElement!==style)style.value=['professional','casual','friendly','short'].includes(db.postStyle)?db.postStyle:'professional';renderDashboard();renderCustomerDirectory();renderJobs();renderCalendar();renderHomeHub();renderArchivePage();renderTodos();renderAiJobPicker();renderAiDrafts();renderSmartCenter();if(currentRoute==='settings')renderSettings();renderBackupStatus();updateCloudUI()}
 // Keep iOS Safari from rubber-banding the document underneath dialogs.
 // Multiple layers may be open together: preserve the lock until all close.
@@ -1640,7 +1662,8 @@ function modal(title,body){
 }
 function closeModal(){
  if($('#customerOnlyForm')&&!clientDraftSkipCloseSave)saveClientDraftOnDevice();
- clientDraftSkipCloseSave=false;
+ if($('#customerForm')&&!skipJobEntryCloseSave)saveJobEntryDraft();
+ clientDraftSkipCloseSave=false;skipJobEntryCloseSave=false;
  const modalEl=$('#modal');
  modalEl.classList.remove('open');
  modalEl.dataset.variant='';
@@ -1660,7 +1683,11 @@ const CLIENT_DRAFT_FIELDS=['newFirst','newLast','newCompany','newPhone','newEmai
 let clientDraftAccount=null,clientDraftRestoreShownAccount=null,clientDraftStorageError=false,clientDraftSkipCloseSave=false;
 function currentDraftAccount(){return cloud.user?.id||'guest'}
 function clientDraftKey(account){return CLIENT_DRAFT_KEY+String(account||'guest')}
-function clientDraftHasContent(values){return Object.values(values).some(v=>v===true||typeof v==='string'&&v.trim()!==''&&v!=='false')}
+function clientDraftHasContent(values){
+ const fields=['newFirst','newLast','newCompany','newPhone','newEmail','newStreet','newCity','newState','newPostal','newNotes'];
+ return fields.some(id=>String(values[id]||'').trim())||values.newOptOut===true||values.newAddJob===true||
+  (values.newAddJob===true&&['newJobService','newJobDate','newJobTime','newJobNotes'].some(id=>String(values[id]||'').trim()));
+}
 function getClientDraft(account=currentDraftAccount()){
  try{
   const raw=localStorage.getItem(clientDraftKey(account));if(!raw)return null;
@@ -1694,6 +1721,43 @@ function clearClientDraft(){
 /* A draft can be active for editing, or parked in the local draft library.
    Existing V4.0.1/V4.0.2 drafts remain readable at their original key. */
 const CLIENT_DRAFT_LIBRARY_KEY='followup_client_job_drafts_v403_';
+
+/* V4.0.4 — Autosave the original Add Job workflow as well as Add Client. */
+const JOB_ENTRY_DRAFT_KEY='followup_job_entry_v404_';
+const JOB_ENTRY_FIELDS=['fCustomerId','fFirst','fLast','fCompany','fPhone','fServicePick','fService','fRememberService','fStreet','fCity','fState','fPostal','fDate','fTime','fNotes','fOptOut'];
+let jobEntryAccount=null,jobEntryTouched=false,skipJobEntryCloseSave=false;
+function jobEntryKey(account=currentDraftAccount()){return JOB_ENTRY_DRAFT_KEY+account}
+function readJobEntryDraft(account=currentDraftAccount()){
+ try{const obj=JSON.parse(localStorage.getItem(jobEntryKey(account))||'null');return obj?.version===1&&obj.account===account&&obj.touched===true&&obj.values?obj:null}catch(e){return null}
+}
+function saveJobEntryDraft(touched=false){
+ if(!$('#customerForm'))return;
+ if(touched)jobEntryTouched=true;
+ if(!jobEntryTouched)return;
+ const account=jobEntryAccount||currentDraftAccount(),values={};
+ for(const id of JOB_ENTRY_FIELDS){const e=$('#'+id);if(e)values[id]=e.type==='checkbox'?e.checked:String(e.value||'').slice(0,1000)}
+ try{localStorage.setItem(jobEntryKey(account),JSON.stringify({version:1,account,touched:true,savedAt:new Date().toISOString(),values}));renderDraftBadges();}
+ catch(e){toast('This job draft could not be saved. Keep the form open.','error')}
+}
+function clearJobEntryDraft(){try{localStorage.removeItem(jobEntryKey(jobEntryAccount||currentDraftAccount()))}catch(e){}jobEntryTouched=false;jobEntryAccount=null;renderDraftBadges()}
+function resumeJobEntryDraft(){
+ const d=readJobEntryDraft();if(!d)return false;
+ addModal('',d.values.fCustomerId||'',true);
+ return true;
+}
+function restoreJobEntryFields(d){
+ if(!d||!$('#customerForm'))return;
+ for(const id of JOB_ENTRY_FIELDS){const e=$('#'+id),v=d.values?.[id];if(!e||v===undefined)continue;
+  if(e.type==='checkbox')e.checked=v===true;
+  else if(e.tagName==='SELECT'&&[...e.options].some(x=>x.value===v))e.value=v;
+  else if(e.tagName!=='SELECT')e.value=String(v).slice(0,e.maxLength>0?e.maxLength:1000);
+ }
+ updateServiceChooser();
+ const service=$('#fService');if(service&&d.values?.fService)service.value=String(d.values.fService).slice(0,120);
+ if($('#fRememberService'))$('#fRememberService').checked=!!d.values?.fRememberService;
+ jobEntryTouched=true;
+}
+
 function draftLibraryKey(account=currentDraftAccount()){return CLIENT_DRAFT_LIBRARY_KEY+String(account)}
 function readDraftLibrary(account=currentDraftAccount()){
  try{const a=JSON.parse(localStorage.getItem(draftLibraryKey(account))||'[]');return Array.isArray(a)?a.filter(x=>x&&typeof x.id==='string'&&x.values&&typeof x.values==='object'&&x.account===account).slice(0,60):[]}catch(e){return []}
@@ -1703,12 +1767,12 @@ function storeDraftLibrary(items,account=currentDraftAccount()){
 }
 function draftLibraryItems(account=currentDraftAccount()){
  const active=getClientDraft(account);
- return [...(active?[{...active,id:'active'}]:[]),...readDraftLibrary(account)].sort((a,b)=>String(b.savedAt||'').localeCompare(String(a.savedAt||'')));
+ return [...(active?[{...active,id:'active'}]:[]),...(readJobEntryDraft(account)?[{...readJobEntryDraft(account),id:'jobentry',kind:'job'}]:[]),...readDraftLibrary(account)].sort((a,b)=>String(b.savedAt||'').localeCompare(String(a.savedAt||'')));
 }
 function draftDisplayName(d){
- const v=d.values||{};return [v.newFirst||'',v.newLast||''].map(x=>String(x).trim()).filter(Boolean).join(' ')||String(v.newCompany||'').trim()||'Unnamed client';
+ const v=d.values||{};return d.kind==='job'?[v.fFirst||'',v.fLast||''].map(x=>String(x).trim()).filter(Boolean).join(' ')||'New job':([v.newFirst||'',v.newLast||''].map(x=>String(x).trim()).filter(Boolean).join(' ')||String(v.newCompany||'').trim()||'Unnamed client');
 }
-function draftDisplayService(d){const v=d.values||{};return v.newAddJob?(v.newJobServicePick&&v.newJobServicePick!=='__custom__'?v.newJobServicePick:v.newJobService||'Job details pending'):'Client details only'}
+function draftDisplayService(d){const v=d.values||{};return d.kind==='job'?(v.fServicePick&&v.fServicePick!=='__custom__'?v.fServicePick:v.fService||'Job in progress'):v.newAddJob?(v.newJobServicePick&&v.newJobServicePick!=='__custom__'?v.newJobServicePick:v.newJobService||'Job details pending'):'Client details only'}
 function renderDraftBadges(){
  const n=draftLibraryItems().length;
  const c=$('#jobDraftCount');if(c)c.textContent=`(${n})`;
@@ -1723,9 +1787,9 @@ function archiveActiveClientDraft(){
  try{localStorage.removeItem(clientDraftKey(account));renderDraftBadges();return true}catch(e){toast('Could not switch drafts on this device.','error');return false}
 }
 function showJobDraftLibrary(){
- if($('#customerOnlyForm'))saveClientDraftOnDevice();
+ if($('#customerOnlyForm'))saveClientDraftOnDevice();if($('#customerForm'))saveJobEntryDraft();
  const drafts=draftLibraryItems();
- modal('Job Drafts',`<p class="note">These are unfinished client entries, with any optional first-job details. Tap a client to finish the entry. Drafts remain on this device, not in your cloud workspace.</p><div class="draftLibraryList">${drafts.length?drafts.map(d=>`<div class="draftLibraryRow"><div class="draftLibraryInfo"><strong>${esc(draftDisplayName(d))}</strong><span class="small">${esc(draftDisplayService(d))}</span><span class="small">Last saved ${esc(d.savedAt?new Date(d.savedAt).toLocaleString():'on this device')}</span></div><div class="draftLibraryActions"><button type="button" class="btn secondary sm" data-action="job-draft-open" data-id="${esc(d.id)}">Open →</button><button type="button" class="btn danger sm" data-action="job-draft-delete" data-id="${esc(d.id)}" aria-label="Delete draft for ${esc(draftDisplayName(d))}">Delete</button></div></div>`).join(''):'<div class="empty">No unfinished client or job drafts yet.</div>'}</div><div class="modalfooter"><button type="button" class="btn" data-action="job-draft-new">＋ New Client Draft</button><button type="button" class="btn secondary" data-action="close">Close</button></div><p class="draftLibraryNote">Drafts are locally stored and not encrypted. They are separate from saved jobs, completed jobs, and Social Studio drafts.</p>`);
+ modal('Job Drafts',`<p class="note">These are unfinished client entries, with any optional first-job details. Tap a client to finish the entry. Drafts remain on this device, not in your cloud workspace.</p><div class="draftLibraryList">${drafts.length?drafts.map(d=>`<div class="draftLibraryRow"><div class="draftLibraryInfo"><strong>${esc(draftDisplayName(d))}</strong><span class="small">${esc(draftDisplayService(d))}</span><span class="small">Last saved ${esc(d.savedAt?new Date(d.savedAt).toLocaleString():'on this device')}</span></div><div class="draftLibraryActions"><button type="button" class="btn secondary sm" data-action="job-draft-open" data-id="${esc(d.id)}">Open →</button><button type="button" class="btn danger sm" data-action="job-draft-delete" data-id="${esc(d.id)}" aria-label="Delete draft for ${esc(draftDisplayName(d))}">Delete</button></div></div>`).join(''):'<div class="empty">No unfinished client or job drafts yet.</div>'}</div><div class="modalfooter"><button type="button" class="btn secondary" data-action="close">Close</button></div><p class="draftLibraryNote">Drafts are locally stored and not encrypted. They are separate from saved jobs, completed jobs, and Social Studio drafts.</p>`);
 }
 function startNewClientDraft(){
  if($('#customerOnlyForm'))saveClientDraftOnDevice();
@@ -1737,6 +1801,7 @@ function openSavedJobDraft(id){
  const account=currentDraftAccount();
  if($('#customerOnlyForm'))saveClientDraftOnDevice();
  if(id==='active'){addCustomerOnlyModal();return}
+ if(id==='jobentry'){resumeJobEntryDraft();return}
  const library=readDraftLibrary(account),draft=library.find(d=>d.id===id);
  if(!draft)return toast('That draft is no longer available on this device.','error');
  if(!archiveActiveClientDraft())return;
@@ -1754,7 +1819,7 @@ async function deleteSavedJobDraft(id){
  if(!await askUser(`Delete the unfinished entry for ${draftDisplayName(draft)}? This cannot be undone.`,'delete-unsaved-job-draft',{yes:'Delete draft',danger:true,rememberable:false}))return;
  if(id==='active'){
   try{localStorage.removeItem(clientDraftKey(account));renderDraftBadges()}catch(e){toast('Unable to delete the active draft.','error');return}
- }else{
+ }else if(id==='jobentry'){try{localStorage.removeItem(jobEntryKey(account));jobEntryTouched=false;renderDraftBadges()}catch(e){toast('Unable to delete the job draft.','error');return}}else{
   if(!storeDraftLibrary(readDraftLibrary(account).filter(x=>x.id!==id),account))return;
  }
  showJobDraftLibrary();toast('Draft deleted.');
@@ -1780,9 +1845,10 @@ function maybeResumeClientDraftOnLaunch(){
  const account=currentDraftAccount();
  if($('#modal').classList.contains('open'))return;
  if(clientDraftRestoreShownAccount===account)return;
- if(!getClientDraft(account))return;
+ if(!getClientDraft(account)&&!readJobEntryDraft(account))return;
  clientDraftRestoreShownAccount=account;
- navigate('customers');addCustomerOnlyModal();
+ if(getClientDraft(account)){navigate('customers');addCustomerOnlyModal();}
+ else{navigate('jobs');resumeJobEntryDraft();}
 }
 async function discardClientDraft(){
  if(!await askUser('Discard this unfinished client and any job details saved with it?','discard-client-draft-v401',{yes:'Discard draft',danger:true,rememberable:false}))return;
@@ -1871,7 +1937,7 @@ async function importPhoneContact(){
 function addCustomerOnlyModal(fresh=false){
  const services=savedServices();
  const jobFields=`<label class="newClientJobChoice"><input id="newAddJob" type="checkbox" aria-controls="newClientJobPanel"><span><strong>＋ Add a Job Now</strong><small>Optional · Create this client's first job at the same time</small></span></label><section class="newClientJobPanel" id="newClientJobPanel" hidden><h3>Job Details</h3><div class="field"><label for="newJobServicePick">Service *</label><select id="newJobServicePick"><option value="">Choose a service…</option>${services.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('')}<option value="__custom__">＋ Enter a New Service</option></select></div><div id="newJobServiceManual" class="newClientJobManual" hidden><div class="field"><label for="newJobService">Service Name *</label><input id="newJobService" disabled maxlength="120" placeholder="e.g., Awning installation" autocomplete="off"></div><label class="checkline"><input type="checkbox" id="newJobRememberService"> Save this Service for Next Time</label></div><div class="formgrid"><div class="field"><label for="newJobDate">Scheduled Date (Optional)</label><input id="newJobDate" type="date"></div><div class="field"><label for="newJobTime">Scheduled Time (Optional)</label><input id="newJobTime" type="time"></div></div><div class="field"><label for="newJobNotes">Job Notes (Optional)</label><textarea id="newJobNotes" rows="3" maxlength="500" placeholder="e.g., Confirm measurements before installation"></textarea></div><p class="note" style="margin:0">The job will start as Active and be linked to this client.</p></section>`;
- modal('Add client',`<form id="customerOnlyForm" novalidate><p class="note">Add a client on its own, or create their first job at the same time.</p><div class="clientDraftNote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg><span><strong>Auto-Saved Draft</strong><br>Your unfinished client and job entries are saved on this device as you type. Reopen the app to continue. This draft is not cloud-synced or encrypted.</span></div><div class="clientContactImport"><button class="btn secondary sm" type="button" id="clientPhoneContactsBtn" data-action="client-contact-picker" hidden>Import From Phone Contacts</button><button class="btn secondary sm" type="button" data-action="client-contact-file">Import Contact (.vcf)</button><input type="file" id="contactVcardInput" accept=".vcf,text/vcard,text/x-vcard" aria-label="Select a contact card file"><p>Only the contact you select is imported. On iPhone, open Contacts → Share Contact → Save to Files, then import the .vcf file here.</p></div><div class="formgrid"><div class="field"><label for="newFirst">First Name *</label><input id="newFirst" maxlength="70" autocomplete="given-name" placeholder="First name" required></div><div class="field"><label for="newLast">Last Name</label><input id="newLast" maxlength="70" autocomplete="family-name" placeholder="Last name"></div><div class="field"><label for="newCompany">Company (Optional)</label><input id="newCompany" maxlength="120" autocomplete="organization" placeholder="Company Name"></div><div class="field"><label for="newPhone">Phone (Optional)</label><input id="newPhone" type="tel" inputmode="tel" maxlength="18" placeholder="(555) 123-4567"></div></div><div class="field"><label for="newEmail">Email (Optional)</label><input id="newEmail" type="email" maxlength="160" autocomplete="off" placeholder="name@example.com" aria-describedby="newEmailSuggestions"><div class="emailDomainSuggestions" id="newEmailSuggestions" aria-label="Email domain suggestions" hidden></div></div><fieldset class="addressCreateFields"><legend>Address (optional)</legend><div class="field"><label for="newStreet">Street Address</label><input id="newStreet" autocomplete="street-address" maxlength="150" placeholder="123 Main Street"></div><div class="formgrid"><div class="field"><label for="newCity">City</label><input id="newCity" autocomplete="address-level2" maxlength="90"></div><div class="field"><label for="newState">State</label><input id="newState" autocomplete="address-level1" maxlength="35" placeholder="MO"></div><div class="field"><label for="newPostal">ZIP Code</label><input id="newPostal" autocomplete="postal-code" inputmode="numeric" maxlength="20" placeholder="65802"></div></div></fieldset><div class="field"><label for="newNotes">Client notes (optional)</label><textarea id="newNotes" maxlength="900" rows="3" placeholder="*Example: Prefers afternoon appointments"></textarea></div><label class="checkline"><input id="newOptOut" type="checkbox">Do Not Contact</label>${jobFields}<div class="formError" id="newCustomerError" role="alert"></div><p id="clientDraftStatus" class="clientDraftStatus" aria-live="polite">Your entries will be saved automatically as you type</p><div class="modalfooter"><button type="button" id="saveCustomerOnlyBtn" class="btn" data-action="save-customer-only">Save Client</button><button type="button" class="btn secondary" data-action="close">Keep Draft & Close</button><button type="button" class="btn secondary" data-action="job-draft-new">Save Draft & Start Another</button><button type="button" class="btn secondary" data-action="client-draft-discard">Discard Draft</button></div></form>`);
+ modal('Add client',`<form id="customerOnlyForm" novalidate><p class="note">Add a client on its own, or create their first job at the same time.</p><div class="clientDraftNote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg><span><strong>Auto-Saved Draft</strong><br>Your unfinished client and job entries are saved on this device as you type. Reopen the app to continue. This draft is not cloud-synced or encrypted.</span></div><div class="clientContactImport"><button class="btn secondary sm" type="button" id="clientPhoneContactsBtn" data-action="client-contact-picker" hidden>Import From Phone Contacts</button><button class="btn secondary sm" type="button" data-action="client-contact-file">Import Contact (.vcf)</button><input type="file" id="contactVcardInput" accept=".vcf,text/vcard,text/x-vcard" aria-label="Select a contact card file"><p>Only the contact you select is imported. On iPhone, open Contacts → Share Contact → Save to Files, then import the .vcf file here.</p></div><div class="formgrid"><div class="field"><label for="newFirst">First Name *</label><input id="newFirst" maxlength="70" autocomplete="given-name" placeholder="First name" required></div><div class="field"><label for="newLast">Last Name</label><input id="newLast" maxlength="70" autocomplete="family-name" placeholder="Last name"></div><div class="field"><label for="newCompany">Company (Optional)</label><input id="newCompany" maxlength="120" autocomplete="organization" placeholder="Company Name"></div><div class="field"><label for="newPhone">Phone (Optional)</label><input id="newPhone" type="tel" inputmode="tel" maxlength="18" placeholder="(555) 123-4567"></div></div><div class="field"><label for="newEmail">Email (Optional)</label><input id="newEmail" type="email" maxlength="160" autocomplete="off" placeholder="name@example.com" aria-describedby="newEmailSuggestions"><div class="emailDomainSuggestions" id="newEmailSuggestions" aria-label="Email domain suggestions" hidden></div></div><fieldset class="addressCreateFields"><legend>Address (optional)</legend><div class="field"><label for="newStreet">Street Address</label><input id="newStreet" autocomplete="street-address" maxlength="150" placeholder="123 Main Street"></div><div class="formgrid"><div class="field"><label for="newCity">City</label><input id="newCity" autocomplete="address-level2" maxlength="90"></div><div class="field"><label for="newState">State</label><input id="newState" autocomplete="address-level1" maxlength="35" placeholder="MO"></div><div class="field"><label for="newPostal">ZIP Code</label><input id="newPostal" autocomplete="postal-code" inputmode="numeric" maxlength="20" placeholder="65802"></div></div></fieldset><div class="field"><label for="newNotes">Client notes (optional)</label><textarea id="newNotes" maxlength="900" rows="3" placeholder="*Example: Prefers afternoon appointments"></textarea></div><label class="checkline"><input id="newOptOut" type="checkbox">Do Not Contact</label>${jobFields}<div class="formError" id="newCustomerError" role="alert"></div><p id="clientDraftStatus" class="clientDraftStatus" aria-live="polite">Your entries will be saved automatically as you type</p><div class="modalfooter"><button type="button" id="saveCustomerOnlyBtn" class="btn" data-action="save-customer-only">Save Client</button><button type="button" class="btn secondary" data-action="close">Keep Draft & Close</button><button type="button" class="btn secondary" data-action="client-draft-discard">Discard Draft</button></div></form>`);
  clientDraftAccount=currentDraftAccount();
  const picker=$('#clientPhoneContactsBtn');if(picker)picker.hidden=!(navigator.contacts&&typeof navigator.contacts.select==='function');
  if(!fresh)loadClientDraftIntoForm();
@@ -1908,15 +1974,18 @@ function saveCustomerOnly(){
  toast(addJob?'✓ Client and job saved successfully.':'✓ Client saved. You can add a job from the profile.','success');
 }
 
- function addModal(date='',customerId=''){
+ function addModal(date='',customerId='',restoreDraft=false){
+ if(!restoreDraft&&readJobEntryDraft()&&!$('#customerForm')){const old=readJobEntryDraft();customerId=old.values?.fCustomerId||'';date='';restoreDraft=true;}
  selectedId=null;
  const c=customerById(customerId),services=savedServices();
  const picker=`<div class="field"><label for="fServicePick">Service *</label><select id="fServicePick" aria-label="Choose a saved service or type a new one"><option value="" ${services.length?'selected':''}>${services.length?'Choose a saved service…':'Choose service entry…'}</option>${services.map(s=>`<option value="${esc(s)}">${esc(s)}</option>`).join('')}<option value="__custom__" ${services.length?'':'selected'}>✎ Type a service manually</option></select><div id="fServiceCustom" ${services.length?'hidden':''} class="customService"><label for="fService">Service description</label><input id="fService" maxlength="120" autocomplete="off" placeholder="e.g., Fence installation" ${services.length?'disabled':''}><label class="checkline"><input id="fRememberService" type="checkbox">Save this service for Next Time</label></div></div>`;
  const lock=c?'readonly':'';
  const existingPicker=!c&&currentRoute==='jobs'&&db.customers.some(x=>!isArchived(x))?`<div class="surface existingJobCustomer"><label for="jobExistingCustomer">Use an existing client</label><div class="existingJobCustomerRow"><select id="jobExistingCustomer"><option value="">Choose an existing client…</option>${db.customers.filter(x=>!isArchived(x)).sort((a,b)=>a.name.localeCompare(b.name)).map(x=>`<option value="${esc(x.id)}">${esc(x.name)}${x.company?' · '+esc(x.company):''}</option>`).join('')}</select><button type="button" class="btn secondary" data-action="job-use-existing">Use</button></div><p class="small">Or enter a new client below.</p></div>`:'';
- modal(c?'Add job for '+c.name:currentRoute==='jobs'?'Add job':'Add client and job',`${existingPicker}<form id="customerForm" novalidate><input type="hidden" id="fCustomerId" value="${esc(customerId||'')}"><p class="note">Test with fictional client data until your business pilot is approved. Required fields are marked *.</p><div class="formgrid"><div class="field"><label for="fFirst">First Name *</label><input id="fFirst" maxlength="70" autocomplete="given-name" required placeholder="First name" value="${esc(c?customerNameParts(c).first:'')}" ${lock}></div><div class="field"><label for="fLast">Last Name</label><input id="fLast" maxlength="70" autocomplete="family-name" placeholder="Last name" value="${esc(c?customerNameParts(c).last:'')}" ${lock}></div><div class="field"><label for="fCompany">Company (Optional)</label><input id="fCompany" maxlength="120" autocomplete="organization" placeholder="Company Name" value="${esc(c?.company||'')}" ${lock}></div><div class="field"><label for="fPhone">Phone (Optional)</label><input id="fPhone" maxlength="18" type="tel" inputmode="tel" placeholder="(555) 123-4567" value="${esc(formatPhone(c?.phone||''))}" ${lock}></div></div>${picker}
+ modal(c?'Add job for '+c.name:currentRoute==='jobs'?'Add job':'Add client and job',`${existingPicker}<form id="customerForm" novalidate><input type="hidden" id="fCustomerId" value="${esc(customerId||'')}"><p class="note">Required fields are marked *.</p><div class="formgrid"><div class="field"><label for="fFirst">First Name *</label><input id="fFirst" maxlength="70" autocomplete="given-name" required placeholder="First name" value="${esc(c?customerNameParts(c).first:'')}" ${lock}></div><div class="field"><label for="fLast">Last Name</label><input id="fLast" maxlength="70" autocomplete="family-name" placeholder="Last name" value="${esc(c?customerNameParts(c).last:'')}" ${lock}></div><div class="field"><label for="fCompany">Company (Optional)</label><input id="fCompany" maxlength="120" autocomplete="organization" placeholder="Company Name" value="${esc(c?.company||'')}" ${lock}></div><div class="field"><label for="fPhone">Phone (Optional)</label><input id="fPhone" maxlength="18" type="tel" inputmode="tel" placeholder="(555) 123-4567" value="${esc(formatPhone(c?.phone||''))}" ${lock}></div></div>${picker}
  <fieldset class="addressCreateFields"><legend>Address (optional)</legend>${c?'<p class="note">To change this client’s address, edit their client profile.</p>':''}<div class="field"><label for="fStreet">Street Address</label><input id="fStreet" maxlength="150" autocomplete="street-address" placeholder="123 Main Street" value="${esc(c?.street||'')}" ${lock}></div><div class="formgrid"><div class="field"><label for="fCity">City</label><input id="fCity" maxlength="90" autocomplete="address-level2" placeholder="Springfield" value="${esc(c?.city||'')}" ${lock}></div><div class="field"><label for="fState">State</label><input id="fState" maxlength="35" autocomplete="address-level1" placeholder="MO" value="${esc(c?.state||'')}" ${lock}></div><div class="field"><label for="fPostal">ZIP Code</label><input id="fPostal" maxlength="20" autocomplete="postal-code" inputmode="numeric" placeholder="65802" value="${esc(c?.postal||'')}" ${lock}></div></div></fieldset>
- <div class="formgrid"><div class="field"><label for="fDate">Scheduled job date</label><input id="fDate" type="date" value="${esc(date)}"></div><div class="field"><label for="fTime">Scheduled time (optional)</label><input id="fTime" type="time"></div></div><div class="field"><label for="fNotes">Internal notes</label><textarea id="fNotes" maxlength="500" placeholder="*Example: Client requested a morning appointment; bring extra brackets"></textarea></div><label class="checkline"><input id="fOptOut" type="checkbox" ${c?.optOut?'checked':''}>Do Not Contact</label><div class="formError" id="formError" role="alert"></div><div class="modalfooter"><button class="btn" type="button" data-action="save-customer">Save ✔️</button><button class="btn secondary" type="button" data-action="close">Cancel</button></div></form>`);
+ <div class="formgrid"><div class="field"><label for="fDate">Scheduled job date</label><input id="fDate" type="date" value="${esc(date)}"></div><div class="field"><label for="fTime">Scheduled time (optional)</label><input id="fTime" type="time"></div></div><div class="field"><label for="fNotes">Internal notes</label><textarea id="fNotes" maxlength="500" placeholder="*Example: Client requested a morning appointment; bring extra brackets"></textarea></div><label class="checkline"><input id="fOptOut" type="checkbox" ${c?.optOut?'checked':''}>Do Not Contact</label><div class="formError" id="formError" role="alert"></div><p class="clientDraftStatus" aria-live="polite">Entries are saved on this device as you type.</p><div class="modalfooter"><button class="btn" type="button" data-action="save-customer">Save Job</button><button class="btn secondary" type="button" data-action="close">Keep Draft &amp; Close</button></div></form>`);
+ jobEntryAccount=currentDraftAccount();jobEntryTouched=false;
+ if(restoreDraft)restoreJobEntryFields(readJobEntryDraft());
 }
 function saveCustomer(){
  const original=JSON.stringify(db),firstName=$('#fFirst')?.value.trim()||'',lastName=$('#fLast')?.value.trim()||'',company=$('#fCompany')?.value.trim()||'',name=[firstName,lastName].filter(Boolean).join(' '),choice=$('#fServicePick')?.value,manual=choice==='__custom__',service=(manual?$('#fService')?.value:choice||'').trim();const err=$('#formError');
@@ -1930,7 +1999,7 @@ function saveCustomer(){
  if(!customer){customer={id:newCustomerId(),name,firstName,lastName,company,phone,email:'',street:$('#fStreet').value.trim(),city,state:$('#fState').value.trim(),postal:$('#fPostal').value.trim(),notes:'',optOut:$('#fOptOut').checked,createdAt:today()};db.customers.push(customer)}
  db.jobs.unshift({id:'j'+Date.now()+Math.floor(Math.random()*10000),customerId:customer.id,name:customer.name,phone:customer.phone,service,town:customer.city||city,notes:$('#fNotes').value.trim(),permission:false,optOut:$('#fOptOut').checked||!!customer.optOut,status:'active',createdAt:today(),scheduledAt:$('#fDate').value||null,scheduledTime:$('#fTime').value||null,completedAt:null,sentAt:null,followupAt:null,reviewAt:null});
  if(manual&&$('#fRememberService').checked&&!savedServices().some(s=>s.toLocaleLowerCase()===service.toLocaleLowerCase()))db.services=[...(db.services||[]),service];
- if(!save()){db=JSON.parse(original);return}closeModal();$('#statusFilter').value='all';$('#searchJobs').value='';navigate('jobs');toast('✓ Client and job saved successfully.','success')
+ if(!save()){db=JSON.parse(original);return}skipJobEntryCloseSave=true;clearJobEntryDraft();closeModal();$('#statusFilter').value='all';$('#searchJobs').value='';navigate('jobs');toast('✓ Client and job saved successfully.','success')
 }
 
 function getJob(id){return db.jobs.find(j=>j.id===id)}
@@ -1938,7 +2007,7 @@ function update(id,fn){const j=getJob(id);if(!j)return;fn(j);if(save()){closeMod
 function detailModal(id){selectedId=id;const j=getJob(id);if(!j)return;const disabled=optedOut(j), reason='This client opted out. Do not send review requests.';
 const history=`<div class="detailgrid"><div class="surface"><div class="tag">Added</div><strong>${day(j.createdAt)}</strong></div><div class="surface"><div class="tag">Scheduled</div><strong>${day(j.scheduledAt)}${j.scheduledTime?" · "+esc(j.scheduledTime):""}</strong></div><div class="surface"><div class="tag">Completed</div><strong>${day(j.completedAt)}${j.completedTime?" · "+esc(prettyClock(j.completedTime)):""}</strong></div><div class="surface"><div class="tag">Review request sent</div><strong>${day(j.sentAt)}</strong></div><div class="surface"><div class="tag">Review recorded</div><strong>${day(j.reviewAt)}</strong></div></div>`;
 let actions='';if(j.status==='active'){actions=`<button class="btn" data-action="complete" data-id="${esc(id)}">✓ Complete job · Open assistant</button>`}else{actions=`<button class="btn" data-action="compose" data-id="${esc(id)}" data-mode="review">Prepare review request</button>${!j.sentAt?`<button class="btn secondary" data-action="marksent" data-id="${esc(id)}" ${disabled?'disabled':''}>I actually sent it</button>`:`<button class="btn secondary" data-action="compose" data-id="${esc(id)}" data-mode="followup" ${!dueFollowup(j)?'disabled':''}>Prepare follow-up</button>`}<button class="btn secondary" data-action="toggle-review" data-id="${esc(id)}">${j.reviewAt?'Undo review recorded':'Mark review received'}</button><button class="btn secondary" data-action="complete" data-id="${esc(id)}">✓ Completion assistant</button>`;if(j.sentAt&&!j.followupAt){actions+=`<button class="btn secondary" data-action="markfollow" data-id="${esc(id)}" ${disabled||!dueFollowup(j)?'disabled':''}>Mark follow-up sent</button>`}}
- modal(j.name,`<div class="flex"><button class="btn secondary sm" data-action="profile" data-id="${esc(j.customerId)}">← Client profile</button></div><div class="flex" style="margin:10px 0 16px">${badge(j)}<span class="small">${esc(j.service)}</span>${j.town?`<span class="small">· ${esc(j.town)}</span>`:''}</div>${history}${renderCompletionPhotos(j)}<div class="divider"></div><div class="jobDetailActions">${actions}</div>${disabled?`<p class="note" style="margin-top:12px;color:var(--red)">${esc(reason)}</p>`:''}<div class="divider"></div><div class="field"><label for="dPhone">Contact phone (demo only)</label><input id="dPhone" type="tel" maxlength="30" value="${esc(j.phone||'')}" placeholder="Optional SMS demo number"></div><div class="formgrid"><div class="field"><label for="dDate">Scheduled date</label><input id="dDate" type="date" value="${esc(j.scheduledAt||'')}"></div><div class="field"><label for="dTime">Scheduled time</label><input id="dTime" type="time" value="${esc(j.scheduledTime||'')}"></div></div><div class="field"><label for="dNotes">Internal notes</label><textarea id="dNotes" maxlength="500" placeholder="e.g., Confirm measurements, preferred appointment time, materials to bring">${esc(j.notes)}</textarea></div><label class="checkline"><input id="dOptout" type="checkbox" ${j.optOut?'checked':''}> Do Not Contact</label><div class="modalfooter"><button class="btn secondary" data-action="save-detail" data-id="${esc(id)}">Save changes</button><button class="btn secondary" data-action="close">Close</button></div><div class="helper">Changes to Do Not Contact settings take effect when you save.</div>`)
+ modal(j.name,`<div class="flex"><button class="btn secondary sm" data-action="profile" data-id="${esc(j.customerId)}">← Client profile</button></div><div class="flex" style="margin:10px 0 16px">${badge(j)}<span class="small">${esc(j.service)}</span>${j.town?`<span class="small">· ${esc(j.town)}</span>`:''}</div>${history}${renderCompletionPhotos(j)}<div class="divider"></div><div class="jobDetailActions">${actions}</div>${disabled?`<p class="note" style="margin-top:12px;color:var(--red)">${esc(reason)}</p>`:''}<div class="divider"></div><div class="field"><label for="dPhone">Contact phone</label><input id="dPhone" type="tel" maxlength="30" value="${esc(j.phone||'')}" placeholder="Optional contact phone"></div><div class="formgrid"><div class="field"><label for="dDate">Scheduled date</label><input id="dDate" type="date" value="${esc(j.scheduledAt||'')}"></div><div class="field"><label for="dTime">Scheduled time</label><input id="dTime" type="time" value="${esc(j.scheduledTime||'')}"></div></div><div class="field"><label for="dNotes">Internal notes</label><textarea id="dNotes" maxlength="500" placeholder="e.g., Confirm measurements, preferred appointment time, materials to bring">${esc(j.notes)}</textarea></div><label class="checkline"><input id="dOptout" type="checkbox" ${j.optOut?'checked':''}> Do Not Contact</label><div class="modalfooter"><button class="btn secondary" data-action="save-detail" data-id="${esc(id)}">Save changes</button><button class="btn secondary" data-action="close">Close</button></div><div class="helper">Changes to Do Not Contact settings take effect when you save.</div>`)
 }
 
 /* Guided completion runs locally. No review, text, or social post is sent. */
@@ -1948,7 +2017,7 @@ function renderCompletionPhotos(j){
  const photos=j.projectPhotos||{};
  const pairs=[['before','Before'],['after','After']].filter(([key])=>safePhoto(photos[key]));
  if(!pairs.length)return '';
- return `<div class="divider"></div><h3>Project photo previews</h3><div class="completion-gallery">${pairs.map(([key,label])=>`<figure><img alt="${label} compressed project preview" src="${esc(photos[key])}"><figcaption>${label}</figcaption></figure>`).join('')}</div><p class="note">Compressed demo previews are saved only in this browser. Keep original images elsewhere.</p>`;
+ return `<div class="divider"></div><h3>Project photo previews</h3><div class="completion-gallery">${pairs.map(([key,label])=>`<figure><img alt="${label} compressed project preview" src="${esc(photos[key])}"><figcaption>${label}</figcaption></figure>`).join('')}</div><p class="note">These are compressed photo previews. Keep original images elsewhere.</p>`;
 }
 function completionPhotoBox(type){
  const val=completionPhotos?.[type]||'';
@@ -1994,7 +2063,7 @@ async function handleCompletionPhoto(input){
  catch(err){toast(err.message||'Unable to use that image.','error')}finally{input.value=''}
 }
 function completionPostText(j,highlights){
- const brand=(db.business||'Our team').trim();
+ const brand=(businessDisplayName()||'Our team').trim();
  const service=endSentence(j.service||'home service project');
  const area=j.town?' in '+j.town:'';
  const detail=highlights?endSentence(highlights):'A completed project our team was glad to work on.';
@@ -2050,8 +2119,8 @@ function saveCompletion(id){
 function completionOpenDraft(id){const d=db.aiDrafts.find(x=>x.id===id);if(!d){toast('Draft not found.','error');return;}closeModal();navigate('content');aiDraftLoad(id)}
 
 const configuredLink=()=>{try{const u=new URL(db.reviewUrl);return ['https:','http:'].includes(u.protocol)&&u.hostname&&!['example.com','www.example.com'].includes(u.hostname)}catch(e){return false}};
-function reviewText(j,followup=false){const c=customerForJob(j)||{};const name=(c.name||j.name||'').trim();const service=(j.service||'recent project').toLowerCase();let template=followup?'Hi {firstName}, just following up after the {service} work from {business}. If you would like to share your experience, here is the Google review link: {reviewLink}\n\nThank you!':db.template;const tokens={firstName:firstName(name),customerName:name||'Client',clientName:name||'Client',business:db.business,service,reviewLink:configuredLink()?db.reviewUrl:'[ADD REAL GOOGLE REVIEW LINK]',city:c.city||j.town||''};return template.replace(/\{(firstName|customerName|business|service|reviewLink|city)\}/g,(_,key)=>tokens[key])}
-function compose(id,mode){const j=getJob(id);if(!j)return;composeMode=mode;const message=reviewText(j,mode==='followup');modal(mode==='followup'?'Prepare follow-up':'Prepare review request',`${mode==='review'&&lastCompletionOptions?.id===id?`<button type="button" class="completion-flow-back" data-action="completion-back" data-id="${esc(id)}">← Back to Job Completion</button>`:''}<p class="note"><strong>Prepared, not sent.</strong> Client details have been filled in automatically. Review the wording before sending it yourself.</p><div class="personalizationNote"><strong>Personalized for ${esc((customerForJob(j)?.name||j.name))}</strong><span>${esc(j.service||'Service')} · ${esc(db.business)} · Google review link</span></div>${!configuredLink()?'<div class="demoBanner">Set your real Google review URL in Settings before using this message outside the demo.</div>':''}${optedOut(j)?'<p class="formError visible">Do Not Contact is enabled. You may draft this text, but do not send it to this client.</p>':''}<div class="field"><label for="messageToCopy">Message for ${esc(j.name)}</label><textarea id="messageToCopy" rows="7">${esc(message)}</textarea></div><div class="modalfooter"><button class="btn" data-action="copy-message">Copy message</button><button class="btn secondary" data-action="open-sms" data-id="${esc(id)}">✉ Open text message</button><button class="btn secondary" data-action="detail" data-id="${esc(id)}">Back</button></div><div class="helper">Open text message launches your device’s texting app with a draft, when supported. You must press Send yourself, then separately confirm the request was sent.</div>`)}
+function reviewText(j,followup=false){const c=customerForJob(j)||{};const name=(c.name||j.name||'').trim();const service=(j.service||'recent project').toLowerCase();let template=followup?'Hi {firstName}, just following up after the {service} work from {business}. If you would like to share your experience, here is the Google review link: {reviewLink}\n\nThank you!':db.template;const tokens={firstName:firstName(name),customerName:name||'Client',clientName:name||'Client',business:businessDisplayName(),service,reviewLink:configuredLink()?db.reviewUrl:'[ADD REAL GOOGLE REVIEW LINK]',city:c.city||j.town||''};return template.replace(/\{(firstName|customerName|business|service|reviewLink|city)\}/g,(_,key)=>tokens[key])}
+function compose(id,mode){const j=getJob(id);if(!j)return;composeMode=mode;const message=reviewText(j,mode==='followup');modal(mode==='followup'?'Prepare follow-up':'Prepare review request',`${mode==='review'&&lastCompletionOptions?.id===id?`<button type="button" class="completion-flow-back" data-action="completion-back" data-id="${esc(id)}">← Back to Job Completion</button>`:''}<p class="note"><strong>Prepared, not sent.</strong> Client details have been filled in automatically. Review the wording before sending it yourself.</p><div class="personalizationNote"><strong>Personalized for ${esc((customerForJob(j)?.name||j.name))}</strong><span>${esc(j.service||'Service')} · ${esc(businessDisplayName())} · Google review link</span></div>${!configuredLink()?'<div class="demoBanner">Set your Google review URL in Settings before sending this message.</div>':''}${optedOut(j)?'<p class="formError visible">Do Not Contact is enabled. You may draft this text, but do not send it to this client.</p>':''}<div class="field"><label for="messageToCopy">Message for ${esc(j.name)}</label><textarea id="messageToCopy" rows="7">${esc(message)}</textarea></div><div class="modalfooter"><button class="btn" data-action="copy-message">Copy message</button><button class="btn secondary" data-action="open-sms" data-id="${esc(id)}">✉ Open text message</button><button class="btn secondary" data-action="detail" data-id="${esc(id)}">Back</button></div><div class="helper">Open text message launches your device’s texting app with a draft, when supported. You must press Send yourself, then separately confirm the request was sent.</div>`)}
 async function copy(text){try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);toast('Copied to clipboard.');return}const inp=document.createElement('textarea');inp.value=text;inp.style.position='fixed';inp.style.top='-2000px';document.body.appendChild(inp);inp.select();const ok=document.execCommand('copy');inp.remove();if(!ok)throw Error('copy unsupported');toast('Copied to clipboard.')}catch(e){toast('Copy unavailable here. Select the text and copy it manually.')}}
 
 const POST_TEMPLATES={
@@ -2108,7 +2177,7 @@ function aiNewDraft(){currentAiDraftId=null;$('#aiDraftEditor').value='';$('#aiD
 const endSentence=text=>{const cleaned=String(text||'').trim();return cleaned?(/[.!?]$/.test(cleaned)?cleaned:cleaned+'.'):''};
 async function templateCreate(){
  const template=$('#socialTemplate').value;
- const business=(db.business||'Our team').trim();
+ const business=(businessDisplayName()||'Our team').trim();
  const service=$('#socialService').value.trim();
  const details=$('#socialDetails').value.trim();
  const area=$('#socialArea').value.trim();
@@ -2173,7 +2242,7 @@ function initAi(){
  $('#aiDraftEditor').addEventListener('input',()=>{$('#aiDraftFlag').textContent=currentAiDraftId?'Changes not saved':'Unsaved draft'});
 }
 
- function openSMS(id){const j=getJob(id);if(!j)return;if(optedOut(j)){toast('Do Not Contact is enabled for this client.','error');return}if(!configuredLink()){toast('Add a valid Google review link in Settings first.','error');return}const phone=(j.phone||'').replace(/[^\d+]/g,'');if(phone.length<7){toast('This client needs a demo phone number first.','error');return}const message=$('#messageToCopy')?.value||reviewText(j,composeMode==='followup');const sep=/iPad|iPhone|iPod/.test(navigator.userAgent)?'&':'?';const uri='sms:'+encodeURIComponent(phone)+sep+'body='+encodeURIComponent(message);toast('Opening Messages. You must review and press Send yourself.');window.location.href=uri}
+ function openSMS(id){const j=getJob(id);if(!j)return;if(optedOut(j)){toast('Do Not Contact is enabled for this client.','error');return}if(!configuredLink()){toast('Add a valid Google review link in Settings first.','error');return}const phone=(j.phone||'').replace(/[^\d+]/g,'');if(phone.length<7){toast('This client needs a contact phone number first.','error');return}const message=$('#messageToCopy')?.value||reviewText(j,composeMode==='followup');const sep=/iPad|iPhone|iPod/.test(navigator.userAgent)?'&':'?';const uri='sms:'+encodeURIComponent(phone)+sep+'body='+encodeURIComponent(message);toast('Opening Messages. You must review and press Send yourself.');window.location.href=uri}
  function renderCalendar(){
   const grid=$('#calendarGrid');if(!grid)return;
   $('#calendarTitle').textContent=calendarMonth.toLocaleDateString('en-US',{month:'long',year:'numeric'});
@@ -2199,9 +2268,9 @@ function initAi(){
 
  function renderTodos(){const target=$('#todoList');if(!target)return;const items=[...db.todos].sort((a,b)=>Number(a.done)-Number(b.done)||(a.due||'9999').localeCompare(b.due||'9999'));$('#todoCount').textContent=db.todos.filter(x=>!x.done).length+' open';target.innerHTML=items.length?items.map(x=>`<div class="todoRow ${x.done?'done':''}"><input type="checkbox" data-task-id="${esc(x.id)}" aria-label="Mark task complete" ${x.done?'checked':''}><div class="todoText"><strong>${esc(x.title)}</strong><small>${x.due?'Due '+day(x.due):'No due date'}</small></div><button type="button" class="btn secondary sm" data-action="delete-task" data-id="${esc(x.id)}" aria-label="Delete task">×</button></div>`).join(''):'<div class="empty">No tasks yet. Add one above.</div>';const followups=visibleJobs().filter(j=>!optedOut(j)&&!isSnoozed(j)&&(needsRequest(j)||dueFollowup(j)));$('#autoTasks').innerHTML=followups.length?followups.map(jobrow).join(''):'<div class="empty">All job follow-ups are caught up.</div>'}
  function addTask(e){if(e)e.preventDefault();const title=$('#todoTitle').value.trim(),due=$('#todoDue').value;if(!title){toast('Enter a task first.','error');$('#todoTitle').focus();return}db.todos.push({id:'t'+Date.now()+Math.floor(Math.random()*10000),title,due,done:false});if(save()){document.getElementById('todoForm').reset();render();toast('✓ Task saved.')}}
- function report(){const m=metrics(),prefix=today().slice(0,7),completedMonth=visibleJobs().filter(j=>j.completedAt?.startsWith(prefix)).length,sentMonth=visibleJobs().filter(j=>j.sentAt?.startsWith(prefix)).length,reviewsMonth=visibleJobs().filter(j=>j.reviewAt?.startsWith(prefix)).length;const msg=`DEMO REPORT — ${db.business}\nMonth: ${new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'})}\nCompleted jobs recorded: ${completedMonth}\nReview requests confirmed sent: ${sentMonth}\nReviews manually marked received: ${reviewsMonth}\nRequests still awaiting action: ${m.pending}\nFollow-ups due: ${m.follow}\n\nNote: Counts reflect manually entered records, not verified Google review data. This is a demo using fictional clients.`;copy(msg)}
+ function report(){const m=metrics(),prefix=today().slice(0,7),completedMonth=visibleJobs().filter(j=>j.completedAt?.startsWith(prefix)).length,sentMonth=visibleJobs().filter(j=>j.sentAt?.startsWith(prefix)).length,reviewsMonth=visibleJobs().filter(j=>j.reviewAt?.startsWith(prefix)).length;const msg=`ACTIVITY REPORT — ${businessDisplayName()}\nMonth: ${new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'})}\nCompleted jobs recorded: ${completedMonth}\nReview requests confirmed sent: ${sentMonth}\nReviews manually marked received: ${reviewsMonth}\nRequests still awaiting action: ${m.pending}\nFollow-ups due: ${m.follow}\n\nNote: Counts reflect manually entered records, not verified Google review data. Totals reflect manually entered records.`;copy(msg)}
 function download(name,contents,type){const blob=new Blob([contents],{type});const a=document.createElement('a');const u=URL.createObjectURL(blob);a.href=u;a.download=name;a.style.display='none';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000);toast('Download prepared. Check your device downloads.');}
-function exportCSV(){const columns=['name','firstName','lastName','company','phone','email','street','city','state','postal','service','town','status','createdAt','scheduledAt','scheduledTime','completedAt','completedTime','sentAt','followupAt','reviewAt','optOut'];const escapeCsv=v=>{let t=String(v??'');if(/^[=+@\-]/.test(t))t="'"+t;return '"'+t.replace(/"/g,'""')+'"'};const txt=[columns.join(','),...db.jobs.map(j=>{const c=customerForJob(j)||{};return columns.map(k=>escapeCsv(['firstName','lastName','company','email','street','city','state','postal'].includes(k)?c[k]:j[k])).join(',')})].join('\r\n');download('followup-demo-jobs.csv',txt,'text/csv;charset=utf-8')}
+function exportCSV(){const columns=['name','firstName','lastName','company','phone','email','street','city','state','postal','service','town','status','createdAt','scheduledAt','scheduledTime','completedAt','completedTime','sentAt','followupAt','reviewAt','optOut'];const escapeCsv=v=>{let t=String(v??'');if(/^[=+@\-]/.test(t))t="'"+t;return '"'+t.replace(/"/g,'""')+'"'};const txt=[columns.join(','),...db.jobs.map(j=>{const c=customerForJob(j)||{};return columns.map(k=>escapeCsv(['firstName','lastName','company','email','street','city','state','postal'].includes(k)?c[k]:j[k])).join(',')})].join('\r\n');download('followup-jobs.csv',txt,'text/csv;charset=utf-8')}
 
 /* V3.8 portable JSON backups. Data may be local or in a synced account workspace. Backup files are unencrypted. */
 const BACKUP_SCHEMA='followup-studio-local-backup';
@@ -2278,12 +2347,13 @@ async function applyAction(e){const el=e.target.closest('[data-action]');if(!el)
  else if(op==='smart-task-done'){const task=db.todos.find(t=>t.id===id);if(task&&!task.done){task.done=true;if(save()){render();toast('✓ Task completed.')}}}
  else if(op==='smart-snooze')openSnoozePicker(id);else if(op==='smart-snooze-save')saveSnooze(id);
  else if(op==='smart-unsnooze'){const j=getJob(id);if(j){j.followupSnoozedUntil=null;if(save()){render();toast('✓ Reminder restored.')}}}else if(op==='job-options')openJobOptions(id);else if(op==='show-completed-jobs'){$('#statusFilter').value='completed';$('#searchJobs').value='';renderJobs();$('#jobListSection')?.scrollIntoView({block:'start',behavior:'smooth'});}else if(op==='email-fill-domain'){const input=document.getElementById(id),domain=el.dataset.domain;if(input&&['gmail.com','yahoo.com','outlook.com'].includes(domain)){const user=input.value.split('@')[0].trim();if(user){input.value=user+'@'+domain;updateEmailSuggestions(input);input.focus()}}}else if(op==='completion-post-studio')showCompletionSocialStudio(id);else if(op==='completion-back')returnToCompletion(id||completionFlowBackId);else if(op==='completion-exit'){closeModal();navigate(completionReturnRoute||'jobs')}else if(op==='job-pin')pinJob(id);else if(op==='job-delete')await deleteJob(id);else if(op==='job-filter-open')jobFilterDialog();else if(op==='job-filter-apply')applyJobFilters();else if(op==='job-filter-clear')applyJobFilters(true);
- else if(op==='add'){if(currentRoute==='customers')addCustomerOnlyModal();else addModal();}else if(op==='save-customer-only')saveCustomerOnly();else if(op==='client-draft-discard')await discardClientDraft();else if(op==='job-drafts-list')showJobDraftLibrary();else if(op==='job-draft-new')startNewClientDraft();else if(op==='job-draft-open')openSavedJobDraft(id);else if(op==='job-draft-delete')await deleteSavedJobDraft(id);else if(op==='client-contact-picker')importPhoneContact();else if(op==='client-contact-file')$('#contactVcardInput')?.click();else if(op==='job-use-existing'){const customerId=$('#jobExistingCustomer')?.value;if(customerId&&customerById(customerId)&&!isArchived(customerById(customerId)))addModal('',customerId);else toast('Choose an existing client first.','error')}else if(op==='save-customer')saveCustomer();else if(op==='open-sms')openSMS(id);else if(op==='metric-filter'){$('#statusFilter').value=el.dataset.filter;$('#searchJobs').value='';navigate('jobs')}else if(op==='calendar-jump')calendarJumpPicker();else if(op==='calendar-jump-apply'){const y=Number($('#jumpYear')?.value),m=Number($('#jumpMonth')?.value);if(!Number.isInteger(y)||y<1900||y>2100||!Number.isInteger(m)||m<0||m>11){toast('Choose a valid month and year.','error');return}calendarMonth=new Date(y,m,1);selectedDay=`${y}-${pad(m+1)}-01`;closeModal();renderCalendar();}else if(op==='month-prev'){calendarMonth.setMonth(calendarMonth.getMonth()-1);renderCalendar()}else if(op==='month-next'){calendarMonth.setMonth(calendarMonth.getMonth()+1);renderCalendar()}else if(op==='calendar-day'){if(Date.now()-Number(window.v38CalendarSwipe||0)>450){selectedDay=el.dataset.date;renderCalendar()}}else if(op==='schedule-selected')addModal(selectedDay);else if(op==='delete-task'){if(await askUser('Delete this task?','delete-task',{yes:'Delete task',danger:true})){db.todos=db.todos.filter(t=>t.id!==id);if(save()){render();toast('✓ Task removed.')}}}else if(op==='close')closeModal();else if(op==='detail'){if(el.closest('.profileHistoryContent')&&currentRoute==='customers'){closeModal();navigate('jobs')}detailModal(id);}else if(op==='complete')openCompletion(id);else if(op==='completion-save')saveCompletion(id);else if(op==='completion-remove-photo'){if(completionPhotos&&['before','after'].includes(el.dataset.photo)){completionPhotos[el.dataset.photo]='';showCompletionPhoto(el.dataset.photo)}}else if(op==='completion-open-draft'){const j=db.jobs.find(j=>j.completionDraftId===id);if(j&&lastCompletionOptions?.id===j.id)showCompletionSocialStudio(j.id);else completionOpenDraft(id);}else if(op==='compose')compose(id,el.dataset.mode);else if(op==='marksent'){const j=getJob(id);if(j&&!optedOut(j)&&await askUser('Only confirm if you actually sent the review request outside this app. Continue?','mark-request-sent',{yes:'Mark as sent'}))update(id,j=>{j.sentAt=today();j.followupSnoozedUntil=null})}else if(op==='markfollow'){const j=getJob(id);if(j&&dueFollowup(j)&&!optedOut(j)&&await askUser('Only confirm if you actually sent this follow-up. Continue?','mark-followup-sent',{yes:'Mark as sent'}))update(id,j=>{j.followupAt=today();j.followupSnoozedUntil=null})}else if(op==='toggle-review'){const j=getJob(id);if(j&&await askUser(j.reviewAt?'Remove the review-received mark?':'Did you personally verify that this client left a review?',j.reviewAt?'remove-review-record':'verify-review-record',{yes:j.reviewAt?'Remove mark':'Mark verified'}))update(id,j=>j.reviewAt=j.reviewAt?null:today())}else if(op==='save-detail'){await saveJobDetail(id)}else if(op==='copy-message')copy($('#messageToCopy').value);else if(op==='template-create')templateCreate();else if(op==='ai-save-draft')aiSaveDraft();else if(op==='ai-copy-draft'){const t=$('#aiDraftEditor').value.trim();if(t)copy(t);else toast('Nothing to copy yet.','error')}else if(op==='ai-new-draft')aiNewDraft();else if(op==='template-clear'){$('#socialJob').value='';$('#socialService').value='';$('#socialDetails').value='';$('#socialArea').value='';$('#socialCta').value='message';toast('Post fields cleared.')}else if(op==='ai-load-draft')aiDraftLoad(id);else if(op==='ai-delete-draft'){if(await askUser('Delete this saved draft?','delete-draft',{yes:'Delete draft',danger:true})){db.aiDrafts=db.aiDrafts.filter(x=>x.id!==id);if(currentAiDraftId===id)aiNewDraft();if(save()){renderAiDrafts();toast('Draft deleted.')}}}else if(op==='restore-confirmations')restoreConfirmations();else if(op==='report')report();else if(op==='backup')exportFullBackup();else if(op==='csv')exportCSV();else if(op==='reset'){if(cloud.user){toast('Reset is disabled in Cloud Mode. Sign out to reset demo data.','error');return;}if(await askUser('Replace current local demo data with the original fictional clients?','reset-demo',{yes:'Reset data',danger:true,rememberable:false})){db=sample();migrateCustomers(db);save();render();toast('✓ Demo reset to sample clients.')}}}
+ else if(op==='add'){if(currentRoute==='customers')addCustomerOnlyModal();else addModal();}else if(op==='save-customer-only')saveCustomerOnly();else if(op==='client-draft-discard')await discardClientDraft();else if(op==='job-drafts-list')showJobDraftLibrary();else if(op==='job-draft-open')openSavedJobDraft(id);else if(op==='job-draft-delete')await deleteSavedJobDraft(id);else if(op==='client-contact-picker')importPhoneContact();else if(op==='client-contact-file')$('#contactVcardInput')?.click();else if(op==='job-use-existing'){const customerId=$('#jobExistingCustomer')?.value;if(customerId&&customerById(customerId)&&!isArchived(customerById(customerId)))addModal('',customerId);else toast('Choose an existing client first.','error')}else if(op==='save-customer')saveCustomer();else if(op==='open-sms')openSMS(id);else if(op==='metric-filter'){$('#statusFilter').value=el.dataset.filter;$('#searchJobs').value='';navigate('jobs')}else if(op==='calendar-jump')calendarJumpPicker();else if(op==='calendar-jump-apply'){const y=Number($('#jumpYear')?.value),m=Number($('#jumpMonth')?.value);if(!Number.isInteger(y)||y<1900||y>2100||!Number.isInteger(m)||m<0||m>11){toast('Choose a valid month and year.','error');return}calendarMonth=new Date(y,m,1);selectedDay=`${y}-${pad(m+1)}-01`;closeModal();renderCalendar();}else if(op==='month-prev'){calendarMonth.setMonth(calendarMonth.getMonth()-1);renderCalendar()}else if(op==='month-next'){calendarMonth.setMonth(calendarMonth.getMonth()+1);renderCalendar()}else if(op==='calendar-day'){if(Date.now()-Number(window.v38CalendarSwipe||0)>450){selectedDay=el.dataset.date;renderCalendar()}}else if(op==='schedule-selected')addModal(selectedDay);else if(op==='delete-task'){if(await askUser('Delete this task?','delete-task',{yes:'Delete task',danger:true})){db.todos=db.todos.filter(t=>t.id!==id);if(save()){render();toast('✓ Task removed.')}}}else if(op==='close')closeModal();else if(op==='detail'){if(el.closest('.profileHistoryContent')&&currentRoute==='customers'){closeModal();navigate('jobs')}detailModal(id);}else if(op==='complete')openCompletion(id);else if(op==='completion-save')saveCompletion(id);else if(op==='completion-remove-photo'){if(completionPhotos&&['before','after'].includes(el.dataset.photo)){completionPhotos[el.dataset.photo]='';showCompletionPhoto(el.dataset.photo)}}else if(op==='completion-open-draft'){const j=db.jobs.find(j=>j.completionDraftId===id);if(j&&lastCompletionOptions?.id===j.id)showCompletionSocialStudio(j.id);else completionOpenDraft(id);}else if(op==='compose')compose(id,el.dataset.mode);else if(op==='marksent'){const j=getJob(id);if(j&&!optedOut(j)&&await askUser('Only confirm if you actually sent the review request outside this app. Continue?','mark-request-sent',{yes:'Mark as sent'}))update(id,j=>{j.sentAt=today();j.followupSnoozedUntil=null})}else if(op==='markfollow'){const j=getJob(id);if(j&&dueFollowup(j)&&!optedOut(j)&&await askUser('Only confirm if you actually sent this follow-up. Continue?','mark-followup-sent',{yes:'Mark as sent'}))update(id,j=>{j.followupAt=today();j.followupSnoozedUntil=null})}else if(op==='toggle-review'){const j=getJob(id);if(j&&await askUser(j.reviewAt?'Remove the review-received mark?':'Did you personally verify that this client left a review?',j.reviewAt?'remove-review-record':'verify-review-record',{yes:j.reviewAt?'Remove mark':'Mark verified'}))update(id,j=>j.reviewAt=j.reviewAt?null:today())}else if(op==='save-detail'){await saveJobDetail(id)}else if(op==='copy-message')copy($('#messageToCopy').value);else if(op==='template-create')templateCreate();else if(op==='ai-save-draft')aiSaveDraft();else if(op==='ai-copy-draft'){const t=$('#aiDraftEditor').value.trim();if(t)copy(t);else toast('Nothing to copy yet.','error')}else if(op==='ai-new-draft')aiNewDraft();else if(op==='template-clear'){$('#socialJob').value='';$('#socialService').value='';$('#socialDetails').value='';$('#socialArea').value='';$('#socialCta').value='message';toast('Post fields cleared.')}else if(op==='ai-load-draft')aiDraftLoad(id);else if(op==='ai-delete-draft'){if(await askUser('Delete this saved draft?','delete-draft',{yes:'Delete draft',danger:true})){db.aiDrafts=db.aiDrafts.filter(x=>x.id!==id);if(currentAiDraftId===id)aiNewDraft();if(save()){renderAiDrafts();toast('Draft deleted.')}}}else if(op==='restore-confirmations')restoreConfirmations();else if(op==='report')report();else if(op==='backup')exportFullBackup();else if(op==='csv')exportCSV();else if(op==='reset'){if(cloud.user){toast('Reset is disabled in Cloud Mode. Sign out to reset demo data.','error');return;}if(await askUser('Replace current local demo data with the original fictional clients?','reset-demo',{yes:'Reset data',danger:true,rememberable:false})){db=sample();migrateCustomers(db);save();render();toast('✓ Demo reset to sample clients.')}}}
 // V3.7: user-isolated cloud workspace. No service-role key, passwords, or customer snapshots go into GitHub.
 const cloud={client:null,user:null,ready:false,revision:0,dirty:false,saving:false,conflict:false,timer:null,error:'',loading:false,recovery:null,recoveryFailed:false,checkMessage:''};
 const cloudSetup=window.FOLLOWUP_CLOUD_CONFIG||{};
 const cloudConfigured=()=>/^https:\/\/[a-z0-9-]+\.supabase\.co\/?$/.test(String(cloudSetup.url||''))&&/^[A-Za-z0-9_.-]{16,}$/.test(String(cloudSetup.publishableKey||''));
-function blankCloudWorkspace(){const d=sample();d.jobs=[];d.customers=[];d.todos=[];d.aiDrafts=[];return d}
+function businessDisplayName(){return cloud.user&&db.business==='Demo Home Services'?'Your Business':db.business}
+function blankCloudWorkspace(){const d=sample();d.jobs=[];d.customers=[];d.todos=[];d.aiDrafts=[];d.business='Your Business';d.reviewUrl='';return d}
 /* V4: Per-account, same-tab emergency snapshots. Not encryption or permanent offline storage. */
 const CLOUD_RECOVERY_PREFIX='followup_pending_recovery_v4_';
 const recoveryKey=userId=>CLOUD_RECOVERY_PREFIX+String(userId||'');
@@ -2353,12 +2423,12 @@ function refreshWorkspaceDisplay(){currentAiDraftId=null;$('#searchJobs').value=
 function updateCloudUI(){
  const enabled=cloudConfigured()&&!!cloud.client;
  $('#cloudUnavailable').hidden=enabled;
- if(!enabled&&cloudConfigured())$('#cloudUnavailable').textContent='Supabase connection settings were found, but the cloud library could not initialize. Check your connection or reload. Your browser demo records remain separate.';
+ if(!enabled&&cloudConfigured())$('#cloudUnavailable').textContent='Cloud initialization failed. Check your connection or reload.';
  $('#cloudLoggedOut').hidden=!!cloud.user;
  $('#cloudLoggedIn').hidden=!cloud.user;
  const badge=$('#cloudTopBadge');const state=$('#cloudState');
- if(!enabled){badge.textContent='● DEMO MODE';state.textContent='Cloud not configured';}
- else if(!cloud.user){badge.textContent='● DEMO MODE';state.textContent='Sign in available';}
+ if(!enabled){badge.textContent='● OFFLINE';state.textContent='Cloud unavailable';}
+ else if(!cloud.user){badge.textContent='● SIGN IN';state.textContent='Sign-in required';}
  else {badge.textContent=cloud.conflict?'● SYNC CONFLICT':cloud.dirty?'● UNSYNCED':cloud.error?'● CLOUD ERROR':!cloud.ready?'● LOADING CLOUD':'● CLOUD MODE';state.textContent=cloud.dirty?'Unsynced changes':cloud.error?'Sync error':'Account connected';}
  badge.className='pill '+(cloud.user&&!cloud.dirty&&!cloud.conflict&&!cloud.error?'':'amber');
  $('#cloudUserEmail').textContent=cloud.user?.email||'Signed-in account';
@@ -2372,9 +2442,8 @@ function updateCloudUI(){
   'All changes synced to the private workspace. Export backups regularly.';
  if(cloud.recoveryFailed&&cloud.dirty&&!cloud.conflict)banner.textContent+=' Temporary recovery copy unavailable in this browser; download a JSON backup before leaving.';
  updateRecoveryUI();
- const banner2=$('.demoBanner');
- if(banner2&&cloud.user){banner2.querySelector('strong').textContent='Private cloud beta:';}
- else if(banner2){banner2.querySelector('strong').textContent='Safe demonstration:';}
+ document.body.classList.toggle('accountWorkspace',!!cloud.user);
+ const banner2=$('.demoBanner');if(banner2)banner2.hidden=!!cloud.user;
 }
 function queueCloudSave(ms=650){
  if(!cloud.user||cloud.conflict)return;
@@ -2426,44 +2495,75 @@ async function cloudRefresh(silent=false){
  }catch(err){cloud.error=safeText(err?.message||'Unable to read workspace',200);if(!silent)toast('Cloud load failed. Your demo data was not changed.','error')}
  finally{cloud.loading=false;updateCloudUI()}
 }
+
+function showWelcome(message=''){
+ document.body.classList.add('workspaceLocked');document.body.classList.remove('loadingWorkspace','appBooting');
+ $('#entryError').textContent=message;
+ $('#entryRetry').hidden=!(cloud.user&&!cloud.ready);
+ $('#entrySignIn').hidden=!!cloud.user;
+ $('#entrySignUp').hidden=!!cloud.user;
+ $$('#entryAuthForm .field').forEach(field=>field.hidden=!!cloud.user);
+ $('#entrySignIn').disabled=!cloud.client;
+ $('#entrySignUp').disabled=!cloud.client;
+}
+function showWorkspaceLoading(text='Loading your private workspace…'){
+ document.body.classList.add('workspaceLocked','loadingWorkspace','appBooting');
+ const note=$('#appBootScreen .bootNote');if(note)note.textContent=text;
+}
+function revealWorkspace(){
+ if(!cloud.user||!cloud.ready)return;
+ document.body.classList.remove('appBooting','loadingWorkspace','workspaceLocked');
+ document.body.classList.add('accountWorkspace');
+}
+function restoreWorkspaceRoute(){
+ try{const last=sessionStorage.getItem('followup_last_route_v402');if(last&&['home','dashboard','archive','followup','customers','jobs','calendar','content','todo','settings','howto'].includes(last))navigate(last)}catch(e){}
+}
+
 async function cloudSessionEnter(user){
  if(!user||cloud.user?.id===user.id)return;
  // Never upload local demo or other account's in-memory data without explicit consent.
  cloud.user={id:user.id,email:user.email};cloud.ready=false;cloud.revision=0;cloud.conflict=false;cloud.dirty=false;cloud.error='';cloud.recovery=null;cloud.recoveryFailed=false;
  if($('#customerOnlyForm')){saveClientDraftOnDevice();closeModal();}
- db=blankCloudWorkspace();refreshWorkspaceDisplay();await cloudRefresh(false);
- maybeResumeClientDraftOnLaunch();
+ showWorkspaceLoading();
+ db=blankCloudWorkspace();refreshWorkspaceDisplay();await cloudRefresh(true);
+ if(cloud.ready){restoreWorkspaceRoute();maybeResumeClientDraftOnLaunch();revealWorkspace();}
+ else showWelcome('Could not open your workspace. Check your internet connection and use Retry below.');
 }
 function cloudSessionLeave(){
  clearTimeout(cloud.timer);cloud.user=null;cloud.ready=false;cloud.revision=0;cloud.dirty=false;cloud.conflict=false;cloud.error='';cloud.saving=false;cloud.recovery=null;cloud.recoveryFailed=false;
- db=load();if(!Array.isArray(db.todos))db.todos=[];if(!Array.isArray(db.aiDrafts))db.aiDrafts=[];migrateCustomers(db);refreshWorkspaceDisplay();updateCloudUI();
+ db=load();if(!Array.isArray(db.todos))db.todos=[];if(!Array.isArray(db.aiDrafts))db.aiDrafts=[];migrateCustomers(db);refreshWorkspaceDisplay();updateCloudUI();showWelcome();
 }
 async function cloudBoot(){
+ showWelcome();
  updateCloudUI();
- if(!cloudConfigured()||!window.supabase?.createClient)return;
+ if(!cloudConfigured()||!window.supabase?.createClient){showWelcome('Cloud connection is unavailable. Please reload when connected.');return;}
  try{
   cloud.client=window.supabase.createClient(cloudSetup.url,cloudSetup.publishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
-  updateCloudUI();
   const {data,error}=await cloud.client.auth.getSession();if(error)throw error;
-  if(data?.session?.user)await cloudSessionEnter(data.session.user);
   cloud.client.auth.onAuthStateChange((event,session)=>{
    if(event==='SIGNED_OUT'){cloudSessionLeave();return;}
    if(event==='SIGNED_IN'&&session?.user&&cloud.user?.id!==session.user.id){setTimeout(()=>cloudSessionEnter(session.user),0);}
   });
- }catch(err){cloud.error=safeText(err?.message||'Cloud initialization failed',160);updateCloudUI();}
+  if(data?.session?.user)await cloudSessionEnter(data.session.user);
+  else showWelcome();
+ }catch(err){cloud.error=safeText(err?.message||'Unable to check account',160);showWelcome('Unable to check sign-in. Please reload.');}
+ updateCloudUI();
 }
 async function cloudLogin(create){
- const passwordInput=$('#cloudPassword');if(passwordInput)passwordInput.setAttribute('autocomplete',create?'new-password':'current-password');
- if(!cloud.client){toast('Cloud is not configured. Demo Mode remains available.','error');return}
- const email=$('#cloudEmail').value.trim(),password=$('#cloudPassword').value;
- if(!email||password.length<8){toast('Enter a valid email and password of at least 8 characters.','error');return}
+ const input=$('#entryPassword');input.setAttribute('autocomplete',create?'new-password':'current-password');
+ if(!cloud.client){showWelcome('Cloud connection unavailable. Please reload.');return}
+ const email=$('#entryEmail').value.trim(),password=input.value;
+ if(!email||password.length<8){$('#entryError').textContent='Enter a valid email and a password of at least 8 characters.';return;}
+ const button=$('#entrySignIn'),signup=$('#entrySignUp');button.disabled=true;signup.disabled=true;
+ $('#entryError').textContent='';
  try{
   const result=create?await cloud.client.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}}):await cloud.client.auth.signInWithPassword({email,password});
   if(result.error)throw result.error;
-  $('#cloudPassword').value='';
-  if(result.data?.session?.user){await cloudSessionEnter(result.data.session.user);toast(cloud.ready?'✓ Signed in. Private cloud workspace loaded.':'Signed in, but cloud loading failed. Check connection and SQL setup.',cloud.ready?'success':'error');}
-  else toast('Account created. Check your email to verify, then sign in.');
- }catch(err){toast('Account action failed: '+safeText(err?.message||'Try again',140),'error')}
+  input.value='';
+  if(result.data?.session?.user){if(!cloud.user||cloud.user.id!==result.data.session.user.id)await cloudSessionEnter(result.data.session.user);}
+  else{$('#entryError').textContent='Check your email for verification, then sign in.';}
+ }catch(err){showWelcome(safeText(err?.message||'Sign-in failed. Please retry.',150))}
+ finally{button.disabled=false;signup.disabled=false;}
 }
 async function handleCloudAction(op){
  if(op==='cloud-signup'){await cloudLogin(true);return}
@@ -2481,7 +2581,7 @@ async function handleCloudAction(op){
  if(op==='cloud-recovery-download'){downloadPendingRecovery();return}
  if(op==='cloud-recovery-discard'){await discardPendingRecovery();return}
  if(op==='cloud-retry'){cloud.error='';queueCloudSave(0);updateCloudUI();return}
- if(op==='cloud-refresh'){await cloudRefresh(false);return}
+ if(op==='cloud-refresh'){await cloudRefresh(false);if(cloud.ready)revealWorkspace();return}
  if(op==='cloud-import-demo'){
   if(cloud.dirty){toast('Wait for the current cloud save to complete before importing.','error');return}
   const local=load();if(!local?.jobs){toast('No demo records to import.','error');return}
@@ -2513,10 +2613,10 @@ function showCompletionSocialStudio(id){
 }
 function bind(){
  $('#serviceListForm').addEventListener('submit',e=>{e.preventDefault();if(storeService($('#newServiceName').value)){$('#newServiceName').value='';toast('Service added to saved list.')}});
- document.addEventListener('change',e=>{if(e.target?.id==='contactVcardInput'){const file=e.target.files?.[0];e.target.value='';if(file)importVcardFile(file);}if(e.target?.id==='fServicePick')updateServiceChooser();if(e.target?.id==='newAddJob')updateNewClientJobPanel();if(e.target?.id==='newJobServicePick')updateNewClientJobService();if(e.target?.closest?.('#customerOnlyForm'))saveClientDraftOnDevice()});
- document.addEventListener('input',e=>{if(e.target?.closest?.('#customerOnlyForm'))saveClientDraftOnDevice()});
- window.addEventListener('pagehide',saveClientDraftOnDevice);
- document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')saveClientDraftOnDevice()});
+ document.addEventListener('change',e=>{if(e.target?.closest?.('#customerForm'))saveJobEntryDraft(true);if(e.target?.id==='contactVcardInput'){const file=e.target.files?.[0];e.target.value='';if(file)importVcardFile(file);}if(e.target?.id==='fServicePick')updateServiceChooser();if(e.target?.id==='newAddJob')updateNewClientJobPanel();if(e.target?.id==='newJobServicePick')updateNewClientJobService();if(e.target?.closest?.('#customerOnlyForm'))saveClientDraftOnDevice()});
+ document.addEventListener('input',e=>{if(e.target?.closest?.('#customerOnlyForm'))saveClientDraftOnDevice();if(e.target?.closest?.('#customerForm'))saveJobEntryDraft(true)});
+ window.addEventListener('pagehide',()=>{saveClientDraftOnDevice();saveJobEntryDraft()});
+ document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'){saveClientDraftOnDevice();saveJobEntryDraft()}});
  $('#jobCityFilter').addEventListener('change',renderJobs);
  $('#smartCategory').addEventListener('change',e=>changeSmartFilter(e.target.value||'all'));
  const jobsList=$('#jobsList');let jobHoldTimer=null,jobHoldStart=null,lastJobLongPress=0;
@@ -2691,16 +2791,9 @@ function bind(){
  const endDirectorySwipe=(e,cancel=false)=>{const row=e.target.closest('.customerSwipeRow');const s=row?row._swipe:null;if(!s)return;delete row._swipe;if(!s.active)return;row.classList.remove('is-swiping');const end=s.base+s.delta;const opened=!cancel&&(s.delta<-32||(s.base<0&&s.delta<32&&end<-44));row.classList.toggle('swiped',opened);row.style.removeProperty('--swipeX');row.querySelector('.customerCard').style.transition='';row.dataset.justSwiped='1';setTimeout(()=>{delete row.dataset.justSwiped},520)};
  directory.addEventListener('touchend',e=>endDirectorySwipe(e),{passive:true});
  directory.addEventListener('touchcancel',e=>endDirectorySwipe(e,true),{passive:true});
- $('#cloudAuthForm').addEventListener('submit',e=>{e.preventDefault();cloudLogin(false)});window.addEventListener('online',()=>{if(cloud.user&&cloud.dirty&&!cloud.conflict)queueCloudSave(0)});/* Backgrounding must never replace the active screen. Cloud Refresh stays user initiated. */window.addEventListener('beforeunload',e=>{if(cloud.user&&cloud.dirty){e.preventDefault();e.returnValue='';}});document.addEventListener('click',e=>{const route=e.target.closest('[data-route]');if(route){if(homeEditMode&&route.classList.contains('homeTile'))return;navigate(route.dataset.route);return}applyAction(e)});$('#searchJobs').addEventListener('input',renderJobs);$('#searchCustomers').addEventListener('input',renderCustomerDirectory);$('#statusFilter').addEventListener('change',renderJobs);$('#settingsForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#businessName').value.trim(),template=$('#reviewTemplate').value.trim(),reviewUrl=$('#reviewUrl').value.trim();if(!name||!template||!reviewUrl){toast('Business name, Google review link, and template are required.','error');return}try{const u=new URL(reviewUrl);if(u.protocol!=='https:')throw Error()}catch(e){toast('Enter a complete Google review link starting with https://','error');return}db.business=name;db.reviewUrl=reviewUrl;db.template=template;if(save()){render();toast('✓ Business settings saved.')}});$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(homeEditMode)enableHomeCustomize(false);closeModal()}});document.addEventListener('submit',e=>{if(e.target.id==='customerForm'){e.preventDefault();saveCustomer()}});$('#todoForm').addEventListener('submit',addTask);$('#restoreInput').addEventListener('change',e=>{const f=e.target.files?.[0];if(f)chooseBackupFile(f);e.target.value=''});document.addEventListener('change',e=>{if(e.target?.matches?.('[data-completion-photo]'))handleCompletionPhoto(e.target)});document.addEventListener('change',e=>{const id=e.target?.dataset?.taskId;if(!id)return;const task=db.todos.find(x=>x.id===id);if(task){task.done=e.target.checked;if(save()){render();toast(task.done?'✓ Task completed.':'✓ Task reopened.')}}})}
+ $('#entryAuthForm').addEventListener('submit',e=>{e.preventDefault();cloudLogin(false)});$('#entrySignUp').addEventListener('click',()=>cloudLogin(true));$('#entryRetry').addEventListener('click',async()=>{if(!cloud.user){await cloudBoot();return}showWorkspaceLoading();await cloudRefresh(true);if(cloud.ready){restoreWorkspaceRoute();maybeResumeClientDraftOnLaunch();revealWorkspace()}else showWelcome('Still unable to load your workspace. Check your connection and try again.');});window.addEventListener('online',()=>{if(cloud.user&&cloud.dirty&&!cloud.conflict)queueCloudSave(0)});/* Backgrounding must never replace the active screen. Cloud Refresh stays user initiated. */window.addEventListener('beforeunload',e=>{if(cloud.user&&cloud.dirty){e.preventDefault();e.returnValue='';}});document.addEventListener('click',e=>{const route=e.target.closest('[data-route]');if(route){if(homeEditMode&&route.classList.contains('homeTile'))return;navigate(route.dataset.route);return}applyAction(e)});$('#searchJobs').addEventListener('input',renderJobs);$('#searchCustomers').addEventListener('input',renderCustomerDirectory);$('#statusFilter').addEventListener('change',renderJobs);$('#settingsForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#businessName').value.trim(),template=$('#reviewTemplate').value.trim(),reviewUrl=$('#reviewUrl').value.trim();if(!name||!template||!reviewUrl){toast('Business name, Google review link, and template are required.','error');return}try{const u=new URL(reviewUrl);if(u.protocol!=='https:')throw Error()}catch(e){toast('Enter a complete Google review link starting with https://','error');return}db.business=name;db.reviewUrl=reviewUrl;db.template=template;if(save()){render();toast('✓ Business settings saved.')}});$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(homeEditMode)enableHomeCustomize(false);closeModal()}});document.addEventListener('submit',e=>{if(e.target.id==='customerForm'){e.preventDefault();saveCustomer()}});$('#todoForm').addEventListener('submit',addTask);$('#restoreInput').addEventListener('change',e=>{const f=e.target.files?.[0];if(f)chooseBackupFile(f);e.target.value=''});document.addEventListener('change',e=>{if(e.target?.matches?.('[data-completion-photo]'))handleCompletionPhoto(e.target)});document.addEventListener('change',e=>{const id=e.target?.dataset?.taskId;if(!id)return;const task=db.todos.find(x=>x.id===id);if(task){task.done=e.target.checked;if(save()){render();toast(task.done?'✓ Task completed.':'✓ Task reopened.')}}})}
 bind();render();initAi();
-cloudBoot().finally(()=>{
- try{
-  const last=sessionStorage.getItem('followup_last_route_v402');
-  if(last&&['home','dashboard','archive','followup','customers','jobs','calendar','content','todo','settings','howto'].includes(last)&&!$('#modal').classList.contains('open'))navigate(last);
- }catch(e){}
- maybeResumeClientDraftOnLaunch();
- document.body.classList.remove('appBooting');
-});
+cloudBoot();
 // General feature and privacy tips now live in Settings → How To.
 document.addEventListener('keydown',e=>{const nav=e.target.closest('[data-route]');if(nav&&nav.tagName==='LABEL'&&(e.key==='Enter'||e.key===' ')){e.preventDefault();navigate(nav.dataset.route)}});
 
