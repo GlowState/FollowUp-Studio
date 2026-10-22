@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#101216">
-<title>FollowUp Studio — V4.1.1 Premium Workspace</title>
+<title>FollowUp Studio — V4.2.0 Premium Workspace</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="FollowUp Studio">
@@ -1747,19 +1747,118 @@ html.v38Dark #premiumApp .cloudSyncBanner.error{background:#362329!important;col
 }
 
 </style>
+<style id="auth-gateway-v420">
+/* V4.2: one stable entry surface from first paint through account loading. */
+#premiumApp.workspaceLocked .layout,#premiumApp.workspaceLocked .floatingNav{visibility:hidden}
+#premiumApp #entryGate{position:fixed;inset:0;z-index:3200;background:radial-gradient(ellipse at 13% 18%,#1b263a80,transparent 58%),#101216!important;display:none;align-items:safe center;justify-content:center;padding:36px 28px;overflow:auto;overscroll-behavior:contain}
+#premiumApp.workspaceLocked #entryGate{display:flex;visibility:visible;pointer-events:auto}
+#premiumApp .entryShell{width:min(1060px,100%);display:grid;grid-template-columns:minmax(0,1.15fr) minmax(340px,430px);gap:64px;align-items:center}
+#premiumApp .entryStory{align-self:center;padding:24px 0 32px}
+#premiumApp .entryWordmark{display:flex;align-items:center;gap:12px;color:#e7ecf5;font:650 17px/1.3 Manrope,Inter,sans-serif;letter-spacing:-.4px}
+#premiumApp .entryWordmark .entryBrand{margin:0;width:42px;height:44px;border-radius:12px;font-size:23px;background:#243044;border-color:#41506a;color:#d9e6ff;flex:none}
+#premiumApp .entryStory h2{font:650 clamp(37px,4.8vw,60px)/1.12 Manrope,Inter,sans-serif;letter-spacing:-2.6px;max-width:490px;color:#f2f5fb;margin:76px 0 21px;border:0;padding:0}
+#premiumApp .entryStory h2 span{color:#9ebce9}
+#premiumApp .entryStory>p{font-size:15px;line-height:1.8;color:#a7b2c3;max-width:350px;margin:0 0 32px}
+#premiumApp .entryFeatures{display:flex;align-items:center;flex-wrap:wrap;gap:22px;color:#b5c2d5;font-size:12px}
+#premiumApp .entryFeatures span{display:flex;align-items:center;gap:8px}
+#premiumApp .entryFeatures svg{width:17px;height:17px;stroke:#8da9d4}
+#premiumApp .entryCard{width:100%;max-width:none;min-height:490px;background:#1a1e25;border:1px solid #343e4e;border-radius:22px;padding:34px;box-shadow:0 24px 70px #0004;position:relative}
+#premiumApp .entryMobileBrand{display:none}
+#premiumApp .entryEyebrow{font:650 10px/1.5 Inter,sans-serif;letter-spacing:.14em;color:#91a9ce;margin:0 0 11px;text-transform:uppercase}
+#premiumApp .entryCard h1{font:700 32px/1.2 Manrope,Inter,sans-serif;letter-spacing:-1.1px;text-align:left;margin:0 0 10px;color:#f5f7fb}
+#premiumApp .entryCard .entryTagline{font-size:13px;text-align:left;line-height:1.7;color:#a9b4c5;margin:0 0 26px}
+#premiumApp .entryCard .field{margin-bottom:18px}
+#premiumApp .entryCard .field label{font-size:12px;font-weight:550;color:#c8d1e0;margin-bottom:8px}
+#premiumApp .entryCard .field input{min-height:50px;border-radius:11px;padding:12px 14px;background:#12161d;border:1px solid #3d485a;font-size:16px;color:#f4f6fa}
+#premiumApp .entryCard .field input::placeholder{color:#738095}
+#premiumApp .entryCard .field input:focus{outline:2px solid #88b1ff;outline-offset:2px}
+#premiumApp .entryPasswordWrap{position:relative}
+#premiumApp .entryPasswordWrap input{padding-right:52px!important}
+#premiumApp .passwordToggle{position:absolute;inset:3px 4px 3px auto;display:grid;place-items:center;width:43px;background:transparent;border:0;border-radius:8px;color:#a7b5c9}
+#premiumApp .passwordToggle svg{width:19px;height:19px}
+#premiumApp .passwordToggle:hover{color:#ecf3ff;background:#a6c8ff0a}
+#premiumApp .passwordToggle:focus-visible,#premiumApp .entrySignup:focus-visible{outline:2px solid #88b1ff;outline-offset:2px;border-radius:7px}
+#premiumApp .entryPrimary{width:100%;min-height:49px;margin-top:5px;border-radius:11px;background:#3268d8!important;border-color:#5a86e3!important;box-shadow:0 4px 12px #0d42a126;color:#fff;font-size:14px;font-weight:650}
+#premiumApp .entryPrimary svg{width:17px;height:17px}
+#premiumApp .entryAccount{display:flex;align-items:center;gap:12px;padding:15px;border:1px solid #354052;border-radius:13px;background:#151a23;margin:29px 0 21px;min-width:0}
+#premiumApp .entryAvatar{width:39px;height:39px;border-radius:12px;background:#26354c;color:#c8ddff;font:650 16px Manrope,sans-serif;display:grid;place-items:center;flex:none}
+#premiumApp .entryAccount div:last-child{min-width:0}
+#premiumApp .entryAccount small{display:block;color:#8fa1ba;font-size:10px;letter-spacing:.03em;margin-bottom:3px}
+#premiumApp #entrySavedEmail{font-size:13px;font-weight:550;color:#e3ebf8;overflow-wrap:anywhere;display:block;line-height:1.5}
+#premiumApp .entrySignup{min-height:42px;padding:10px 5px;font-size:12px;font-weight:500;color:#b1c8ee;text-decoration:none;background:none;border:0;display:inline-flex;align-items:center;justify-content:center}
+#premiumApp .entryModeRow{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;margin-top:9px;color:#939fb1;font-size:12px}
+#premiumApp .entrySwitchRow{text-align:center;margin-top:6px}
+#premiumApp .entryPasskeyArea{margin-top:18px}
+#premiumApp .entryDivider{display:flex;align-items:center;gap:12px;margin:0 0 14px;color:#7f8da1;font-size:10px;letter-spacing:.07em}
+#premiumApp .entryDivider::before,#premiumApp .entryDivider::after{content:'';height:1px;background:#333d4c;flex:1}
+#premiumApp .entryPasskeyRow{display:flex;gap:3px;align-items:center}
+#premiumApp .entryPasskey{flex:1;min-width:0;min-height:48px;background:#222a36;color:#e1eafb;border:1px solid #46546b;border-radius:11px;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:9px}
+#premiumApp .entryPasskey svg{width:20px;height:20px;color:#acc7f1}
+#premiumApp .entryPasskey:hover{background:#293446}
+#premiumApp .entryFoot{display:flex;align-items:center;justify-content:center;gap:7px;padding-top:23px;margin:22px 0 0;border-top:1px solid #303846;color:#8494ab;font-size:10px;line-height:1.5;letter-spacing:.025em}
+#premiumApp .entryFoot svg{width:12px;height:12px}
+#premiumApp .entryError{color:#f4b8b5;background:#41292e70;border:1px solid #784b5166;padding:10px 12px;border-radius:10px;text-align:left;font-size:12px;line-height:1.65;min-height:0;margin:16px 0 0;overflow-wrap:anywhere}
+#premiumApp .entryError:empty{display:none}
+#premiumApp .entryChecking{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:235px;gap:18px;color:#a7b5c9;font-size:13px;text-align:center}
+#premiumApp .entrySpinner{height:27px;width:27px;border:2px solid #34435a;border-top-color:#a7c8ff;border-radius:50%;animation:entrySpin 1s linear infinite}
+#premiumApp .entryCard button:disabled{cursor:wait;opacity:.5}
+#premiumApp .entryCard[data-busy="true"] .entryPrimary{background:#2a54a9!important}
+#premiumApp #entryRetry{display:flex;width:100%;margin-top:14px;border:1px solid #4b5c78;border-radius:10px}
+#premiumApp #contextHelpDialog{z-index:4000}
+#premiumApp .passkeySettings{margin-bottom:18px}
+#premiumApp .passkeyStatus{font-size:12px;color:#9fadc1;line-height:1.65;margin:0 0 12px}
+#premiumApp .passkeyList{display:grid;gap:9px;margin-bottom:14px}
+#premiumApp .passkeyList:empty{display:none}
+#premiumApp .passkeyRow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 14px;background:#151a22;border:1px solid #333e50;border-radius:12px;min-width:0}
+#premiumApp .passkeyRow>div{min-width:0}
+#premiumApp .passkeyRow strong{font-size:13px;color:#e1eaf8;display:block;overflow-wrap:anywhere}
+#premiumApp .passkeyRow small{display:block;font-size:11px;color:#92a3bc;line-height:1.6;margin-top:3px}
+#premiumApp .passkeyActions{display:flex;gap:9px;flex-wrap:wrap}
+#premiumApp #passkeyAdd svg{width:20px;height:20px;flex:none}
+@keyframes entrySpin{to{transform:rotate(360deg)}}
+@media(max-width:800px){
+ #premiumApp #entryGate{padding:27px 20px;background:radial-gradient(ellipse at 50% 0,#25334a55,transparent 60%),#101216!important}
+ #premiumApp .entryShell{display:block;max-width:430px}
+ #premiumApp .entryStory{display:none}
+ #premiumApp .entryMobileBrand{display:flex;margin:0 0 39px}
+ #premiumApp .entryCard{padding:28px;min-height:0;box-shadow:0 15px 50px #0003}
+ #premiumApp .entryCard h1{font-size:31px}
+ #premiumApp .entryCard .entryTagline{margin-bottom:25px}
+ #premiumApp .entryChecking{min-height:220px}
+}
+@media(max-width:359px){
+ #premiumApp #entryGate{padding:20px 13px}
+ #premiumApp .entryCard{padding:24px 20px;border-radius:18px}
+ #premiumApp .entryCard h1{font-size:28px}
+ #premiumApp .entryMobileBrand{margin-bottom:31px}
+}
+@media(prefers-reduced-motion:reduce){#premiumApp .entrySpinner{animation:none;border-color:#a7c8ff}}
+
+</style>
 </head>
 <body id="premiumApp" class="workspaceLocked" data-current-view="home">
-<div id="entryGate" role="region" aria-label="Sign in to FollowUp Studio">
- <div class="entryCard"><div class="entryBrand" aria-hidden="true">F</div><h1>FollowUp Studio</h1>
- <p class="entryTagline">Your business workspace, all in one place.</p>
- <form id="entryAuthForm" autocomplete="on"><div class="field"><label for="entryEmail">Email Address</label><input id="entryEmail" type="email" name="username" autocomplete="username" inputmode="email" autocapitalize="none" spellcheck="false" required placeholder="you@company.com"></div>
- <div class="field"><label for="entryPassword">Password</label><input id="entryPassword" name="password" type="password" autocomplete="current-password" required placeholder="Your account password"></div>
- <button id="entrySignIn" class="btn entryPrimary" type="submit">Sign In</button><button id="entryRetry" type="button" class="entrySignup" hidden>Retry Loading Workspace</button>
- <div class="entryError" id="entryError" role="alert" aria-live="polite"></div>
- </form><div style="text-align:center"><button class="entrySignup" type="button" id="entrySignUp">Create an Account</button></div>
- <p class="entryFoot">Sign in securely. Your iPhone can fill credentials from Passwords.</p></div>
+<div id="entryGate" role="region" aria-labelledby="entryTitle" data-entry-state="checking">
+ <div class="entryShell">
+  <aside class="entryStory" aria-label="FollowUp Studio"><div class="entryWordmark"><div class="entryBrand" aria-hidden="true">F</div><span>FollowUp Studio</span></div><h2>Good work deserves<br><span>a follow-up.</span></h2><p>Your clients, your jobs, and a clear view of what comes next.</p><div class="entryFeatures"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-users"/></svg>Clients</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-briefcase"/></svg>Jobs</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-message"/></svg>Follow-ups</span></div></aside>
+  <div class="entryCard" id="entryCard" aria-busy="true">
+   <div class="entryMobileBrand"><div class="entryWordmark"><div class="entryBrand" aria-hidden="true">F</div><span>FollowUp Studio</span></div></div>
+   <p class="entryEyebrow">YOUR BUSINESS WORKSPACE</p><h1 id="entryTitle">Welcome back.</h1><p class="entryTagline" id="entryTagline">Sign in to your business workspace.</p>
+   <div class="entryChecking" id="entryChecking" role="status"><span class="entrySpinner" aria-hidden="true"></span><span id="entryLoadingText">Preparing your sign-in…</span></div>
+   <div id="entryReturning" hidden><div class="entryAccount"><div class="entryAvatar" id="entryAvatar" aria-hidden="true">F</div><div><small>YOUR SAVED ACCOUNT</small><strong id="entrySavedEmail"></strong></div></div><button type="button" class="btn entryPrimary" id="entryContinue">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button></div>
+   <form id="entryAuthForm" autocomplete="on" hidden>
+    <div class="field"><label for="entryEmail">Email address</label><input id="entryEmail" type="email" name="username" autocomplete="username" inputmode="email" autocapitalize="none" spellcheck="false" required placeholder="you@company.com"></div>
+    <div class="field"><label for="entryPassword">Password</label><div class="entryPasswordWrap"><input id="entryPassword" name="password" type="password" autocomplete="current-password" required placeholder="Your password"><button type="button" class="passwordToggle" id="entryPasswordToggle" aria-label="Show password" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></div></div>
+    <button id="entrySignIn" class="btn entryPrimary" type="submit" disabled>Sign in</button>
+   </form>
+   <div id="entryPasskeyArea" class="entryPasskeyArea" hidden><div class="entryDivider">OR</div><div class="entryPasskeyRow"><button type="button" id="entryPasskey" class="entryPasskey"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12a10 10 0 0 1 20 0"/><path d="M5 13v-1a7 7 0 0 1 14 0v2a12 12 0 0 0 .5 3.5"/><path d="M8 16v-4a4 4 0 0 1 8 0v3a16 16 0 0 0 1 5"/><path d="M12 12v4a20 20 0 0 1-1 6"/><path d="M4 16a15 15 0 0 1-1 4"/><path d="M8 19a16 16 0 0 1-1 3"/></svg>Use a passkey</button><button type="button" class="contextHelpButton" data-help="passkeys" aria-label="Help: Passkey sign-in" aria-haspopup="dialog" aria-controls="contextHelpDialog" aria-expanded="false"><span aria-hidden="true">?</span></button></div></div>
+   <div class="entryError" id="entryError" role="alert" aria-live="polite"></div>
+   <button id="entryRetry" type="button" class="entrySignup" hidden>Retry connection</button>
+   <div class="entryModeRow" id="entryModeRow" hidden><span id="entryModePrompt">New to FollowUp Studio?</span><button class="entrySignup" type="button" id="entrySignUp">Create an account</button></div>
+   <div class="entrySwitchRow" id="entrySwitchRow" hidden><button type="button" class="entrySignup" id="entrySwitchAccount">Use a different account</button></div>
+   <div class="entryFoot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V6a4 4 0 0 1 8 0v4"/></svg>Your private workspace</div>
+  </div>
+ </div>
 </div>
-<div id="appBootScreen" role="status" aria-label="Opening FollowUp Studio"><div class="bootLogo" aria-hidden="true">F</div><div class="bootTitle">FollowUp Studio</div><div class="bootNote">Opening your workspace…</div></div>
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></symbol><symbol id="i-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/><path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1"/></symbol><symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></symbol><symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></symbol><symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 17H5"/><path d="M19 7h-9"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></symbol><symbol id="i-checklist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 5h8"/><path d="M13 12h8"/><path d="M13 19h8"/><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/></symbol><symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16v5"/><path d="M16 14v7"/><path d="M20 10v11"/><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"/><path d="M4 18v3"/><path d="M8 14v7"/></symbol><symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12h.01"/><path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M22 13a18.15 18.15 0 0 1-20 0"/><rect width="20" height="14" x="2" y="6" rx="2"/></symbol><symbol id="i-archive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></symbol><symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></symbol><symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></symbol><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol><symbol id="i-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 9a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 15 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"/><path d="M15 3v5a1 1 0 0 0 1 1h5"/></symbol><symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12h4"/><path d="M10 8h4"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/></symbol><symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></symbol></svg>
 <input class="route-radio" type="radio" name="followup-page" id="page-home" checked aria-label="Home hub view">
 <input class="route-radio" type="radio" name="followup-page" id="page-dashboard" aria-label="Snapshot view">
@@ -1772,9 +1871,9 @@ html.v38Dark #premiumApp .cloudSyncBanner.error{background:#362329!important;col
 <input class="route-radio" type="radio" name="followup-page" id="page-content" aria-label="Social Studio view">
 <input class="route-radio" type="radio" name="followup-page" id="page-settings" aria-label="Settings view">
 <input class="route-radio" type="radio" name="followup-page" id="page-howto" aria-label="How To guide view">
-<div class="layout">
+<div class="layout" inert aria-hidden="true">
   <aside class="sidebar">
-    <div class="logo"><div class="logo-mark">F</div><div class="logo-name">FollowUp<br>Studio<small>CLOUD • V4.1.1</small></div></div>
+    <div class="logo"><div class="logo-mark">F</div><div class="logo-name">FollowUp<br>Studio<small>CLOUD • V4.2.0</small></div></div>
     <nav class="nav" aria-label="Main navigation">
       <label class="navtab active" data-route="home" for="page-home" tabindex="0"><svg><use href="#i-grid"/></svg> Home</label>
       <label class="navtab" data-route="dashboard" for="page-dashboard" tabindex="0"><svg><use href="#i-chart"/></svg> Snapshot</label>
@@ -1920,7 +2019,7 @@ html.v38Dark #premiumApp .cloudSyncBanner.error{background:#362329!important;col
           <p>Tap a Home tile to open its page. <strong>Press and hold</strong> any tile to enter rearrange mode, then drag it into position. Tap outside the tile grid to finish; your tile order is saved with the workspace.</p>
           <p>The floating Home button returns you to Home from other pages. Keyboard users can open the rearrangement control and use Alt + arrow keys; press Escape to finish.</p>
         </div></details>
-        <details class="card howtoTopic"><summary>Accounts &amp; cloud sync</summary><div class="howtoText">
+        <details class="card howtoTopic"><summary>Accounts &amp; cloud sync</summary><div class="howtoText"><p>On a fresh launch, the login screen waits for you. If your session is remembered, select <strong>Continue</strong> to open Home. Returning to an app that is still open keeps your current screen.</p><p>To use Face ID, a fingerprint, or a device screen lock, sign in with your password and add a passkey in <strong>Settings → Passkeys</strong>. On later visits, choose <strong>Use a passkey</strong>. Available methods depend on your device and password manager.</p>
           <p><strong>Safe demonstration:</strong> Demo Mode includes fictional clients and stores information in this browser only. Clearing browser data or switching devices may remove those records unless you export a backup.</p>
           <p>Sign in from the welcome screen to access your private account workspace. Demo records are <strong>not</strong> automatically uploaded. Use a full JSON backup and Restore if you intentionally want to transfer records.</p>
           <p>Cloud changes require an internet connection. Wait until the app reports that changes are synced before closing it. If an upload fails, this browser tab attempts to hold a temporary unencrypted recovery copy; a successful cloud save clears it. On reload, you can explicitly recover, download, or discard pending edits. If another device already changed the cloud workspace, download the recovery copy and resolve manually instead of overwriting. This is not a substitute for an independent backup; closing the tab may erase it. Simultaneous edits do not merge automatically.</p>
@@ -1984,6 +2083,11 @@ html.v38Dark #premiumApp .cloudSyncBanner.error{background:#362329!important;col
           <div class="btn-row cloudSessionActions"><button class="btn danger" type="button" data-action="cloud-signout">Sign out</button></div>
         </div>
       </section>
+      <section class="card passkeySettings" id="passkeySettings" aria-labelledby="passkeyHeading" hidden>
+        <div class="subhead"><h2 id="passkeyHeading">Passkeys<button type="button" class="contextHelpButton" data-help="passkeys" aria-label="Help: Passkey sign-in" aria-haspopup="dialog" aria-controls="contextHelpDialog" aria-expanded="false"><span aria-hidden="true">?</span></button></h2></div>
+        <p class="passkeyStatus" id="passkeyStatus" role="status" aria-live="polite">Checking passkey availability…</p><div class="passkeyList" id="passkeyList"></div>
+        <div class="passkeyActions"><button type="button" class="btn secondary" id="passkeyAdd" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12a10 10 0 0 1 20 0"/><path d="M5 13v-1a7 7 0 0 1 14 0v2a12 12 0 0 0 .5 3.5"/><path d="M8 16v-4a4 4 0 0 1 8 0v3a16 16 0 0 0 1 5"/><path d="M12 12v4a20 20 0 0 1-1 6"/><path d="M4 16a15 15 0 0 1-1 4"/><path d="M8 19a16 16 0 0 1-1 3"/></svg>Add a passkey</button><button type="button" class="btn secondary" id="passkeyRetry" hidden>Try again</button></div>
+      </section>
        <section class="card servicesPanel" id="servicesPanel" style="margin-bottom:16px">
          <div class="subhead"><h2>Saved services<button type="button" class="contextHelpButton" data-help="services" aria-label="Help: Saved services" aria-haspopup="dialog" aria-controls="contextHelpDialog" aria-expanded="false"><span aria-hidden="true">?</span></button></h2><span class="pill gray" id="serviceCount">0 saved</span></div>
          
@@ -1995,10 +2099,10 @@ html.v38Dark #premiumApp .cloudSyncBanner.error{background:#362329!important;col
         <div class="stack"><div class="card"><h2>Exports & Backups<button type="button" class="contextHelpButton" data-help="backups" aria-label="Help: Exports &amp; Backups" aria-haspopup="dialog" aria-controls="contextHelpDialog" aria-expanded="false"><span aria-hidden="true">?</span></button></h2><div class="btn-row"><button class="btn" data-action="backup">↓ Download full backup</button><button class="btn secondary" data-action="restore-open">↑ Restore from backup</button><button class="btn secondary" data-action="csv">Export jobs CSV</button><button class="btn secondary" data-action="reset">Reset sample data</button></div><input id="restoreInput" type="file" accept=".json,application/json" hidden aria-label="Choose backup JSON"><div class="backupStatus" id="backupStatus" role="status">No backup prepared this session.</div></div><div class="card"><h2>Dialog preferences<button type="button" class="contextHelpButton" data-help="confirmations" aria-label="Help: Dialog preferences" aria-haspopup="dialog" aria-controls="contextHelpDialog" aria-expanded="false"><span aria-hidden="true">?</span></button></h2><button type="button" class="btn secondary" data-action="restore-confirmations">Restore all confirmation messages</button></div></div>
       </div>
     </section>
-    <div class="footer">FollowUp Studio V4.1.1 · Private workspace</div>
+    <div class="footer">FollowUp Studio V4.2.0 · Private workspace</div>
   </main>
 </div>
-<div class="floatingNav floatingHome" id="mobileHomeControl">
+<div class="floatingNav floatingHome" id="mobileHomeControl" inert aria-hidden="true">
   <button type="button" class="floatingHomeButton" data-route="home" aria-label="Return to Home" title="Home">
     <svg class="modernHomeGlyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path class="homeAccent" d="m3.5 10.5 8.5-7 8.5 7"/>
@@ -2361,7 +2465,7 @@ const PALETTES={evergreen:['#173d37','#2f806c','#eee7d9','#ffffff'],midnight:['#
 function appearance(){return {palette:'monochrome',mode:'dark'}}
 const mediaDark=window.matchMedia?.('(prefers-color-scheme: dark)');
 function applyAppearance(){const a=appearance(),d=a.mode==='dark'||(a.mode==='auto'&&!!mediaDark?.matches);document.documentElement.dataset.palette=a.palette;document.documentElement.classList.toggle('v38Dark',d);document.querySelector('meta[name="theme-color"]')?.setAttribute('content',d?'#101216':PALETTES[a.palette][0]);const swatches=$$('.themeSwatches span');if(swatches.length){PALETTES[a.palette].forEach((v,i)=>swatches[i].style.background=v)}}
-function renderSettings(){$('#businessName').value=cloud.user&&db.business==='Demo Home Services'?'':db.business;$('#reviewUrl').value=db.reviewUrl||'';$('#reviewTemplate').value=db.template||DEFAULT_TEMPLATE;renderSavedServices();const preview=$('#brandLogoPreview');if(preview)preview.innerHTML=safePhoto(db.businessLogo)?`<img alt="Current business logo" src="${esc(db.businessLogo)}">`:'No logo uploaded.';applyAppearance()}
+function renderSettings(){$('#businessName').value=cloud.user&&db.business==='Demo Home Services'?'':db.business;$('#reviewUrl').value=db.reviewUrl||'';$('#reviewTemplate').value=db.template||DEFAULT_TEMPLATE;renderSavedServices();renderPasskeySettings();const preview=$('#brandLogoPreview');if(preview)preview.innerHTML=safePhoto(db.businessLogo)?`<img alt="Current business logo" src="${esc(db.businessLogo)}">`:'No logo uploaded.';applyAppearance()}
 function render(){applyAppearance();const style=$('#socialStyle');if(style&&document.activeElement!==style)style.value=['professional','casual','friendly','short'].includes(db.postStyle)?db.postStyle:'professional';renderDashboard();renderCustomerDirectory();renderJobs();renderCalendar();renderHomeHub();renderArchivePage();renderTodos();renderAiJobPicker();renderAiDrafts();renderSmartCenter();if(currentRoute==='settings')renderSettings();renderBackupStatus();updateCloudUI()}
 // Keep iOS Safari from rubber-banding the document underneath dialogs.
 // Multiple layers may be open together: preserve the lock until all close.
@@ -3321,88 +3425,232 @@ async function cloudRefresh(silent=false){
  finally{if(stillCurrent()){cloud.loading=false;updateCloudUI()}}
 }
 
-function showWelcome(message=''){
- document.body.classList.remove('accountWorkspace');
- document.body.classList.add('workspaceLocked');document.body.classList.remove('loadingWorkspace','appBooting');
- $('#entryError').textContent=message;
- $('#entryRetry').hidden=!(cloud.error||cloud.user&&!cloud.ready);
- $('#entryRetry').textContent=cloud.user?'Retry Loading Workspace':'Retry Connection';
- $('#entrySignIn').hidden=!!cloud.user;
- $('#entrySignUp').hidden=!!cloud.user;
- $$('#entryAuthForm .field').forEach(field=>field.hidden=!!cloud.user);
- $('#entrySignIn').disabled=!cloud.client||cloud.authBusy||cloud.booting;
- $('#entrySignUp').disabled=!cloud.client||cloud.authBusy||cloud.booting;
+// Credentials and challenges are managed by Supabase Auth and the device.
+// No biometric data, private key, or password is stored in workspace records.
+const passkeys={enabled:null,checking:false,owner:null,items:null,loading:false,busy:false,error:''};
+function passkeyBrowserSupported(){return !!(window.isSecureContext&&window.PublicKeyCredential&&navigator.credentials?.get&&navigator.credentials?.create)}
+function resetPasskeyCache(){passkeys.owner=null;passkeys.items=null;passkeys.loading=false;passkeys.busy=false;passkeys.error='';}
+async function loadPasskeyAvailability(){
+ if(passkeys.checking||!cloudConfigured())return;
+ passkeys.checking=true;
+ try{
+  const response=await cloudFetch(cloudSetup.url.replace(/\/$/,'')+'/auth/v1/settings',{headers:{apikey:cloudSetup.publishableKey},credentials:'omit',signal:AbortSignal.timeout(6000)});
+  if(!response.ok)throw Error('Unable to check sign-in options');
+  const settings=await response.json();passkeys.enabled=settings.passkeys_enabled===true;
+ }catch(err){passkeys.enabled=null;}
+ finally{passkeys.checking=false;syncEntry();renderPasskeySettings()}
 }
-function showWorkspaceLoading(text='Loading your private workspace…'){
- document.body.classList.remove('accountWorkspace');
- document.body.classList.add('workspaceLocked','loadingWorkspace','appBooting');
- const note=$('#appBootScreen .bootNote');if(note)note.textContent=text;
+function passkeyError(error){
+ const code=String(error?.code||''),message=String(error?.message||'');
+ if(code==='passkey_disabled'){passkeys.enabled=false;return 'Passkey sign-in is not available for this app yet. Use your password.';}
+ if(/NotAllowedError|AbortError|cancel|not allowed|timed out|aborted/i.test(code+' '+message))return 'Passkey request canceled or timed out. Try again, or use your password.';
+ if(code==='webauthn_credential_exists')return 'This passkey is already registered to your account.';
+ if(code==='webauthn_credential_not_found')return 'This passkey is not linked to an account here. Sign in with your password and add one in Settings.';
+ if(code==='email_not_confirmed')return 'Confirm your email before adding or using a passkey.';
+ return 'Could not complete the passkey request. Try again, or use your password.';
+}
+async function signInWithPasskey(){
+ if(cloud.authBusy||cloud.booting||entry.opening||!cloud.client||passkeys.enabled!==true)return;
+ if(!passkeyBrowserSupported()){showWelcome('This browser does not support passkeys. Use your password.');return;}
+ cloud.authBusy=true;$('#entryError').textContent='';syncEntry();
+ try{
+  const {data,error}=await cloud.client.auth.signInWithPasskey();if(error)throw error;
+  if(!data?.session||!data?.user)throw Error('No verified sign-in returned');
+  $('#entryPassword').value='';await cloudSessionEnter(data.user);
+ }catch(err){showWelcome(passkeyError(err));}
+ finally{cloud.authBusy=false;syncEntry()}
+}
+function renderPasskeySettings(){
+ const root=$('#passkeySettings');if(!root)return;root.hidden=!cloud.user;
+ if(!cloud.user)return;
+ const status=$('#passkeyStatus'),list=$('#passkeyList'),add=$('#passkeyAdd'),retry=$('#passkeyRetry');
+ const supported=passkeyBrowserSupported();
+ if(passkeys.enabled===true&&supported&&passkeys.owner!==cloud.user.id){resetPasskeyCache();passkeys.owner=cloud.user.id;}
+ add.hidden=passkeys.enabled!==true||!supported;add.disabled=passkeys.busy||passkeys.loading||!cloud.ready;
+ retry.hidden=!(passkeys.enabled===null&&!passkeys.checking||passkeys.error);retry.disabled=passkeys.busy||passkeys.loading||passkeys.checking;
+ if(passkeys.enabled!==true||!supported){
+  list.innerHTML='';status.textContent=!supported?'Use a browser that supports passkeys to manage them.':passkeys.checking?'Checking passkey availability…':passkeys.enabled===false?'Passkey setup is not available yet. Password sign-in is available.':'Could not check passkey availability.';return;
+ }
+ if(passkeys.items===null&&!passkeys.loading&&!passkeys.error){loadAccountPasskeys();return;}
+ status.textContent=passkeys.busy?'Waiting for your device…':passkeys.loading?'Loading your passkeys…':passkeys.error||(!passkeys.items?.length?'No passkeys added yet.':passkeys.items.length===1?'1 passkey linked to this account.':passkeys.items.length+' passkeys linked to this account.');
+ list.innerHTML=(passkeys.items||[]).map(key=>`<div class="passkeyRow"><div><strong>${esc(key.friendly_name||'Passkey')}</strong><small>${key.created_at?'Added '+esc(new Date(key.created_at).toLocaleDateString()):'Linked to this account'}</small></div><button type="button" class="btn secondary sm" data-passkey-remove="${esc(key.id)}" ${passkeys.busy?'disabled':''} aria-label="Remove ${esc(key.friendly_name||'passkey')}">Remove</button></div>`).join('');
+}
+async function loadAccountPasskeys(){
+ if(!cloud.user||!cloud.ready||passkeys.loading||passkeys.enabled!==true)return;
+ const owner=cloud.user.id,generation=cloud.generation;passkeys.owner=owner;passkeys.loading=true;passkeys.error='';renderPasskeySettings();
+ try{
+  const {data,error}=await cloud.client.auth.passkey.list();
+  if(cloud.user?.id!==owner||cloud.generation!==generation)return;
+  if(error)throw error;
+  if(!Array.isArray(data))throw Error('Unexpected passkey list');
+  passkeys.items=data;
+ }catch(err){if(cloud.user?.id===owner&&cloud.generation===generation)passkeys.error=passkeyError(err);}
+ finally{if(cloud.user?.id===owner&&cloud.generation===generation){passkeys.loading=false;renderPasskeySettings()}}
+}
+async function addAccountPasskey(){
+ if(passkeys.busy||!cloud.user||!cloud.ready||passkeys.enabled!==true||!passkeyBrowserSupported())return;
+ const owner=cloud.user.id,generation=cloud.generation;passkeys.busy=true;passkeys.error='';renderPasskeySettings();
+ try{
+  const {error}=await cloud.client.auth.registerPasskey();if(error)throw error;
+  if(cloud.user?.id!==owner||cloud.generation!==generation)return;
+  await loadAccountPasskeys();toast('Passkey added. You can use it the next time you sign in.');
+ }catch(err){if(cloud.user?.id===owner&&cloud.generation===generation)passkeys.error=passkeyError(err);}
+ finally{if(cloud.user?.id===owner&&cloud.generation===generation){passkeys.busy=false;renderPasskeySettings()}}
+}
+async function removeAccountPasskey(id){
+ if(passkeys.busy||!cloud.user||!cloud.ready)return;
+ const key=passkeys.items?.find(x=>x.id===id);if(!key)return;
+ const owner=cloud.user.id,generation=cloud.generation;
+ if(!(await askUser('Remove this passkey from your account? You can still sign in with your password.','remove-passkey',{yes:'Remove passkey',rememberable:false})))return;
+ if(cloud.user?.id!==owner||cloud.generation!==generation)return;
+ passkeys.busy=true;passkeys.error='';renderPasskeySettings();
+ try{
+  const {error}=await cloud.client.auth.passkey.delete({passkeyId:id});if(error)throw error;
+  if(cloud.user?.id!==owner||cloud.generation!==generation)return;
+  await loadAccountPasskeys();toast('Passkey removed.');
+ }catch(err){if(cloud.user?.id===owner&&cloud.generation===generation)passkeys.error=passkeyError(err);}
+ finally{if(cloud.user?.id===owner&&cloud.generation===generation){passkeys.busy=false;renderPasskeySettings()}}
+}
+function bindPasskeys(){
+ $('#passkeyAdd').addEventListener('click',addAccountPasskey);
+ $('#passkeyRetry').addEventListener('click',async()=>{if(passkeys.enabled===true){passkeys.error='';await loadAccountPasskeys()}else await loadPasskeyAvailability()});
+ document.addEventListener('click',e=>{const button=e.target.closest('[data-passkey-remove]');if(button)removeAccountPasskey(button.dataset.passkeyRemove)});
+ CONTEXT_HELP.passkeys={title:'Passkey sign-in',body:'<p>Sign in once with your password, then choose <strong>Settings → Passkeys → Add a passkey</strong>. Your device will guide you through setup.</p><p>Next time, choose <strong>Use a passkey</strong> on the login screen. Your phone or password manager may use Face ID, a fingerprint, or a screen lock. The device chooses the method; FollowUp Studio does not receive your biometric data.</p><p>Keep password access available as a fallback. Passkeys must be set up separately for each account.</p>'};
+}
+
+// A remembered session is offered to the user, never opened automatically.
+const entry={user:null,mode:'signin',opening:false};
+function lockEntry(locked){
+ document.body.classList.toggle('workspaceLocked',locked);
+ document.body.classList.remove('appBooting','loadingWorkspace');
+ for(const el of $$('.layout,.floatingNav')){el.inert=locked;if(locked)el.setAttribute('aria-hidden','true');else el.removeAttribute('aria-hidden')}
+ const gate=$('#entryGate');gate.inert=!locked;gate.setAttribute('aria-hidden',String(!locked));
+}
+function syncEntry(){
+ const user=entry.user||cloud.user;
+ const phase=cloud.booting?'checking':entry.opening?'opening':user?'returning':'password';
+ $('#entryGate').dataset.entryState=phase;
+ $('#entryCard').dataset.busy=String(cloud.authBusy||entry.opening);
+ $('#entryCard').setAttribute('aria-busy',String(cloud.booting||cloud.authBusy||entry.opening));
+ $('#entryChecking').hidden=!['checking','opening'].includes(phase);
+ $('#entryAuthForm').hidden=phase!=='password';
+ $('#entryReturning').hidden=phase!=='returning';
+ $('#entryModeRow').hidden=phase!=='password';
+ $('#entrySwitchRow').hidden=phase!=='returning';
+ $('#entryTitle').textContent=entry.mode==='signup'&&phase==='password'?'Create your account.':'Welcome back.';
+ $('#entryTagline').textContent=phase==='returning'?'Continue to your business workspace.':entry.mode==='signup'&&phase==='password'?'A clear place for your clients, jobs, and next steps.':'Sign in to your business workspace.';
+ if(user){$('#entrySavedEmail').textContent=user.email||'Your saved account';$('#entryAvatar').textContent=(user.email||'F').slice(0,1).toUpperCase()}
+ $('#entryContinue').hidden=!!cloud.error&&!!cloud.user&&!cloud.ready;
+ $('#entryRetry').hidden=!(cloud.error||cloud.user&&!cloud.ready)||phase==='checking'||phase==='opening';
+ $('#entryRetry').textContent=cloud.user?'Retry opening workspace':'Retry connection';
+ const busy=cloud.authBusy||cloud.booting||entry.opening;
+ for(const id of ['entrySignIn','entrySignUp','entryContinue','entrySwitchAccount','entryPasskey'])$('#'+id).disabled=!cloud.client||busy;
+ $('#entryRetry').disabled=busy;
+ $('#entrySignIn').textContent=cloud.authBusy?(entry.mode==='signup'?'Creating account…':'Signing in…'):entry.mode==='signup'?'Create account':'Sign in';
+ $('#entryModePrompt').textContent=entry.mode==='signup'?'Already have an account?':'New to FollowUp Studio?';
+ $('#entrySignUp').textContent=entry.mode==='signup'?'Sign in':'Create an account';
+ $('#entryPassword').autocomplete=entry.mode==='signup'?'new-password':'current-password';
+ $('#entryPasskeyArea').hidden=!['password','returning'].includes(phase)||entry.mode==='signup'||passkeys.enabled!==true||!passkeyBrowserSupported();
+}
+function showWelcome(message=''){
+ document.body.classList.remove('accountWorkspace');entry.opening=false;lockEntry(true);
+ $('#entryError').textContent=message;syncEntry();
+}
+function showWorkspaceLoading(text='Opening your workspace…'){
+ document.body.classList.remove('accountWorkspace');entry.opening=true;lockEntry(true);
+ $('#entryError').textContent='';$('#entryLoadingText').textContent=text;syncEntry();
 }
 function revealWorkspace(){
  if(!cloud.user||!cloud.ready)return;
- document.body.classList.remove('appBooting','loadingWorkspace','workspaceLocked');
- document.body.classList.add('accountWorkspace');
+ entry.opening=false;lockEntry(false);document.body.classList.add('accountWorkspace');
 }
-/* A fresh document load begins on Home. If iOS merely suspends the current page,
-   this initializer does not run again, so the current route and typed form stay open.
-   Saved client/job drafts remain accessible via Jobs > View Drafts. */
+/* A fresh document waits at the gateway, then opens Home. Suspending the same
+   document preserves its current screen and unsaved form. */
 function startWorkspaceAtHome(){
  try{sessionStorage.removeItem('followup_last_route_v402')}catch(e){}
  navigate('home');
 }
-
 async function cloudSessionEnter(user){
  if(!user)return;
- if(cloud.user?.id===user.id){if(cloud.ready)revealWorkspace();return;}
- // Save any open forms under the departing account before changing identity.
+ entry.user={id:user.id,email:user.email};
+ if(cloud.user?.id===user.id&&cloud.ready){startWorkspaceAtHome();revealWorkspace();return;}
  closeModal();clearTimeout(cloud.timer);cloud.generation++;cloud.loading=false;
  const generation=cloud.generation;
- // Never upload local demo or other account's in-memory data without explicit consent.
  cloud.user={id:user.id,email:user.email};cloud.ready=false;cloud.revision=0;cloud.conflict=false;cloud.dirty=false;cloud.error='';cloud.recovery=null;cloud.recoveryFailed=false;
- showWorkspaceLoading();
+ resetPasskeyCache();showWorkspaceLoading();
  db=blankCloudWorkspace();refreshWorkspaceDisplay();await cloudRefresh(true);
  if(cloud.generation!==generation||cloud.user?.id!==user.id)return;
  if(cloud.ready){startWorkspaceAtHome();revealWorkspace();}
- else showWelcome('Could not open your workspace. Check your internet connection and use Retry below.');
+ else showWelcome('Could not open your workspace. Check your connection and try again.');
 }
 function cloudSessionLeave(){
  closeModal();clearTimeout(cloud.timer);cloud.generation++;cloud.loading=false;cloud.user=null;cloud.ready=false;cloud.revision=0;cloud.dirty=false;cloud.conflict=false;cloud.error='';cloud.saving=false;cloud.recovery=null;cloud.recoveryFailed=false;
+ entry.user=null;entry.mode='signin';entry.opening=false;resetPasskeyCache();$('#entryPassword').value='';$('#entryPassword').type='password';$('#entryPasswordToggle').setAttribute('aria-label','Show password');$('#entryPasswordToggle').setAttribute('aria-pressed','false');
  db=load();if(!Array.isArray(db.todos))db.todos=[];if(!Array.isArray(db.aiDrafts))db.aiDrafts=[];migrateCustomers(db);refreshWorkspaceDisplay();updateCloudUI();showWelcome();
 }
 async function cloudBoot(){
  if(cloud.booting)return;
- cloud.booting=true;showWorkspaceLoading('Checking your sign-in…');
+ cloud.booting=true;entry.opening=false;lockEntry(true);$('#entryLoadingText').textContent='Preparing your sign-in…';syncEntry();
+ let message='';
  try{
-  if(!cloudConfigured()||!window.supabase?.createClient)throw Error('Cloud connection is unavailable. Reload when connected.');
-  if(!cloud.client)cloud.client=window.supabase.createClient(cloudSetup.url,cloudSetup.publishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true},global:{fetch:cloudFetch}});
+  if(!cloudConfigured()||!window.supabase?.createClient)throw Error('Connection unavailable. Reload when you are connected.');
+  if(!cloud.client)cloud.client=window.supabase.createClient(cloudSetup.url,cloudSetup.publishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,experimental:{passkey:true}},global:{fetch:cloudFetch}});
   if(!cloud.subscription)cloud.subscription=cloud.client.auth.onAuthStateChange((event,session)=>{
    if(event==='SIGNED_OUT'){cloudSessionLeave();return;}
-   if(event==='SIGNED_IN'&&session?.user&&cloud.user?.id!==session.user.id){setTimeout(()=>cloudSessionEnter(session.user),0);}
+   if(event==='SIGNED_IN'&&session?.user&&!cloud.authBusy&&!cloud.booting&&cloud.user?.id!==session.user.id){
+    if(cloud.user)cloudSessionLeave();
+    entry.user={id:session.user.id,email:session.user.email};showWelcome();
+   }
   }).data.subscription;
+  loadPasskeyAvailability();
   const {data,error}=await accountCheck(cloud.client.auth.getSession());if(error)throw error;
-  if(data?.session?.user)await cloudSessionEnter(data.session.user);
-  else showWelcome();
- }catch(err){cloud.error=safeText(err?.message||'Unable to check account',160);showWelcome(cloud.error);}
- finally{cloud.booting=false;$('#entrySignIn').disabled=!cloud.client||cloud.authBusy;$('#entrySignUp').disabled=!cloud.client||cloud.authBusy;updateCloudUI()}
+  entry.user=data?.session?.user?{id:data.session.user.id,email:data.session.user.email}:null;
+ }catch(err){cloud.error=safeText(err?.message||'Unable to check account',160);message=cloud.error;}
+ finally{cloud.booting=false;showWelcome(message);updateCloudUI()}
 }
-async function cloudLogin(create){
- if(cloud.authBusy||cloud.booting)return;
- const input=$('#entryPassword');input.setAttribute('autocomplete',create?'new-password':'current-password');
- if(!cloud.client){showWelcome('Cloud connection unavailable. Please reload.');return}
+async function continueSavedSession(){
+ if(cloud.authBusy||cloud.booting||entry.opening||!cloud.client)return;
+ cloud.authBusy=true;showWorkspaceLoading();
+ try{
+  const {data,error}=await accountCheck(cloud.client.auth.getUser());
+  if(error&&error.status!==401&&error.status!==403)throw error;
+  if(error||!data?.user){entry.user=null;cloud.error='';showWelcome('Your saved sign-in has expired. Please sign in again.');return;}
+  await cloudSessionEnter(data.user);
+ }catch(err){showWelcome('Could not verify your saved sign-in. Check your connection and try again.');}
+ finally{cloud.authBusy=false;syncEntry()}
+}
+async function cloudLogin(create=entry.mode==='signup'){
+ if(cloud.authBusy||cloud.booting||entry.opening)return;
+ if(!cloud.client){showWelcome('Connection unavailable. Please reload.');return;}
+ const input=$('#entryPassword'),password=input.value;
+ if(create&&password&&password.length<8){$('#entryError').textContent='Choose a password of at least 8 characters for your new account.';return;}
  if(!$('#entryAuthForm').reportValidity())return;
- const email=$('#entryEmail').value.trim(),password=input.value;
- if(create&&password.length<8){$('#entryError').textContent='Choose a password of at least 8 characters for your new account.';return;}
- const button=$('#entrySignIn'),signup=$('#entrySignUp');cloud.authBusy=true;button.disabled=true;signup.disabled=true;button.textContent=create?'Creating account…':'Signing in…';$('#entryAuthForm').setAttribute('aria-busy','true');
- $('#entryError').textContent='';
+ const email=$('#entryEmail').value.trim();cloud.authBusy=true;$('#entryError').textContent='';syncEntry();
  try{
   const result=create?await cloud.client.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}}):await cloud.client.auth.signInWithPassword({email,password});
   if(result.error)throw result.error;
   input.value='';
-  if(result.data?.session?.user){if(!cloud.user||cloud.user.id!==result.data.session.user.id)await cloudSessionEnter(result.data.session.user);}
-  else{$('#entryError').textContent='Check your email for verification, then sign in.';input.setAttribute('autocomplete','current-password');}
- }catch(err){showWelcome(safeText(err?.message||'Sign-in failed. Please retry.',150))}
- finally{cloud.authBusy=false;button.disabled=false;signup.disabled=false;button.textContent='Sign In';$('#entryAuthForm').removeAttribute('aria-busy');}
+  if(result.data?.session?.user)await cloudSessionEnter(result.data.session.user);
+  else{entry.mode='signin';showWelcome('Check your email to confirm your account, then sign in.');}
+ }catch(err){showWelcome(safeText(err?.message||'Sign-in failed. Please try again.',150));}
+ finally{cloud.authBusy=false;syncEntry()}
 }
+async function switchEntryAccount(){
+ if(cloud.authBusy||entry.opening||cloud.booting||!cloud.client)return;
+ cloud.authBusy=true;syncEntry();
+ try{const {error}=await cloud.client.auth.signOut({scope:'local'});if(error)throw error;cloudSessionLeave();$('#entryEmail').value='';}
+ catch(err){$('#entryError').textContent='Could not switch accounts. Check your connection and try again.';}
+ finally{cloud.authBusy=false;syncEntry()}
+}
+function bindEntryGateway(){
+ $('#entryContinue').addEventListener('click',continueSavedSession);
+ $('#entrySwitchAccount').addEventListener('click',switchEntryAccount);
+ $('#entryPasskey').addEventListener('click',signInWithPasskey);
+ $('#entryPasswordToggle').addEventListener('click',()=>{const input=$('#entryPassword'),show=input.type==='password';input.type=show?'text':'password';$('#entryPasswordToggle').setAttribute('aria-label',show?'Hide password':'Show password');$('#entryPasswordToggle').setAttribute('aria-pressed',String(show));});
+ $('#entrySignUp').addEventListener('click',()=>{if(cloud.authBusy||entry.opening)return;entry.mode=entry.mode==='signup'?'signin':'signup';$('#entryError').textContent='';syncEntry()});
+ $('#entryRetry').addEventListener('click',async()=>{if(!cloud.user){await cloudBoot();return;}if(cloud.authBusy||entry.opening)return;cloud.authBusy=true;showWorkspaceLoading();try{await cloudRefresh(true);if(cloud.ready){startWorkspaceAtHome();revealWorkspace()}else showWelcome('Still unable to open your workspace. Check your connection and try again.');}finally{cloud.authBusy=false;syncEntry()}});
+}
+
 async function handleCloudAction(op){
  if(op==='cloud-signup'){await cloudLogin(true);return}
  if(op==='cloud-save-backup'){exportFullBackup();return}
@@ -3629,8 +3877,8 @@ function bind(){
  const endDirectorySwipe=(e,cancel=false)=>{const row=e.target.closest('.customerSwipeRow');const s=row?row._swipe:null;if(!s)return;delete row._swipe;if(!s.active)return;row.classList.remove('is-swiping');const end=s.base+s.delta;const opened=!cancel&&(s.delta<-32||(s.base<0&&s.delta<32&&end<-44));row.classList.toggle('swiped',opened);row.style.removeProperty('--swipeX');row.querySelector('.customerCard').style.transition='';row.dataset.justSwiped='1';setTimeout(()=>{delete row.dataset.justSwiped},520)};
  directory.addEventListener('touchend',e=>endDirectorySwipe(e),{passive:true});
  directory.addEventListener('touchcancel',e=>endDirectorySwipe(e,true),{passive:true});
- $('#entryAuthForm').addEventListener('submit',e=>{e.preventDefault();cloudLogin(false)});$('#entrySignUp').addEventListener('click',()=>cloudLogin(true));$('#entryRetry').addEventListener('click',async()=>{if(!cloud.user){await cloudBoot();return}showWorkspaceLoading();await cloudRefresh(true);if(cloud.ready){startWorkspaceAtHome();revealWorkspace()}else showWelcome('Still unable to load your workspace. Check your connection and try again.');});window.addEventListener('online',()=>{if(cloud.user&&cloud.dirty&&!cloud.conflict)queueCloudSave(0)});/* Backgrounding must never replace the active screen. Cloud Refresh stays user initiated. */window.addEventListener('beforeunload',e=>{if(cloud.user&&cloud.dirty){e.preventDefault();e.returnValue='';}});document.addEventListener('click',e=>{const route=e.target.closest('[data-route]');if(route){if(homeEditMode&&route.classList.contains('homeTile'))return;navigate(route.dataset.route);return}applyAction(e)});$('#searchJobs').addEventListener('input',renderJobs);$('#searchCustomers').addEventListener('input',renderCustomerDirectory);$('#statusFilter').addEventListener('change',renderJobs);$('#settingsForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#businessName').value.trim(),template=$('#reviewTemplate').value.trim(),reviewUrl=$('#reviewUrl').value.trim();if(!name||!template||!reviewUrl){toast('Business name, Google review link, and template are required.','error');return}try{const u=new URL(reviewUrl);if(u.protocol!=='https:')throw Error()}catch(e){toast('Enter a complete Google review link starting with https://','error');return}db.business=name;db.reviewUrl=reviewUrl;db.template=template;if(save()){render();toast('✓ Business settings saved.')}});$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){if($('#contextHelpDialog').open)return;if(homeEditMode)enableHomeCustomize(false);closeModal()}});document.addEventListener('submit',e=>{if(e.target.id==='customerForm'){e.preventDefault();saveCustomer()}});$('#todoForm').addEventListener('submit',addTask);$('#restoreInput').addEventListener('change',e=>{const f=e.target.files?.[0];if(f)chooseBackupFile(f);e.target.value=''});document.addEventListener('change',e=>{if(e.target?.matches?.('[data-completion-photo]'))handleCompletionPhoto(e.target)});document.addEventListener('change',e=>{const id=e.target?.dataset?.taskId;if(!id)return;const task=db.todos.find(x=>x.id===id);if(task){task.done=e.target.checked;if(save()){render();toast(task.done?'✓ Task completed.':'✓ Task reopened.')}}})}
-bindContextHelp();bind();render();initAi();
+ $('#entryAuthForm').addEventListener('submit',e=>{e.preventDefault();cloudLogin()});window.addEventListener('online',()=>{if(cloud.user&&cloud.dirty&&!cloud.conflict)queueCloudSave(0)});/* Backgrounding must never replace the active screen. Cloud Refresh stays user initiated. */window.addEventListener('beforeunload',e=>{if(cloud.user&&cloud.dirty){e.preventDefault();e.returnValue='';}});document.addEventListener('click',e=>{const route=e.target.closest('[data-route]');if(route){if(homeEditMode&&route.classList.contains('homeTile'))return;navigate(route.dataset.route);return}applyAction(e)});$('#searchJobs').addEventListener('input',renderJobs);$('#searchCustomers').addEventListener('input',renderCustomerDirectory);$('#statusFilter').addEventListener('change',renderJobs);$('#settingsForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#businessName').value.trim(),template=$('#reviewTemplate').value.trim(),reviewUrl=$('#reviewUrl').value.trim();if(!name||!template||!reviewUrl){toast('Business name, Google review link, and template are required.','error');return}try{const u=new URL(reviewUrl);if(u.protocol!=='https:')throw Error()}catch(e){toast('Enter a complete Google review link starting with https://','error');return}db.business=name;db.reviewUrl=reviewUrl;db.template=template;if(save()){render();toast('✓ Business settings saved.')}});$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){if($('#contextHelpDialog').open)return;if(homeEditMode)enableHomeCustomize(false);closeModal()}});document.addEventListener('submit',e=>{if(e.target.id==='customerForm'){e.preventDefault();saveCustomer()}});$('#todoForm').addEventListener('submit',addTask);$('#restoreInput').addEventListener('change',e=>{const f=e.target.files?.[0];if(f)chooseBackupFile(f);e.target.value=''});document.addEventListener('change',e=>{if(e.target?.matches?.('[data-completion-photo]'))handleCompletionPhoto(e.target)});document.addEventListener('change',e=>{const id=e.target?.dataset?.taskId;if(!id)return;const task=db.todos.find(x=>x.id===id);if(task){task.done=e.target.checked;if(save()){render();toast(task.done?'✓ Task completed.':'✓ Task reopened.')}}})}
+bindContextHelp();bindEntryGateway();bindPasskeys();bind();render();initAi();
 cloudBoot();
 // General feature and privacy tips now live in Settings → How To.
 document.addEventListener('keydown',e=>{const nav=e.target.closest('[data-route]');if(nav&&nav.tagName==='LABEL'&&(e.key==='Enter'||e.key===' ')){e.preventDefault();navigate(nav.dataset.route)}});
