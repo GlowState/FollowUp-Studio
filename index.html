@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#101216">
-<title>FollowUp Studio — V4.2.0 Premium Workspace</title>
+<title>FollowUp Studio — V4.2.2 Premium Workspace</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="FollowUp Studio">
@@ -1835,9 +1835,71 @@ html.v38Dark #premiumApp .cloudSyncBanner.error{background:#362329!important;col
 @media(prefers-reduced-motion:reduce){#premiumApp .entrySpinner{animation:none;border-color:#a7c8ff}}
 
 </style>
+<style id="launch-loading-v421">
+/* A quiet branded launch, with a real indeterminate activity indicator. */
+#premiumApp .launchScreen{position:fixed;inset:0;z-index:5000;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 42%,#1b263a55,transparent 60%),#101216;color:#edf3ff;padding:28px;opacity:1;transition:opacity 180ms ease;overflow:hidden}
+#premiumApp .launchScreen[data-phase="leaving"]{opacity:0;pointer-events:none}
+#premiumApp .launchIdentity{display:flex;flex-direction:column;align-items:center;text-align:center;transform:translateY(-13px)}
+#premiumApp .launchMark{position:relative;display:grid;place-items:center;width:74px;height:78px;border-radius:21px;border:1px solid #50617c;background:linear-gradient(145deg,#2b3a52,#1c2637);box-shadow:0 0 0 7px #8db5ff04,0 14px 45px #0004;color:#d9e7ff;font:700 39px/1 Manrope,Inter,sans-serif;letter-spacing:-1px;animation:launchBreath 2.4s ease-in-out infinite}
+#premiumApp .launchName{font:650 25px/1.3 Manrope,Inter,sans-serif;letter-spacing:-.8px;margin:25px 0 9px;color:#f0f4fc}
+#premiumApp .launchCaption{font:400 12px/1.6 Inter,sans-serif;color:#98a9c2;letter-spacing:.02em;min-height:20px;margin:0}
+#premiumApp .launchTrack{width:132px;height:2px;background:#2d394c;border-radius:2px;overflow:hidden;position:relative;margin-top:30px}
+#premiumApp .launchTrack::after{content:'';position:absolute;inset:0 auto 0 0;width:48px;background:linear-gradient(90deg,transparent,#adcfff,transparent);border-radius:2px;animation:launchSweep 1.35s ease-in-out infinite;transform:translateX(-48px)}
+#premiumApp.launchLoading:not(.launchRevealing) .layout,#premiumApp.launchLoading:not(.launchRevealing) .floatingNav{visibility:hidden!important}
+@keyframes launchBreath{0%,100%{box-shadow:0 0 0 7px #8db5ff04,0 14px 45px #0004}50%{box-shadow:0 0 0 7px #8db5ff09,0 0 30px #6b9ce814}}
+@keyframes launchSweep{0%{transform:translateX(-48px)}100%{transform:translateX(132px)}}
+@media(max-width:540px){#premiumApp .launchMark{width:67px;height:71px;font-size:35px;border-radius:19px}#premiumApp .launchName{font-size:23px;margin-top:23px}}
+@media(prefers-reduced-motion:reduce){#premiumApp .launchScreen{transition:none}#premiumApp .launchMark{animation:none}#premiumApp .launchTrack::after{animation:none;transform:translateX(42px);background:#adcfff}}
+
+</style>
+<style id="subtle-gloss-v422">
+/* A restrained reflective finish, with one shared accent for Home navigation. */
+html.v38Dark #premiumApp .card{
+ background-image:linear-gradient(155deg,#ffffff07 0%,#ffffff02 26%,transparent 48%)!important;
+ border-top-color:#ffffff21!important;
+ box-shadow:inset 0 1px 0 #ffffff06,0 6px 20px #0000001c!important;
+}
+html.v38Dark #premiumApp .homeTileGrid .homeTileShell[data-tile-id],#premiumApp .homeTileDragGhost{--tile-glow:#abc9f2}
+html.v38Dark #premiumApp .homeTileGrid .homeTileShell>.homeTile{
+ background:linear-gradient(150deg,#a8c9ff0c 0%,#ffffff04 30%,transparent 55%),linear-gradient(180deg,#252e3b 0%,#1b222d 100%)!important;
+ border:1px solid #3b4b62!important;
+ border-top-color:#647b9c!important;
+ box-shadow:inset 0 1px 0 #ffffff0e,inset 0 -1px 0 #00000026,0 6px 18px #00000026!important;
+}
+html.v38Dark #premiumApp .homeTileGrid .homeTileIcon{
+ color:#b4cef2!important;
+ background:linear-gradient(155deg,#789fda21,#3657801a)!important;
+ border:1px solid #8ab3ed22;
+ box-shadow:inset 0 1px 0 #ffffff0e,0 3px 8px #00000013!important;
+}
+html.v38Dark #premiumApp .homeTileGrid .homeTileShell>.homeTile:hover{
+ background:linear-gradient(150deg,#b7d1ff14 0%,#ffffff05 30%,transparent 55%),linear-gradient(180deg,#2a3545,#1f2937)!important;
+ border-color:#6c89b1!important;
+ box-shadow:inset 0 1px 0 #ffffff18,0 8px 24px #00000030!important;
+}
+html.v38Dark #premiumApp .homeTileGrid.is-reordering .homeTileShell>.homeTile{border-style:dashed!important;border-color:#abc9f2!important}
+html.v38Dark #premiumApp .btn,html.v38Dark #premiumApp .logoUploadButton,html.v38Dark #premiumApp .photoSelectButton{
+ background-image:linear-gradient(180deg,#ffffff0c,transparent 65%)!important;
+ box-shadow:inset 0 1px 0 #ffffff10,0 3px 8px #00000017!important;
+}
+html.v38Dark #premiumApp .entryCard,html.v38Dark #premiumApp .contextHelpDialog,html.v38Dark #premiumApp .glassConfirm,html.v38Dark #premiumApp .overlay .dialog{
+ background-image:linear-gradient(155deg,#ffffff08,transparent 43%)!important;
+ border-top-color:#66768c!important;
+ box-shadow:inset 0 1px 0 #ffffff08,0 24px 65px #00000050!important;
+}
+#premiumApp .entryPasskey,#premiumApp .floatingHomeButton,#premiumApp .logo-mark,#premiumApp .workspaceBrandMark{
+ background-image:linear-gradient(145deg,#ffffff0b,transparent 65%);
+ box-shadow:inset 0 1px 0 #ffffff12,0 4px 12px #00000020;
+}
+
+</style>
 </head>
-<body id="premiumApp" class="workspaceLocked" data-current-view="home">
-<div id="entryGate" role="region" aria-labelledby="entryTitle" data-entry-state="checking">
+<body id="premiumApp" class="workspaceLocked launchLoading" data-current-view="home">
+<script>window.__followupLaunchStarted=performance.now();</script>
+<div id="launchScreen" class="launchScreen" role="status" aria-live="polite" aria-atomic="true" aria-label="Loading FollowUp Studio" data-phase="loading">
+ <div class="launchIdentity"><div class="launchMark" aria-hidden="true">F</div><div class="launchName">FollowUp Studio</div><p class="launchCaption" id="launchCaption">Preparing your workspace…</p><div class="launchTrack" aria-hidden="true"></div></div>
+</div>
+<div id="entryGate" hidden inert aria-hidden="true" role="region" aria-labelledby="entryTitle" data-entry-state="checking">
  <div class="entryShell">
   <aside class="entryStory" aria-label="FollowUp Studio"><div class="entryWordmark"><div class="entryBrand" aria-hidden="true">F</div><span>FollowUp Studio</span></div><h2>Good work deserves<br><span>a follow-up.</span></h2><p>Your clients, your jobs, and a clear view of what comes next.</p><div class="entryFeatures"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-users"/></svg>Clients</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-briefcase"/></svg>Jobs</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-message"/></svg>Follow-ups</span></div></aside>
   <div class="entryCard" id="entryCard" aria-busy="true">
@@ -1873,7 +1935,7 @@ html.v38Dark #premiumApp .cloudSyncBanner.error{background:#362329!important;col
 <input class="route-radio" type="radio" name="followup-page" id="page-howto" aria-label="How To guide view">
 <div class="layout" inert aria-hidden="true">
   <aside class="sidebar">
-    <div class="logo"><div class="logo-mark">F</div><div class="logo-name">FollowUp<br>Studio<small>CLOUD • V4.2.0</small></div></div>
+    <div class="logo"><div class="logo-mark">F</div><div class="logo-name">FollowUp<br>Studio<small>CLOUD • V4.2.2</small></div></div>
     <nav class="nav" aria-label="Main navigation">
       <label class="navtab active" data-route="home" for="page-home" tabindex="0"><svg><use href="#i-grid"/></svg> Home</label>
       <label class="navtab" data-route="dashboard" for="page-dashboard" tabindex="0"><svg><use href="#i-chart"/></svg> Snapshot</label>
@@ -2075,9 +2137,8 @@ html.v38Dark #premiumApp .cloudSyncBanner.error{background:#362329!important;col
             <button class="btn" type="button" data-action="cloud-retry" hidden>Retry pending save</button>
             <button class="btn secondary" type="button" data-action="cloud-save-backup" hidden>Download unsynced backup</button>
           </div>
-          <details class="connectionTools"><summary>Connection tools</summary><div class="connectionToolsBody">
-            <span class="pill gray" id="cloudRevision">Cloud revision —</span>
-            <div class="btn-row"><button class="btn secondary" type="button" data-action="cloud-check">Check connection</button><button class="btn secondary" type="button" data-action="cloud-refresh">Refresh from cloud</button></div>
+          <details class="connectionTools"><summary>Help with saved changes<button type="button" class="contextHelpButton" data-help="savingHelp" aria-label="Help: Saved changes" aria-haspopup="dialog" aria-controls="contextHelpDialog" aria-expanded="false"><span aria-hidden="true">?</span></button></summary><div class="connectionToolsBody">
+            <div class="btn-row"><button class="btn secondary" type="button" data-action="cloud-check">Check saved changes</button><button class="btn secondary" type="button" data-action="cloud-refresh">Get latest changes</button></div>
             <span id="cloudCheckResult" class="cloudCheckResult" role="status"></span>
           </div></details>
           <div class="btn-row cloudSessionActions"><button class="btn danger" type="button" data-action="cloud-signout">Sign out</button></div>
@@ -2099,7 +2160,7 @@ html.v38Dark #premiumApp .cloudSyncBanner.error{background:#362329!important;col
         <div class="stack"><div class="card"><h2>Exports & Backups<button type="button" class="contextHelpButton" data-help="backups" aria-label="Help: Exports &amp; Backups" aria-haspopup="dialog" aria-controls="contextHelpDialog" aria-expanded="false"><span aria-hidden="true">?</span></button></h2><div class="btn-row"><button class="btn" data-action="backup">↓ Download full backup</button><button class="btn secondary" data-action="restore-open">↑ Restore from backup</button><button class="btn secondary" data-action="csv">Export jobs CSV</button><button class="btn secondary" data-action="reset">Reset sample data</button></div><input id="restoreInput" type="file" accept=".json,application/json" hidden aria-label="Choose backup JSON"><div class="backupStatus" id="backupStatus" role="status">No backup prepared this session.</div></div><div class="card"><h2>Dialog preferences<button type="button" class="contextHelpButton" data-help="confirmations" aria-label="Help: Dialog preferences" aria-haspopup="dialog" aria-controls="contextHelpDialog" aria-expanded="false"><span aria-hidden="true">?</span></button></h2><button type="button" class="btn secondary" data-action="restore-confirmations">Restore all confirmation messages</button></div></div>
       </div>
     </section>
-    <div class="footer">FollowUp Studio V4.2.0 · Private workspace</div>
+    <div class="footer">FollowUp Studio V4.2.2 · Private workspace</div>
   </main>
 </div>
 <div class="floatingNav floatingHome" id="mobileHomeControl" inert aria-hidden="true">
@@ -2471,7 +2532,8 @@ function render(){applyAppearance();const style=$('#socialStyle');if(style&&docu
 // Multiple layers may be open together: preserve the lock until all close.
 // Help has its own native dialog, so opening it never replaces an active form.
 const CONTEXT_HELP={
- account:{title:'Account & Cloud Sync',body:'<p>Changes save automatically to your signed-in account when you have an internet connection. Use the same account on another device to load its saved workspace.</p><p>Wait for <strong>All changes synced</strong> before closing the app. In <strong>Connection tools</strong>, you can check the connection or refresh from the cloud. Simultaneous edits on different devices do not merge automatically.</p><p>If a save fails, this tab attempts to keep a temporary recovery copy. It may contain unencrypted client details. A successful save clears it; closing the tab or clearing browser data may erase it. Keep independent JSON backups from <strong>Exports & Backups</strong>.</p>'},
+ savingHelp:{title:'Help with saved changes',body:'<p>Your changes save automatically. You normally do not need these buttons.</p><p><strong>Check saved changes</strong> checks whether this device can reach your account and has your latest saved work.</p><p><strong>Get latest changes</strong> loads the work most recently saved to your account, including changes made on another device.</p><p>If you have unfinished changes here, save them or download a backup before getting changes from another device. The app will warn you before discarding work.</p>'},
+ account:{title:'Account & Cloud Sync',body:'<p>Changes save automatically to your signed-in account when you have an internet connection. Use the same account on another device to load its saved workspace.</p><p>Wait for <strong>All changes synced</strong> before closing the app. Under <strong>Help with saved changes</strong>, you can check your saved work or get the latest changes from another device. Simultaneous edits on different devices do not merge automatically.</p><p>If a save fails, this tab attempts to keep a temporary recovery copy. It may contain unencrypted client details. A successful save clears it; closing the tab or clearing browser data may erase it. Keep independent JSON backups from <strong>Exports & Backups</strong>.</p>'},
  services:{title:'Saved services',body:'<p>Add services you use often, then choose them when adding a job. You can also enter a one-time service.</p><p>Removing a saved service leaves existing jobs unchanged.</p>'},
  business:{title:'Business details',body:'<p>Set the business name, review-request link, logo, and message template for this workspace. Select <strong>Save settings</strong> after editing the text fields.</p><p>The name, review link, and message template are required. Logos save when uploaded.</p>'},
  businessName:{title:'Business name',body:'<p>Enter the name clients recognize. The app uses it in review requests and social post templates.</p><p>This field is required. Select <strong>Save settings</strong> to apply your change.</p>'},
@@ -3305,13 +3367,13 @@ function updateRecoveryUI(){
  if(!recovery)return;
  const matching=cloud.ready&&Number(recovery.revision)===Number(cloud.revision);
  $('#cloudRecoveryTitle').textContent=matching?'Unsynced edits from this tab found':'Older recovery copy needs review';
- $('#cloudRecoveryDetail').textContent=matching?'These edits were not confirmed by the cloud. You can restore them to this account, download the JSON first, or discard the copy.':'The cloud has a different revision than this recovery copy. To avoid overwriting changes from another device, download your recovery and compare it before restoring manually.';
+ $('#cloudRecoveryDetail').textContent=matching?'These edits were not confirmed by the cloud. You can restore them to this account, download the JSON first, or discard the copy.':'Your saved work has changed since this unfinished copy was created. Download the copy and compare it before restoring anything.';
  const recover=panel.querySelector('[data-action="cloud-recover"]');if(recover)recover.disabled=!matching||cloud.dirty||cloud.saving;
 }
 async function recoverPendingChanges(){
  if(!cloud.user||!cloud.ready||cloud.dirty||cloud.saving)return;
  const r=cloud.recovery||readPendingRecovery(cloud.user.id);if(!r)return;
- if(Number(r.revision)!==Number(cloud.revision)){toast('Cloud version changed. Download your recovery and reconcile changes manually.','error');return}
+ if(Number(r.revision)!==Number(cloud.revision)){toast('Your saved work has changed. Download your unfinished changes before trying to restore them.','error');return}
  if(!(await askUser('Replace this account view with the unsynced edits from this browser tab and try saving them to the cloud?','v4-recover-edits',{yes:'Recover edits',rememberable:false})))return;
  try{
   db=restoreValidate(r.data).db;cloud.dirty=true;cloud.recovery=null;stagePendingRecovery();refreshWorkspaceDisplay();queueCloudSave(0);updateCloudUI();toast('Recovered edits. Keep this page open until the cloud says synced.');
@@ -3329,15 +3391,15 @@ async function discardPendingRecovery(){
 }
 async function checkCloudConnection(){
  if(!cloud.user||!cloud.ready||!cloud.client)return;
- const label=$('#cloudCheckResult');if(label)label.textContent='Checking your private workspace…';
+ const label=$('#cloudCheckResult');if(label)label.textContent='Checking your saved changes…';
  try{
   const r=await cloudRead();
   if(!cloud.user)return;
   const remote=Number(r?.revision)||0;
   const match=remote===Number(cloud.revision);
-  const msg=cloud.dirty?'Your changes are still pending; save them before checking synchronization.':match?'Connection successful. The cloud revision matches this device.':'Cloud has a newer revision. Refresh from cloud after saving or backing up your local changes.';
+  const msg=cloud.dirty?'Some changes have not been saved yet. Keep the app open and try again.':match?'Your saved changes are up to date.':'This device may not have the latest saved changes. Save or back up your work, then select Get latest changes.';
   if(label)label.textContent=msg;
- }catch(e){if(label)label.textContent='Unable to reach cloud. No records were changed.'}
+ }catch(e){if(label)label.textContent='Could not check your saved changes. Check your internet connection and try again.'}
 }
 
 function refreshWorkspaceDisplay(){currentAiDraftId=null;$('#searchJobs').value='';$('#statusFilter').value='all';smartFilter='all';closeModal();navigate(currentRoute||'home');render()}
@@ -3353,7 +3415,6 @@ function updateCloudUI(){
  else {badge.dataset.sync=cloud.conflict||cloud.error?'error':cloud.dirty||!cloud.ready?'pending':'ready';state.textContent=cloud.dirty?'Unsynced changes':cloud.error?'Sync error':'Account connected';}
  badge.setAttribute('aria-label','Cloud sync: '+state.textContent+'. Open Settings');badge.title=badge.getAttribute('aria-label');
  $('#cloudUserEmail').textContent=cloud.user?.email||'Signed-in account';
- $('#cloudRevision').textContent=cloud.user?'Cloud revision '+cloud.revision:'Cloud revision —';
  const retry=$('[data-action="cloud-retry"]'),backup=$('[data-action="cloud-save-backup"]');
  retry.hidden=!(cloud.dirty&&cloud.error&&!cloud.conflict);retry.disabled=cloud.saving||!cloud.ready;
  backup.hidden=!(cloud.conflict||cloud.error&&cloud.dirty);
@@ -3401,8 +3462,8 @@ async function cloudRead(userId=cloud.user?.id){
 }
 async function cloudRefresh(silent=false){
  if(!cloud.user||cloud.loading)return;
- if(cloud.dirty&&!cloud.conflict){if(!silent)toast('You have unsynced edits. Wait for the cloud save or download a backup.','error');return;}
- if(cloud.conflict){if(silent)return;const ok=await askUser('Discard this device’s unsynced edits and load the newer cloud version? Export a JSON backup first.','cloud-discard-conflict',{yes:'Discard local edits',danger:true,rememberable:false});if(!ok)return;clearPendingRecovery(cloud.user.id);}
+ if(cloud.dirty&&!cloud.conflict){if(!silent)toast('Some changes have not been saved yet. Keep the app open or download a backup before getting other saved changes.','error');return;}
+ if(cloud.conflict){if(silent)return;const ok=await askUser('Replace the unfinished changes on this device with your latest saved work? Download a backup first if you want to keep those unfinished changes.','cloud-discard-conflict',{yes:'Discard local edits',danger:true,rememberable:false});if(!ok)return;clearPendingRecovery(cloud.user.id);}
  cloud.loading=true;
  const userId=cloud.user.id,generation=cloud.generation;
  const stillCurrent=()=>cloud.user?.id===userId&&cloud.generation===generation;
@@ -3420,7 +3481,7 @@ async function cloudRefresh(silent=false){
   const value=restoreValidate(record.snapshot).db;
   db=value;cloud.ready=true;cloud.revision=freshRevision;cloud.dirty=false;cloud.conflict=false;cloud.error='';
   cloud.recovery=readPendingRecovery(cloud.user.id);
-  refreshWorkspaceDisplay();if(!silent)toast(cloud.recovery?'Cloud loaded. Unsynced edits may be available to recover in Settings.':'✓ Latest cloud workspace loaded.');
+  refreshWorkspaceDisplay();if(!silent)toast(cloud.recovery?'Saved changes loaded. You may have unfinished work to recover in Settings.':'✓ Your latest saved changes are ready.');
  }catch(err){if(stillCurrent()){cloud.error=safeText(err?.message||'Unable to read workspace',200);if(!silent)toast('Cloud load failed. Use Retry to load your workspace.','error')}}
  finally{if(stillCurrent()){cloud.loading=false;updateCloudUI()}}
 }
@@ -3519,12 +3580,43 @@ function bindPasskeys(){
 }
 
 // A remembered session is offered to the user, never opened automatically.
+// Hold fast loads briefly; slow network requests determine their own duration.
+// Sequence guards prevent a previous transition from dismissing a new load.
+const launch={active:true,started:window.__followupLaunchStarted??performance.now(),sequence:0,holdTimer:null,fadeTimer:null};
+function startLaunchLoading(text='Opening your workspace…'){
+ clearTimeout(launch.holdTimer);clearTimeout(launch.fadeTimer);launch.sequence++;
+ if(!launch.active||$('#launchScreen').dataset.phase==='leaving')launch.started=performance.now();
+ launch.active=true;
+ const screen=$('#launchScreen');screen.hidden=false;screen.dataset.phase='loading';screen.setAttribute('aria-hidden','false');
+ $('#launchCaption').textContent=text;
+ document.body.classList.add('launchLoading');document.body.classList.remove('launchRevealing');
+ lockEntry(document.body.classList.contains('workspaceLocked'));
+}
+function finishLaunchLoading(){
+ if(!launch.active)return;
+ clearTimeout(launch.holdTimer);clearTimeout(launch.fadeTimer);
+ const sequence=++launch.sequence;
+ launch.holdTimer=setTimeout(()=>{
+  if(sequence!==launch.sequence)return;
+  $('#launchScreen').dataset.phase='leaving';document.body.classList.add('launchRevealing');
+  lockEntry(document.body.classList.contains('workspaceLocked'));
+  const fade=window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:180;
+  launch.fadeTimer=setTimeout(()=>{
+   if(sequence!==launch.sequence)return;
+   launch.active=false;$('#launchScreen').hidden=true;$('#launchScreen').setAttribute('aria-hidden','true');
+   document.body.classList.remove('launchLoading','launchRevealing');
+   lockEntry(document.body.classList.contains('workspaceLocked'));
+  },fade);
+ },Math.max(0,850-(performance.now()-launch.started)));
+}
+
 const entry={user:null,mode:'signin',opening:false};
 function lockEntry(locked){
  document.body.classList.toggle('workspaceLocked',locked);
  document.body.classList.remove('appBooting','loadingWorkspace');
- for(const el of $$('.layout,.floatingNav')){el.inert=locked;if(locked)el.setAttribute('aria-hidden','true');else el.removeAttribute('aria-hidden')}
- const gate=$('#entryGate');gate.inert=!locked;gate.setAttribute('aria-hidden',String(!locked));
+ const blocking=launch.active&&$('#launchScreen').dataset.phase!=='leaving';
+ for(const el of $$('.layout,.floatingNav')){el.inert=locked||blocking;if(locked||blocking)el.setAttribute('aria-hidden','true');else el.removeAttribute('aria-hidden')}
+ const gate=$('#entryGate');gate.inert=!locked||blocking;gate.hidden=!locked||blocking;gate.setAttribute('aria-hidden',String(!locked||blocking));
 }
 function syncEntry(){
  const user=entry.user||cloud.user;
@@ -3554,15 +3646,15 @@ function syncEntry(){
 }
 function showWelcome(message=''){
  document.body.classList.remove('accountWorkspace');entry.opening=false;lockEntry(true);
- $('#entryError').textContent=message;syncEntry();
+ $('#entryError').textContent=message;syncEntry();finishLaunchLoading();
 }
 function showWorkspaceLoading(text='Opening your workspace…'){
- document.body.classList.remove('accountWorkspace');entry.opening=true;lockEntry(true);
+ document.body.classList.remove('accountWorkspace');entry.opening=true;lockEntry(true);startLaunchLoading(text);
  $('#entryError').textContent='';$('#entryLoadingText').textContent=text;syncEntry();
 }
 function revealWorkspace(){
  if(!cloud.user||!cloud.ready)return;
- entry.opening=false;lockEntry(false);document.body.classList.add('accountWorkspace');
+ entry.opening=false;lockEntry(false);document.body.classList.add('accountWorkspace');finishLaunchLoading();
 }
 /* A fresh document waits at the gateway, then opens Home. Suspending the same
    document preserves its current screen and unsaved form. */
@@ -3590,7 +3682,7 @@ function cloudSessionLeave(){
 }
 async function cloudBoot(){
  if(cloud.booting)return;
- cloud.booting=true;entry.opening=false;lockEntry(true);$('#entryLoadingText').textContent='Preparing your sign-in…';syncEntry();
+ cloud.booting=true;entry.opening=false;startLaunchLoading('Preparing your workspace…');lockEntry(true);$('#entryLoadingText').textContent='Preparing your sign-in…';syncEntry();
  let message='';
  try{
   if(!cloudConfigured()||!window.supabase?.createClient)throw Error('Connection unavailable. Reload when you are connected.');
